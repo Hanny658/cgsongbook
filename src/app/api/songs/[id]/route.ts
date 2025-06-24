@@ -2,15 +2,11 @@ import { NextRequest, NextResponse } from 'next/server'
 import fs from 'fs'
 import path from 'path'
 
-interface Params {
-    id: number | string
-}
-
 export async function GET(
     req: NextRequest,
-    { params }: { params: Params }
+    context: { params: { id: string } }
 ) {
-    const { id } = await params
+    const { id } = await context.params
     const filePath = path.join(process.cwd(), 'src', 'songdata', `${id}.json`)
 
     try {
