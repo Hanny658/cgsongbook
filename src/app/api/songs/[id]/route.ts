@@ -4,7 +4,7 @@ import path from 'path'
 
 export async function GET(
     req: NextRequest,
-    context: { params: { id: string } }
+    context: { params: Promise<{ id: string }> }
 ) {
     const { id } = await context.params
     const filePath = path.join(process.cwd(), 'src', 'songdata', `${id}.json`)
