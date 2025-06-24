@@ -59,7 +59,7 @@ const SongbookPage = () => {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
-    <div className="relative w-screen overflow-hidden">
+    <div className="relative w-full overflow-hidden">
       <div className="fixed top-0 left-0 w-full h-full bg-cover bg-center -z-10" style={{ backgroundImage: `url(${bgUrl})` }} />
       <div className="relative flex flex-col min-h-screen text-gray-900 overflow-y-auto">
         <Head>
