@@ -15,8 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Hanny",
-  description: "Hanny's personal website using next.ts",
+  title: "CG Songbook",
+  description: "Contains all songs from Sky's 2025 collection PDF, plus Hanny's favorites.",
 };
 
 export const viewport: Viewport = {
