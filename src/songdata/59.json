@@ -33,15 +33,58 @@
             "label": "Verse 2",
             "lines": [
                 {
-                    "chords": "",
-                    "lyrics": "Jesus...Spirit…."
+                    "chords": "  C           F",
+                    "lyrics": "Jesus, we love you"
+                },
+                {
+                    "chords": "      G7                      C",
+                    "lyrics": "We praise You, we adore You"
+                },
+                {
+                    "chords": "  Em         F                G         G7",
+                    "lyrics": "Glorify Thy name, in all the earth"
+                },
+                {
+                    "chords": "  C              F          E                 Am",
+                    "lyrics": "Glorify Thy name, glorify Thy name"
+                },
+                {
+                    "chords": " Dm7        G7                        C",
+                    "lyrics": "Glorify Thy name, in all the earth"
+                }
+            ]
+        },
+        {
+            "id": "verse3",
+            "label": "Verse 3",
+            "lines": [
+                {
+                    "chords": "  C           F",
+                    "lyrics": "Spirit, we love you"
+                },
+                {
+                    "chords": "      G7                      C",
+                    "lyrics": "We praise You, we adore You"
+                },
+                {
+                    "chords": "  Em         F                G         G7",
+                    "lyrics": "Glorify Thy name, in all the earth"
+                },
+                {
+                    "chords": "  C              F          E                 Am",
+                    "lyrics": "Glorify Thy name, glorify Thy name"
+                },
+                {
+                    "chords": " Dm7        G7                        C",
+                    "lyrics": "Glorify Thy name, in all the earth"
                 }
             ]
         }
     ],
     "song": [
         "verse1",
-        "verse2"
+        "verse2",
+        "verse3"
     ],
-    "link": ""
+    "link": "https://www.youtube.com/watch?v=QltVKW6wXdo"
 }

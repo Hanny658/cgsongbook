@@ -1,10 +1,10 @@
 {
   "title": "Making Melodies In My Heart",
-  "number": "304",
+  "number": 204,
   "lyrics": [
     {
       "id": "chorus",
-      "label": "Chorus",
+      "label": "Chorus (Repeating)",
       "lines": [
         { "chords": "G                      C", "lyrics": "Making melodies in my heart" },
         { "chords": "G                      D", "lyrics": "Making melodies in my heart" },

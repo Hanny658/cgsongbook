@@ -1,0 +1,79 @@
+{
+    "title": "Give Me Joy in My Heart",
+    "number": 194,
+    "lyrics": [
+        {
+            "id": "verse1",
+            "label": "Verse 1",
+            "lines": [
+                {
+                    "chords": "Eb                Eb7           Ab",
+                    "lyrics": "Give me joy in my heart, keep me praising."
+                },
+                {
+                    "chords": "        Eb                Bb7",
+                    "lyrics": "Give me joy in my heart, I pray."
+                },
+                {
+                    "chords": "        Eb        Eb7           Ab",
+                    "lyrics": "Give me joy in my heart, keep me praising."
+                },
+                {
+                    "chords": "        Eb               Bb7      Eb  Ab Eb",
+                    "lyrics": "Keep me praising 'til the break of day."
+                }
+            ]
+        },
+        {
+            "id": "chorus",
+            "label": "Chorus",
+            "lines": [
+                {
+                    "chords": "        Eb7    Ab      Fm7",
+                    "lyrics": "Sing Ho-sanna, sing Ho-sanna,"
+                },
+                {
+                    "chords": "Bb           Bb7    Eb",
+                    "lyrics": "Sing Hosanna to the King of kings."
+                },
+                {
+                    "chords": "        Eb7    Ab      Fm7",
+                    "lyrics": "Sing Ho-sanna, sing Ho-sanna,"
+                },
+                {
+                    "chords": "Bb                  Eb",
+                    "lyrics": "Sing Hosanna to the King."
+                }
+            ]
+        },
+        {
+            "id": "verse2",
+            "label": "Verse 2",
+            "lines": [
+                {
+                    "chords": "Eb        Eb7                    Ab",
+                    "lyrics": "Give me peace in my heart, keep me loving."
+                },
+                {
+                    "chords": "          Eb               Bb7",
+                    "lyrics": "Give me peace in my heart, I pray."
+                },
+                {
+                    "chords": "          Eb        Eb7          Ab",
+                    "lyrics": "Give me peace in my heart, keep me loving."
+                },
+                {
+                    "chords": "        Eb               Bb7     Eb   Ab Eb",
+                    "lyrics": "Keep me loving 'til the break of day."
+                }
+            ]
+        }
+    ],
+    "song": [
+        "verse1",
+        "chorus",
+        "verse2",
+        "chorus"
+    ],
+    "link": "https://www.youtube.com/watch?v=kZKpt9MPTSU"
+}
