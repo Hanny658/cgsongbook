@@ -45,11 +45,30 @@
                     "lyrics": "Sing Hosanna to the King"
                 }
             ]
+        },
+        {
+            "id": "repeat",
+            "label": "Repeats",
+            "lines": [
+                {
+                    "chords": "",
+                    "lyrics": "Make me a fisher of men, Keep me fishing..."
+                },
+                {
+                    "chords": "",
+                    "lyrics": " Give me a joy in my heart, Keep me praising..."
+                },
+                {
+                    "chords": "",
+                    "lyrics": " Give me love in my heart, Keep me serving..."
+                }
+            ]
         }
     ],
     "song": [
         "verse1",
-        "chorus"
+        "chorus",
+        "repeat"
     ],
     "link": "https://www.youtube.com/watch?v=5sDJRVIMYQ4"
 }

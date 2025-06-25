@@ -1,5 +1,5 @@
 {
-    "title": "Give Me Joy in My Heart",
+    "title": "God’s Love",
     "number": 194,
     "lyrics": [
         {
@@ -7,73 +7,43 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "Eb                Eb7           Ab",
-                    "lyrics": "Give me joy in my heart, keep me praising."
+                    "chords": "G",
+                    "lyrics": "God’s Love is so wonderful,"
                 },
                 {
-                    "chords": "        Eb                Bb7",
-                    "lyrics": "Give me joy in my heart, I pray."
+                    "chords": "  D",
+                    "lyrics": "God’s Love is so wonderful,"
                 },
                 {
-                    "chords": "        Eb        Eb7           Ab",
-                    "lyrics": "Give me joy in my heart, keep me praising."
+                    "chords": "  G",
+                    "lyrics": "God’s Love is so wonderful,"
                 },
                 {
-                    "chords": "        Eb               Bb7      Eb  Ab Eb",
-                    "lyrics": "Keep me praising 'til the break of day."
-                }
-            ]
-        },
-        {
-            "id": "chorus",
-            "label": "Chorus",
-            "lines": [
-                {
-                    "chords": "        Eb7    Ab      Fm7",
-                    "lyrics": "Sing Ho-sanna, sing Ho-sanna,"
+                    "chords": "  D                      G",
+                    "lyrics": "Oh! Wonderful love!"
                 },
                 {
-                    "chords": "Bb           Bb7    Eb",
-                    "lyrics": "Sing Hosanna to the King of kings."
+                    "chords": "",
+                    "lyrics": "So high you can’t get over it,"
                 },
                 {
-                    "chords": "        Eb7    Ab      Fm7",
-                    "lyrics": "Sing Ho-sanna, sing Ho-sanna,"
+                    "chords": "",
+                    "lyrics": "So deep you can’t get under it,"
                 },
                 {
-                    "chords": "Bb                  Eb",
-                    "lyrics": "Sing Hosanna to the King."
-                }
-            ]
-        },
-        {
-            "id": "verse2",
-            "label": "Verse 2",
-            "lines": [
-                {
-                    "chords": "Eb        Eb7                    Ab",
-                    "lyrics": "Give me peace in my heart, keep me loving."
+                    "chords": "",
+                    "lyrics": "So wide you can’t get around it,"
                 },
                 {
-                    "chords": "          Eb               Bb7",
-                    "lyrics": "Give me peace in my heart, I pray."
-                },
-                {
-                    "chords": "          Eb        Eb7          Ab",
-                    "lyrics": "Give me peace in my heart, keep me loving."
-                },
-                {
-                    "chords": "        Eb               Bb7     Eb   Ab Eb",
-                    "lyrics": "Keep me loving 'til the break of day."
+                    "chords": "",
+                    "lyrics": "Oh! Wonderful love!"
                 }
             ]
         }
     ],
     "song": [
         "verse1",
-        "chorus",
-        "verse2",
-        "chorus"
+        "verse1"
     ],
-    "link": "https://www.youtube.com/watch?v=kZKpt9MPTSU"
+    "link": "https://www.youtube.com/watch?v=Ju38Sdc2cSg"
 }

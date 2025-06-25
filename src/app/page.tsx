@@ -122,8 +122,9 @@ const SongbookPage = () => {
         </main>
 
         {/* Footer */}
-        <footer className="w-full text-center text-sm text-gray-600 py-4 border-t">
+        <footer className="w-full text-center bg-gray-400/50 text-sm text-white py-2 border-t">
           Website by Hanny <i className="bi bi-c-circle text-xs"></i> 2025
+          <p className='text-gray-700 text-xs'>You can email me at <a className='text-shadow-amber-500/50 text-shadow-2xs' href='mailto:zyh@ik.me'>zyh@ik.me</a> for songs you wish to add ~</p>
         </footer>
       </div>
     </div>
