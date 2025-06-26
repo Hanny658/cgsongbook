@@ -3,31 +3,23 @@
     "number": 49,
     "lyrics": [
         {
-            "id": "verse1",
-            "label": "Verse 1",
+            "id": "english",
+            "label": "English",
             "lines": [
                 {
-                    "chords": "D               Em     Asus7             D",
-                    "lyrics": "God is so good, God is so good,"
+                    "chords": " D                Em                       D",
+                    "lyrics": "God is so good, God is so good"
                 },
                 {
-                    "chords": "D/F#          G",
-                    "lyrics": "God is so good,"
-                },
-                {
-                    "chords": "Em       Asus7 A7  D",
-                    "lyrics": "He's so good to me"
+                    "chords": " D           G  G       Em     D     A      D",
+                    "lyrics": "God is so good, He's so good to me"
                 }
             ]
         },
         {
-            "id": "intl",
-            "label": "International",
+            "id": "indonesian",
+            "label": "Indonesian",
             "lines": [
-                {
-                    "chords": "",
-                    "lyrics": "Indonesian:"
-                },
                 {
                     "chords": "",
                     "lyrics": "Allah baik, Allah baik"
@@ -35,14 +27,16 @@
                 {
                     "chords": "",
                     "lyrics": "Allah baik, Baik pada ku"
-                },
+                }
+            ]
+        },
+        {
+            "id": "chinese",
+            "label": "Chinese",
+            "lines": [
                 {
                     "chords": "",
-                    "lyrics": "Chinese:"
-                },
-                {
-                    "chords": "",
-                    "lyrics": "神 真 美 好,      神 真 美 好"
+                    "lyrics": "神 真 美 好,            神 真 美 好"
                 },
                 {
                     "chords": "",
@@ -50,16 +44,18 @@
                 },
                 {
                     "chords": "",
-                    "lyrics": "神 真 美 好,      衪 對 我 真 好"
+                    "lyrics": "神 真 美 好,            衪 對 我 真 好"
                 },
                 {
                     "chords": "",
                     "lyrics": "Shen hen mei hao, Ta dui wo hen hao"
-                },
-                {
-                    "chords": "",
-                    "lyrics": "Korean:"
-                },
+                }
+            ]
+        },
+        {
+            "id": "korean",
+            "label": "Korean",
+            "lines": [
                 {
                     "chords": "",
                     "lyrics": "Sa-rang ae-ju, Sa-rang ae-ju"
@@ -67,11 +63,13 @@
                 {
                     "chords": "",
                     "lyrics": "Sa-rang ae-ju, Na ae ha na nim"
-                },
-                {
-                    "chords": "",
-                    "lyrics": "Thai:"
-                },
+                }
+            ]
+        },
+        {
+            "id": "thai",
+            "label": "Thai",
+            "lines": [
                 {
                     "chords": "",
                     "lyrics": "Pra Ong Song Ruk"
@@ -79,6 +77,118 @@
                 {
                     "chords": "",
                     "lyrics": "Song Ruk chun rae ter"
+                }
+            ]
+        },
+        {
+            "id": "irish",
+            "label": "Irish",
+            "lines": [
+                {
+                    "chords": "",
+                    "lyrics": "Tá Dia iontach maith"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "(Tor Dee-ya in-tock mar)"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "Tá Dia go maith domh"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "(Tor Dee-ya go mar doe)"
+                }
+            ]
+        },
+        {
+            "id": "verse2",
+            "label": "Verse 2",
+            "lines": [
+                {
+                    "chords": "",
+                    "lyrics": "He cares for me so,  He cares for me so;"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "He cares for me so, He's so good to me."
+                },
+                {
+                    "chords": "",
+                    "lyrics": "祂看顧我 祂看顧我"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "Ta kan gu wo, Ta kan gu wo"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "祂看顧我 時常看顧我"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "Ta kan gu wo, shi chang kan gu wo"
+                }
+            ]
+        },
+        {
+            "id": "verse3",
+            "label": "Verse 3",
+            "lines": [
+                {
+                    "chords": "",
+                    "lyrics": "I love Him so,  I love Him so;"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "I love Him so, He's so good to me."
+                },
+                {
+                    "chords": "",
+                    "lyrics": "祂聽禱告 祂聽禱告"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "Ta ting dao gao, Ta ting dao gao"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "祂聽禱告 祂聽我禱告"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "Ta ting dao gao, Ta ting wo dao gao"
+                }
+            ]
+        },
+        {
+            "id": "verse4",
+            "label": "Verse 4",
+            "lines": [
+                {
+                    "chords": "",
+                    "lyrics": "I praise His Name,  I praise His Name;"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "I praise His Name, He's so good to me."
+                },
+                {
+                    "chords": "",
+                    "lyrics": "祂真愛我 祂真愛我"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "Ta zhen ai wo, Ta zhen ai wo"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "祂真愛我 祂真是愛我"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "Ta zhen ai wo, Ta zhen shi ai wo"
                 }
             ]
         }
