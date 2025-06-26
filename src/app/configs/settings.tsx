@@ -98,6 +98,18 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         }
     }, []);
 
+    // Change root em based on font size
+    useEffect(() => {
+        const scaleMap: Record<FontSize, string> = {
+            small: '14px',
+            medium: '16px',
+            large: '18px',
+            'extra-large': '20px',
+        }
+        // apply the new root font-size
+        document.documentElement.style.fontSize = scaleMap[fontSize]
+    }, [fontSize])
+
     // setters that also update cookies
     const setFontSize = (size: FontSize) => {
         _setFontSize(size);

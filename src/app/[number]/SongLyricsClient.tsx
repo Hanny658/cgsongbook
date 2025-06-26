@@ -9,6 +9,8 @@ import "../../app/globals.css"
 import "bootstrap-icons/font/bootstrap-icons.css"
 import Head from 'next/head'
 import SettingsButton from '../configs/settings-button'
+import { useConfig } from '../configs/settings'
+import { transposeChordString } from '../configs/chord-transpose'
 
 interface SongLine {
   chords: string
@@ -33,6 +35,11 @@ const bgImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg',
 
 export default function SongLyricsPage({ number }: { number: string | number }) {
   const [song, setSong] = useState<SongData | null>(null)
+  const {
+    videoDisplay,        // boolean: are TYB videos shown?
+    showChords,          // boolean: are chords shown?
+    transposeChords,     // number: 0–11 semitone shift
+  } = useConfig()
 
   useEffect(() => {
     fetch(`/api/songs/${number}`)
@@ -162,7 +169,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
         {/* Song Content */}
         <div className="pl-4 space-y-8">
           {/* YouTube Player */}
-          {videoId && (
+          {(videoDisplay && videoId) && (
             <div className="w-full md:w-1/2 p-4 mx-auto">
               <div className="aspect-w-16 aspect-h-9">
                 <iframe
@@ -198,7 +205,11 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
                     if (activeLine != null) console.log("Highlighted", activeLine)
                     return (
                       <div key={lineIndex} className={isHighlighted ? 'bg-yellow-100 p-2 rounded-md' : ''}>
-                        <p className="text-sm md:text-lg lg:text-xl text-blue-400 whitespace-pre text-shadow-blue-100/40 text-shadow-2xs">{line.chords}</p>
+                        {showChords && 
+                          <p className="text-sm md:text-lg lg:text-xl text-blue-400 whitespace-pre text-shadow-blue-100/40 text-shadow-2xs">
+                            {transposeChordString(`${line.chords}`, transposeChords)}
+                          </p>
+                        }
                         <p className="text-base md:text-xl lg:text-2xl text-white">{line.lyrics}</p>
                       </div>
                     )

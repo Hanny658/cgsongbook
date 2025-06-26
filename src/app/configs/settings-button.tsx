@@ -54,12 +54,8 @@ export default function SettingsButton() {
                 className={`
                     fixed bottom-0 left-0
                     w-full h-1/3 md:h-1/4
-                    bg-black text-white p-4 z-50
-
-                    /* enable transforms & smooth slide */
+                    bg-black text-white p-3 z-50 overflow-auto
                     transform transition-transform duration-300 ease-in-out
-
-                    /* when open, translate to 0; when closed, move fully down and disable clicks */
                     ${isOpen
                     ? 'translate-y-0 pointer-events-auto'
                     : 'translate-y-full pointer-events-none'}
@@ -130,6 +126,7 @@ export default function SettingsButton() {
                             >
                                 <i className="bi bi-plus-square"></i>
                             </button>
+                            {/* <p>{transposeChords}</p> */}
                         </div>
                     </div>
                 </div>
