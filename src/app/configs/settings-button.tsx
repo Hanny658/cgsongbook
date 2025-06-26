@@ -43,7 +43,7 @@ export default function SettingsButton() {
             {/* inline button */}
             <button
                 onClick={isOpen ? closePanel : openPanel}
-                className="inline-flex items-center px-3 py-1 bg-transparent text-white hover:text-blue-300"
+                className="inline-flex items-center pr-3 py-1 bg-transparent text-white hover:text-blue-300"
             >
                 <i className="bi bi-tools text-2xl mr-2"></i>
             </button>
@@ -91,7 +91,7 @@ export default function SettingsButton() {
                             <span>Video Display:</span>
                             <button
                                 onClick={toggleVideoDisplay}
-                                className={`px-3 py-1 border rounded min-w-[3rem] ${videoDisplay ? 'border-orange-700' : 'border-gray-600'}`}
+                                className={`px-3 py-1 border rounded min-w-[3rem] ${videoDisplay ? 'border-orange-500' : 'border-gray-600'}`}
                             >
                                 {videoDisplay ? 'On' : 'Off'}
                             </button>
@@ -102,7 +102,7 @@ export default function SettingsButton() {
                             <span>Show Chords:</span>
                             <button
                                 onClick={toggleShowChords}
-                                className={`px-3 py-1 border rounded min-w-[3rem] ${showChords ? 'border-orange-700' : 'border-gray-600'}`}
+                                className={`px-3 py-1 border rounded min-w-[3rem] ${showChords ? 'border-orange-500' : 'border-gray-600'}`}
                             >
                                 {showChords ? 'On' : 'Off'}
                             </button>

@@ -204,7 +204,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
                     const isHighlighted = lineId === activeLine
                     if (activeLine != null) console.log("Highlighted", activeLine)
                     return (
-                      <div key={lineIndex} className={isHighlighted ? 'bg-yellow-100 p-2 rounded-md' : ''}>
+                      <div key={lineIndex} className={isHighlighted ? 'bg-amber-100/30 p-2 rounded-md' : ''}>
                         {showChords && 
                           <p className="text-sm md:text-lg lg:text-xl text-blue-400 whitespace-pre text-shadow-blue-100/40 text-shadow-2xs">
                             {transposeChordString(`${line.chords}`, transposeChords)}
