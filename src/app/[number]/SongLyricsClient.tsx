@@ -8,6 +8,7 @@ import Fuse from 'fuse.js'
 import "../../app/globals.css"
 import "bootstrap-icons/font/bootstrap-icons.css"
 import Head from 'next/head'
+import SettingsButton from '../configs/settings-button'
 
 interface SongLine {
   chords: string
@@ -138,7 +139,10 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
 
         {/* Top Bar */}
         <header className="w-full bg-black/70 text-white py-4 px-6 flex justify-between items-center">
-          <h1 className="text-xl font-semibold">{song.number}. {song.title}</h1>
+          <div className="flex items-center justify-between">
+            <SettingsButton />
+            <h1 className="text-xl font-semibold">{song.number}. {song.title}</h1>
+          </div>
           <div className="flex items-center space-x-4">
             <button
               onClick={toggleTracking}

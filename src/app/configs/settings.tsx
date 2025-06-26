@@ -1,4 +1,6 @@
-// /lib/config.tsx
+"use client"
+
+// /app/config/settings.tsx
 import React, {
     createContext,
     useContext,

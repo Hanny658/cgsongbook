@@ -5,6 +5,7 @@ import "../app/globals.css"
 import Link from 'next/link'
 import "bootstrap-icons/font/bootstrap-icons.css"
 import Head from 'next/head'
+import SettingsButton from './configs/settings-button'
 
 interface SongMeta {
   title: string
@@ -69,13 +70,16 @@ const SongbookPage = () => {
 
         {/* Top Bar */}
         <header className="w-full !bg-black bg-opacity-70 !text-white py-4 px-6 flex justify-between items-center">
-          <h1 className="text-xl font-semibold">CG Songbook</h1>
+          <div className="flex items-center justify-between">
+            <SettingsButton />
+            <h1 className="text-xl font-semibold">CG Songbook</h1>
+          </div>
           <input
             type="text"
             value={searchQuery}
             onChange={handleSearch}
             placeholder="Search title or number..."
-            className="text-black bg-white/90 rounded w:1/2 md:w-1/3 px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="text-black bg-white/90 rounded w-1/3 md:w-1/2 px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
         </header>
 
