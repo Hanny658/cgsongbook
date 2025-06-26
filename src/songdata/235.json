@@ -1,5 +1,5 @@
 {
-    "title": "Love, I Do",
+    "title": "Swing Low Sweet Chariot",
     "number": 235,
     "lyrics": [
         {
@@ -7,53 +7,81 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "D           Bm7                 G    A7",
-                    "lyrics": "十字架上的光芒   温柔又慈祥"
+                    "chords": "            G     G7      C      G",
+                    "lyrics": "Swing low, sweet char - iot"
                 },
                 {
-                    "chords": "D            Bm7                G     A7",
-                    "lyrics": "带着主爱的力量   向着我照亮"
+                    "chords": " Em                 Bm            G",
+                    "lyrics": "Comin' for to carry me home"
                 },
                 {
-                    "chords": "D           Bm7                  G    A7",
-                    "lyrics": "我的心不再隐藏   完全地摆上"
+                    "chords": " D7        G     G7      C      G",
+                    "lyrics": "Swing low, Sweet char - iot"
                 },
                 {
-                    "chords": "D          Em7             Em7                A7  A",
-                    "lyrics": "愿主爱来浇灌我   在爱中得自由释放"
+                    "chords": "    Em7            D7           G",
+                    "lyrics": "Comin' for to carry me home"
+                },
+                {
+                    "chords": "     G                 Em            C              G",
+                    "lyrics": "I looked over Jordan and what did I see"
+                },
+                {
+                    "chords": " G                    Em           D7",
+                    "lyrics": "Comin' for to carry me home"
+                },
+                {
+                    "chords": "     G           G7        C      Am7  D7",
+                    "lyrics": "A band of angels comin' after   me"
+                },
+                {
+                    "chords": " G                     E            D7      G",
+                    "lyrics": "Comin' for to carry me home"
                 }
             ]
         },
         {
-            "id": "chorus",
-            "label": "Chorus",
+            "id": "verse2",
+            "label": "Verse 2",
             "lines": [
                 {
-                    "chords": "D          Bm7              G            F7",
-                    "lyrics": "我愿意降服         我愿意降服"
+                    "chords": "",
+                    "lyrics": "We can go together, I pray that we do"
                 },
                 {
-                    "chords": "G           Fm              Em7        A7",
-                    "lyrics": "在祢爱的怀抱中   我愿意降服"
+                    "chords": "",
+                    "lyrics": "Comin’ for to carry me home"
                 },
                 {
-                    "chords": "D          Bm7              G            Fm",
-                    "lyrics": "祢是我的主         祢是我的主"
+                    "chords": "",
+                    "lyrics": "I hope all my friends are comin’ too"
                 },
                 {
-                    "chords": "G           Fm        Bm7",
-                    "lyrics": "永远在祢  怀抱中"
+                    "chords": "",
+                    "lyrics": "Comin’ for to carry me home"
                 },
                 {
-                    "chords": "Em7                       Em7/A        D",
-                    "lyrics": "祢是我             祢是我的主"
+                    "chords": "",
+                    "lyrics": "Sometimes I’m up and sometimes I’m down,"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "Comin' for to carry me home"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "But still my heart feels Heavenly bound"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "Comin' for to carry me home"
                 }
             ]
         }
     ],
     "song": [
         "verse1",
-        "chorus"
+        "verse2"
     ],
-    "link": ""
+    "link": "https://www.youtube.com/watch?v=Thz1zDAytzU"
 }
