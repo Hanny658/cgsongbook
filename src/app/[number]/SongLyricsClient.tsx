@@ -129,7 +129,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
   return (
     <div className="relative w-full overflow-hidden">
       <div className="fixed top-0 left-0 w-full h-full bg-cover bg-center -z-10" style={{ backgroundImage: `url(${bgUrl})` }} />
-      <div className="flex flex-col min-h-screen text-gray-900">
+      <div className="flex flex-col min-h-screen text-gray-900 w-full bg-black/55">
 
         <Head>
           <title>Songbook - {song.title}</title>
@@ -156,7 +156,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
         </header>
 
         {/* Song Content */}
-        <div className="pl-4 space-y-8 w-full bg-black/55">
+        <div className="pl-4 space-y-8">
           {/* YouTube Player */}
           {videoId && (
             <div className="w-full md:w-1/2 p-4 mx-auto">
@@ -208,7 +208,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
       </div>
 
       {/* Footer */}
-      <footer className="w-full text-center text-sm bg-white/50 text-gray-600 py-2 px-0 m-0 border-t">
+      <footer className="w-full text-center text-sm bg-white/50 text-gray-700 py-2 px-0 m-0 border-t">
         Website by Hanny <i className="bi bi-c-circle"></i> 2025
       </footer>
     </div>
