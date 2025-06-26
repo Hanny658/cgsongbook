@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import { useConfig, FontSize } from './settings'
 
 const FONT_SIZES: FontSize[] = ['small', 'medium', 'large', 'extra-large']
+const fontsizeDisplay = {'small': "Small", 'medium': "Medium", 'large': "Large", 'extra-large': "Extra Large"}
 
 export default function SettingsButton() {
     const [isOpen, setIsOpen] = useState(false)
@@ -80,7 +81,7 @@ export default function SettingsButton() {
                             >
                                 <i className="bi bi-dash-square"></i>
                             </button>
-                            <span className="min-w-[5rem] text-center">{fontSize}</span>
+                            <span className="min-w-[6rem] text-center">{fontsizeDisplay[fontSize]}</span>
                             <button
                                 onClick={() => setFontSize(nextFont)}
                                 className="px-2 py-1 bg-transparent"
@@ -94,7 +95,7 @@ export default function SettingsButton() {
                             <span>Video Display:</span>
                             <button
                                 onClick={toggleVideoDisplay}
-                                className="px-3 py-1 border border-gray-600 rounded"
+                                className={`px-3 py-1 border rounded min-w-[3rem] ${videoDisplay ? 'border-orange-700' : 'border-gray-600'}`}
                             >
                                 {videoDisplay ? 'On' : 'Off'}
                             </button>
@@ -105,7 +106,7 @@ export default function SettingsButton() {
                             <span>Show Chords:</span>
                             <button
                                 onClick={toggleShowChords}
-                                className="px-3 py-1 border border-gray-600 rounded"
+                                className={`px-3 py-1 border rounded min-w-[3rem] ${showChords ? 'border-orange-700' : 'border-gray-600'}`}
                             >
                                 {showChords ? 'On' : 'Off'}
                             </button>
@@ -120,7 +121,9 @@ export default function SettingsButton() {
                             >
                                 <i className="bi bi-dash-square"></i>
                             </button>
-                            <span className="min-w-[5rem] text-center">C → {transposeChord('C', transposeChords)}</span>
+                            <span className="min-w-[5rem] text-center">
+                                C <i className="bi bi-arrow-right-short"></i> <b className={transposeChords == 0 ? '' : 'text-blue-400'}>{transposeChord('C', transposeChords)}</b>
+                            </span>
                             <button
                                 onClick={incrementTranspose}
                                 className="px-2 py-1 bg-transparent"
