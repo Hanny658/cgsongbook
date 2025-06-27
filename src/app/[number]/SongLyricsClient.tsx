@@ -221,11 +221,6 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
           <br />
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="w-full text-center text-sm bg-white/50 text-gray-700 py-2 px-0 m-0 border-t">
-        Website by Hanny <i className="bi bi-c-circle"></i> 2025
-      </footer>
     </div>
   )
 }

@@ -83,13 +83,24 @@
                     "lyrics": "are my all in all."
                 }
             ]
+        },
+        {
+            "id": "ending",
+            "label": "Ending",
+            "lines": [
+                {
+                    "chords": "G           Asus A  D",
+                    "lyrics": "Worthy is your name"
+                }
+            ]
         }
     ],
     "song": [
         "verse1",
         "chorus",
         "verse2",
-        "chorus"
+        "chorus",
+        "ending"
     ],
     "link": "https://www.youtube.com/watch?v=zC617kE1maU"
 }
