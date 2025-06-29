@@ -1,11 +1,12 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef, useCallback } from 'react'
 import "../app/globals.css"
 import Link from 'next/link'
 import "bootstrap-icons/font/bootstrap-icons.css"
 import Head from 'next/head'
 import SettingsButton from './configs/settings-button'
+import RandomPicker from './configs/random-picker'
 
 interface SongMeta {
   title: string
@@ -22,10 +23,31 @@ const SongbookPage = () => {
   const [showScrollTop, setShowScrollTop] = useState(false)
   const [bgUrl, setBgUrl] = useState('')
 
+  const [picked, setPicked] = useState<number | null>(null);
+  const songRefs = useRef<Record<number, HTMLAnchorElement | null>>({});
+
+  const scrollToSong = useCallback((num: number | null) => {
+    if (!num) return;
+    const el = songRefs.current[num];
+    if (el) {
+      el.scrollIntoView({
+        behavior: "smooth",   // animate the scroll
+        block: "center",      // align it to the center of the container/viewport
+      });
+    } else {
+      console.warn(`No song found with number ${num}`);
+    }
+  }, []);
+
   useEffect(() => {
     const random = Math.floor(Math.random() * bgImages.length)
     setBgUrl(`/sbg/${bgImages[random]}`)
   }, [])
+
+  useEffect(() => {
+    scrollToSong(picked);
+    console.log("Picked a random song: No.", picked)
+  }, [picked, scrollToSong])
 
   useEffect(() => {
     const fetchSongs = async () => {
@@ -69,18 +91,21 @@ const SongbookPage = () => {
         </Head>
 
         {/* Top Bar */}
-        <header className="w-full !bg-black bg-opacity-70 !text-white py-4 px-6 flex justify-between items-center">
+        <header className="w-full !bg-black bg-opacity-70 !text-white py-2 px-6 flex justify-between items-center">
           <div className="flex items-center justify-between">
             <SettingsButton />
             <h1 className="text-xl font-semibold">CG Songbook</h1>
           </div>
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={handleSearch}
-            placeholder="Search title or number..."
-            className="text-black bg-white/90 rounded w-1/3 md:w-1/2 px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
-          />
+          <div className="flex w-full md:w-1/2">
+            <RandomPicker maxNum={songs.length} onPick={setPicked} />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={handleSearch}
+              placeholder="Search title or number..."
+              className="text-black bg-white/90 rounded w-full px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+            />
+          </div>
         </header>
 
         {/* Main Content Area */}
@@ -90,10 +115,15 @@ const SongbookPage = () => {
               {filteredSongs.length > 0 ?
                 <>
                   {filteredSongs.map((song) => (
-                    <Link key={song.number} href={`/${song.number}`}>
+                    <Link key={song.number} href={`/${song.number}`}
+                    ref={(el) => {
+                      songRefs.current[song.number] = el;
+                    }}>
                       <div className="relative">
                         <div
-                          className="border-b bg-black/80 text-white text-xl border-gray-500 py-2 px-4 hover:bg-black/70 flex justify-center items-center"
+                          className={`border-b text-white text-xl border-gray-500 py-2 px-4 flex justify-center items-center
+                            ${song.number == picked ? "bg-amber-900/75 hover:bg-amber-900/60" : "bg-black/75 hover:bg-black/60"}`
+                          }
                         >
                           <span className="font-medium">
                             {song.number}. {song.title}

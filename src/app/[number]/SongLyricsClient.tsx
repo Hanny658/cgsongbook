@@ -170,7 +170,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
         <div className="pl-4 space-y-8">
           {/* YouTube Player */}
           {(videoDisplay && videoId) && (
-            <div className="w-full md:w-1/2 p-4 mx-auto">
+            <div className="w-full md:w-1/2 p-2 m-0 mx-auto">
               <div className="aspect-w-16 aspect-h-9">
                 <iframe
                   src={`https://www.youtube.com/embed/${videoId}`}

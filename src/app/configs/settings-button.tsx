@@ -45,7 +45,7 @@ export default function SettingsButton() {
                 onClick={isOpen ? closePanel : openPanel}
                 className="inline-flex items-center pr-3 py-1 bg-transparent text-white hover:text-blue-300"
             >
-                <i className="bi bi-tools text-2xl mr-2"></i>
+                <i className="bi bi-gear-fill text-2xl mr-2"></i>
             </button>
 
             {/* slide‐up panel */}
