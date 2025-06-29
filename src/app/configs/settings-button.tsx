@@ -4,8 +4,8 @@
 import React, { useState } from 'react'
 import { useConfig, FontSize } from './settings'
 
-const FONT_SIZES: FontSize[] = ['small', 'medium', 'large', 'extra-large']
-const fontsizeDisplay = {'small': "Small", 'medium': "Medium", 'large': "Large", 'extra-large': "Extra Large"}
+const FONT_SIZES: FontSize[] = ['extra-small', 'small', 'medium', 'large', 'extra-large']
+const fontsizeDisplay = {'extra-small': "Extra Small",'small': "Small", 'medium': "Medium", 'large': "Large", 'extra-large': "Extra Large"}
 
 export default function SettingsButton() {
     const [isOpen, setIsOpen] = useState(false)
@@ -53,7 +53,7 @@ export default function SettingsButton() {
                 <div
                 className={`
                     fixed bottom-0 left-0
-                    w-full h-1/3 md:h-1/4
+                    w-full h-1/2 md:h-1/3
                     bg-black text-white p-3 z-50 overflow-auto
                     transform transition-transform duration-300 ease-in-out
                     ${isOpen

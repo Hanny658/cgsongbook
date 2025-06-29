@@ -10,7 +10,7 @@ import React, {
 } from 'react';
 
 // 1) Define your types & defaults
-export type FontSize = 'small' | 'medium' | 'large' | 'extra-large';
+export type FontSize = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
 
 interface ConfigContextType {
     fontSize: FontSize;
@@ -77,7 +77,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     // on mount, read cookies (if present)
     useEffect(() => {
         const fs = getCookie('fontSize') as FontSize;
-        if (['small', 'medium', 'large', 'extra-large'].includes(fs)) {
+        if (['extra-small', 'small', 'medium', 'large', 'extra-large'].includes(fs)) {
             _setFontSize(fs);
         }
 
@@ -101,10 +101,11 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     // Change root em based on font size
     useEffect(() => {
         const scaleMap: Record<FontSize, string> = {
-            small: '14px',
-            medium: '16px',
-            large: '18px',
-            'extra-large': '20px',
+            'extra-small': '14px',
+            small: '16px',
+            medium: '18px',
+            large: '20px',
+            'extra-large': '22px',
         }
         // apply the new root font-size
         document.documentElement.style.fontSize = scaleMap[fontSize]
