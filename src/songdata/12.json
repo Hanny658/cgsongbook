@@ -3,11 +3,11 @@
     "number": 12,
     "lyrics": [
         {
-            "id": "verse1",
-            "label": "Verse 1",
+            "id": "verse",
+            "label": "Verse",
             "lines": [
                 {
-                    "chords": "      C",
+                    "chords": "     C",
                     "lyrics": "He's got the whole world"
                 },
                 {
@@ -15,7 +15,7 @@
                     "lyrics": "In His hands"
                 },
                 {
-                    "chords": "                     G7",
+                    "chords": "             G7",
                     "lyrics": "He's got the whole wide world"
                 },
                 {
@@ -23,7 +23,7 @@
                     "lyrics": "In His hands"
                 },
                 {
-                    "chords": "                       C",
+                    "chords": "             C",
                     "lyrics": "He's got the whole world"
                 },
                 {
@@ -31,18 +31,18 @@
                     "lyrics": "In His hands"
                 },
                 {
-                    "chords": "                     G7",
+                    "chords": "             G7",
                     "lyrics": "He's got the whole world"
                 },
                 {
-                    "chords": "           C",
+                    "chords": "       C",
                     "lyrics": "In His hands"
                 }
             ]
         },
         {
-            "id": "verse2",
-            "label": "Verse 2",
+            "id": "repeat",
+            "label": "Repeat",
             "lines": [
                 {
                     "chords": "",
@@ -60,8 +60,8 @@
         }
     ],
     "song": [
-        "verse1",
-        "verse2"
+        "verse",
+        "repeat"
     ],
     "link": "https://www.youtube.com/watch?v=kDBJNQiugnM"
 }

@@ -7,35 +7,35 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "D              A7          Bm",
+                    "chords": "D       A7     Bm",
                     "lyrics": "This is my Father's world"
                 },
                 {
-                    "chords": "       G                        Em    A7",
+                    "chords": "    G            Em  A7",
                     "lyrics": "And to my listening ears"
                 },
                 {
-                    "chords": "       D       F#             Bm            G",
+                    "chords": "    D    F#       Bm      G",
                     "lyrics": "All nature sings and round me rings"
                 },
                 {
-                    "chords": "       Em       A7      D",
+                    "chords": "    Em    A7   D",
                     "lyrics": "The music of the spheres"
                 },
                 {
-                    "chords": "        D      G           Bm",
+                    "chords": "    D   G      Bm",
                     "lyrics": "This is my Father's world"
                 },
                 {
-                    "chords": "   G      A7          D",
+                    "chords": "  G   A7     D",
                     "lyrics": "I rest me in the thought"
                 },
                 {
-                    "chords": "                     F#       Bm Bm/A Bm/Ab",
+                    "chords": "           F#    Bm Bm/A Bm/Ab",
                     "lyrics": "Of rocks and trees, of skies and seas"
                 },
                 {
-                    "chords": "     Em           A               D",
+                    "chords": "   Em      A        D",
                     "lyrics": "His hand the wonders wrought"
                 }
             ]

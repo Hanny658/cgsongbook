@@ -7,24 +7,24 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "  G              G7             C            G",
+                    "chords": " G       G7       C      G",
                     "lyrics": "Away in a manger, no crib for a bed,"
                 },
                 {
-                    "chords": "         D               D              C                      G",
+                    "chords": "     D        D       C           G",
                     "lyrics": "The little Lord Jesus, lay down his sweet head."
                 },
                 {
-                    "chords": "          G               G7                         C",
+                    "chords": "     G        G7             C",
                     "lyrics": "The stars in the bright sky, looked down where"
                 },
                 {
-                    "chords": "      G",
+                    "chords": "   G",
                     "lyrics": "he lay"
                 },
                 {
-                    "chords": "         D7            G         Am         D7    G",
-                    "lyrics": "The little Lord Jesus, asleep on the   hay."
+                    "chords": "     D7      G     Am     D7  G",
+                    "lyrics": "The little Lord Jesus, asleep on the  hay."
                 }
             ]
         },

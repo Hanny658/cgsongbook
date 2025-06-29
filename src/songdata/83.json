@@ -7,15 +7,15 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "  C                       G7",
+                    "chords": " C            G7",
                     "lyrics": "God can do anything,"
                 },
                 {
-                    "chords": "       C               F",
+                    "chords": "    C        F",
                     "lyrics": "Anything, anything,"
                 },
                 {
-                    "chords": "                C          Dm G7        C",
+                    "chords": "        C     Dm G7    C",
                     "lyrics": "God can do anything but fail (repeat)"
                 }
             ]
@@ -25,31 +25,31 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "                F",
+                    "chords": "        F",
                     "lyrics": "He's the Alpha and Omega"
                 },
                 {
-                    "chords": "        C",
+                    "chords": "    C",
                     "lyrics": "The beginning and the end"
                 },
                 {
-                    "chords": "                D7",
+                    "chords": "        D7",
                     "lyrics": "He's the fairest of ten thousand"
                 },
                 {
-                    "chords": "           G     G7",
+                    "chords": "      G   G7",
                     "lyrics": "To my soul"
                 },
                 {
-                    "chords": "               C      G7",
+                    "chords": "        C   G7",
                     "lyrics": "God can do anything,"
                 },
                 {
-                    "chords": "        C             F",
+                    "chords": "    C       F",
                     "lyrics": "Anything, anything,"
                 },
                 {
-                    "chords": "                C         Dm   G7   C",
+                    "chords": "        C     Dm  G7  C",
                     "lyrics": "God can do anything but fail"
                 }
             ]

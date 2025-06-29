@@ -7,7 +7,7 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "E                        A         B7",
+                    "chords": "E            A     B7",
                     "lyrics": "Walking with Jesus, walking every day"
                 },
                 {
@@ -15,11 +15,11 @@
                     "lyrics": "Walking all the way,"
                 },
                 {
-                    "chords": "                        A",
+                    "chords": "            A",
                     "lyrics": "Walking with Jesus,"
                 },
                 {
-                    "chords": " B7                              E",
+                    "chords": " B7               E",
                     "lyrics": "Walking with Jesus alone"
                 },
                 {
@@ -31,7 +31,7 @@
                     "lyrics": "Walking in the shadow"
                 },
                 {
-                    "chords": " B7                              E",
+                    "chords": " B7               E",
                     "lyrics": "Walking everyday, walking all the way"
                 },
                 {
@@ -43,7 +43,7 @@
                     "lyrics": "Walking in the shadow"
                 },
                 {
-                    "chords": " B7                            E",
+                    "chords": " B7              E",
                     "lyrics": "Walking with Jesus alone"
                 }
             ]
@@ -53,19 +53,19 @@
             "label": "Verse 2",
             "lines": [
                 {
-                    "chords": " E             E7                            A           F#m",
+                    "chords": " E       E7              A      F#m",
                     "lyrics": "When I remember that He died for me"
                 },
                 {
-                    "chords": "      B7                            E",
+                    "chords": "   B7              E",
                     "lyrics": "I'll never go back anymore x2"
                 },
                 {
-                    "chords": "        E7                        A       F#m",
+                    "chords": "    E7            A    F#m",
                     "lyrics": "No, no never, never, uh, uh, uh"
                 },
                 {
-                    "chords": "      B7                             E",
+                    "chords": "   B7               E",
                     "lyrics": "I'll never go back anymore x2"
                 }
             ]

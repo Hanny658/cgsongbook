@@ -7,19 +7,19 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "C                         F                   C",
+                    "chords": "C             F          C",
                     "lyrics": "King of my life I crown Thee now"
                 },
                 {
-                    "chords": "                                   Gsus G",
+                    "chords": "                  Gsus G",
                     "lyrics": "Thine shall the glory be"
                 },
                 {
-                    "chords": "C                  F                          C/E",
+                    "chords": "C         F             C/E",
                     "lyrics": "Lest I forget Thy thorn crowned brow"
                 },
                 {
-                    "chords": "Dm             C/G G C",
+                    "chords": "Dm       C/G G C",
                     "lyrics": "Lead me to Calvary"
                 }
             ]
@@ -29,19 +29,19 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "Dm          G   C",
+                    "chords": "Dm     G  C",
                     "lyrics": "Lest I forget Gethsemane"
                 },
                 {
-                    "chords": "Dm         G              C",
+                    "chords": "Dm     G       C",
                     "lyrics": "Lest I forget Thine agony"
                 },
                 {
-                    "chords": "Am       Em/G      F          C2/E",
+                    "chords": "Am    Em/G   F     C2/E",
                     "lyrics": "Lest I forget Thy love for me"
                 },
                 {
-                    "chords": "Dm             C/G G C",
+                    "chords": "Dm       C/G G C",
                     "lyrics": "Lead me to Calvary"
                 }
             ]

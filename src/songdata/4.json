@@ -7,19 +7,19 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "G                    C",
+                    "chords": "G             C",
                     "lyrics": "Over the sea, over the sea,"
                 },
                 {
-                    "chords": "D                     G",
+                    "chords": "D            G",
                     "lyrics": "Jesus Savior pilot me."
                 },
                 {
-                    "chords": "                         C",
+                    "chords": "              C",
                     "lyrics": "Over the sea, over the sea,"
                 },
                 {
-                    "chords": "D                         G",
+                    "chords": "D        G",
                     "lyrics": "Over the Jasper Sea."
                 }
             ]

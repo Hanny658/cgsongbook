@@ -7,23 +7,23 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "  D                        A     D",
+                    "chords": " D            A   D",
                     "lyrics": "Take my life and let it be"
                 },
                 {
-                    "chords": "             Em    Asus4 A  D",
+                    "chords": "       Em  Asus4 A D",
                     "lyrics": "Consecrated Lord to Thee"
                 },
                 {
-                    "chords": "               A                 G  A       D",
+                    "chords": "        A         G A    D",
                     "lyrics": "Take my hands and let them move"
                 },
                 {
-                    "chords": "D/F#   G D/F#  Em      A7",
+                    "chords": "D/F#  G D/F# Em   A7",
                     "lyrics": "At the impulse of Thy love"
                 },
                 {
-                    "chords": "G        Em        Asus4 A7  D",
+                    "chords": "G    Em    Asus4 A7 D",
                     "lyrics": "At the impulse of Thy love"
                 }
             ]

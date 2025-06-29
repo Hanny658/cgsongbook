@@ -7,19 +7,19 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "A                                     D/A",
+                    "chords": "A                   D/A",
                     "lyrics": "Have you a heart that's weary"
                 },
                 {
-                    "chords": "A                F#m      Bm7  E",
+                    "chords": "A        F#m   Bm7 E",
                     "lyrics": "Tending a load of care"
                 },
                 {
-                    "chords": "A                                  D/A",
+                    "chords": "A                 D/A",
                     "lyrics": "Are you a soul that's seeking"
                 },
                 {
-                    "chords": "A                     Esus              A",
+                    "chords": "A           Esus       A",
                     "lyrics": "Rest from the burden you bear"
                 }
             ]
@@ -29,23 +29,23 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "              E      E7         A",
-                    "lyrics": "Do you know ...    my Jesus"
+                    "chords": "       E   E7     A",
+                    "lyrics": "Do you know ...  my Jesus"
                 },
                 {
-                    "chords": "              E     E7           A",
-                    "lyrics": "Do you know ...    my friend"
+                    "chords": "       E   E7      A",
+                    "lyrics": "Do you know ...  my friend"
                 },
                 {
-                    "chords": "               A                    D      Bm",
-                    "lyrics": "Have you heard,..  He loves you"
+                    "chords": "        A          D   Bm",
+                    "lyrics": "Have you heard,.. He loves you"
                 },
                 {
-                    "chords": "                A/E        E7",
+                    "chords": "        A/E    E7",
                     "lyrics": "And that He will abide"
                 },
                 {
-                    "chords": "             A",
+                    "chords": "       A",
                     "lyrics": "Till the end"
                 }
             ]

@@ -7,31 +7,31 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "D               D7",
+                    "chords": "D        D7",
                     "lyrics": "If I were a butterfly"
                 },
                 {
-                    "chords": "     G",
+                    "chords": "   G",
                     "lyrics": "I'd thank You, Lord"
                 },
                 {
-                    "chords": "                       G7",
+                    "chords": "            G7",
                     "lyrics": "For giving me wings"
                 },
                 {
-                    "chords": "      D                D7",
+                    "chords": "   D        D7",
                     "lyrics": "And if I were a robin in a tree"
                 },
                 {
-                    "chords": "     A7",
+                    "chords": "   A7",
                     "lyrics": "I'd thank You, Lord that I could sing"
                 },
                 {
-                    "chords": "      D                D7",
+                    "chords": "   D        D7",
                     "lyrics": "And if I were a fish in the sea"
                 },
                 {
-                    "chords": "     G",
+                    "chords": "   G",
                     "lyrics": "I'd wiggle my tail"
                 },
                 {
@@ -45,11 +45,11 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "    A7",
+                    "chords": "  A7",
                     "lyrics": "But I just thank You, Father"
                 },
                 {
-                    "chords": "                            D  G  D",
+                    "chords": "              D G D",
                     "lyrics": "For making me me"
                 },
                 {
@@ -57,11 +57,11 @@
                     "lyrics": "Cause you gave me a heart"
                 },
                 {
-                    "chords": "                D7",
+                    "chords": "        D7",
                     "lyrics": "And You gave me a smile"
                 },
                 {
-                    "chords": "       G",
+                    "chords": "    G",
                     "lyrics": "You gave me Jesus"
                 },
                 {
@@ -69,11 +69,11 @@
                     "lyrics": "And You made me Your child"
                 },
                 {
-                    "chords": "        A                          A7",
+                    "chords": "    A             A7",
                     "lyrics": "And I just thank You, Father ,"
                 },
                 {
-                    "chords": "                             D  G  D",
+                    "chords": "               D G D",
                     "lyrics": "For making me, me"
                 }
             ]

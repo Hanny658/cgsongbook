@@ -7,23 +7,23 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "      G                  D",
+                    "chords": "   G         D",
                     "lyrics": "O come, all ye faithful"
                 },
                 {
-                    "chords": "   G                  D",
+                    "chords": "  G         D",
                     "lyrics": "Joyful and triumphant"
                 },
                 {
-                    "chords": "     Em    A  D     G       A       D",
+                    "chords": "   Em  A D   G    A    D",
                     "lyrics": "O come ye, oh come ye to Bethlehem"
                 },
                 {
-                    "chords": "   G               D7    G",
+                    "chords": "  G        D7  G",
                     "lyrics": "Come and behold Him"
                 },
                 {
-                    "chords": "  D           Em        D",
+                    "chords": " D      Em    D",
                     "lyrics": "Born the king of angels"
                 }
             ]
@@ -33,19 +33,19 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "        G          C     G",
+                    "chords": "    G     C   G",
                     "lyrics": "Oh come let us adore Him"
                 },
                 {
-                    "chords": "        G          C     G",
+                    "chords": "    G     C   G",
                     "lyrics": "Oh come let us adore Him"
                 },
                 {
-                    "chords": "      G/F#       C    A7    D-G",
+                    "chords": "   G/F#    C  A7  D-G",
                     "lyrics": "Oh come let us adore Him"
                 },
                 {
-                    "chords": " G   D          G",
+                    "chords": " G  D     G",
                     "lyrics": "Christ the Lord"
                 }
             ]
@@ -55,23 +55,23 @@
             "label": "Verse 2",
             "lines": [
                 {
-                    "chords": "  G                      D",
+                    "chords": " G           D",
                     "lyrics": "Sing, Choirs of angels"
                 },
                 {
-                    "chords": "  G             D",
+                    "chords": " G       D",
                     "lyrics": "Sing in exultation"
                 },
                 {
-                    "chords": " Em    A       D    G           A          D",
+                    "chords": " Em  A    D  G      A     D",
                     "lyrics": "Sing all ye citizens of heaven above!"
                 },
                 {
-                    "chords": "  G          D7   G",
+                    "chords": " G     D7  G",
                     "lyrics": "Glory to God"
                 },
                 {
-                    "chords": "  D               Em    D",
+                    "chords": " D        Em  D",
                     "lyrics": "Glory in the highest"
                 }
             ]

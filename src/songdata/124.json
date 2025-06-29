@@ -7,19 +7,19 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "            D",
+                    "chords": "      D",
                     "lyrics": "There is a name I love to hear"
                 },
                 {
-                    "chords": "   A                      D",
+                    "chords": "  A           D",
                     "lyrics": "I love to sing its worth"
                 },
                 {
-                    "chords": "    D                           Bm",
+                    "chords": "  D              Bm",
                     "lyrics": "It sounds like music in my ears"
                 },
                 {
-                    "chords": "        Em           A             D",
+                    "chords": "    Em      A       D",
                     "lyrics": "The sweetest name on earth"
                 }
             ]
@@ -29,19 +29,19 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "D  A                D",
+                    "chords": "D A        D",
                     "lyrics": "O how I love Jesus"
                 },
                 {
-                    "chords": "A                   D   A",
+                    "chords": "A          D  A",
                     "lyrics": "O how I love Jesus"
                 },
                 {
-                    "chords": "D                   Bm",
+                    "chords": "D          Bm",
                     "lyrics": "O how I love Jesus"
                 },
                 {
-                    "chords": "     Em                  A                       D",
+                    "chords": "   Em         A            D",
                     "lyrics": "Because He first loved me loved me"
                 }
             ]

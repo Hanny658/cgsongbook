@@ -7,19 +7,19 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "      E                A                   E",
+                    "chords": "   E        A          E",
                     "lyrics": "I'll walk in the rain by your side"
                 },
                 {
-                    "chords": "        A                B7                 E    E7",
+                    "chords": "    A        B7         E  E7",
                     "lyrics": "I'll offer you the warmth of My hands"
                 },
                 {
-                    "chords": "      A       B7                           E      A",
+                    "chords": "   A    B7              E   A",
                     "lyrics": "I'll do anything to keep you satisfied"
                 },
                 {
-                    "chords": "      E                               B7         E E7",
+                    "chords": "   E                B7     E E7",
                     "lyrics": "I'll love you more than anybody can"
                 }
             ]
@@ -29,27 +29,27 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "               A                B7",
+                    "chords": "        A        B7",
                     "lyrics": "And the winds will whisper"
                 },
                 {
-                    "chords": "          E",
+                    "chords": "     E",
                     "lyrics": "your name to Me"
                 },
                 {
-                    "chords": "  A                     B7                   E",
+                    "chords": " A           B7          E",
                     "lyrics": "Little birds will sing out all in time"
                 },
                 {
-                    "chords": "  A                B7",
+                    "chords": " A        B7",
                     "lyrics": "Leaves will bow down"
                 },
                 {
-                    "chords": "         E              A",
+                    "chords": "     E       A",
                     "lyrics": "when you walk by"
                 },
                 {
-                    "chords": "                E            B7             E",
+                    "chords": "        E      B7       E",
                     "lyrics": "And the morning bells will chime"
                 }
             ]

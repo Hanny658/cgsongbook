@@ -26,14 +26,15 @@ body {
 }
 
 @font-face {
-  font-family: 'CodeFont';
-  src: url('/fonts/code.ttf') format('truetype');
+  font-family: 'Chords';
+  src: url('/fonts/chords.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
-.font-code {
-  font-family: 'CodeFont', monospace;
+.font-chords {
+  font-family: 'Chords', monospace;
 }
 
 .animate-click-bounce {

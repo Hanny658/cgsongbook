@@ -7,35 +7,35 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "      C  F/C    C    Am",
+                    "chords": "   C F/C  C  Am",
                     "lyrics": "My Jesus I love Thee"
                 },
                 {
-                    "chords": "   Dm    G           C",
+                    "chords": "  Dm  G      C",
                     "lyrics": "I know Thou art mine"
                 },
                 {
-                    "chords": "         C    F/C    C    Am",
+                    "chords": "     C  F/C  C  Am",
                     "lyrics": "For Thee all the follies"
                 },
                 {
-                    "chords": "     Dm G  C",
+                    "chords": "   Dm G C",
                     "lyrics": "Of sin I resign"
                 },
                 {
-                    "chords": "       C/E F      C/E Dm  G",
+                    "chords": "    C/E F   C/E Dm G",
                     "lyrics": "My gracious Redeemer,"
                 },
                 {
-                    "chords": "      C   F          Gsus G",
+                    "chords": "   C  F     Gsus G",
                     "lyrics": "My Savior art Thou"
                 },
                 {
-                    "chords": "  C   F    E        Am7",
+                    "chords": " C  F  E    Am7",
                     "lyrics": "If ever I loved Thee"
                 },
                 {
-                    "chords": "      Dm      G   C",
+                    "chords": "   Dm   G  C",
                     "lyrics": "My Jesus, 'tis now"
                 }
             ]

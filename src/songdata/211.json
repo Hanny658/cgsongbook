@@ -7,27 +7,27 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "G                       C                     G",
+                    "chords": "G            C           G",
                     "lyrics": "Praise Him! praise Him! Jesus, our blessed Re-deemer!"
                 },
                 {
-                    "chords": "        Em         A7                 D",
+                    "chords": "    Em     A7         D",
                     "lyrics": "Sing, O Earth, His wonderful love pro-claim!"
                 },
                 {
-                    "chords": "G                   C                     G",
+                    "chords": "G          C           G",
                     "lyrics": "Hail Him! hail Him! highest archangels in glory;"
                 },
                 {
-                    "chords": "         G7  C     G           D7   G",
+                    "chords": "     G7 C   G      D7  G",
                     "lyrics": "Strength and honor give to His holy Name!"
                 },
                 {
-                    "chords": "D    G D         D7                   G    D7",
+                    "chords": "D  G D     D7          G  D7",
                     "lyrics": "Like a shepherd, Jesus will guard His chil-dren,"
                 },
                 {
-                    "chords": "G      Em      A7                   D",
+                    "chords": "G   Em   A7          D",
                     "lyrics": "In His arms He carries them all day long:"
                 }
             ]
@@ -37,11 +37,11 @@
             "label": "Refrain",
             "lines": [
                 {
-                    "chords": "G                       C                     G",
+                    "chords": "G           C           G",
                     "lyrics": "Praise Him! Praise Him! Tell of His excellent greatness."
                 },
                 {
-                    "chords": "       G7   C           G       D7     G",
+                    "chords": "   G7  C      G    D7   G",
                     "lyrics": "Praise Him! Praise Him! Ever in joyful song!"
                 }
             ]

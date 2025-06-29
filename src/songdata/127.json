@@ -7,11 +7,11 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "C                                               C7",
+                    "chords": "C                        C7",
                     "lyrics": "I have decided to follow Jesus"
                 },
                 {
-                    "chords": "             F                            C",
+                    "chords": "       F              C",
                     "lyrics": "I have decided to follow Jesus"
                 },
                 {
@@ -19,7 +19,7 @@
                     "lyrics": "I have decided to follow Jesus"
                 },
                 {
-                    "chords": "                  G    G7                  C",
+                    "chords": "         G  G7         C",
                     "lyrics": "No turning back, no turning back"
                 }
             ]

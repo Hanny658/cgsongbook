@@ -7,27 +7,27 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "      C                        G",
+                    "chords": "   C            G",
                     "lyrics": "When peace like a river"
                 },
                 {
-                    "chords": "    F      G          C",
+                    "chords": "  F   G     C",
                     "lyrics": "Attendeth my way"
                 },
                 {
-                    "chords": "                Am        D                G  G7",
+                    "chords": "        Am    D        G G7",
                     "lyrics": "When sorrow like sea billows roll"
                 },
                 {
-                    "chords": "          C           F",
+                    "chords": "     C      F",
                     "lyrics": "Whatever my lot,"
                 },
                 {
-                    "chords": "                   D7                 G",
+                    "chords": "          D7         G",
                     "lyrics": "Thou hast taught me to say;"
                 },
                 {
-                    "chords": "       C             F      G            C",
+                    "chords": "    C       F   G      C",
                     "lyrics": "It is well, it is well, with my soul"
                 }
             ]
@@ -37,15 +37,15 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "                             G",
+                    "chords": "               G",
                     "lyrics": "It is well, with my soul"
                 },
                 {
-                    "chords": "                             C",
+                    "chords": "               C",
                     "lyrics": "It is well, with my soul"
                 },
                 {
-                    "chords": "      F              C/G G           C",
+                    "chords": "   F       C/G G      C",
                     "lyrics": "It is well, it is well with my soul"
                 }
             ]

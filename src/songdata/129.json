@@ -7,19 +7,19 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": " D                                      A",
+                    "chords": " D                   A",
                     "lyrics": "Whisper a prayer in the morning"
                 },
                 {
-                    "chords": "Em             A             D",
+                    "chords": "Em       A       D",
                     "lyrics": "Whisper a prayer at noon"
                 },
                 {
-                    "chords": "G              A/G                 F#m  Bm",
+                    "chords": "G       A/G         F#m Bm",
                     "lyrics": "Whisper a prayer in the evening"
                 },
                 {
-                    "chords": "     Em             A           D",
+                    "chords": "   Em       A      D",
                     "lyrics": "To keep your heart in tune"
                 }
             ]

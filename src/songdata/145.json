@@ -7,27 +7,27 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": " D           A",
+                    "chords": " D      A",
                     "lyrics": "Father I thank You"
                 },
                 {
-                    "chords": "      Bm                   F#m",
+                    "chords": "   Bm          F#m",
                     "lyrics": "For all that You've done"
                 },
                 {
-                    "chords": "       G                       D              A",
+                    "chords": "    G            D       A",
                     "lyrics": "You gave Your Son freely for me"
                 },
                 {
-                    "chords": "           D                      DMaj7",
+                    "chords": "      D           DMaj7",
                     "lyrics": "And I praise You for calling me"
                 },
                 {
-                    "chords": " G                 Gm                D",
+                    "chords": " G         Gm        D",
                     "lyrics": "Drawing me near; out of blindness"
                 },
                 {
-                    "chords": "        Em       A         D",
+                    "chords": "    Em    A     D",
                     "lyrics": "You caused me to see"
                 }
             ]

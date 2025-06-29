@@ -7,19 +7,19 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "C                     G",
+                    "chords": "C           G",
                     "lyrics": "I am the God that healeth thee"
                 },
                 {
-                    "chords": "F              G             C",
+                    "chords": "F       G       C",
                     "lyrics": "I am the Lord your healer"
                 },
                 {
-                    "chords": "Am                                  Dm",
+                    "chords": "Am                 Dm",
                     "lyrics": "I sent my word and healed your disease"
                 },
                 {
-                    "chords": "G                             C",
+                    "chords": "G               C",
                     "lyrics": "I am the Lord your healer"
                 }
             ]

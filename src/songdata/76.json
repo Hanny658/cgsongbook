@@ -7,35 +7,35 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": " F              C                   Fmaj7",
+                    "chords": " F       C          Fmaj7",
                     "lyrics": "Don't you be in such a hurry"
                 },
                 {
-                    "chords": "               C                     Fmaj7",
+                    "chords": "        C           Fmaj7",
                     "lyrics": "'Cause it only leads to worry"
                 },
                 {
-                    "chords": "                C",
+                    "chords": "        C",
                     "lyrics": "There's a time to work"
                 },
                 {
-                    "chords": "        Am7                   Dm7   G",
+                    "chords": "    Am7          Dm7  G",
                     "lyrics": "But there's a time to pray"
                 },
                 {
-                    "chords": "             C                Fmaj7",
+                    "chords": "       C        Fmaj7",
                     "lyrics": "Try to find a quiet place"
                 },
                 {
-                    "chords": "                    E7                            Am7",
+                    "chords": "          E7              Am7",
                     "lyrics": "To hear His voice and seek His face"
                 },
                 {
-                    "chords": "               Dm7                 G",
+                    "chords": "        Dm7         G",
                     "lyrics": "Can you hear the Spirit calling"
                 },
                 {
-                    "chords": "                 C     F/G  G",
+                    "chords": "         C   F/G G",
                     "lyrics": "\"Come away\" ?"
                 }
             ]
@@ -45,31 +45,31 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "             C                 Em7    Am7",
+                    "chords": "       C         Em7  Am7",
                     "lyrics": "Come away, come away"
                 },
                 {
-                    "chords": "                    G                                    Em7",
+                    "chords": "          G                  Em7",
                     "lyrics": "Come and spend some time with Me"
                 },
                 {
-                    "chords": "             Dm7  Gsus G",
+                    "chords": "       Dm7 Gsus G",
                     "lyrics": "Come away"
                 },
                 {
-                    "chords": "                C                            F",
+                    "chords": "        C              F",
                     "lyrics": "Let your heart and mind be stilled"
                 },
                 {
-                    "chords": "                E7                    Am7",
+                    "chords": "        E7          Am7",
                     "lyrics": "Let your empty cup be filled"
                 },
                 {
-                    "chords": "                   Dm7                              G",
+                    "chords": "          Dm7               G",
                     "lyrics": "Come and spend some time with Me"
                 },
                 {
-                    "chords": "             C",
+                    "chords": "       C",
                     "lyrics": "Come away"
                 }
             ]

@@ -7,31 +7,31 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "        G     D",
+                    "chords": "    G   D",
                     "lyrics": "The first Noel"
                 },
                 {
-                    "chords": "         C            G",
+                    "chords": "     C      G",
                     "lyrics": "the angels did say"
                 },
                 {
-                    "chords": "                C",
+                    "chords": "        C",
                     "lyrics": "Was to certain poor"
                 },
                 {
-                    "chords": "     Bm              C           D    G",
+                    "chords": "   Bm       C      D  G",
                     "lyrics": "Shepherds in fields as they lay:"
                 },
                 {
-                    "chords": "      G                  D",
+                    "chords": "   G         D",
                     "lyrics": "In fields where they"
                 },
                 {
-                    "chords": "           C                 G",
+                    "chords": "      C         G",
                     "lyrics": "Lay keeping their sheep"
                 },
                 {
-                    "chords": "          C                  Bm            C   D    G",
+                    "chords": "     C         Bm      C  D  G",
                     "lyrics": "On a cold winter's night that was so deep."
                 }
             ]
@@ -41,11 +41,11 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "  G      D      C      G",
+                    "chords": " G   D   C   G",
                     "lyrics": "Noel Noel, Noel Noel"
                 },
                 {
-                    "chords": "  C             Bm        C   D   G",
+                    "chords": " C       Bm    C  D  G",
                     "lyrics": "Born is the King of Is - ra - el."
                 }
             ]

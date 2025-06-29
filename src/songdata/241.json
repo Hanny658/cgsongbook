@@ -7,19 +7,19 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": " G                        C          G",
+                    "chords": " G            C     G",
                     "lyrics": "'Tis so sweet to trust in Jesus,"
                 },
                 {
-                    "chords": "                           A          D",
+                    "chords": "              A     D",
                     "lyrics": "Just to take him at his word;"
                 },
                 {
-                    "chords": "  G               C                 G",
+                    "chords": " G        C         G",
                     "lyrics": "Just to rest up-on his promise,"
                 },
                 {
-                    "chords": "              C                   D           G",
+                    "chords": "       C          D      G",
                     "lyrics": "Just to know, \"Thus saith the Lord.\""
                 }
             ]
@@ -29,19 +29,19 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": " G                     D",
+                    "chords": " G           D",
                     "lyrics": "Jesus, Jesus, how I trust him!"
                 },
                 {
-                    "chords": " G                                A            D",
+                    "chords": " G                A      D",
                     "lyrics": "How I've proved him o'er and o'er!"
                 },
                 {
-                    "chords": " G                        C          G",
+                    "chords": " G            C     G",
                     "lyrics": "Jesus, Jesus, precious Jesus!"
                 },
                 {
-                    "chords": "            C           D            G",
+                    "chords": "      C      D      G",
                     "lyrics": "O for grace to trust him more!"
                 }
             ]

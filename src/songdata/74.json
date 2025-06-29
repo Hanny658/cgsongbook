@@ -7,27 +7,27 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "G                   C        D",
+                    "chords": "G          C    D",
                     "lyrics": "How lovely on the mountains"
                 },
                 {
-                    "chords": "             G",
+                    "chords": "       G",
                     "lyrics": "are the feet of Him"
                 },
                 {
-                    "chords": "                               Am    D         G",
+                    "chords": "                Am  D     G",
                     "lyrics": "Who brings good news, good news"
                 },
                 {
-                    "chords": "                       C",
+                    "chords": "            C",
                     "lyrics": "Announcing peace,"
                 },
                 {
-                    "chords": "         D                       G              Em",
+                    "chords": "     D            G       Em",
                     "lyrics": "proclaiming news of happiness"
                 },
                 {
-                    "chords": "                Am       D             G",
+                    "chords": "        Am    D       G",
                     "lyrics": "Our God reigns, our God reigns"
                 }
             ]
@@ -37,11 +37,11 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "                C       D               G     Em",
+                    "chords": "        C    D        G   Em",
                     "lyrics": "Our God reigns, our God reigns"
                 },
                 {
-                    "chords": "                C    D                   G",
+                    "chords": "        C  D          G",
                     "lyrics": "Our God reigns, our God reigns"
                 }
             ]

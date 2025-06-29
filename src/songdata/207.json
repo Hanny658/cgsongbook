@@ -7,19 +7,19 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "C                   Em    Am       Em",
+                    "chords": "C          Em  Am    Em",
                     "lyrics": "Winter's so dark and cold"
                 },
                 {
-                    "chords": "   F                                G            F#",
+                    "chords": "  F                G      F#",
                     "lyrics": "I long for the sun to shine"
                 },
                 {
-                    "chords": "                     Em                                             Am",
+                    "chords": "           Em                       Am",
                     "lyrics": "Though the rain falls and winds blow my way"
                 },
                 {
-                    "chords": "     F                  G                 C",
+                    "chords": "   F         G         C",
                     "lyrics": "I hear his still small voice speak"
                 }
             ]
@@ -29,39 +29,39 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "      C.          Em.                        F",
+                    "chords": "   C.     Em.            F",
                     "lyrics": "Be still my child, Spring can bring new life"
                 },
                 {
-                    "chords": "      F.                                             G",
+                    "chords": "   F.                       G",
                     "lyrics": "Be still my child, storms won't last always"
                 },
                 {
-                    "chords": "              F#  Em                                Am",
+                    "chords": "       F# Em                Am",
                     "lyrics": "' Peace be still', my child why are you afraid?"
                 },
                 {
-                    "chords": "            F                                               G",
+                    "chords": "      F                        G",
                     "lyrics": "When will you have faith? You can always trust in me"
                 },
                 {
-                    "chords": " C.                              F",
-                    "lyrics": "I  am the truth, the life, the way"
+                    "chords": " C.               F",
+                    "lyrics": "I am the truth, the life, the way"
                 },
                 {
-                    "chords": "         G",
+                    "chords": "     G",
                     "lyrics": "Your heart can find"
                 },
                 {
-                    "chords": "     C",
+                    "chords": "   C",
                     "lyrics": "A home in me"
                 },
                 {
-                    "chords": "      Am          Em.           F       C",
+                    "chords": "   Am     Em.      F    C",
                     "lyrics": "Be still, and know that I am God"
                 },
                 {
-                    "chords": "               F                       G          C",
+                    "chords": "        F            G     C",
                     "lyrics": "Blessed be those who trust in me"
                 }
             ]

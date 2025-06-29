@@ -7,11 +7,11 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "  G               C               G",
+                    "chords": " G        C        G",
                     "lyrics": "Come they told me, pa rum pa pum pum"
                 },
                 {
-                    "chords": "  G                    C                     G",
+                    "chords": " G          C           G",
                     "lyrics": "Our newborn King to see, pa rum pa pum pum"
                 },
                 {
@@ -19,19 +19,19 @@
                     "lyrics": "Our finest gifts we bring, pa rum pa pum pum"
                 },
                 {
-                    "chords": "              G                           C",
+                    "chords": "       G              C",
                     "lyrics": "To lay before the King, pa rum pa pum pum,"
                 },
                 {
-                    "chords": "  G                            D",
+                    "chords": " G              D",
                     "lyrics": "Rum pa pum pum, rum pa pum pum,"
                 },
                 {
-                    "chords": " G                            C                     G",
+                    "chords": " G              C           G",
                     "lyrics": "So to honor Him, pa rum pa pum pum,"
                 },
                 {
-                    "chords": "   D             G",
+                    "chords": "  D       G",
                     "lyrics": "When we come..."
                 }
             ]

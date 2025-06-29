@@ -7,27 +7,27 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "  G                                 D      D7   G",
+                    "chords": " G                 D   D7  G",
                     "lyrics": "Silent night! Holy night! All is calm all is"
                 },
                 {
-                    "chords": "  G7",
+                    "chords": " G7",
                     "lyrics": "bright"
                 },
                 {
-                    "chords": "     C                         G",
+                    "chords": "   C             G",
                     "lyrics": "Round yon virgin mother and child"
                 },
                 {
-                    "chords": "  C                      G",
+                    "chords": " C           G",
                     "lyrics": "Holy infant so tender and mild"
                 },
                 {
-                    "chords": "   D             D7       G      Em   G",
+                    "chords": "  D       D7    G   Em  G",
                     "lyrics": "Sleep in heavenly pea - ce! Sleep in"
                 },
                 {
-                    "chords": "      D          G",
+                    "chords": "   D     G",
                     "lyrics": "heavenly peace!"
                 }
             ]

@@ -7,11 +7,11 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "C                                 C7",
+                    "chords": "C                 C7",
                     "lyrics": "Jesus is a wonderful Savior"
                 },
                 {
-                    "chords": "F                           C",
+                    "chords": "F              C",
                     "lyrics": "He will carry you through"
                 },
                 {
@@ -19,27 +19,27 @@
                     "lyrics": "Jesus is a wonderful Savior"
                 },
                 {
-                    "chords": "D                          G",
+                    "chords": "D             G",
                     "lyrics": "He will carry you through"
                 },
                 {
-                    "chords": "C                               C7",
+                    "chords": "C                C7",
                     "lyrics": "Jesus is a wonderful Savior"
                 },
                 {
-                    "chords": "F                           C",
+                    "chords": "F              C",
                     "lyrics": "He will carry you thru"
                 },
                 {
-                    "chords": "                F",
+                    "chords": "        F",
                     "lyrics": "Until the battle's done"
                 },
                 {
-                    "chords": "              C",
+                    "chords": "       C",
                     "lyrics": "And the victory is won"
                 },
                 {
-                    "chords": "      Dm        G7             C",
+                    "chords": "   Dm    G7       C",
                     "lyrics": "My Lord will carry you through"
                 }
             ]
@@ -49,31 +49,31 @@
             "label": "Verse 2",
             "lines": [
                 {
-                    "chords": "                          F",
+                    "chords": "             F",
                     "lyrics": "O my precious brother,"
                 },
                 {
-                    "chords": "                                   C     Am",
+                    "chords": "                  C   Am",
                     "lyrics": "When the world's on fire"
                 },
                 {
-                    "chords": "                             Dm   G",
+                    "chords": "               Dm  G",
                     "lyrics": "You'll need my Jesus to be"
                 },
                 {
-                    "chords": "        C       C7",
+                    "chords": "    C    C7",
                     "lyrics": "your Savior"
                 },
                 {
-                    "chords": "                           F",
+                    "chords": "              F",
                     "lyrics": "He'd hide you ever in the"
                 },
                 {
-                    "chords": "              C        Am",
+                    "chords": "       C    Am",
                     "lyrics": "Rock of Ages"
                 },
                 {
-                    "chords": "                        Dm    G7                C",
+                    "chords": "            Dm  G7        C",
                     "lyrics": "In the Rock of Ages, just cleft for me"
                 }
             ]

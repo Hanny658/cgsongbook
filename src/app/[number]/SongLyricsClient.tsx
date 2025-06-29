@@ -206,11 +206,11 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
                     return (
                       <div key={lineIndex} className={isHighlighted ? 'bg-amber-100/30 p-2 rounded-md' : ''}>
                         {showChords && 
-                          <p className="text-sm md:text-lg lg:text-xl text-blue-400 whitespace-pre text-shadow-blue-100/40 text-shadow-2xs">
+                          <p className="font-mono text-base md:text-xl lg:text-2xl text-blue-400 whitespace-pre text-shadow-blue-100/40 text-shadow-2xs">
                             {transposeChordString(`${line.chords}`, transposeChords)}
                           </p>
                         }
-                        <p className="text-base md:text-xl lg:text-2xl text-white">{line.lyrics}</p>
+                        <p className="font-mono text-base md:text-xl lg:text-2xl text-white">{line.lyrics}</p>
                       </div>
                     )
                   })}

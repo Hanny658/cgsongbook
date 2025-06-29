@@ -7,35 +7,35 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "        C",
+                    "chords": "    C",
                     "lyrics": "If you see your brother"
                 },
                 {
-                    "chords": " F                          C",
+                    "chords": " F             C",
                     "lyrics": "Standing by the road"
                 },
                 {
-                    "chords": "                       G",
+                    "chords": "            G",
                     "lyrics": "With a heavy load"
                 },
                 {
-                    "chords": "F            G                  C        F G",
+                    "chords": "F      G         C    F G",
                     "lyrics": "From the seeds he's sowed"
                 },
                 {
-                    "chords": "                   C",
+                    "chords": "          C",
                     "lyrics": "And if you see your sister"
                 },
                 {
-                    "chords": " F                  C",
+                    "chords": " F         C",
                     "lyrics": "Fallen by the way,"
                 },
                 {
-                    "chords": "                         G",
+                    "chords": "             G",
                     "lyrics": "Just stop and say"
                 },
                 {
-                    "chords": "F                            C",
+                    "chords": "F              C",
                     "lyrics": "\"You're going the wrong way\""
                 }
             ]
@@ -45,31 +45,31 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "                 G",
+                    "chords": "         G",
                     "lyrics": "You gotta try a little kindness"
                 },
                 {
-                    "chords": "         F                    C",
+                    "chords": "     F          C",
                     "lyrics": "Yes, show a little kindness"
                 },
                 {
-                    "chords": "F                               C                  G",
+                    "chords": "F                C         G",
                     "lyrics": "Shine your light for everyone to see"
                 },
                 {
-                    "chords": "                   F",
+                    "chords": "          F",
                     "lyrics": "And if you try a little kindness"
                 },
                 {
-                    "chords": "                     C                  Am",
+                    "chords": "           C         Am",
                     "lyrics": "Then you'll overlook the blindness"
                 },
                 {
-                    "chords": "            Dm7                   G",
+                    "chords": "      Dm7          G",
                     "lyrics": "Of the narrow-minded people"
                 },
                 {
-                    "chords": "          F               G            C",
+                    "chords": "     F        G      C",
                     "lyrics": "On their narrow-minded streets"
                 }
             ]

@@ -7,19 +7,19 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "D                        A7",
+                    "chords": "D            A7",
                     "lyrics": "He's able, He's able"
                 },
                 {
-                    "chords": "       D   D7   G",
+                    "chords": "    D  D7  G",
                     "lyrics": "I know He's able"
                 },
                 {
-                    "chords": "   D                         A7",
+                    "chords": "  D             A7",
                     "lyrics": "I know my Lord is able"
                 },
                 {
-                    "chords": "              D  G  D",
+                    "chords": "       D G D",
                     "lyrics": "To carry me thru (repeat)"
                 }
             ]
@@ -29,19 +29,19 @@
             "label": "Verse 2",
             "lines": [
                 {
-                    "chords": "    G",
+                    "chords": "  G",
                     "lyrics": "He heals the broken hearted"
                 },
                 {
-                    "chords": "     D",
+                    "chords": "   D",
                     "lyrics": "And sets the captives free"
                 },
                 {
-                    "chords": "      E7",
+                    "chords": "   E7",
                     "lyrics": "He made the lame to walk again"
                 },
                 {
-                    "chords": "       A",
+                    "chords": "    A",
                     "lyrics": "And caused the blind to see"
                 }
             ]

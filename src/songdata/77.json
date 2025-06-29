@@ -7,15 +7,15 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "C                          F",
+                    "chords": "C             F",
                     "lyrics": "Jesus, You're the sweetest name of all"
                 },
                 {
-                    "chords": "Dm7   G7              C",
+                    "chords": "Dm7  G7       C",
                     "lyrics": "Jesus, You always hear me when I call"
                 },
                 {
-                    "chords": "      Am7                        Dm",
+                    "chords": "   Am7            Dm",
                     "lyrics": "Oh Jesus, You pick me up"
                 },
                 {
@@ -23,11 +23,11 @@
                     "lyrics": "Each time I fall"
                 },
                 {
-                    "chords": "                   G",
+                    "chords": "          G",
                     "lyrics": "You're the sweetest,"
                 },
                 {
-                    "chords": "       G7                          C",
+                    "chords": "    G7             C",
                     "lyrics": "The sweetest name of all"
                 }
             ]

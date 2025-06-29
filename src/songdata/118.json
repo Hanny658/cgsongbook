@@ -7,19 +7,19 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "F  Bb                    F",
+                    "chords": "F Bb          F",
                     "lyrics": "Go tell it on the mountain"
                 },
                 {
-                    "chords": "C7                           F      Bb",
+                    "chords": "C7              F   Bb",
                     "lyrics": "Over the hills and everywhere"
                 },
                 {
-                    "chords": " F   Bb                  F     Dm",
+                    "chords": " F  Bb         F   Dm",
                     "lyrics": "Go tell it on the mountain"
                 },
                 {
-                    "chords": "         C        C7        F",
+                    "chords": "     C    C7    F",
                     "lyrics": "That Jesus Christ is born"
                 }
             ]
@@ -33,7 +33,7 @@
                     "lyrics": "When I was a seeker"
                 },
                 {
-                    "chords": "   C7                                  F",
+                    "chords": "  C7                 F",
                     "lyrics": "I sought both night and day"
                 },
                 {
@@ -41,7 +41,7 @@
                     "lyrics": "I asked the Lord to help me"
                 },
                 {
-                    "chords": "       Gm                           C  C7",
+                    "chords": "    Gm              C C7",
                     "lyrics": "And He showed me the way"
                 }
             ]
@@ -56,7 +56,7 @@
                 },
                 {
                     "chords": "",
-                    "lyrics": "Upon the  city wall"
+                    "lyrics": "Upon the city wall"
                 },
                 {
                     "chords": "",

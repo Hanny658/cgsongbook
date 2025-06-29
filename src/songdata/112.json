@@ -7,19 +7,19 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "    C                   Dm7                G",
+                    "chords": "  C          Dm7        G",
                     "lyrics": "The Law of the Lord is perfect"
                 },
                 {
-                    "chords": "                           C",
+                    "chords": "              C",
                     "lyrics": "Converting the soul"
                 },
                 {
-                    "chords": "                                   Dm7             G",
+                    "chords": "                  Dm7       G",
                     "lyrics": "The testimony of the Lord is sure"
                 },
                 {
-                    "chords": "                                  C   C7",
+                    "chords": "                 C  C7",
                     "lyrics": "Making wise the simple"
                 }
             ]
@@ -29,19 +29,19 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "                    F",
+                    "chords": "          F",
                     "lyrics": "More to be desired are they than"
                 },
                 {
-                    "chords": "G                                Em  E  Am",
+                    "chords": "G                Em E Am",
                     "lyrics": "Gold, yea much fine gold"
                 },
                 {
-                    "chords": "                                Dm",
+                    "chords": "                Dm",
                     "lyrics": "Sweeter also than honey"
                 },
                 {
-                    "chords": " G                     C",
+                    "chords": " G           C",
                     "lyrics": "And the honeycomb."
                 }
             ]

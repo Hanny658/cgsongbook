@@ -7,19 +7,19 @@
             "label": "Verse",
             "lines": [
                 {
-                    "chords": "          G                   D",
+                    "chords": "     G             D",
                     "lyrics": "Give thanks with a grateful heart"
                 },
                 {
-                    "chords": "          Em                Bm",
+                    "chords": "     Em            Bm",
                     "lyrics": "Give thanks to the Holy One"
                 },
                 {
-                    "chords": "          C                                G",
+                    "chords": "     C                   G",
                     "lyrics": "Give thanks because He's given"
                 },
                 {
-                    "chords": "           F                D",
+                    "chords": "      F           D",
                     "lyrics": "Jesus Christ, His Son"
                 }
             ]
@@ -29,19 +29,19 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "         Bm            Em7             Am",
+                    "chords": "    Bm           Em7           Am",
                     "lyrics": "And now, let the weak say, I am strong"
                 },
                 {
-                    "chords": "             D7                   Gmaj7",
+                    "chords": "        D7             Gmaj7",
                     "lyrics": "Let the poor say, I am rich"
                 },
                 {
-                    "chords": "                       Em",
+                    "chords": "            Em",
                     "lyrics": "Because of what the Lord has"
                 },
                 {
-                    "chords": "F              D",
+                    "chords": "F        D",
                     "lyrics": "done for us"
                 }
             ]
@@ -51,7 +51,7 @@
             "label": "Ending",
             "lines": [
                 {
-                    "chords": "        G      C  G",
+                    "chords": "     G    C G",
                     "lyrics": "Give thanks"
                 }
             ]

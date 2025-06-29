@@ -7,31 +7,31 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "        D                 G",
+                    "chords": "       D           G",
                     "lyrics": "I will sing of the mercies"
                 },
                 {
-                    "chords": "          D",
+                    "chords": "       D",
                     "lyrics": "of the Lord forever"
                 },
                 {
-                    "chords": "        A7              D    A",
+                    "chords": "       A7           D   A",
                     "lyrics": "I will sing, I will sing"
                 },
                 {
-                    "chords": "         D                G",
+                    "chords": "       D           G",
                     "lyrics": "I will sing of the mercies"
                 },
                 {
-                    "chords": "           F#m Bm",
+                    "chords": "       F#m Bm",
                     "lyrics": "of the Lord forever"
                 },
                 {
-                    "chords": "        Em              A7",
+                    "chords": "     Em            A7",
                     "lyrics": "I will sing of the mercies"
                 },
                 {
-                    "chords": "           D   D7",
+                    "chords": "       D  D7",
                     "lyrics": "of the Lord"
                 }
             ]
@@ -41,19 +41,19 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "               G                             D        Bm",
+                    "chords": "        G                D    Bm",
                     "lyrics": "With my mouth, will I make known"
                 },
                 {
-                    "chords": "         A7                      D",
+                    "chords": "    A7                D",
                     "lyrics": "Thy faithfulness, Thy faithfulness"
                 },
                 {
-                    "chords": "               G                             D",
+                    "chords": "        G                  D",
                     "lyrics": "With my mouth, will I make known"
                 },
                 {
-                    "chords": "               E7                                 A",
+                    "chords": "    E7                         A",
                     "lyrics": "Thy faithfulness thru' all generations"
                 }
             ]

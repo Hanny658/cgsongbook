@@ -7,27 +7,27 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "C              G        Em         Am",
+                    "chords": "C       G    Em     Am",
                     "lyrics": "Father we ask of You this day"
                 },
                 {
-                    "chords": "F               C/E        Gsus    G",
+                    "chords": "F        C/E    Gsus  G",
                     "lyrics": "Come and heal our land"
                 },
                 {
-                    "chords": "              F              C/E",
+                    "chords": "       F       C/E",
                     "lyrics": "Knit our hearts together"
                 },
                 {
-                    "chords": "                 E                    Am",
+                    "chords": "         E          Am",
                     "lyrics": "That Your glory may be seen in u"
                 },
                 {
-                    "chords": "                F               C/E",
+                    "chords": "        F        C/E",
                     "lyrics": "Then the world may know"
                 },
                 {
-                    "chords": "          F                     G",
+                    "chords": "     F           G",
                     "lyrics": "That Jesus Christ is Lord"
                 }
             ]
@@ -37,35 +37,35 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "               C       G",
+                    "chords": "        C    G",
                     "lyrics": "Let us be one voice"
                 },
                 {
-                    "chords": "        F                       G",
+                    "chords": "    F            G",
                     "lyrics": "That glorifies Your name"
                 },
                 {
-                    "chords": "                C   G",
+                    "chords": "        C  G",
                     "lyrics": "Let us be one voice"
                 },
                 {
-                    "chords": "     F                          G",
+                    "chords": "   F             G",
                     "lyrics": "Declaring that You reign"
                 },
                 {
-                    "chords": "                E",
+                    "chords": "        E",
                     "lyrics": "Let us be one voice"
                 },
                 {
-                    "chords": "   Am    Am/G    F#m7(b5)",
+                    "chords": "  Am  Am/G  F#m7(b5)",
                     "lyrics": "In love and harmony"
                 },
                 {
-                    "chords": "              Dm",
+                    "chords": "       Dm",
                     "lyrics": "And we pray O God;"
                 },
                 {
-                    "chords": "G7               C",
+                    "chords": "G7        C",
                     "lyrics": "Grant us unity"
                 }
             ]

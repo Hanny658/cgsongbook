@@ -7,27 +7,27 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "       G",
+                    "chords": "    G",
                     "lyrics": "On a hill far away"
                 },
                 {
-                    "chords": " G7          C                  C#m7b5",
+                    "chords": " G7     C         C#m7b5",
                     "lyrics": "Stood an old rugged cross"
                 },
                 {
-                    "chords": "        D              D7                G        D",
+                    "chords": "    D       D7        G    D",
                     "lyrics": "The emblem of suffering and shame"
                 },
                 {
-                    "chords": "         G",
+                    "chords": "     G",
                     "lyrics": "And I love that old cross"
                 },
                 {
-                    "chords": "G7               C                 C#m7b5",
+                    "chords": "G7        C         C#m7b5",
                     "lyrics": "Where the dearest and best"
                 },
                 {
-                    "chords": "          D                  D7               G",
+                    "chords": "     D         D7        G",
                     "lyrics": "For a world of lost sinners was slain"
                 }
             ]
@@ -37,19 +37,19 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "          Am7              D/F#       Em Bm/D",
+                    "chords": "     Am7       D/F#    Em Bm/D",
                     "lyrics": "So I'll cherish the old rugged cross"
                 },
                 {
-                    "chords": "             C              D/C         G       D",
+                    "chords": "       C       D/C     G    D",
                     "lyrics": "Till my trophies at last I lay down"
                 },
                 {
-                    "chords": "          G                G7              C    Am7",
+                    "chords": "     G        G7       C  Am7",
                     "lyrics": "I will cling to the old rugged cross"
                 },
                 {
-                    "chords": "                D                               G",
+                    "chords": "        D                G",
                     "lyrics": "And exchange it someday for a crown"
                 }
             ]

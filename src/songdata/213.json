@@ -7,27 +7,27 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "         C",
+                    "chords": "     C",
                     "lyrics": "The Lord told Noah"
                 },
                 {
-                    "chords": "                 F",
+                    "chords": "         F",
                     "lyrics": "There's gonna be a floody, floody"
                 },
                 {
-                    "chords": "         C",
+                    "chords": "     C",
                     "lyrics": "The Lord told Noah"
                 },
                 {
-                    "chords": "                F",
+                    "chords": "        F",
                     "lyrics": "There's gonna be a floody, floody"
                 },
                 {
-                    "chords": " C                            F",
+                    "chords": " C              F",
                     "lyrics": "Get those children out of the muddy, muddy,"
                 },
                 {
-                    "chords": "    C       G         C",
+                    "chords": "  C    G     C",
                     "lyrics": "Children of the Lord"
                 }
             ]
@@ -199,11 +199,11 @@
             "label": "Ending",
             "lines": [
                 {
-                    "chords": "     C       G         C",
+                    "chords": "   C    G     C",
                     "lyrics": "Children of the Lord."
                 },
                 {
-                    "chords": "     C       F  G     C",
+                    "chords": "   C    F G   C",
                     "lyrics": "Children of the Lord."
                 }
             ]

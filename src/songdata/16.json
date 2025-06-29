@@ -7,19 +7,19 @@
             "label": "Verse 1",
             "lines": [
                 {
+                    "chords": " C",
+                    "lyrics": "Rejoice in the Lord always"
+                },
+                {
+                    "chords": "    G           C",
+                    "lyrics": "and again I say rejoice"
+                },
+                {
                     "chords": "   C",
                     "lyrics": "Rejoice in the Lord always"
                 },
                 {
-                    "chords": "          G                C",
-                    "lyrics": "and again I say rejoice"
-                },
-                {
-                    "chords": "     C",
-                    "lyrics": "Rejoice in the Lord always"
-                },
-                {
-                    "chords": "         G               C",
+                    "chords": "    G           C",
                     "lyrics": "and again I say rejoice"
                 },
                 {
@@ -27,15 +27,15 @@
                     "lyrics": "Rejoice, rejoice"
                 },
                 {
-                    "chords": "      Dm     G        C",
+                    "chords": "    Dm    G     C",
                     "lyrics": "and again I say rejoice"
                 },
                 {
-                    "chords": "     C",
+                    "chords": "    C",
                     "lyrics": "Rejoice, rejoice"
                 },
                 {
-                    "chords": "      Dm     G       C",
+                    "chords": "    Dm    G       C",
                     "lyrics": "and again I say rejoice"
                 }
             ]

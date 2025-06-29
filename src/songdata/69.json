@@ -7,19 +7,19 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "D                                                  A",
+                    "chords": "D                         A",
                     "lyrics": "Days are filled with sorrow and care"
                 },
                 {
-                    "chords": "                                       D    D7",
+                    "chords": "                    D  D7",
                     "lyrics": "Hearts are lonely and drear"
                 },
                 {
-                    "chords": " G                               D      Bm",
+                    "chords": " G                D   Bm",
                     "lyrics": "Burdens are lifted at Calvary"
                 },
                 {
-                    "chords": " A          A7    D    D7",
+                    "chords": " A     A7  D  D7",
                     "lyrics": "Jesus is very near"
                 }
             ]
@@ -29,19 +29,19 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "   G                              D",
+                    "chords": "  G               D",
                     "lyrics": "Burdens are lifted at Calvary"
                 },
                 {
-                    "chords": " Em    A  D      D7",
+                    "chords": " Em  A D   D7",
                     "lyrics": "Calvary, Calvary"
                 },
                 {
-                    "chords": " G                               D        Bm",
+                    "chords": " G                D    Bm",
                     "lyrics": "Burdens are lifted at Calvary"
                 },
                 {
-                    "chords": "Em        A7    D",
+                    "chords": "Em    A7  D",
                     "lyrics": "Jesus is very near"
                 }
             ]

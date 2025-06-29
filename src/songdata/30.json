@@ -7,27 +7,27 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "G                     C                    D       G",
+                    "chords": "G           C          D    G",
                     "lyrics": "Jesus’ love is oh oh oh, so beautiful"
                 },
                 {
-                    "chords": "                       C                     D       G",
+                    "chords": "            C           D    G",
                     "lyrics": "Jesus’ love is oh oh oh, so beautiful"
                 },
                 {
-                    "chords": "                               Am        D",
+                    "chords": "                Am    D",
                     "lyrics": "Much more than the ra-inbow"
                 },
                 {
-                    "chords": "                                    Bm",
+                    "chords": "                  Bm",
                     "lyrics": "Much more than the flowers"
                 },
                 {
-                    "chords": "              Em",
+                    "chords": "       Em",
                     "lyrics": "that we see, much more than the"
                 },
                 {
-                    "chords": "Am              D D7                G",
+                    "chords": "Am       D D7        G",
                     "lyrics": "Stars in the sky, that’s my Jesus"
                 }
             ]
@@ -45,7 +45,7 @@
                     "lyrics": "I climbed, I climbed"
                 },
                 {
-                    "chords": "                                D  D7",
+                    "chords": "                D D7",
                     "lyrics": "The highest mountain"
                 },
                 {
@@ -53,7 +53,7 @@
                     "lyrics": "I swam, I swam, I swam, I swam"
                 },
                 {
-                    "chords": "                     G",
+                    "chords": "           G",
                     "lyrics": "The widest ocean"
                 },
                 {
@@ -61,11 +61,11 @@
                     "lyrics": "I rowed, I rowed, I rowed, I rowed"
                 },
                 {
-                    "chords": "                       D",
+                    "chords": "            D",
                     "lyrics": "The longest river"
                 },
                 {
-                    "chords": "         D7                               G",
+                    "chords": "     D7                G",
                     "lyrics": "And Jesus was there with me"
                 }
             ]
@@ -75,19 +75,19 @@
             "label": "Verse 2",
             "lines": [
                 {
-                    "chords": "                     Am            D",
+                    "chords": "           Am      D",
                     "lyrics": "To the right He is there"
                 },
                 {
-                    "chords": "                   Bm           Em7",
+                    "chords": "          Bm      Em7",
                     "lyrics": "To the left He is there"
                 },
                 {
-                    "chords": "       Am7                      D",
+                    "chords": "    Am7           D",
                     "lyrics": "Up above and down below"
                 },
                 {
-                    "chords": "         G    G7",
+                    "chords": "     G  G7",
                     "lyrics": "He is there"
                 },
                 {
@@ -95,7 +95,7 @@
                     "lyrics": "Through the good times"
                 },
                 {
-                    "chords": "Am             D",
+                    "chords": "Am       D",
                     "lyrics": "He is there"
                 },
                 {
@@ -103,11 +103,11 @@
                     "lyrics": ""
                 },
                 {
-                    "chords": "Bm             Em",
+                    "chords": "Bm       Em",
                     "lyrics": "He will be there"
                 },
                 {
-                    "chords": "        Am            D                 G",
+                    "chords": "    Am      D         G",
                     "lyrics": "And Jesus will never leave you"
                 }
             ]

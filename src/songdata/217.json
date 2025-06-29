@@ -7,15 +7,15 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": " D                                  G   A7  D",
+                    "chords": " D                 G  A7 D",
                     "lyrics": "Joy to the world! The Lord is come!"
                 },
                 {
-                    "chords": "        G         A              D",
+                    "chords": "    G     A       D",
                     "lyrics": "Let earth receive her King!"
                 },
                 {
-                    "chords": "        G        D                  G      D",
+                    "chords": "    G    D         G   D",
                     "lyrics": "Let every heart prepare Him room,"
                 },
                 {
@@ -23,11 +23,11 @@
                     "lyrics": "and heav'n and nature sing,"
                 },
                 {
-                    "chords": " A                         A7",
+                    "chords": " A             A7",
                     "lyrics": "and heav'n and nature sing,"
                 },
                 {
-                    "chords": "          G                D                A7      D",
+                    "chords": "     G        D        A7   D",
                     "lyrics": "and heav'n and heav'n and nature sing!"
                 }
             ]
