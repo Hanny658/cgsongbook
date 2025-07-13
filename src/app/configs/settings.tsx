@@ -102,10 +102,10 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     useEffect(() => {
         const scaleMap: Record<FontSize, string> = {
             'extra-small': '14px',
-            small: '16px',
-            medium: '18px',
-            large: '20px',
-            'extra-large': '22px',
+            small: '17px',
+            medium: '20px',
+            large: '23px',
+            'extra-large': '26px',
         }
         // apply the new root font-size
         document.documentElement.style.fontSize = scaleMap[fontSize]

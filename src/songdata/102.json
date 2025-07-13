@@ -89,22 +89,12 @@
                     "lyrics": "Will give you rest"
                 }
             ]
-        },
-        {
-            "id": "repeat",
-            "label": "Repeat",
-            "lines": [
-                {
-                    "chords": "",
-                    "lyrics": "(repeat *if He carried the weight)"
-                }
-            ]
         }
     ],
     "song": [
         "verse1",
         "chorus",
-        "repeat"
+        "chorus"
     ],
     "link": "https://www.youtube.com/watch?v=fcEDmJ-_zmU"
 }
