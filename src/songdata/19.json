@@ -4,7 +4,7 @@
     "lyrics": [
         {
             "id": "verse1",
-            "label": "Verse",
+            "label": "Verse 1",
             "lines": [
                 {
                     "chords": "     G             D",
@@ -25,8 +25,8 @@
             ]
         },
         {
-            "id": "chorus",
-            "label": "Chorus",
+            "id": "verse2",
+            "label": "Verse 2",
             "lines": [
                 {
                     "chords": "    Bm           Em7           Am",
@@ -52,16 +52,16 @@
             "lines": [
                 {
                     "chords": "     G    C G",
-                    "lyrics": "Give thanks"
+                    "lyrics": "Give thanks (x3)"
                 }
             ]
         }
     ],
     "song": [
         "verse1",
-        "chorus",
         "verse1",
-        "chorus",
+        "verse2",
+        "verse2",
         "ending"
     ],
     "link": "https://www.youtube.com/watch?v=blbslHDgceY"

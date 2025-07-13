@@ -19,7 +19,7 @@
                     "lyrics": "I've got a home in glory land"
                 },
                 {
-                    "chords": "        G",
+                    "chords": "                   G",
                     "lyrics": "That outshines the sun"
                 },
                 {
@@ -45,11 +45,11 @@
                     "lyrics": "Do, Lord O do, Lord O do remember me"
                 },
                 {
-                    "chords": "C        G",
+                    "chords": "C                                 G",
                     "lyrics": "Do, Lord O do, Lord O do remember me"
                 },
                 {
-                    "chords": " G       Em",
+                    "chords": "G                                 Em",
                     "lyrics": "Do, Lord O do, Lord O do remember me"
                 },
                 {
@@ -63,15 +63,31 @@
             "label": "Verse 2",
             "lines": [
                 {
+                    "chords": "G",
+                    "lyrics": "I took Jesus as my Savior"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "Why don't you take Him too"
+                },
+                {
+                    "chords": "C",
+                    "lyrics": "I took Jesus as my Savior"
+                },
+                {
+                    "chords": "                       G",
+                    "lyrics": "Why don't you take Him too"
+                },
+                {
                     "chords": "",
                     "lyrics": "I took Jesus as my Savior"
                 },
                 {
                     "chords": "",
-                    "lyrics": "Why don't you take Him too x3"
+                    "lyrics": "Why don't you take Him too"
                 },
                 {
-                    "chords": "",
+                    "chords": "      D            G",
                     "lyrics": "While He's calling you"
                 }
             ]

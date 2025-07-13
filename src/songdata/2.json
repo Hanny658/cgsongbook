@@ -23,29 +23,29 @@
                     "lyrics": "I will say this is the day"
                 },
                 {
-                    "chords": "         D        Bm",
+                    "chords": "         D    F#m   Bm",
                     "lyrics": "That the Lord has made"
                 },
                 {
-                    "chords": "   Em              A           D  Dsus",
+                    "chords": "       Em          A           D  Dsus",
                     "lyrics": "I will rejoice for He has made me glad"
                 }
             ]
         },
         {
             "id": "chorus",
-            "label": "Chorus",
+            "label": "Verse 2",
             "lines": [
                 {
                     "chords": "D              G",
                     "lyrics": "He has made me glad"
                 },
                 {
-                    "chords": "D                           Bm",
+                    "chords": "D              Bm",
                     "lyrics": "He has made me glad"
                 },
                 {
-                    "chords": "       Em           A             D",
+                    "chords": "       Em          A              D",
                     "lyrics": "I will rejoice for He has made me glad"
                 }
             ]

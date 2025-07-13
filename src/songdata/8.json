@@ -4,7 +4,7 @@
     "lyrics": [
         {
             "id": "verse1",
-            "label": "Verse 1",
+            "label": "Song",
             "lines": [
                 {
                     "chords": "D",
@@ -43,7 +43,7 @@
                     "lyrics": "This is the day, (2x)"
                 },
                 {
-                    "chords": "      Em   A   D",
+                    "chords": "         Em   A   D",
                     "lyrics": "That the Lord has made"
                 }
             ]

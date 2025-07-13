@@ -7,15 +7,15 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "G             C",
+                    "chords": "G        C",
                     "lyrics": "Over the sea, over the sea,"
                 },
                 {
-                    "chords": "D            G",
+                    "chords": "D       G",
                     "lyrics": "Jesus Savior pilot me."
                 },
                 {
-                    "chords": "              C",
+                    "chords": "         C",
                     "lyrics": "Over the sea, over the sea,"
                 },
                 {
@@ -29,19 +29,19 @@
             "label": "Verse 2",
             "lines": [
                 {
-                    "chords": "",
+                    "chords": "G        C",
                     "lyrics": "Over and over,"
                 },
                 {
-                    "chords": "",
+                    "chords": "D             G",
                     "lyrics": "Like a mighty sea."
                 },
                 {
-                    "chords": "",
+                    "chords": "                  C",
                     "lyrics": "Comes the love of Jesus,"
                 },
                 {
-                    "chords": "",
+                    "chords": "D            G",
                     "lyrics": "Rolling over me."
                 }
             ]

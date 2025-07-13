@@ -11,7 +11,7 @@
                     "lyrics": "Rejoice in the Lord always"
                 },
                 {
-                    "chords": "    G           C",
+                    "chords": "    G       C",
                     "lyrics": "and again I say rejoice"
                 },
                 {
@@ -27,7 +27,7 @@
                     "lyrics": "Rejoice, rejoice"
                 },
                 {
-                    "chords": "    Dm    G     C",
+                    "chords": "    Dm      G     C",
                     "lyrics": "and again I say rejoice"
                 },
                 {
@@ -42,6 +42,7 @@
         }
     ],
     "song": [
+        "verse1",
         "verse1"
     ],
     "link": "https://www.youtube.com/watch?v=hzyckxqXoZ4"

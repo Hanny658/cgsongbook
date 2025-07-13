@@ -7,27 +7,33 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "       F        F6   F",
+                    "chords": "       F             F6  F",
                     "lyrics": "I just keep trusting my Lord"
                 },
                 {
-                    "chords": "     C7",
+                    "chords": "          C7",
                     "lyrics": "As I walk along"
                 },
                 {
-                    "chords": "            Gm              C",
+                    "chords": "            Gm          C9  C7",
                     "lyrics": "I just keep trusting my Lord"
                 },
                 {
                     "chords": "               F",
                     "lyrics": "And He gives a song"
-                },
+                }
+            ]
+        },
+        {
+            "id": "chorus",
+            "label": "Chorus",
+            "lines": [
                 {
-                    "chords": "                       F7",
+                    "chords": "                                F7  F",
                     "lyrics": "Tho the storm clouds darken the sky"
                 },
                 {
-                    "chords": "                  Bb   Gm7",
+                    "chords": "         F7       Bb   Gm7",
                     "lyrics": "O'er the heavenly trail"
                 },
                 {
@@ -35,8 +41,8 @@
                     "lyrics": "I just keep trusting my Lord"
                 },
                 {
-                    "chords": "        F     Bb  F",
-                    "lyrics": "He will never fail*"
+                    "chords": "              F     Bb  F",
+                    "lyrics": "He will never fail"
                 }
             ]
         },
@@ -45,19 +51,19 @@
             "label": "Verse 2",
             "lines": [
                 {
-                    "chords": "                Gm",
-                    "lyrics": "He's a faithful Friend,"
+                    "chords": "                 Gm",
+                    "lyrics": "He's a faith-ful Friend,"
                 },
                 {
-                    "chords": "C7              F",
-                    "lyrics": "Such a faithful Friend"
+                    "chords": "C7                F",
+                    "lyrics": "  Such a faithful Friend"
                 },
                 {
-                    "chords": "               Gm  C7",
+                    "chords": "      Am    Gm  C7",
                     "lyrics": "I can count on Him"
                 },
                 {
-                    "chords": "           F    C",
+                    "chords": "            F    C",
                     "lyrics": "To the very end"
                 }
             ]
@@ -65,7 +71,9 @@
     ],
     "song": [
         "verse1",
-        "verse2"
+        "chorus",
+        "verse2",
+        "chorus"
     ],
     "link": "https://www.youtube.com/watch?v=8mZIVKDEs0g"
 }

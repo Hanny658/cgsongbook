@@ -7,24 +7,38 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "D      F#m    G     D",
+                    "chords": "D       F#m       G          D",
                     "lyrics": "Seek ye first the kingdom of God"
                 },
                 {
-                    "chords": "G       D     A7",
+                    "chords": "G       D          A7",
                     "lyrics": "And His righteousness"
                 },
                 {
-                    "chords": "D          F#m",
+                    "chords": "D              F#m",
                     "lyrics": "And all these things"
                 },
                 {
-                    "chords": "       G         D/F#",
+                    "chords": "         G         D/F#",
                     "lyrics": "Shall be added unto you"
                 },
                 {
-                    "chords": "G  D    A7 D",
-                    "lyrics": "Allelu, alleluia"
+                    "chords": "G   D        A7   D",
+                    "lyrics": "Allelu, allelu - ia"
+                }
+            ]
+        },
+        {
+            "id": "bridge",
+            "label": "Bridge",
+            "lines": [
+                {
+                    "chords": "",
+                    "lyrics": "(Alleluia, Alle lu--- ia)"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "(Allelulia, Allelu, Alleluia)"
                 }
             ]
         },
@@ -33,28 +47,24 @@
             "label": "Verse 2",
             "lines": [
                 {
-                    "chords": "",
-                    "lyrics": "Alleluia, Alle lu--- ia"
-                },
-                {
-                    "chords": "",
-                    "lyrics": "Allelulia, Allelu, Alleluia"
-                },
-                {
-                    "chords": "",
+                    "chords": "D          F#m      G          D",
                     "lyrics": "Ask and it shall be added unto you"
                 },
                 {
-                    "chords": "",
+                    "chords": "G        D          A7",
                     "lyrics": "Seek and ye shall find"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "Knock and the door shall be"
+                    "chords": "D             F#m",
+                    "lyrics": "Knock and the door"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "opened unto you, Allelu, alleluia"
+                    "chords": "         G         D/F#",
+                    "lyrics": "shall be opened unto you"
+                },
+                {
+                    "chords": "G   D        A7   D",
+                    "lyrics": "Allelu, allelu - ia"
                 }
             ]
         },
@@ -63,30 +73,31 @@
             "label": "Verse 3",
             "lines": [
                 {
-                    "chords": "",
+                    "chords": "D       F#m       G          D",
                     "lyrics": "Man shall not live by bread alone"
                 },
                 {
-                    "chords": "",
+                    "chords": "G       D          A7",
                     "lyrics": "But by every word"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "That proceeds from the mouth of"
+                    "chords": "D              F#m",
+                    "lyrics": "That proceeds from"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "God"
+                    "chords": "   G         D/F#",
+                    "lyrics": "the mouth of God"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "Allelu, alleluia"
+                    "chords": "G   D       A7   D",
+                    "lyrics": "Allelu, allelu - ia"
                 }
             ]
         }
     ],
     "song": [
         "verse1",
+        "bridge",
         "verse2",
         "verse3"
     ],
