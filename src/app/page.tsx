@@ -96,17 +96,18 @@ const SongbookPage = () => {
             <SettingsButton />
             <h1 className="text-xl font-semibold">CG Songbook</h1>
           </div>
-          <div className="flex w-full md:w-1/2">
-            <RandomPicker maxNum={songs.length} onPick={setPicked} />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={handleSearch}
-              placeholder="Search title or number..."
-              className="text-black bg-white/90 rounded w-full px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
-            />
-          </div>
         </header>
+
+        <div className="fixed top-1.5 right-6 z-40 flex w-1/3">
+          <RandomPicker maxNum={songs.length} onPick={setPicked} />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={handleSearch}
+            placeholder="Search title or number..."
+            className="text-black bg-white/80 rounded w-full px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
+          />
+        </div>
 
         {/* Main Content Area */}
         <main className="flex-grow px-6 py-4">
@@ -116,9 +117,9 @@ const SongbookPage = () => {
                 <>
                   {filteredSongs.map((song) => (
                     <Link key={song.number} href={`/${song.number}`}
-                    ref={(el) => {
-                      songRefs.current[song.number] = el;
-                    }}>
+                      ref={(el) => {
+                        songRefs.current[song.number] = el;
+                      }}>
                       <div className="relative">
                         <div
                           className={`border-b text-white text-xl border-gray-500 py-2 px-4 flex justify-center items-center
