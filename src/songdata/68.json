@@ -7,15 +7,15 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "  C     Am",
+                    "chords": "  C      Am",
                     "lyrics": "I know a place"
                 },
                 {
-                    "chords": "       F         G",
+                    "chords": "      F           G",
                     "lyrics": "Where no one ever goes"
                 },
                 {
-                    "chords": "C              Am",
+                    "chords": "C               Am",
                     "lyrics": "There's peace and quiet"
                 },
                 {
@@ -23,23 +23,23 @@
                     "lyrics": "Beauty and repose"
                 },
                 {
-                    "chords": "    C          Am",
+                    "chords": "     C         Am",
                     "lyrics": "It's hidden in the valley"
                 },
                 {
-                    "chords": "   F              G",
+                    "chords": "  F                 G",
                     "lyrics": "Beside the mountain stream"
                 },
                 {
-                    "chords": "    C         Am",
+                    "chords": "    C             Am",
                     "lyrics": "And lying there beside the stream"
                 },
                 {
-                    "chords": "  F            G",
+                    "chords": "  F               G",
                     "lyrics": "I know that I can dream"
                 },
                 {
-                    "chords": " C     Am     F           G",
+                    "chords": " C      Am        F             G",
                     "lyrics": "Only of things of beauty to the eye"
                 },
                 {
@@ -47,15 +47,15 @@
                     "lyrics": "Snow peaked mountains"
                 },
                 {
-                    "chords": " F            G",
+                    "chords": " F              G",
                     "lyrics": "Tow'ring to the sky"
                 },
                 {
-                    "chords": " C    Am       F",
+                    "chords": " C    Am        F",
                     "lyrics": "Now I know that God"
                 },
                 {
-                    "chords": "          G       C Am F G",
+                    "chords": "          G         C   Am  F  G",
                     "lyrics": "Made this world for me, for me."
                 }
             ]
@@ -65,39 +65,39 @@
             "label": "Verse 2",
             "lines": [
                 {
-                    "chords": "",
+                    "chords": "  C   Am          F             G7",
                     "lyrics": "I can imagine the wonder of the scene"
                 },
                 {
-                    "chords": "",
+                    "chords": "C               Am",
                     "lyrics": "Climbing up the mountain"
                 },
                 {
-                    "chords": "",
+                    "chords": "F                  G7",
                     "lyrics": "And down the small ravine"
                 },
                 {
-                    "chords": "",
+                    "chords": "    C         Am",
                     "lyrics": "The beauty of this place"
                 },
                 {
-                    "chords": "",
+                    "chords": "    F",
                     "lyrics": "And quiet e'er shall stay"
                 },
                 {
-                    "chords": "",
+                    "chords": "                     G7",
                     "lyrics": "To make this place a heaven"
                 },
                 {
-                    "chords": "",
+                    "chords": "     F         G7",
                     "lyrics": "Each and every day"
                 },
                 {
-                    "chords": "",
+                    "chords": "C     Am      F              G",
                     "lyrics": "O how I wish, I never had to leave"
                 },
                 {
-                    "chords": "",
+                    "chords": "C          Am",
                     "lyrics": "And all my life"
                 },
                 {
@@ -105,11 +105,11 @@
                     "lyrics": "Such beauty to receive"
                 },
                 {
-                    "chords": "",
+                    "chords": "    F",
                     "lyrics": "Now I know that God"
                 },
                 {
-                    "chords": "",
+                    "chords": "          G         C   Am  F  G",
                     "lyrics": "Made this world for me, for me."
                 }
             ]
@@ -119,48 +119,52 @@
             "label": "Verse 3",
             "lines": [
                 {
-                    "chords": "",
+                    "chords": "  C      Am",
                     "lyrics": "I know a fountain"
                 },
                 {
-                    "chords": "",
+                    "chords": "     F         G7",
                     "lyrics": "Where sins are washed away"
                 },
                 {
-                    "chords": "",
+                    "chords": "C        Am",
                     "lyrics": "I know a place"
                 },
                 {
-                    "chords": "",
+                    "chords": "F                     G7",
                     "lyrics": "Where night is turned to day"
                 },
                 {
-                    "chords": "",
+                    "chords": "    C            Am",
                     "lyrics": "The Lord invites you now"
                 },
                 {
-                    "chords": "",
+                    "chords": "    F",
                     "lyrics": "Why linger and delay"
                 },
                 {
-                    "chords": "",
+                    "chords": "                       G7",
                     "lyrics": "He hears your pleading cry"
                 },
                 {
-                    "chords": "",
+                    "chords": "                   G7",
                     "lyrics": "And every word you say"
                 },
                 {
-                    "chords": "",
+                    "chords": "C    Am      F                     G7",
                     "lyrics": "Only believe He took the place for you"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "He will save and guide you safely through; Now I know that God"
+                    "chords": "C       Am       F",
+                    "lyrics": "He will save and guide you safely through;"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "Sent His Son for me, for me"
+                    "chords": "    F",
+                    "lyrics": "Now I know that"
+                },
+                {
+                    "chords": "         G           C   Am  F  G",
+                    "lyrics": "God sent His Son for me, for me"
                 }
             ]
         }

@@ -7,72 +7,26 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "C           G7",
+                    "chords": "D         Dmaj7   Em7      Adm7  A",
                     "lyrics": "Something beautiful, - something good"
                 },
                 {
-                    "chords": "Dm    Dm7   G7 C    C7",
+                    "chords": "       A7      D        D7",
                     "lyrics": "All my confusion, -  he understood"
                 },
                 {
-                    "chords": "F            C     Em7     Am",
+                    "chords": "G                            D       F#7        Bm",
                     "lyrics": "All I had to offer Him - was brokenness and strife"
                 },
                 {
-                    "chords": "    C       G7       C",
+                    "chords": "    Em7     D         A7              D",
                     "lyrics": "But He made something beautiful of my life"
-                }
-            ]
-        },
-        {
-            "id": "verse1",
-            "label": "Verse 1",
-            "lines": [
-                {
-                    "chords": "C         Cmaj7  C          Cdim",
-                    "lyrics": "If there ever were dreams - that were lofty and noble"
-                },
-                {
-                    "chords": "Dm             G7",
-                    "lyrics": "They were my dreams at the start"
-                },
-                {
-                    "chords": "    Dm                Dm       G7",
-                    "lyrics": "And the hopes for life's best - were the hopes that I harbored"
-                },
-                {
-                    "chords": "C        C7",
-                    "lyrics": "Down deep in my heart"
-                }
-            ]
-        },
-        {
-            "id": "verse2",
-            "label": "Verse 2",
-            "lines": [
-                {
-                    "chords": "    C        Cmaj7     C7",
-                    "lyrics": "But my dreams turned to ashes - My castles all crumbled"
-                },
-                {
-                    "chords": "   F       Dm",
-                    "lyrics": "My fortune turned to loss"
-                },
-                {
-                    "chords": "   Am   D7       Am     D7",
-                    "lyrics": "So wrapped it all up - in the rags of my life"
-                },
-                {
-                    "chords": "  A7       G7",
-                    "lyrics": "and laid it at the cross"
                 }
             ]
         }
     ],
     "song": [
         "chorus",
-        "verse1",
-        "verse2",
         "chorus"
     ],
     "link": "https://www.youtube.com/watch?v=DMQqSarDf8Y"

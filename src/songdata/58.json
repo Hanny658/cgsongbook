@@ -7,11 +7,11 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "C         F         G",
+                    "chords": "C         Fmaj7        Dm7       G",
                     "lyrics": "Oh, let the Son of God enfold you"
                 },
                 {
-                    "chords": "        Em7        Am7",
+                    "chords": "            Em7         Am7",
                     "lyrics": "With His Spirit and His love"
                 },
                 {
@@ -19,27 +19,27 @@
                     "lyrics": "Let Him fill your heart"
                 },
                 {
-                    "chords": "    G7        C",
+                    "chords": "    G7         Cmaj7  C",
                     "lyrics": "And satisfy your soul"
                 },
                 {
-                    "chords": "          F",
+                    "chords": "   Fmaj7                Dm7",
                     "lyrics": "Oh let Him have the things"
                 },
                 {
-                    "chords": "     G",
+                    "chords": "          G",
                     "lyrics": "That hold you"
                 },
                 {
-                    "chords": "       Em7      Am7",
+                    "chords": "           Em7          Am7",
                     "lyrics": "And His Spirit like a dove"
                 },
                 {
-                    "chords": "    Dm7             G7",
+                    "chords": "       Dm7             G7",
                     "lyrics": "Will descend upon your life"
                 },
                 {
-                    "chords": "             C   C7",
+                    "chords": "             C    C7",
                     "lyrics": "And make you whole"
                 }
             ]
@@ -49,11 +49,11 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": " F  G    Em  Am7",
+                    "chords": "F  G7    Em7  Am7",
                     "lyrics": "Jesus, O Jesus"
                 },
                 {
-                    "chords": " Dm7   G7      C    C7",
+                    "chords": "Dm7      G7        C   C7",
                     "lyrics": "Come and fill your lambs"
                 }
             ]
@@ -63,35 +63,35 @@
             "label": "Verse 2",
             "lines": [
                 {
-                    "chords": "",
+                    "chords": "C          Fmaj7          Dm7         G",
                     "lyrics": "O come and sing this song with gladness"
                 },
                 {
-                    "chords": "",
+                    "chords": "        Em7                    Am7",
                     "lyrics": "As your hearts are filled with joy"
                 },
                 {
-                    "chords": "",
+                    "chords": "          Dm7",
                     "lyrics": "Lift your hands in sweet"
                 },
                 {
-                    "chords": "",
+                    "chords": " G7          Cmaj7    C7",
                     "lyrics": "Surrender to His Name"
                 },
                 {
-                    "chords": "",
+                    "chords": "  Fmaj7             Dm7             G",
                     "lyrics": "O give Him all your tears and sadness"
                 },
                 {
-                    "chords": "",
+                    "chords": "         Em7               Am7",
                     "lyrics": "Give Him all your years of pain"
                 },
                 {
-                    "chords": "",
+                    "chords": "           Dm7        G7",
                     "lyrics": "And you'll enter into life"
                 },
                 {
-                    "chords": "",
+                    "chords": "   C         C7",
                     "lyrics": "In Jesus name"
                 }
             ]
@@ -101,7 +101,9 @@
         "verse1",
         "chorus",
         "chorus",
-        "verse2"
+        "verse2",
+        "chorus",
+        "chorus"
     ],
     "link": "https://www.youtube.com/watch?v=KWEDBaFy0SI"
 }

@@ -4,14 +4,14 @@
     "lyrics": [
         {
             "id": "verse1",
-            "label": "Verse 1",
+            "label": "Verse",
             "lines": [
                 {
                     "chords": "G   C G           C     Am",
                     "lyrics": "Majesty, worship His Majesty"
                 },
                 {
-                    "chords": "     G         Em",
+                    "chords": "       G           Em",
                     "lyrics": "Unto Jesus, be all glory,"
                 },
                 {
@@ -23,7 +23,7 @@
                     "lyrics": "Majesty, kingdom authority"
                 },
                 {
-                    "chords": "            G",
+                    "chords": "                 G",
                     "lyrics": "Flow from His throne"
                 },
                 {
@@ -35,15 +35,15 @@
                     "lyrics": "His anthem raise!"
                 },
                 {
-                    "chords": "   Am          D7",
+                    "chords": "   Am                D7",
                     "lyrics": "So exalt, lift up on high"
                 },
                 {
-                    "chords": "           G",
+                    "chords": "              G",
                     "lyrics": "The name of Jesus"
                 },
                 {
-                    "chords": "     Am        D",
+                    "chords": "     Am            D",
                     "lyrics": "Magnify, come glorify"
                 },
                 {
@@ -55,17 +55,18 @@
                     "lyrics": "Majesty, worship His Majesty"
                 },
                 {
-                    "chords": "          G           D7",
+                    "chords": "          G              D7",
                     "lyrics": "Jesus who died, now glorified"
                 },
                 {
-                    "chords": "G",
+                    "chords": "            G",
                     "lyrics": "King of all kings"
                 }
             ]
         }
     ],
     "song": [
+        "verse1",
         "verse1"
     ],
     "link": "https://www.youtube.com/watch?v=SNnTFDNPT3U"

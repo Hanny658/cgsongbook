@@ -7,7 +7,7 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "   C      Em7     F",
+                    "chords": "   C       Em7      F",
                     "lyrics": "O Lord our God, how excellent"
                 },
                 {
@@ -15,27 +15,27 @@
                     "lyrics": "Your Name is"
                 },
                 {
-                    "chords": "     Dm          F",
+                    "chords": "     Dm            F",
                     "lyrics": "How excellent Your name"
                 },
                 {
-                    "chords": "        G",
+                    "chords": "           G",
                     "lyrics": "in all the earth"
                 },
                 {
-                    "chords": "     F          Em7",
+                    "chords": "     F               Em7",
                     "lyrics": "Your glory fills the heavens"
                 },
                 {
-                    "chords": "    Dm    G     C",
+                    "chords": "    Dm     G        C",
                     "lyrics": "Beyond the farthest star"
                 },
                 {
-                    "chords": "     Dm          G",
+                    "chords": "     Dm            G",
                     "lyrics": "How excellent Your name in all the"
                 },
                 {
-                    "chords": "  C",
+                    "chords": "   C",
                     "lyrics": "earth"
                 }
             ]
@@ -45,39 +45,36 @@
             "label": "Verse 2",
             "lines": [
                 {
-                    "chords": "       Am           Em",
+                    "chords": "       Am              Em",
                     "lyrics": "When I think about the heavens"
                 },
                 {
-                    "chords": "     Am            Em",
+                    "chords": "     Am                Em",
                     "lyrics": "The moon and all the stars,"
                 },
                 {
-                    "chords": "  F             G        C",
+                    "chords": "  F               G           C",
                     "lyrics": "I wonder what You ever saw in me"
                 },
                 {
-                    "chords": "        Am            Em",
+                    "chords": "        Am              Em",
                     "lyrics": "But You took me and You loved me"
                 },
                 {
-                    "chords": "            Am      Em7",
+                    "chords": "           Am         Em7",
                     "lyrics": "And You've given me a crown"
                 },
                 {
-                    "chords": "     Dm7            D",
-                    "lyrics": "And now I'll praise Your Name"
-                },
-                {
-                    "chords": "    G7",
-                    "lyrics": "eternally"
+                    "chords": "    Dm7                  D        G7",
+                    "lyrics": "And now I'll praise Your Name eternally"
                 }
             ]
         }
     ],
     "song": [
         "verse1",
-        "verse2"
+        "verse2",
+        "verse1"
     ],
     "link": "https://www.youtube.com/watch?v=BM8INqEELQA"
 }

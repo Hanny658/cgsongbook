@@ -7,7 +7,7 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "G                   Am",
+                    "chords": "G                      Am",
                     "lyrics": "I am weak but Thou art strong"
                 },
                 {
@@ -15,11 +15,11 @@
                     "lyrics": "Jesus keep me from all wrong"
                 },
                 {
-                    "chords": "G              C  Am7",
+                    "chords": "G                    C  Am7",
                     "lyrics": "I'll be satisfied as long"
                 },
                 {
-                    "chords": "    G/D           D      G",
+                    "chords": "     G/D        D              G   C  G",
                     "lyrics": "As I walk, dear Lord, close to Thee"
                 }
             ]
@@ -29,19 +29,19 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "G                  Am7",
+                    "chords": "G                       Am7",
                     "lyrics": "Just a closer walk with Thee"
                 },
                 {
-                    "chords": "D                 G   C D",
+                    "chords": "D                      G   C D",
                     "lyrics": "Grant it Jesus it's my plea"
                 },
                 {
-                    "chords": "G                  C   Am",
+                    "chords": "G                      C   Am",
                     "lyrics": "Daily walking close to Thee"
                 },
                 {
-                    "chords": "     G/D    D        G",
+                    "chords": "       G/D      D            G",
                     "lyrics": "Let it be, dear Lord, let it be"
                 }
             ]
@@ -51,23 +51,23 @@
             "label": "Verse 2",
             "lines": [
                 {
-                    "chords": "",
+                    "chords": "G                            Am",
                     "lyrics": "Thru' this world of toil and snares"
                 },
                 {
-                    "chords": "",
+                    "chords": "D                 G",
                     "lyrics": "If I falter Lord, who cares"
                 },
                 {
-                    "chords": "",
+                    "chords": "G                     C   Am7",
                     "lyrics": "Who with me my burden shares?"
                 },
                 {
-                    "chords": "",
+                    "chords": "         G/D        D",
                     "lyrics": "None but Thee, dear Lord,"
                 },
                 {
-                    "chords": "",
+                    "chords": "         G   C  G",
                     "lyrics": "None but Thee"
                 }
             ]
@@ -77,23 +77,23 @@
             "label": "Verse 3",
             "lines": [
                 {
-                    "chords": "",
+                    "chords": "G                      Am",
                     "lyrics": "When my feeble life is o'er"
                 },
                 {
-                    "chords": "",
+                    "chords": "D                    G",
                     "lyrics": "Time for me shall be no more"
                 },
                 {
-                    "chords": "",
+                    "chords": "G                      C  Am7",
                     "lyrics": "On that bright eternal shore"
                 },
                 {
-                    "chords": "",
+                    "chords": "       G/D        D",
                     "lyrics": "I will walk, dear Lord,"
                 },
                 {
-                    "chords": "",
+                    "chords": "         G   C  G",
                     "lyrics": "Close to Thee"
                 }
             ]

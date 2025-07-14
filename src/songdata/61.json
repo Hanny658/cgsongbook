@@ -7,49 +7,49 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": " C                    Dm",
+                    "chords": " C                       Dm",
                     "lyrics": "Father in heaven, how we love You"
                 },
                 {
-                    "chords": "  G               G7   C   G",
+                    "chords": "        G               G7   C   G",
                     "lyrics": "We lift Your name in all the earth"
                 },
                 {
-                    "chords": "      C             Em",
+                    "chords": "         C             Em",
                     "lyrics": "May Your kingdom be established"
                 },
                 {
-                    "chords": "      Dm",
+                    "chords": "         Dm",
                     "lyrics": "in our praises"
                 },
                 {
-                    "chords": "       F      G",
+                    "chords": "          F           G",
                     "lyrics": "As your people declare"
                 },
                 {
-                    "chords": "           C   G",
+                    "chords": "          C   G",
                     "lyrics": "Your mighty works"
                 }
             ]
         },
         {
-            "id": "chorus1",
+            "id": "chorus",
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "             C   Em     F",
+                    "chords": "G7              C   Em     F",
                     "lyrics": "Blessed be the Lord God Almighty"
                 },
                 {
-                    "chords": "   G                 C",
+                    "chords": "    G                    C",
                     "lyrics": "Who was and is and is to come"
                 },
                 {
-                    "chords": "G7           C  Em     F",
+                    "chords": "G7              C   Em     F",
                     "lyrics": "Blessed be the Lord God Almighty"
                 },
                 {
-                    "chords": "     G           C",
+                    "chords": "     G               C",
                     "lyrics": "Who reigns forever more"
                 }
             ]
@@ -77,19 +77,15 @@
                 {
                     "chords": "F   G             C    G",
                     "lyrics": "I will lift your name on high"
-                },
-                {
-                    "chords": "",
-                    "lyrics": "(Repeat “Blessed be the Lord”)"
                 }
             ]
         }
     ],
     "song": [
         "verse1",
-        "chorus1",
+        "chorus",
         "bridge",
-        "chorus1"
+        "chorus"
     ],
     "link": "https://www.youtube.com/watch?v=fAcq6wOuLlc"
 }
