@@ -7,23 +7,23 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": " D     D7             G",
+                    "chords": " D     D7                G",
                     "lyrics": "What a friend we have in Jesus"
                 },
                 {
-                    "chords": " D                    A",
+                    "chords": " D                         A",
                     "lyrics": "All our sins and griefs to bear"
                 },
                 {
-                    "chords": " D       D7      G",
+                    "chords": " D           D7      G",
                     "lyrics": "What a privilege to carry"
                 },
                 {
-                    "chords": " D    A7           D",
+                    "chords": " D    A7             D",
                     "lyrics": "Everything to God in prayer"
                 },
                 {
-                    "chords": "A7                  D",
+                    "chords": "A7                    D",
                     "lyrics": "O what peace we often forfeit"
                 },
                 {
@@ -31,11 +31,11 @@
                     "lyrics": "O what needless pain we bear"
                 },
                 {
-                    "chords": "D  D7               G",
+                    "chords": "D              D7     G",
                     "lyrics": "All because we do not carry"
                 },
                 {
-                    "chords": " D    A7          D",
+                    "chords": "D             A7     D",
                     "lyrics": "Everything to God in prayer"
                 }
             ]
@@ -45,35 +45,35 @@
             "label": "Verse 2",
             "lines": [
                 {
-                    "chords": "",
+                    "chords": "D                      G",
                     "lyrics": "Have we trials and temptations"
                 },
                 {
-                    "chords": "",
+                    "chords": "D                   A",
                     "lyrics": "Is there trouble anywhere"
                 },
                 {
-                    "chords": "",
+                    "chords": "D           D7     G",
                     "lyrics": "We should never be discouraged"
                 },
                 {
-                    "chords": "",
+                    "chords": "D          A7           D",
                     "lyrics": "Take it to the Lord in prayer"
                 },
                 {
-                    "chords": "",
+                    "chords": "A7                      D",
                     "lyrics": "Can we find a friend so faithful"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "Who will all our sorrows share"
+                    "chords": "G    B7                  Em7  A7",
+                    "lyrics": "Who will all our sorrows share?"
                 },
                 {
-                    "chords": "",
+                    "chords": "D               D7    G",
                     "lyrics": "Jesus knows our every weakness"
                 },
                 {
-                    "chords": "",
+                    "chords": "D              A7      D",
                     "lyrics": "Take it to the Lord in prayer"
                 }
             ]
@@ -83,35 +83,35 @@
             "label": "Verse 3",
             "lines": [
                 {
-                    "chords": "",
+                    "chords": "D                      G",
                     "lyrics": "Are we weak and heavy laden"
                 },
                 {
-                    "chords": "",
+                    "chords": "D                       A",
                     "lyrics": "Cumbered with a load of care"
                 },
                 {
-                    "chords": "",
+                    "chords": "D            D7            G",
                     "lyrics": "Precious Savior, still our refuge"
                 },
                 {
-                    "chords": "",
+                    "chords": "D          A7           D",
                     "lyrics": "Take it to the Lord in prayer"
                 },
                 {
-                    "chords": "",
+                    "chords": "A7                      D",
                     "lyrics": "Do thy friends despise, forsake thee"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "Take it to the Lord in prayer"
+                    "chords": "G      B7              Em7  A7",
+                    "lyrics": "Take it to the Lord in prayer!"
                 },
                 {
-                    "chords": "",
+                    "chords": "D                 D7       G",
                     "lyrics": "In His arms He'll take and shield thee"
                 },
                 {
-                    "chords": "",
+                    "chords": "D                A7      D",
                     "lyrics": "Thou wilt find a solace there"
                 }
             ]

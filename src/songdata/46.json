@@ -29,34 +29,70 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "     D  D7       G   Em",
+                    "chords": "     D  D7   G       Em",
                     "lyrics": "O my God, I trust in Thee"
                 },
                 {
-                    "chords": "             D/F#",
+                    "chords": "       D/F#",
                     "lyrics": "Let me not be ashamed"
                 },
                 {
-                    "chords": "                   Em    A   D",
+                    "chords": "     A             Em    A    D",
                     "lyrics": "Let not my enemies triumph over me"
+                }
+            ]
+        },
+        {
+            "id": "verse2",
+            "label": "Verse 2",
+            "lines": [
+                {
+                    "chords": "D",
+                    "lyrics": "Yea let none that wait"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "- Yea, let none that wait on Thee be ashamed"
+                    "chords": "     A",
+                    "lyrics": "Do I lift up my soul"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "- Show me Thy ways, Thy ways, O Lord"
+                    "chords": "     Em         A",
+                    "lyrics": "Yea let none that wait"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "- Remember not the sins of my youth"
+                    "chords": "       D",
+                    "lyrics": "Do I lift up my soul"
+                }
+            ]
+        },
+        {
+            "id": "verse3",
+            "label": "Verse 3",
+            "lines": [
+                {
+                    "chords": "D",
+                    "lyrics": "On Thee be ashamed"
+                },
+                {
+                    "chords": "     A",
+                    "lyrics": "Do I lift up my soul"
+                },
+                {
+                    "chords": "     Em         A",
+                    "lyrics": "On Thee be ashamed"
+                },
+                {
+                    "chords": "     D",
+                    "lyrics": "Do I lift up my soul"
                 }
             ]
         }
     ],
     "song": [
         "verse1",
+        "chorus",
+        "verse2",
+        "chorus",
+        "verse3",
         "chorus"
     ],
     "link": ""

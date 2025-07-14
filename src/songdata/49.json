@@ -21,11 +21,11 @@
             "label": "Indonesian",
             "lines": [
                 {
-                    "chords": "",
+                    "chords": " D    Em          D",
                     "lyrics": "Allah baik, Allah baik"
                 },
                 {
-                    "chords": "",
+                    "chords": " D  G  G    Em   D   A   D",
                     "lyrics": "Allah baik, Baik pada ku"
                 }
             ]
@@ -35,7 +35,7 @@
             "label": "Chinese",
             "lines": [
                 {
-                    "chords": "",
+                    "chords": "D       Em             D",
                     "lyrics": "神 真 美 好,      神 真 美 好"
                 },
                 {
@@ -43,8 +43,8 @@
                     "lyrics": "Shen hen mei hao, Shen hen mei hao"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "神 真 美 好,      衪 對 我 真 好"
+                    "chords": "D     G  G    Em   D   A   D",
+                    "lyrics": "神 真 美 好,   衪 對 我 真 好"
                 },
                 {
                     "chords": "",
@@ -57,8 +57,15 @@
             "label": "Korean",
             "lines": [
                 {
+                    "chords": "D    Em      D",
+                    "lyrics": "사랑해주, 사랑해주"
+                },
+                {
                     "chords": "",
                     "lyrics": "Sa-rang ae-ju, Sa-rang ae-ju"
+                },{
+                    "chords": "D    G G  Em   D  A  D",
+                    "lyrics": "사랑해주, 나의 하나님"
                 },
                 {
                     "chords": "",
@@ -71,11 +78,11 @@
             "label": "Thai",
             "lines": [
                 {
-                    "chords": "",
+                    "chords": "D       Em    D",
                     "lyrics": "Pra Ong Song Ruk"
                 },
                 {
-                    "chords": "",
+                    "chords": "D    G G  Em   D  A  D",
                     "lyrics": "Song Ruk chun rae ter"
                 }
             ]
@@ -85,7 +92,7 @@
             "label": "Irish",
             "lines": [
                 {
-                    "chords": "",
+                    "chords": " D        Em            D",
                     "lyrics": "Tá Dia iontach maith"
                 },
                 {
@@ -93,7 +100,7 @@
                     "lyrics": "(Tor Dee-ya in-tock mar)"
                 },
                 {
-                    "chords": "",
+                    "chords": " D   G G  Em   D  A  D",
                     "lyrics": "Tá Dia go maith domh"
                 },
                 {
