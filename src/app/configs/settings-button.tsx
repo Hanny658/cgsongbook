@@ -53,7 +53,7 @@ export default function SettingsButton() {
                 <div
                 className={`
                     fixed bottom-0 left-0
-                    w-full h-1/2 md:h-1/3
+                    w-full h-1/3
                     bg-black text-white p-3 z-50 overflow-auto
                     transform transition-transform duration-300 ease-in-out
                     ${isOpen
