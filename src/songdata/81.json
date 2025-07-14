@@ -7,19 +7,19 @@
       "label": "Refrain",
       "lines": [
         {
-          "chords": " G   G7     C     G",
-          "lyrics": "Amazing Grace! (how sweet the sound)"
+          "chords": " G      G7          C         G",
+          "lyrics": "Amazing Grace! How sweet the sound"
         },
         {
-          "chords": "             D",
+          "chords": "             D#m         G#mD",
           "lyrics": "That saved a wretch like me!"
         },
         {
-          "chords": " G    G7    C   G",
+          "chords": " G         G7        C      G",
           "lyrics": "I once was lost, but now am found,"
         },
         {
-          "chords": "  Em     D   G",
+          "chords": "    D#m        G#m   C  Cm GD7",
           "lyrics": "Was blind, but now I see."
         }
       ]
@@ -29,19 +29,19 @@
       "label": "Verse 1",
       "lines": [
         {
-          "chords": "   G     G7    C    G",
+          "chords": " G          G7             C        G",
           "lyrics": "'Twas grace that taught my heart to fear,"
         },
         {
-          "chords": "           D",
+          "chords": "             D#m   G#m    D",
           "lyrics": "And grace my fears relieved."
         },
         {
-          "chords": "  G    G7    C   G",
+          "chords": "G       G7       C          G",
           "lyrics": "How precious did that grace appear,"
         },
         {
-          "chords": "  Em   D    G",
+          "chords": "    D#m    G#m    C  Cm  G",
           "lyrics": "The hour I first believed."
         }
       ]
@@ -51,19 +51,19 @@
       "label": "Verse 2",
       "lines": [
         {
-          "chords": "   G   G7    C     G",
+          "chords": "  G          G7       C         G",
           "lyrics": "Through many dangers, toils and snares"
         },
         {
-          "chords": "        D",
+          "chords": "        D#m     G#mD",
           "lyrics": "We have already come"
         },
         {
-          "chords": "    G     G7     C     G",
+          "chords": "G           G7              C          G",
           "lyrics": "'Twas grace hath brought us safe thus far"
         },
         {
-          "chords": "   Em    D    G",
+          "chords": "    D#m        G#m     C  Cm G",
           "lyrics": "And grace will lead us home"
         }
       ]
@@ -73,19 +73,19 @@
       "label": "Verse 3",
       "lines": [
         {
-          "chords": "   G     G7    C    G",
+          "chords": "   G            G7        C        G",
           "lyrics": "When we've been there ten thousand years,"
         },
         {
-          "chords": "           D",
+          "chords": "               D#m    G#mD",
           "lyrics": "Bright shining as the sun,"
         },
         {
-          "chords": "   G    G7   C     G",
+          "chords": "G             G7      C            G",
           "lyrics": "We've no less days to sing God's praise"
         },
         {
-          "chords": "   Em   D    G",
+          "chords": "     D#m     G#m     C  Cm G",
           "lyrics": "Than when we first begun."
         }
       ]

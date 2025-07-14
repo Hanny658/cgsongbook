@@ -7,19 +7,19 @@
       "label": "Verse 1",
       "lines": [
         {
-          "chords": "C       F G      Em7",
+          "chords": "C      F  G     Em7  A7",
           "lyrics": "Emmanuel, Emmanuel"
         },
         {
-          "chords": "A7        Dm7 G7     C Dm C/E",
+          "chords": "A7          Dm7  G7       C Dm C/E",
           "lyrics": "His name is called, Emmanuel"
         },
         {
-          "chords": "           F G      Em7 Am7",
+          "chords": "C7          F G             Em7 Am7",
           "lyrics": "God is with us, reveal'd in us"
         },
         {
-          "chords": "A7       Dm7 G7       C",
+          "chords": "A7          Dm7  G7       C  F  C",
           "lyrics": "His name is called, Emmanuel"
         }
       ]

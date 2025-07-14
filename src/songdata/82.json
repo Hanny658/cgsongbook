@@ -11,15 +11,15 @@
           "lyrics": "Amazing grace, how sweet the sound"
         },
         {
-          "chords": "   D                  A",
+          "chords": "     D                   A",
           "lyrics": "That saved a wretch like me"
         },
         {
-          "chords": " D      D/F# Gadd9      D",
+          "chords": " D     D/F#  Gadd9           D",
           "lyrics": "I once was lost, but now I'm found"
         },
         {
-          "chords": "  D          A    D",
+          "chords": "    D          A    D",
           "lyrics": "Was blind but now I see"
         }
       ]
@@ -29,19 +29,19 @@
       "label": "Verse 2",
       "lines": [
         {
-          "chords": "",
+          "chords": " D                         G        D",
           "lyrics": "’Twas grace that taught my heart to fear"
         },
         {
-          "chords": "",
+          "chords": "              A#m  D#m        A",
           "lyrics": "And grace my fears relieved"
         },
         {
-          "chords": "",
+          "chords": "    D            G          D",
           "lyrics": "How precious did that grace appear"
         },
         {
-          "chords": "",
+          "chords": "    A#m    D#m     G  Gm D",
           "lyrics": "The hour I first believed"
         }
       ]
