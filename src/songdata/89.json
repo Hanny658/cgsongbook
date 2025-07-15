@@ -7,19 +7,19 @@
       "label": "Verse 1",
       "lines": [
         {
-          "chords": "D     A",
+          "chords": "C      F     G     C",
           "lyrics": "All to Jesus I surrender"
         },
         {
-          "chords": "D     A7  D",
+          "chords": "Am     F     G      C",
           "lyrics": "All to Him I freely give"
         },
         {
-          "chords": "D        A7",
+          "chords": "C      F    C        C",
           "lyrics": "I will ever love and trust Him"
         },
         {
-          "chords": "D            A7  D",
+          "chords": "Am     F        G     C",
           "lyrics": "In His presence daily live"
         }
       ]
@@ -29,15 +29,15 @@
       "label": "Chorus",
       "lines": [
         {
-          "chords": "D        Em A7        D",
+          "chords": "Am          Dm   G           C",
           "lyrics": "I surrender all, I surrender all"
         },
         {
-          "chords": "     DMaj7   D7     G",
+          "chords": "C      Am       F",
           "lyrics": "All to Thee my blessed Savior"
         },
         {
-          "chords": "Em7 A7   D",
+          "chords": "C     G     C",
           "lyrics": "I surrender all"
         }
       ]
@@ -47,19 +47,19 @@
       "label": "Verse 2",
       "lines": [
         {
-          "chords": "",
+          "chords": "C      F     G     C",
           "lyrics": "All to Jesus I surrender"
         },
         {
-          "chords": "",
+          "chords": "Am     F      G      C",
           "lyrics": "Humbly at His feet I bow"
         },
         {
-          "chords": "",
+          "chords": "C       F         C   C",
           "lyrics": "Worldly pleasures all forsaken"
         },
         {
-          "chords": "",
+          "chords": "Am       F      G       C",
           "lyrics": "Take me, Jesus, take me now"
         }
       ]
@@ -69,19 +69,19 @@
       "label": "Verse 3",
       "lines": [
         {
-          "chords": "",
+          "chords": "C      F     G     C",
           "lyrics": "All to Jesus I surrender"
         },
         {
-          "chords": "",
+          "chords": "Am       F       G      C",
           "lyrics": "Make me, Savior, wholly Thine"
         },
         {
-          "chords": "",
+          "chords": "C      F        G    Em",
           "lyrics": "Let me feel the Holy Spirit"
         },
         {
-          "chords": "",
+          "chords": "Am     F        G        C",
           "lyrics": "Truly know that Thou art mine"
         }
       ]
@@ -91,19 +91,19 @@
       "label": "Verse 4",
       "lines": [
         {
-          "chords": "",
+          "chords": "C      F     G     C",
           "lyrics": "All to Jesus I surrender"
         },
         {
-          "chords": "",
+          "chords": "Am    F        G      C",
           "lyrics": "Now I feel the sacred flame"
         },
         {
-          "chords": "",
+          "chords": "C     F      G       Em",
           "lyrics": "O the joy of full salvation"
         },
         {
-          "chords": "",
+          "chords": "Am     F        G   C",
           "lyrics": "Glory, glory to His name"
         }
       ]

@@ -7,20 +7,24 @@
             "label": "Verse",
             "lines": [
                 {
-                    "chords": " D               F#m7",
+                    "chords": "F    Dm           F       Dm",
                     "lyrics": "Jesus, name above all names"
                 },
                 {
-                    "chords": "        Em7          Asus4 A",
-                    "lyrics": "Beautiful Savior, glorious Lord"
+                    "chords": "F/C       Gm  Eb",
+                    "lyrics": "Beautiful Savior"
                 },
                 {
-                    "chords": "  D             F#m7",
+                    "chords": "C7       Fm7 - Gm7 - Am7 - Gm7/C",
+                    "lyrics": "Glorious Lord -----"
+                },
+                {
+                    "chords": "  F    Dm         F    Dm",
                     "lyrics": "Emmanuel, God is with us"
                 },
                 {
-                    "chords": "       Em7     A7     D",
-                    "lyrics": "Blessed Redeemer, living Word"
+                    "chords": "F/C     Gm    Eb  C7     F    Bb/F",
+                    "lyrics": "Blessed Redeemer, living Wo - rd"
                 }
             ]
         }

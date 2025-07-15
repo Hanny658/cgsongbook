@@ -1,48 +1,58 @@
 {
-    "title": "In The Sweet By And By",
+    "title": "How Great Thou Art",
     "number": 244,
     "lyrics": [
+        {
+            "id": "intro",
+            "label": "Intro",
+            "lines": [
+                {
+                    "chords": "G   Gsus",
+                    "lyrics": ""
+                }
+            ]
+        },
         {
             "id": "verse1",
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "          C            F           C",
-                    "lyrics": "There's a land that is fairer than day,"
+                    "chords": "           G             C/G",
+                    "lyrics": "O Lord my God, When I in awesome wonder,"
                 },
                 {
-                    "chords": "                             G",
-                    "lyrics": "And by faith we can see it afar,"
+                    "chords": "         G                  D/F#      G",
+                    "lyrics": "consider all the Worlds Thy hand hath made."
                 },
                 {
-                    "chords": "        C            F          C",
-                    "lyrics": "For the Father waits over the way"
+                    "chords": "           G                C/G",
+                    "lyrics": "I see the stars, I hear the rolling thunder"
                 },
                 {
-                    "chords": "                 G               C",
-                    "lyrics": "To prepare us a dwelling place there."
+                    "chords": "               G            D/F#     G",
+                    "lyrics": "Thy pow'r throughout the universe displayed"
                 }
             ]
         },
         {
-            "id": "chorus",
+            "id": "chorus1",
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "        C           G",
-                    "lyrics": "In the sweet by and by,"
+                    "chords": "               G        C/G         G",
+                    "lyrics": "Then sings my soul, my Savior God, to Thee"
                 },
                 {
-                    "chords": "         G7                     C",
-                    "lyrics": "We shall meet on that beautiful shore;"
+                    "chords": "               Am7                 G",
+                    "lyrics": "How great Thou art! How great Thou art!"
                 },
                 {
-                    "chords": "       C7           F",
-                    "lyrics": "In the sweet by and by,"
+                    "chords": "                      C/G             G",
+                    "lyrics": "Then sings my soul, my Savior God, to Thee"
                 },
                 {
-                    "chords": "         C            G         C",
-                    "lyrics": "We shall meet on that beautiful shore."
+                    "chords": "               Am7    C/G            G",
+                    "lyrics": "How great Thou art! How great Thou art!"
                 }
             ]
         },
@@ -51,20 +61,42 @@
             "label": "Verse 2",
             "lines": [
                 {
-                    "chords": "         C            F         C",
-                    "lyrics": "We shall sing on that beautiful shore"
+                    "chords": "            G                  C/G",
+                    "lyrics": "And when I think that God, His Son not sparing"
                 },
                 {
-                    "chords": "                           G",
-                    "lyrics": "The melodious songs of the blessed;"
+                    "chords": "             G                D/F#    G",
+                    "lyrics": "Sent Him to die, I scarce can take it in"
                 },
                 {
-                    "chords": "        C             F         C",
-                    "lyrics": "And our spirits shall sorrow no more,"
+                    "chords": "               G              C/G",
+                    "lyrics": "That on the cross, my burden gladly bearing"
                 },
                 {
-                    "chords": "                   G           C",
-                    "lyrics": "Not a sigh for the blessing of rest."
+                    "chords": "             G            D/F#    G",
+                    "lyrics": "He bled and died to take away my sin"
+                }
+            ]
+        },
+        {
+            "id": "chorus2",
+            "label": "Chorus",
+            "lines": [
+                {
+                    "chords": "               G        C/G         G",
+                    "lyrics": "Then sings my soul, my Savior God, to Thee"
+                },
+                {
+                    "chords": "               Am7                 G",
+                    "lyrics": "How great Thou art! How great Thou art!"
+                },
+                {
+                    "chords": "                      C/G             G",
+                    "lyrics": "Then sings my soul, my Savior God, to Thee"
+                },
+                {
+                    "chords": "               Am7    C/G            G",
+                    "lyrics": "How great Thou art! How great Thou art!"
                 }
             ]
         },
@@ -73,31 +105,70 @@
             "label": "Verse 3",
             "lines": [
                 {
-                    "chords": "       C         F       C",
-                    "lyrics": "To our bountiful Father above,"
+                    "chords": "                  G                    C/G",
+                    "lyrics": "When Christ shall come, with shouts of acclamation"
                 },
                 {
-                    "chords": "                                G",
-                    "lyrics": "We will offer our tribute of praise"
+                    "chords": "            G                   D/F#      G",
+                    "lyrics": "And take me home, what joy shall fill my heart"
                 },
                 {
-                    "chords": "        C        F           C",
-                    "lyrics": "For the glorious gift of His love"
+                    "chords": "              G             C/G",
+                    "lyrics": "Then I shall bow in humble adoration"
                 },
                 {
-                    "chords": "                       G           C",
-                    "lyrics": "And the blessings that hallow our days."
+                    "chords": "             G                  D/F#       G",
+                    "lyrics": "And there proclaim, My God, how great You are!"
+                }
+            ]
+        },
+        {
+            "id": "chorus3",
+            "label": "Chorus",
+            "lines": [
+                {
+                    "chords": "               G        C/G         G",
+                    "lyrics": "Then sings my soul, my Savior God, to Thee"
+                },
+                {
+                    "chords": "               Am7                 G",
+                    "lyrics": "How great Thou art! How great Thou art!"
+                },
+                {
+                    "chords": "                      C/G             G",
+                    "lyrics": "Then sings my soul, my Savior God, to Thee"
+                },
+                {
+                    "chords": "               Am7    C/G            G",
+                    "lyrics": "How great Thou art! How great Thou art!"
+                },
+                {
+                    "chords": "               G        C/G         G",
+                    "lyrics": "Then sings my soul, my Savior God, to Thee"
+                },
+                {
+                    "chords": "               Am7                 G",
+                    "lyrics": "How great Thou art! How great Thou art!"
+                },
+                {
+                    "chords": "                      C/G             G",
+                    "lyrics": "Then sings my soul, my Savior God, to Thee"
+                },
+                {
+                    "chords": "               Am7    C/G            G",
+                    "lyrics": "How great Thou art! How great Thou art!"
                 }
             ]
         }
     ],
     "song": [
+        "intro",
         "verse1",
-        "chorus",
+        "chorus1",
         "verse2",
-        "chorus",
+        "chorus2",
         "verse3",
-        "chorus"
+        "chorus3"
     ],
-    "link": ""
+    "link": "https://www.youtube.com/watch?v=VffdBR4kDM0"
 }

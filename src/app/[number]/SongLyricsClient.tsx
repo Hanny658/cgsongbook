@@ -153,7 +153,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
           <div className="flex items-center space-x-4">
             <button
               onClick={toggleTracking}
-              className={`text-sm px-3 py-1 rounded-md border ${tracking
+              className={`text-xs px-3 py-1 rounded-md border ${tracking
                 ? 'bg-orange-500 text-white border-orange-600'
                 : 'bg-gray-100 text-black border-gray-300'
                 }`}

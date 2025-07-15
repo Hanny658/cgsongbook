@@ -7,11 +7,11 @@
       "label": "Verse 1",
       "lines": [
         {
-          "chords": "    G             G7",
+          "chords": "     G               G7",
           "lyrics": "This world is not my home"
         },
         {
-          "chords": "   C            G",
+          "chords": "    C              G",
           "lyrics": "I'm just a passing through"
         },
         {
@@ -19,11 +19,11 @@
           "lyrics": "My treasures are laid up"
         },
         {
-          "chords": "     Asus7   A7       D",
+          "chords": "    Asus7   A7       D",
           "lyrics": "Somewhere beyond the blue"
         },
         {
-          "chords": "    G             G7",
+          "chords": "    G               G7",
           "lyrics": "The Saviour beckons me"
         },
         {
@@ -31,11 +31,11 @@
           "lyrics": "From heaven's open door"
         },
         {
-          "chords": "     Em       Am",
+          "chords": "      Em            Am",
           "lyrics": "And I can't feel at home"
         },
         {
-          "chords": "      D        G",
+          "chords": "     D        G",
           "lyrics": "In this world anymore"
         }
       ]
@@ -45,35 +45,35 @@
       "label": "Chorus",
       "lines": [
         {
-          "chords": "",
+          "chords": "G",
           "lyrics": "O Lord You know"
         },
         {
-          "chords": "  C               G",
+          "chords": "  C                   G",
           "lyrics": "I have no Friend like You"
         },
         {
-          "chords": "                Em",
+          "chords": "                   Em",
           "lyrics": "If heaven's not my home"
         },
         {
-          "chords": "     A7            D7",
+          "chords": "     A7                D7",
           "lyrics": "Then Lord what shall I do?"
         },
         {
-          "chords": "    G              G7",
+          "chords": "    G               G7",
           "lyrics": "The Saviour beckons me"
         },
         {
-          "chords": "     C            G",
+          "chords": "     C             G",
           "lyrics": "From heaven's open door"
         },
         {
-          "chords": "                Em",
+          "chords": "                    Em",
           "lyrics": "And I can't feel at home"
         },
         {
-          "chords": "     Am7  D7 G",
+          "chords": "       Am7    D7  G",
           "lyrics": "In this world anymore"
         }
       ]
@@ -83,35 +83,35 @@
       "label": "Verse 2",
       "lines": [
         {
-          "chords": "",
+          "chords": "     G            G7",
           "lyrics": "Just over in gloryland,"
         },
         {
-          "chords": "",
+          "chords": "    C             G",
           "lyrics": "We'll live eternally"
         },
         {
-          "chords": "",
+          "chords": "                    Em",
           "lyrics": "The saints on every land"
         },
         {
-          "chords": "",
+          "chords": "    Asus7    A7    D",
           "lyrics": "Are shouting victory"
         },
         {
-          "chords": "",
+          "chords": "      G                 G7",
           "lyrics": "Their songs of sweetest praise"
         },
         {
-          "chords": "",
+          "chords": "      C                  G",
           "lyrics": "Drift back from heaven's shore"
         },
         {
-          "chords": "",
+          "chords": "      Em            Am",
           "lyrics": "And I can't feel at home"
         },
         {
-          "chords": "",
+          "chords": "     D        G",
           "lyrics": "In this world anymore"
         }
       ]

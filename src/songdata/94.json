@@ -7,35 +7,35 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": " D    F#m",
+                    "chords": "   D            F#m",
                     "lyrics": "It only takes a spark"
                 },
                 {
-                    "chords": "  G    A",
+                    "chords": "   G          A",
                     "lyrics": "To get a fire going"
                 },
                 {
-                    "chords": "  D      F#m",
+                    "chords": "    D              F#m",
                     "lyrics": "And soon all those around"
                 },
                 {
-                    "chords": "   G      A",
+                    "chords": "    G              A",
                     "lyrics": "Can warm up in its glowing"
                 },
                 {
-                    "chords": "   G     D/F#   Em",
+                    "chords": "D      G              D/F#   Em",
                     "lyrics": "That's how it is with God's love"
                 },
                 {
-                    "chords": "   A7   F#m   Bm",
+                    "chords": "     A7     F#m         Bm",
                     "lyrics": "Once you've experienced it"
                 },
                 {
-                    "chords": "   Em    D/F#  G D",
+                    "chords": "      Em         D/F#    G  D",
                     "lyrics": "You'd spread His love to everyone"
                 },
                 {
-                    "chords": "   Em  A   D",
+                    "chords": "      Em      A       D",
                     "lyrics": "You'd want to pass it on"
                 }
             ]
@@ -45,39 +45,39 @@
             "label": "Verse 2",
             "lines": [
                 {
-                    "chords": "",
+                    "chords": "       D                F#m",
                     "lyrics": "What a wondrous time is spring"
                 },
                 {
-                    "chords": "",
+                    "chords": "     G                 A",
                     "lyrics": "When all the trees are budding"
                 },
                 {
-                    "chords": "",
+                    "chords": "    D              F#m",
                     "lyrics": "The birds begin to sing"
                 },
                 {
-                    "chords": "",
+                    "chords": "    G                   A",
                     "lyrics": "The flowers start their blooming"
                 },
                 {
-                    "chords": "",
+                    "chords": "D      G              D/F#  Em",
                     "lyrics": "That's how it is with God's love"
                 },
                 {
-                    "chords": "",
+                    "chords": "     A7     F#m         Bm",
                     "lyrics": "Once you've experienced it"
                 },
                 {
-                    "chords": "",
+                    "chords": "      Em      D",
                     "lyrics": "You'd want to sing;"
                 },
                 {
-                    "chords": "",
+                    "chords": "     G          D",
                     "lyrics": "It's fresh like spring"
                 },
                 {
-                    "chords": "",
+                    "chords": "      Em      A       D",
                     "lyrics": "You'd want to pass it on"
                 }
             ]
@@ -87,35 +87,35 @@
             "label": "Verse 3",
             "lines": [
                 {
-                    "chords": "",
+                    "chords": "  D                F#m",
                     "lyrics": "I wish for you, my friend"
                 },
                 {
-                    "chords": "",
+                    "chords": "     G              A",
                     "lyrics": "This happiness that I've found"
                 },
                 {
-                    "chords": "",
+                    "chords": "    D             F#m",
                     "lyrics": "You can depend on Him"
                 },
                 {
-                    "chords": "",
+                    "chords": "   G                 A",
                     "lyrics": "It matters not where you're bound"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "I'll shout it from the mountaintop"
+                    "chords": "D    G                 D/F#     Em",
+                    "lyrics": "I'll shout it from the mountain top"
                 },
                 {
-                    "chords": "",
+                    "chords": "  A7      F#m      Bm",
                     "lyrics": "I want my world to know"
                 },
                 {
-                    "chords": "",
+                    "chords": "    Em      D/F#     G       D",
                     "lyrics": "The Lord of love has come to me"
                 },
                 {
-                    "chords": "",
+                    "chords": "  G       A       D",
                     "lyrics": "I want to pass it on"
                 }
             ]

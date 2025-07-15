@@ -11,7 +11,7 @@
           "lyrics": "Are you tired"
         },
         {
-          "chords": "                Em7",
+          "chords": "   Em7",
           "lyrics": "Of chasing pretty rainbows"
         },
         {
@@ -19,7 +19,7 @@
           "lyrics": "Are you tired"
         },
         {
-          "chords": "                    D",
+          "chords": "   D        D",
           "lyrics": "Of spinning round and round"
         },
         {
@@ -31,8 +31,12 @@
           "lyrics": "Of your life"
         },
         {
-          "chords": "A7                D",
-          "lyrics": "And at the feet of Jesus lay 'em down      A"
+          "chords": "A7",
+          "lyrics": "And at the feet of Jesus lay"
+        },
+        {
+          "chords": "   D",
+          "lyrics": "Lay 'em down"
         }
       ]
     },
@@ -41,15 +45,15 @@
       "label": "Chorus",
       "lines": [
         {
-          "chords": "          D          F#m",
+          "chords": "          D              F#m",
           "lyrics": "Give them all, give them all"
         },
         {
-          "chords": "G             A7",
+          "chords": "G                A7",
           "lyrics": "Give them all to Jesus"
         },
         {
-          "chords": "         Em            A7",
+          "chords": "          Em              A7",
           "lyrics": "Shattered dreams, wounded hearts"
         },
         {
@@ -57,15 +61,15 @@
           "lyrics": "And broken toys"
         },
         {
-          "chords": "          D          F#m",
+          "chords": "          D              F#m",
           "lyrics": "Give them all, give them all"
         },
         {
-          "chords": "G             A7",
+          "chords": "G                A7",
           "lyrics": "Give them all to Jesus"
         },
         {
-          "chords": "    Em           A7        D",
+          "chords": "    Em              A7          D",
           "lyrics": "And He'll turn your sorrow into joy!"
         }
       ]
@@ -75,19 +79,19 @@
       "label": "Verse 2",
       "lines": [
         {
-          "chords": "",
+          "chords": "D                   Em",
           "lyrics": "He never said you'd only see sunshine"
         },
         {
-          "chords": "",
+          "chords": "A7                     G     D",
           "lyrics": "He never said there'll be no rain"
         },
         {
-          "chords": "",
+          "chords": "                   Em                Em7",
           "lyrics": "He only promised a heart full of singing"
         },
         {
-          "chords": "",
+          "chords": "A7                         D",
           "lyrics": "about the very things That once brought pain"
         }
       ]
