@@ -27,7 +27,7 @@ body {
 
 @font-face {
   font-family: 'Chords';
-  src: url('/fonts/chords.ttf') format('truetype');
+  src: url('/fonts/chords1.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
