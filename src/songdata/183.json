@@ -1,5 +1,5 @@
 {
-    "title": "We Are the Reason",
+    "title": "In Christ Alone (I place my trust)",
     "number": 183,
     "lyrics": [
         {
@@ -7,66 +7,70 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "      G",
-                    "lyrics": "As little children we would"
+                    "chords": "C",
+                    "lyrics": "In Christ alone will I glory"
                 },
                 {
-                    "chords": "Am/F#   B       Em",
-                    "lyrics": "dream of Christmas morn"
+                    "chords": "        G",
+                    "lyrics": "Though I could pride"
                 },
                 {
-                    "chords": "   Dm7   G       C",
-                    "lyrics": "and all the gifts and toys"
+                    "chords": "   Dm         Am",
+                    "lyrics": "myself in battles won"
                 },
                 {
-                    "chords": "   G/B      Am7",
-                    "lyrics": "we knew we'd find"
+                    "chords": "     G/B        C",
+                    "lyrics": "For I’ve been blessed beyond measure"
                 },
                 {
-                    "chords": "       B    Em",
-                    "lyrics": "but we never realised"
+                    "chords": "    G          F        Gsus G",
+                    "lyrics": "And by His strength alone I’ll overcome"
                 },
                 {
-                    "chords": "     Em/D            Em/C#",
-                    "lyrics": "a baby born one blessed night"
+                    "chords": "F               G    C",
+                    "lyrics": "Oh, I could stop and count successes"
                 },
                 {
-                    "chords": "         Cmaj7      Am7  D",
-                    "lyrics": "gave us the greatest gift of our lives"
+                    "chords": "    G              F",
+                    "lyrics": "like diamonds in my hands"
+                },
+                {
+                    "chords": "          Dm             C/E",
+                    "lyrics": "But those trophies could not equal"
+                },
+                {
+                    "chords": "      F             Gsus G",
+                    "lyrics": "to the grace by which I stand"
                 }
             ]
         },
         {
-            "id": "chorus1",
+            "id": "chorus",
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "G",
-                    "lyrics": "We are the reason that"
+                    "chords": "  C/E  F            C/E",
+                    "lyrics": "In Christ alone I place my trust"
                 },
                 {
-                    "chords": "Am/G",
-                    "lyrics": "He gave His life"
+                    "chords": "           Dm",
+                    "lyrics": "And find my glory in the"
                 },
                 {
-                    "chords": "Dsus     D       G",
-                    "lyrics": "we are the reason that"
+                    "chords": "G/B        C",
+                    "lyrics": "power of the cross"
                 },
                 {
-                    "chords": "   C/G         G  D/F#",
-                    "lyrics": "He suffered and died"
+                    "chords": "        F   G       Em   Am",
+                    "lyrics": "In every victory let it be said of me"
                 },
                 {
-                    "chords": "   Em",
-                    "lyrics": "to a world that was lost,"
+                    "chords": "    Dm                 G",
+                    "lyrics": "My source of strength, My source of hope"
                 },
                 {
-                    "chords": "        Am7",
-                    "lyrics": "He gave all He could"
-                },
-                {
-                    "chords": "       D7                 G",
-                    "lyrics": "give to show us the reason to live"
+                    "chords": "       C",
+                    "lyrics": "Is Christ alone"
                 }
             ]
         },
@@ -76,89 +80,36 @@
             "lines": [
                 {
                     "chords": "",
-                    "lyrics": "As the years go by we learned more about gifts"
+                    "lyrics": "In Christ alone do I glory"
                 },
                 {
                     "chords": "",
-                    "lyrics": "giving of ourselves and what that means"
+                    "lyrics": "For only by His grace I am redeemed"
                 },
                 {
                     "chords": "",
-                    "lyrics": "On a dark and cloudy day a man hung crying"
+                    "lyrics": "For only His tender mercy"
                 },
                 {
                     "chords": "",
-                    "lyrics": "in the rain because of love, because of love"
-                }
-            ]
-        },
-        {
-            "id": "bridge",
-            "label": "Bridge",
-            "lines": [
-                {
-                    "chords": "    Eb                   Bb/D",
-                    "lyrics": "I've finally found a reason for living,"
+                    "lyrics": "Could reach beyond my weakness to my need"
                 },
                 {
-                    "chords": "    Bbm/Db             Ab/C",
-                    "lyrics": "it's in giving every part of my heart to Him"
+                    "chords": "",
+                    "lyrics": "And now I seek no greater honor in just to know Him more"
                 },
                 {
-                    "chords": "  Abm/B          Eb/Ab    Cm7",
-                    "lyrics": "In all that I do, every word that I say"
-                },
-                {
-                    "chords": "      F                Bb",
-                    "lyrics": "I'll be giving my all just for Him,"
-                },
-                {
-                    "chords": "   E",
-                    "lyrics": "for Him"
-                }
-            ]
-        },
-        {
-            "id": "chorus2",
-            "label": "Chorus",
-            "lines": [
-                {
-                    "chords": "    A                  Bm7",
-                    "lyrics": "And we are the reason that He gave His life"
-                },
-                {
-                    "chords": "Esus       E           A",
-                    "lyrics": "we are the reason that He suffered and died"
-                },
-                {
-                    "chords": "        E/G#",
-                    "lyrics": ""
-                },
-                {
-                    "chords": "    F#m",
-                    "lyrics": "to a world that was lost"
-                },
-                {
-                    "chords": "        Bm",
-                    "lyrics": "He gave all He could give"
-                },
-                {
-                    "chords": "   E                 F#m",
-                    "lyrics": "to show us the reason to live"
-                },
-                {
-                    "chords": "D      E        A",
-                    "lyrics": "He is my reason to live"
+                    "chords": "",
+                    "lyrics": "And to count my gains but losses to the glory of my Lord"
                 }
             ]
         }
     ],
     "song": [
         "verse1",
-        "chorus1",
+        "chorus",
         "verse2",
-        "bridge",
-        "chorus2"
+        "chorus"
     ],
-    "link": "https://www.youtube.com/watch?v=cMhajmOBr0c"
+    "link": ""
 }

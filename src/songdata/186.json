@@ -1,104 +1,86 @@
 {
-  "title": "Good Good Father",
+  "title": "Friends and Friends Forever",
   "number": 186,
   "lyrics": [
-    {
-      "id": "intro",
-      "label": "Intro",
-      "lines": [
-        {
-          "chords": "G Gsus4 G",
-          "lyrics": "(x2)"
-        }
-      ]
-    },
     {
       "id": "verse1",
       "label": "Verse 1",
       "lines": [
         {
-          "chords": "   G          Gsus4    G",
-          "lyrics": "Oh, I've heard a thousand stories"
+          "chords": "C             G/B        Am Am/G",
+          "lyrics": "Packing up the dreams God planted,"
         },
         {
-          "chords": "G          Gsus4      G",
-          "lyrics": "Of what they think You're like"
+          "chords": "F          D/F# Gsus",
+          "lyrics": "In the fertile soil of you,"
         },
         {
-          "chords": "G              Gsus4   G",
-          "lyrics": "But, I've heard the tender whisper"
+          "chords": "C               G/B      Am Am/G",
+          "lyrics": "Can’t believe the hopes He's granted,"
         },
         {
-          "chords": "G           Gsus4  G",
-          "lyrics": "Of love in the dead of night"
-        },
-        {
-          "chords": "       C     G/B",
-          "lyrics": "And You tell me that You're pleased"
-        },
-        {
-          "chords": "        Am7     Dsus4  D",
-          "lyrics": "And that I'm never alone"
+          "chords": "Dm7                 D    G",
+          "lyrics": "Means a chapter in your life is through,"
         }
       ]
     },
     {
-      "id": "chorus",
-      "label": "Chorus",
-      "lines": [
-        {
-          "chords": "          Cadd9",
-          "lyrics": "You're a Good, Good Father"
-        },
-        {
-          "chords": "             G/B",
-          "lyrics": "It's who You are"
-        },
-        {
-          "chords": "             Am7",
-          "lyrics": "It's who You are"
-        },
-        {
-          "chords": "             D",
-          "lyrics": "It's who you are"
-        },
-        {
-          "chords": "              Cadd9",
-          "lyrics": "And I'm loved by You"
-        },
-        {
-          "chords": "           G/B",
-          "lyrics": "It's who I am"
-        },
-        {
-          "chords": "          Am7",
-          "lyrics": "It's who I am"
-        },
-        {
-          "chords": "         D  Dsus4  D",
-          "lyrics": "It's who I am"
-        }
-      ]
-    },
-    {
-      "id": "bridge",
+      "id": "bridge1",
       "label": "Bridge",
       "lines": [
         {
-          "chords": "            Cadd2         Em7",
-          "lyrics": "Cause You are perfect in all of your ways"
+          "chords": "                  E m    Am",
+          "lyrics": "But we’ll keep you close as always,"
         },
         {
-          "chords": "Am7              G",
-          "lyrics": "Perfect in all of your ways"
+          "chords": "       F                Fm",
+          "lyrics": "It won’t even seem you’ve gone,"
         },
         {
-          "chords": "       Cadd9              Em7",
-          "lyrics": "You are perfect in all of Your ways"
+          "chords": "            C    G/B    Am Am/G",
+          "lyrics": "cause our hearts in big and small ways,"
         },
         {
-          "chords": "   D",
-          "lyrics": "to us (repeat bridge)"
+          "chords": "            Dm     Gsus    C",
+          "lyrics": "will keep the love that keeps us strong,"
+        }
+      ]
+    },
+    {
+      "id": "chorus1",
+      "label": "Chorus",
+      "lines": [
+        {
+          "chords": "      C             G/B",
+          "lyrics": "And friends are friends forever if the"
+        },
+        {
+          "chords": "F/A             Gsus G",
+          "lyrics": "Lord’s the Lord of them,"
+        },
+        {
+          "chords": "      C               G/B",
+          "lyrics": "And a friend will not say never"
+        },
+        {
+          "chords": "         F               G",
+          "lyrics": "cause the welcome will not end,"
+        },
+        {
+          "chords": "           Esus          E",
+          "lyrics": "Though it’s hard to let you go,"
+        },
+        {
+          "chords": "      Am    Am/G    F#ø7 (F#m7b5)",
+          "lyrics": "in the Father’s hands we know,"
+        },
+        {
+          "chords": "       Dm7           Gsus",
+          "lyrics": "That a lifetime’s not too long"
+        },
+        {
+          "chords": "         C",
+          "lyrics": "to live as friends,"
         }
       ]
     },
@@ -108,46 +90,75 @@
       "lines": [
         {
           "chords": "",
-          "lyrics": "Oh, it’s a love so un-deniable"
+          "lyrics": "And with the faith and love God's given,"
         },
         {
           "chords": "",
-          "lyrics": "I, I can hardly speak"
+          "lyrics": "Springing from the hope we know,"
         },
         {
           "chords": "",
-          "lyrics": "Peace so un-explainable"
+          "lyrics": "We will pray the joy you live in,"
         },
         {
           "chords": "",
-          "lyrics": "I, I can hardly think"
+          "lyrics": "Is the strength that now you show,"
+        }
+      ]
+    },
+    {
+      "id": "chorus2",
+      "label": "Chorus",
+      "lines": [
+        {
+          "chords": "      D             A/C#",
+          "lyrics": "And friends are friends forever if the"
         },
         {
-          "chords": "",
-          "lyrics": "As You call me deeper still"
+          "chords": "G/B             Asus A",
+          "lyrics": "Lord’s the Lord of them,"
         },
         {
-          "chords": "",
-          "lyrics": "As You call me deeper still"
+          "chords": "      D               A/C#",
+          "lyrics": "And a friend will not say never"
         },
         {
-          "chords": "      C      G/B",
-          "lyrics": "As You call me deeper still"
+          "chords": "         G               A",
+          "lyrics": "cause the welcome will not end,"
         },
         {
-          "chords": "    Am7     D",
-          "lyrics": "Into love, love, love"
+          "chords": "           F#sus          F#",
+          "lyrics": "Though it’s hard to let you go,"
+        },
+        {
+          "chords": "      Bm    Bm/A    G#ø7 (G#m7b5)",
+          "lyrics": "in the Father’s hands we know,"
+        },
+        {
+          "chords": "       Em7           Asus",
+          "lyrics": "That a lifetime’s not too long"
+        },
+        {
+          "chords": "         D",
+          "lyrics": "to live as friends"
+        },
+        {
+          "chords": "      Em7            Asus",
+          "lyrics": "No, a lifetime's not too long"
+        },
+        {
+          "chords": "        D",
+          "lyrics": "to live as friends"
         }
       ]
     }
   ],
   "song": [
-    "intro",
     "verse1",
-    "chorus",
+    "bridge1",
+    "chorus1",
     "verse2",
-    "bridge",
-    "chorus"
+    "chorus2"
   ],
   "link": ""
 }

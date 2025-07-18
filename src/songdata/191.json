@@ -1,5 +1,5 @@
 {
-    "title": "The Wonder of It All",
+    "title": "One Voice",
     "number": 191,
     "lyrics": [
         {
@@ -7,28 +7,28 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "          G",
-                    "lyrics": "There's the wonder of"
+                    "chords": "C       G    Em     Am",
+                    "lyrics": "Father we ask of You this day"
                 },
                 {
-                    "chords": "D7      G",
-                    "lyrics": "Sunset at evening"
+                    "chords": "F        C/E    Gsus  G",
+                    "lyrics": "Come and heal our land"
                 },
                 {
-                    "chords": "    C        D/C     G",
-                    "lyrics": "The wonder as sunrise I see"
+                    "chords": "       F       C/E",
+                    "lyrics": "Knit our hearts together"
                 },
                 {
-                    "chords": "    D7         B",
-                    "lyrics": "But the wonder of wonders"
+                    "chords": "         E          Am",
+                    "lyrics": "That Your glory may be seen in u"
                 },
                 {
-                    "chords": "     Em    C#min7(b5)",
-                    "lyrics": "That thrills my soul"
+                    "chords": "        F        C/E",
+                    "lyrics": "Then the world may know"
                 },
                 {
-                    "chords": "     G/D       D        G",
-                    "lyrics": "Is the wonder that God loves me!"
+                    "chords": "     F           G",
+                    "lyrics": "That Jesus Christ is Lord"
                 }
             ]
         },
@@ -37,28 +37,36 @@
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "      G          G7",
-                    "lyrics": "Oh the wonder of it all"
+                    "chords": "        C    G",
+                    "lyrics": "Let us be one voice"
                 },
                 {
-                    "chords": "    C          Am",
-                    "lyrics": "The wonder of it all"
+                    "chords": "    F            G",
+                    "lyrics": "That glorifies Your name"
                 },
                 {
-                    "chords": "      G/D     D       G C/D D",
-                    "lyrics": "Just to think that God loves me"
+                    "chords": "        C  G",
+                    "lyrics": "Let us be one voice"
                 },
                 {
-                    "chords": "      G          G7",
-                    "lyrics": "O the wonder of it all"
+                    "chords": "   F             G",
+                    "lyrics": "Declaring that You reign"
                 },
                 {
-                    "chords": "    C          Am",
-                    "lyrics": "The wonder of it all"
+                    "chords": "        E",
+                    "lyrics": "Let us be one voice"
                 },
                 {
-                    "chords": "      G/D      D7       G",
-                    "lyrics": "Just to think that God loves me"
+                    "chords": "  Am  Am/G  F#m7(b5)",
+                    "lyrics": "In love and harmony"
+                },
+                {
+                    "chords": "       Dm",
+                    "lyrics": "And we pray O God;"
+                },
+                {
+                    "chords": "G7        C",
+                    "lyrics": "Grant us unity"
                 }
             ]
         },
@@ -68,27 +76,27 @@
             "lines": [
                 {
                     "chords": "",
-                    "lyrics": "There's the wonder"
+                    "lyrics": "Now is the time for you and I"
                 },
                 {
                     "chords": "",
-                    "lyrics": "of springtime and harvest;"
+                    "lyrics": "To join our hearts in praise"
                 },
                 {
                     "chords": "",
-                    "lyrics": "The sky, the stars and the sun"
+                    "lyrics": "That the name of Jesus will be"
                 },
                 {
                     "chords": "",
-                    "lyrics": "But the wonder of wonders"
+                    "lyrics": "Lifted high above the earth"
                 },
                 {
                     "chords": "",
-                    "lyrics": "That thrills my soul"
+                    "lyrics": "Then the world will know"
                 },
                 {
                     "chords": "",
-                    "lyrics": "Is a wonder that's only begun"
+                    "lyrics": "That Jesus Christ is Lord"
                 }
             ]
         }
@@ -99,5 +107,5 @@
         "verse2",
         "chorus"
     ],
-    "link": "https://www.youtube.com/watch?v=WLgVmVBBFAU"
+    "link": "https://www.youtube.com/watch?v=Au_Znfrjab4"
 }

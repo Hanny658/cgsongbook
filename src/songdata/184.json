@@ -1,5 +1,5 @@
 {
-    "title": "How Can I Say Thanks (My Tribute)",
+    "title": "We Are the Reason",
     "number": 184,
     "lyrics": [
         {
@@ -7,101 +7,158 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "A           Amaj7       A7",
-                    "lyrics": "How can I say thanks for the things"
+                    "chords": "      G",
+                    "lyrics": "As little children we would"
                 },
                 {
-                    "chords": "         F#",
-                    "lyrics": "You have done for me"
+                    "chords": "Am/F#   B       Em",
+                    "lyrics": "dream of Christmas morn"
                 },
                 {
-                    "chords": "Bm           BmM7",
-                    "lyrics": "Things so undeserved,"
+                    "chords": "   Dm7   G       C",
+                    "lyrics": "and all the gifts and toys"
                 },
                 {
-                    "chords": "       Bm7",
-                    "lyrics": "yet You gave"
+                    "chords": "   G/B      Am7",
+                    "lyrics": "we knew we'd find"
                 },
                 {
-                    "chords": "             Bm7(b5) (Bø7)",
-                    "lyrics": "To prove Your love for me"
+                    "chords": "       B    Em",
+                    "lyrics": "but we never realised"
                 },
                 {
-                    "chords": "     A              F#m",
-                    "lyrics": "The voices of a million angels"
+                    "chords": "     Em/D            Em/C#",
+                    "lyrics": "a baby born one blessed night"
                 },
                 {
-                    "chords": "            Dmaj7     Dm6",
-                    "lyrics": "Could not express my gratitude"
-                },
-                {
-                    "chords": "        A      F#         Bm",
-                    "lyrics": "All that I am and ever hope to be"
-                },
-                {
-                    "chords": "     E      A",
-                    "lyrics": "I owe it all to You"
+                    "chords": "         Cmaj7      Am7  D",
+                    "lyrics": "gave us the greatest gift of our lives"
                 }
             ]
         },
         {
-            "id": "chorus",
+            "id": "chorus1",
             "label": "Chorus",
             "lines": [
                 {
-                    "chords": "  A          C#  F#m",
-                    "lyrics": "To God be the glory"
+                    "chords": "G",
+                    "lyrics": "We are the reason that"
                 },
                 {
-                    "chords": "   Bm        F E",
-                    "lyrics": "To God be the glory"
+                    "chords": "Am/G",
+                    "lyrics": "He gave His life"
                 },
                 {
-                    "chords": "   C#        F#m",
-                    "lyrics": "To God be the glory"
+                    "chords": "Dsus     D       G",
+                    "lyrics": "we are the reason that"
                 },
                 {
-                    "chords": "       Ebm7(b5)(Ebø7) Esus E",
-                    "lyrics": "For the things He hath done"
+                    "chords": "   C/G         G  D/F#",
+                    "lyrics": "He suffered and died"
                 },
                 {
-                    "chords": "         A           C#   F#m",
-                    "lyrics": "With His blood He has saved me"
+                    "chords": "   Em",
+                    "lyrics": "to a world that was lost,"
                 },
                 {
-                    "chords": "        Bm          F   E",
-                    "lyrics": "With His power He has raised me"
+                    "chords": "        Am7",
+                    "lyrics": "He gave all He could"
                 },
                 {
-                    "chords": "   C#         F#m",
-                    "lyrics": "To God be the glory"
+                    "chords": "       D7                 G",
+                    "lyrics": "give to show us the reason to live"
+                }
+            ]
+        },
+        {
+            "id": "verse2",
+            "label": "Verse 2",
+            "lines": [
+                {
+                    "chords": "",
+                    "lyrics": "As the years go by we learned more about gifts"
                 },
                 {
-                    "chords": "        Bm   D/E   A",
-                    "lyrics": "For the things He has done"
+                    "chords": "",
+                    "lyrics": "giving of ourselves and what that means"
                 },
                 {
-                    "chords": "          C#",
-                    "lyrics": "Just let me live my life"
+                    "chords": "",
+                    "lyrics": "On a dark and cloudy day a man hung crying"
                 },
                 {
-                    "chords": "       F#m",
-                    "lyrics": "Let it be pleasing, Lord to Thee"
+                    "chords": "",
+                    "lyrics": "in the rain because of love, because of love"
+                }
+            ]
+        },
+        {
+            "id": "bridge",
+            "label": "Bridge",
+            "lines": [
+                {
+                    "chords": "    Eb                   Bb/D",
+                    "lyrics": "I've finally found a reason for living,"
                 },
                 {
-                    "chords": "            D      Bm",
-                    "lyrics": "And should I gain any praise"
+                    "chords": "    Bbm/Db             Ab/C",
+                    "lyrics": "it's in giving every part of my heart to Him"
                 },
                 {
-                    "chords": "          Esus7  E",
-                    "lyrics": "Let it go to Calvary"
+                    "chords": "  Abm/B          Eb/Ab    Cm7",
+                    "lyrics": "In all that I do, every word that I say"
+                },
+                {
+                    "chords": "      F                Bb",
+                    "lyrics": "I'll be giving my all just for Him,"
+                },
+                {
+                    "chords": "   E",
+                    "lyrics": "for Him"
+                }
+            ]
+        },
+        {
+            "id": "chorus2",
+            "label": "Chorus",
+            "lines": [
+                {
+                    "chords": "    A                  Bm7",
+                    "lyrics": "And we are the reason that He gave His life"
+                },
+                {
+                    "chords": "Esus       E           A",
+                    "lyrics": "we are the reason that He suffered and died"
+                },
+                {
+                    "chords": "        E/G#",
+                    "lyrics": ""
+                },
+                {
+                    "chords": "    F#m",
+                    "lyrics": "to a world that was lost"
+                },
+                {
+                    "chords": "        Bm",
+                    "lyrics": "He gave all He could give"
+                },
+                {
+                    "chords": "   E                 F#m",
+                    "lyrics": "to show us the reason to live"
+                },
+                {
+                    "chords": "D      E        A",
+                    "lyrics": "He is my reason to live"
                 }
             ]
         }
     ],
     "song": [
         "verse1",
-        "chorus"
+        "chorus1",
+        "verse2",
+        "bridge",
+        "chorus2"
     ],
-    "link": ""
+    "link": "https://www.youtube.com/watch?v=cMhajmOBr0c"
 }
