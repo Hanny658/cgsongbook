@@ -1,0 +1,98 @@
+{
+    "title": "The Wise Man Built",
+    "number": 200,
+    "lyrics": [
+        {
+            "id": "verse1",
+            "label": "Verse 1",
+            "lines": [
+                {
+                    "chords": "E                      B",
+                    "lyrics": "The wise man built his house upon the rock"
+                },
+                {
+                    "chords": "                       E",
+                    "lyrics": "The wise man built his house upon the rock"
+                },
+                {
+                    "chords": "                       B",
+                    "lyrics": "The wise man built his house upon the rock"
+                },
+                {
+                    "chords": "                            E",
+                    "lyrics": "And the rains came tumbling down"
+                }
+            ]
+        },
+        {
+            "id": "chorus",
+            "label": "Chorus",
+            "lines": [
+                {
+                    "chords": "",
+                    "lyrics": "The rains came down and the"
+                },
+                {
+                    "chords": "B",
+                    "lyrics": "floods came up"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "The rains came down and the"
+                },
+                {
+                    "chords": "E",
+                    "lyrics": "floods came up"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "The rains came down and the"
+                },
+                {
+                    "chords": "B",
+                    "lyrics": "floods came up"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "And the house on the rock stood"
+                },
+                {
+                    "chords": "E",
+                    "lyrics": "firm"
+                }
+            ]
+        },
+        {
+            "id": "verse2",
+            "label": "Verse 2",
+            "lines": [
+                {
+                    "chords": "",
+                    "lyrics": "The foolish man built his house upon the sand"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "So build your house on the Lord Jesus Christ x 3"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "And the blessings will come raining down"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "The blessings will come down as your prayers go up x3"
+                },
+                {
+                    "chords": "",
+                    "lyrics": "So build your house on the Lord"
+                }
+            ]
+        }
+    ],
+    "song": [
+        "verse1",
+        "chorus",
+        "verse2"
+    ],
+    "link": ""
+}
