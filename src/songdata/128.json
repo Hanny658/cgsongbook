@@ -7,35 +7,39 @@
             "label": "Verse 1",
             "lines": [
                 {
-                    "chords": "D       A7     Bm",
+                    "chords": "D          A7       Bm",
                     "lyrics": "This is my Father's world"
                 },
                 {
-                    "chords": "    G            Em  A7",
+                    "chords": "G   Em    A7   D    A",
                     "lyrics": "And to my listening ears"
                 },
                 {
-                    "chords": "    D    F#       Bm      G",
+                    "chords": "    D      F#    Bm  F#    F#7   Bm",
                     "lyrics": "All nature sings and round me rings"
                 },
                 {
-                    "chords": "    Em    A7   D",
+                    "chords": "A7  D        A7    D",
                     "lyrics": "The music of the spheres"
                 },
                 {
-                    "chords": "    D   G      Bm",
+                    "chords": "A7   D     G    A7  D",
                     "lyrics": "This is my Father's world"
                 },
                 {
-                    "chords": "  G   A7     D",
+                    "chords": "  G       A7  G  D",
                     "lyrics": "I rest me in the thought"
                 },
                 {
-                    "chords": "           F#    Bm Bm/A Bm/Ab",
-                    "lyrics": "Of rocks and trees, of skies and seas"
+                    "chords": "A7  D        F#",
+                    "lyrics": "Of rocks and trees"
                 },
                 {
-                    "chords": "   Em      A        D",
+                    "chords": "Bm  Bm/A  Bm/Ab",
+                    "lyrics": "Of  skies and seas"
+                },
+                {
+                    "chords": "    Em       A       D",
                     "lyrics": "His hand the wonders wrought"
                 }
             ]
@@ -45,20 +49,44 @@
             "label": "Verse 2",
             "lines": [
                 {
-                    "chords": "",
+                    "chords": "D          A7       Bm",
                     "lyrics": "This is my Father's world"
                 },
                 {
-                    "chords": "",
+                    "chords": "G   Em          A7     D  A",
                     "lyrics": "The birds their carols raise"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "The morning light, the lily white"
+                    "chords": "    D       F#",
+                    "lyrics": "The morning light"
                 },
                 {
-                    "chords": "",
+                    "chords": "Bm  F#   F#7  Bm",
+                    "lyrics": "The lily wh - ite"
+                },
+                {
+                    "chords": "A7   D        A7      D",
                     "lyrics": "Declare their Maker's praise"
+                },
+                {
+                    "chords": "A7   D     G    A7  D",
+                    "lyrics": "This is my Father's world"
+                },
+                {
+                    "chords": "   G         A7  G      D",
+                    "lyrics": "He shines in all that's fair"
+                },
+                {
+                    "chords": "A7  D           F#",
+                    "lyrics": "In the rustling grass"
+                },
+                {
+                    "chords": "Bm  F#   F#7  Bm",
+                    "lyrics": "I   hear Him  pass"
+                },
+                {
+                    "chords": "A  D         A7      D",
+                    "lyrics": "He speaks to me everywhere"
                 }
             ]
         },
@@ -67,57 +95,39 @@
             "label": "Verse 3",
             "lines": [
                 {
-                    "chords": "",
+                    "chords": "D          A7       Bm",
                     "lyrics": "This is my Father's world"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "He shines in all that's fair"
+                    "chords": "G  Em     A7    D  A",
+                    "lyrics": "O  let me never forget"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "In the rustling grass I hear Him pass"
+                    "chords": "     D       F#",
+                    "lyrics": "That tho the wrong seems oft so strong"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "He speaks to me everywhere"
-                }
-            ]
-        },
-        {
-            "id": "verse4",
-            "label": "Verse 4",
-            "lines": [
-                {
-                    "chords": "",
-                    "lyrics": "This is my Father's world"
+                    "chords": "Bm    F#  F#7  Bm",
+                    "lyrics": "Seems oft so   strong"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "O let me never forget that"
-                },
-                {
-                    "chords": "",
-                    "lyrics": "Tho the wrong seems oft so strong"
-                },
-                {
-                    "chords": "",
+                    "chords": "A7  D      A7    D",
                     "lyrics": "God is the ruler yet"
                 },
                 {
-                    "chords": "",
+                    "chords": "A7   D     G    A7  D",
                     "lyrics": "This is my Father's world"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "The battle is not done"
+                    "chords": "    G      A7  G   D",
+                    "lyrics": "The battle is  not done"
                 },
                 {
-                    "chords": "",
-                    "lyrics": "Jesus, who died shall be satisfied"
+                    "chords": "A7D        F#   Bm    F#  F#7  Bm",
+                    "lyrics": "Jesus, who died shall be  satisfied"
                 },
                 {
-                    "chords": "",
+                    "chords": "A   D         A7     D",
                     "lyrics": "And earth and heaven be one"
                 }
             ]
@@ -126,8 +136,7 @@
     "song": [
         "verse1",
         "verse2",
-        "verse3",
-        "verse4"
+        "verse3"
     ],
     "link": "https://www.youtube.com/watch?v=bEE5MvoT3oI"
 }
