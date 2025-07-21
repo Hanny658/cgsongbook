@@ -1,25 +1,30 @@
 import { NextResponse } from 'next/server'
-import path from 'path'
-import { promises as fs } from 'fs'
+
+const DB_URL = process.env.DB_URL
 
 // GET /api/songlist
 export async function GET() {
   try {
-    const dirPath = path.join(process.cwd(), 'src', 'songdata')
+    if (!DB_URL) {
+      throw new Error('DB_URL is not defined in environment variables')
+    }
 
-    const files = (await fs.readdir(dirPath)).filter((file) => file.endsWith('.json'))
+    const response = await fetch(`${DB_URL}/songs`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
 
-    const songList = await Promise.all(
-      files.map(async (file) => {
-        const content = await fs.readFile(path.join(dirPath, file), 'utf-8')
-        const data = JSON.parse(content)
-        return { number: data.number, title: data.title, link: data.link }
-      })
-    )
+    if (!response.ok) {
+      throw new Error(`Failed to fetch from remote DB: ${response.statusText}`)
+    }
+
+    const songList = await response.json()
 
     return NextResponse.json(songList)
   } catch (error) {
-    console.error('Failed to read song files:', error)
-    return NextResponse.json({ error: 'Failed to load songs' }, { status: 500 })
+    console.error('Failed to fetch songs from DB_URL:', error)
+    return NextResponse.json({ error: 'Failed to load songs from database' }, { status: 500 })
   }
 }

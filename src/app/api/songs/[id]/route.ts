@@ -1,20 +1,29 @@
 import { NextRequest, NextResponse } from 'next/server'
-import fs from 'fs'
-import path from 'path'
 
 export async function GET(
     req: NextRequest,
     context: { params: Promise<{ id: string }> }
 ) {
     const { id } = await context.params
-    const filePath = path.join(process.cwd(), 'src', 'songdata', `${id}.json`)
+    const dbUrl = process.env.DB_URL
+
+    if (!dbUrl) {
+        return NextResponse.json({ error: 'DB_URL is not configured' }, { status: 500 })
+    }
+
+    const endpoint = `${dbUrl}/songs/${id}`
 
     try {
-        const content = fs.readFileSync(filePath, 'utf-8')
-        const song = JSON.parse(content)
+        const res = await fetch(endpoint)
+
+        if (!res.ok) {
+            return NextResponse.json({ error: 'Song not found' }, { status: res.status })
+        }
+
+        const song = await res.json()
         return NextResponse.json(song)
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (err) {
-        return NextResponse.json({ error: 'Song not found' }, { status: 404 })
+    } catch (error) {
+        console.error('Fetch error:', error)
+        return NextResponse.json({ error: 'Failed to fetch song' }, { status: 500 })
     }
 }
