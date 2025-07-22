@@ -30,11 +30,12 @@ export async function GET(
 
 export async function POST(
     request: NextRequest,
-    { params }: { params: { id: string } }
+    context: { params: Promise<{ id: string }> }
 ) {
     try {
         // 1. Parse incoming SongData
         const songData = await request.json();
+        const { id } = await context.params
 
         // 2. Ensure DB_URL is configured
         const DB_URL = process.env.DB_URL;
@@ -43,7 +44,7 @@ export async function POST(
         }
 
         // 3. Forward to actual backend endpoint
-        const upstream = await fetch(`${DB_URL}/songs/${params.id}`, {
+        const upstream = await fetch(`${DB_URL}/songs/${id}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(songData),
