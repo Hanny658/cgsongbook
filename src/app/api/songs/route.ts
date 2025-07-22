@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 
 const DB_URL = process.env.DB_URL
 
-// GET /api/songlist
+// GET /api/songs
 export async function GET() {
   try {
     if (!DB_URL) {

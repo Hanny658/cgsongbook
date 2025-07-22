@@ -12,25 +12,6 @@ import SettingsButton from '../configs/settings-button'
 import { useConfig } from '../configs/settings'
 import { transposeChordString } from '../configs/chord-transpose'
 
-interface SongLine {
-  chords: string
-  lyrics: string
-}
-
-interface SongSection {
-  id: string
-  label: string
-  lines: SongLine[]
-}
-
-interface SongData {
-  title: string
-  link?: string
-  number: number
-  lyrics: SongSection[]
-  song: string[]
-}
-
 const bgImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg']
 
 export default function SongLyricsPage({ number }: { number: string | number }) {
