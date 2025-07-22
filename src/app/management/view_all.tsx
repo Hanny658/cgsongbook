@@ -1,0 +1,97 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// app/management/view_all.tsx
+'use client';
+
+import React, { useState, useEffect } from 'react';
+
+// Minimal metadata interface
+interface SongMeta {
+    title: string;
+    link?: string;
+    number: number;
+}
+
+interface ViewAllProps {
+    onEdit: (song: SongData) => void;
+}
+
+const ViewAll: React.FC<ViewAllProps> = ({ onEdit }) => {
+    const [songs, setSongs] = useState<SongMeta[]>([]);
+    const [filtered, setFiltered] = useState<SongMeta[]>([]);
+    const [search, setSearch] = useState('');
+
+    // 1) Load all metadata on mount
+    useEffect(() => {
+        const fetchMeta = async () => {
+            try {
+                const res = await fetch('/api/songs');
+                const data: SongMeta[] = await res.json();
+                if (!res.ok) throw new Error((data as any).error || 'Failed to load');
+                const sorted = data.sort((a, b) => a.number - b.number)
+                setSongs(sorted);
+                setFiltered(data);
+            } catch (err) {
+                console.error(err);
+            }
+        };
+        fetchMeta();
+    }, []);
+
+    // 2) Filter whenever search or songs change
+    useEffect(() => {
+        const term = search.trim().toLowerCase();
+        if (!term) return setFiltered(songs);
+
+        setFiltered(
+            songs.filter(s =>
+                s.title.toLowerCase().includes(term)
+                || String(s.number).includes(term)
+            )
+        );
+    }, [search, songs]);
+
+    // 3) Handle clicking a song: fetch full data and pass to onEdit
+    const handleClick = async (num: number) => {
+        try {
+            const res = await fetch(`/api/songs/${num}`);
+            const data: SongData = await res.json();
+            if (!res.ok) throw new Error((data as any).error || 'Fetch failed');
+            onEdit(data);
+        } catch (err: any) {
+            alert(err.message);
+        }
+    };
+
+    return (
+        <div className="space-y-4">
+            {/* Search bar */}
+            <input
+                type="text"
+                placeholder="Search by number or title"
+                value={search}
+                onChange={e => setSearch(e.target.value)}
+                className="w-full p-2 border rounded"
+            />
+
+            {/* Song list */}
+            <ul className="space-y-2">
+                {filtered.map(song => (
+                    <li key={song.number}>
+                        <button
+                            onClick={() => handleClick(song.number)}
+                            className="w-full text-left p-3 bg-gray-200/80 border rounded hover:bg-gray-300 transition"
+                        >
+                            <span className="font-semibold">{song.number}.</span>{' '}
+                            <span>{song.title}</span>
+                        </button>
+                    </li>
+                ))}
+                {filtered.length === 0 && (
+                    <li className="text-center text-gray-500">Still Loading.. / No songs found.</li>
+                )}
+            </ul>
+        </div>
+    );
+};
+
+export default ViewAll;
