@@ -9,12 +9,15 @@ import { useRouter } from 'next/navigation';
 import ViewAll from './view_all';
 import SongEdit from './song_edit';
 
+
 // --- Component ---
 const ManagementPage: React.FC = () => {
     // Login form state
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState<string | null>(null);
+
+    const [metas, setMetas] = useState<SongMeta[]>([]);
 
     // Authentication & view state
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -34,6 +37,21 @@ const ManagementPage: React.FC = () => {
             console.log("Welcome Back");
         }
     }, []);
+
+    useEffect(() => {
+        if (!isAuthenticated) return;
+        (async () => {
+            try {
+                const res = await fetch('/api/songs');
+                if (!res.ok) throw new Error('Failed loading songs');
+                const list: SongMeta[] = await res.json();
+                const sorted = list.sort((a, b) => a.number - b.number)
+                setMetas(sorted);
+            } catch (e) {
+                console.error(e);
+            }
+        })();
+    }, [isAuthenticated]);
 
     // Attempt login against Next.js API route.
     // That API route should internally forward to `${process.env.DB_URL}/user/verify`.
@@ -71,6 +89,7 @@ const ManagementPage: React.FC = () => {
         setView('edit');
     };
 
+    // Delete all cookie and reset auth state
     const handleLogout = () => {
         Cookies.remove('user');
         setIsAuthenticated(false);
@@ -143,11 +162,15 @@ const ManagementPage: React.FC = () => {
                     <main className="px-6 py-4 md:px-12">
                         {view === 'all' && (
                             // Pass down a callback so ViewAll can invoke editing
-                            <ViewAll onEdit={handleEditSong} />
+                            <ViewAll metas={metas}  onEdit={handleEditSong} />
                         )}
                         {view === 'edit' && (
                             // Provide the currentSong (blank or loaded) to your editor
-                            <SongEdit songdata={currentSong} onCancel={() => setView('all')} />
+                            <SongEdit 
+                                songdata={currentSong} 
+                                existingNumbers={metas.map(m => m.number)} 
+                                onCancel={() => setView('all')} 
+                            />
                         )}
                     </main>
                 </div>

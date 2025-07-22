@@ -12,10 +12,11 @@ import {
 
 interface SongEditProps {
     songdata?: SongData;
+    existingNumbers: number[];
     onCancel: () => void;
 }
 
-const SongEdit: React.FC<SongEditProps> = ({ songdata, onCancel }) => {
+const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel }) => {
     // Blank template
     const blank: SongData = {
         title: '',
@@ -45,6 +46,19 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, onCancel }) => {
             }
             : blank
     );
+
+    // Tracks duplicated IDs
+    const [number, setNumber] = useState(songdata?.number || 0);
+    const [dupError, setDupError] = useState('');
+    // Whenever number changes, validate it
+    useEffect(() => {
+        const isSameAsOld = songdata?.number === number;
+        if (!isSameAsOld && existingNumbers.includes(number)) {
+            setDupError(`Number ${number} already exists.`);
+        } else {
+            setDupError('');
+        }
+    }, [number, existingNumbers, songdata]);
 
     // Generates a ID that is not any from the reserved set
     const generateUniqueId = (reserved: Set<string>): string => {
@@ -220,6 +234,10 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, onCancel }) => {
             alert('Number must be a positive integer.');
             return;
         }
+        if (dupError) {
+            alert(dupError);
+            return;
+        }
         for (const [i, s] of form.lyrics.entries()) {
             if (!s.label.trim()) {
                 alert(`Section ${i + 1} label is required.`);
@@ -264,16 +282,20 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, onCancel }) => {
         <div className="space-y-6">
             {/* Title, Link, Number */}
             <div className="flex flex-warp gap-4">
-                <div className="w-32">
+                <div className="flex-1/5">
                     <label className="block font-medium">Number*</label>
                     <input
                         type="number"
-                        value={form.number}
-                        onChange={e => updateField('number', +e.target.value)}
-                        className="w-full p-2 border rounded"
+                        value={number}
+                        onChange={e => setNumber(parseInt(e.target.value, 10) || 0)}
+                        className={`w-full p-2 border rounded ${dupError ? 'border-red-500' : ''
+                            }`}
                     />
+                    {dupError && (
+                        <p className="mt-1 text-sm text-red-600">{dupError}</p>
+                    )}
                 </div>
-                <div className="flex-1">
+                <div className="flex-4/5">
                     <label className="block font-medium">Title*</label>
                     <input
                         type="text"

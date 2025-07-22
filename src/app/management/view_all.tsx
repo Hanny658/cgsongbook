@@ -12,45 +12,28 @@ interface SongMeta {
 }
 
 interface ViewAllProps {
+    metas: SongMeta[];
     onEdit: (song: SongData) => void;
 }
 
-const ViewAll: React.FC<ViewAllProps> = ({ onEdit }) => {
-    const [songs, setSongs] = useState<SongMeta[]>([]);
+const ViewAll: React.FC<ViewAllProps> = ({ metas, onEdit }) => {
     const [filtered, setFiltered] = useState<SongMeta[]>([]);
     const [search, setSearch] = useState('');
 
-    // 1) Load all metadata on mount
-    useEffect(() => {
-        const fetchMeta = async () => {
-            try {
-                const res = await fetch('/api/songs');
-                const data: SongMeta[] = await res.json();
-                if (!res.ok) throw new Error((data as any).error || 'Failed to load');
-                const sorted = data.sort((a, b) => a.number - b.number)
-                setSongs(sorted);
-                setFiltered(data);
-            } catch (err) {
-                console.error(err);
-            }
-        };
-        fetchMeta();
-    }, []);
-
-    // 2) Filter whenever search or songs change
+    // Filter whenever search or songs change
     useEffect(() => {
         const term = search.trim().toLowerCase();
-        if (!term) return setFiltered(songs);
+        if (!term) return setFiltered(metas);
 
         setFiltered(
-            songs.filter(s =>
+            metas.filter(s =>
                 s.title.toLowerCase().includes(term)
                 || String(s.number).includes(term)
             )
         );
-    }, [search, songs]);
+    }, [search, metas]);
 
-    // 3) Handle clicking a song: fetch full data and pass to onEdit
+    // Handle clicking a song: fetch full data and pass to onEdit
     const handleClick = async (num: number) => {
         try {
             const res = await fetch(`/api/songs/${num}`);
