@@ -287,6 +287,7 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
                     <input
                         type="number"
                         value={number}
+                        min={0}
                         onChange={e => setNumber(parseInt(e.target.value, 10) || 0)}
                         className={`w-full p-2 border rounded ${dupError ? 'border-red-500' : ''
                             }`}
