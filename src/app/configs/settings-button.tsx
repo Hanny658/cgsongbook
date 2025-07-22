@@ -2,6 +2,7 @@
 
 // app/configs/settings-button.tsx
 import React, { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { useConfig, FontSize } from './settings'
 
 const FONT_SIZES: FontSize[] = ['extra-small', 'small', 'medium', 'large', 'extra-large']
@@ -9,6 +10,7 @@ const fontsizeDisplay = {'extra-small': "Extra Small",'small': "Small", 'medium'
 
 export default function SettingsButton() {
     const [isOpen, setIsOpen] = useState(false)
+    const router = useRouter()
 
     const {
         fontSize,
@@ -61,8 +63,13 @@ export default function SettingsButton() {
                     : 'translate-y-full pointer-events-none'}
                 `}>
                     {/* close icon */}
-                    <div className="flex justify-end">
-                        <button onClick={closePanel} className="text-white text-2xl">
+                    <div className="flex justify-between">
+                        <button onClick={() => router.push('/management')} 
+                        title='Song Editor (requires account to access, if you wish to be a contributor, please contact me at zyh@ik.me)'
+                        className="text-white self-start text-2xl">
+                            <i className="bi bi-pencil-square"></i>
+                        </button>
+                        <button onClick={closePanel} className="text-white self-end text-2xl">
                             <i className="bi bi-x-lg"></i>
                         </button>
                     </div>
