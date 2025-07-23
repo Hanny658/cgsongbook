@@ -8,6 +8,7 @@ import {
     Draggable,
     DropResult,
 } from '@hello-pangea/dnd';
+import AutoFillButton from './auto_fill';
 
 
 interface SongEditProps {
@@ -92,6 +93,12 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
     // Helpers to update state and mark dirty
     const updateField = <K extends keyof SongData>(key: K, value: SongData[K]) => {
         setForm(f => ({ ...f, [key]: value }));
+    };
+
+    // Handler to receive filled data
+    const handleAutoFill = (newData: SongData) => {
+        setForm(newData);      // replace entire form
+        setDirty(true);        // mark as edited
     };
 
     // Reorder `form.song` when a drag ends
@@ -279,14 +286,14 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
     };
 
     return (
-        <div className="space-y-6">
+        <div className="space-y-6 relative">
             {/* Title, Link, Number */}
             <div className="flex flex-warp gap-4">
-                <div className="flex-1/5">
+                <div className="flex-1/5 md:flex-2/12">
                     <label className="block font-medium">Number*</label>
                     <input
                         type="number"
-                        value={number}
+                        value={number==0 ? '': number}
                         min={0}
                         onChange={e => setNumber(parseInt(e.target.value, 10) || 0)}
                         className={`w-full p-2 border rounded ${dupError ? 'border-red-500' : ''
@@ -296,7 +303,7 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
                         <p className="mt-1 text-sm text-red-600">{dupError}</p>
                     )}
                 </div>
-                <div className="flex-4/5">
+                <div className="flex-3/5 md:flex-9/12">
                     <label className="block font-medium">Title*</label>
                     <input
                         type="text"
@@ -304,6 +311,12 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
                         onChange={e => updateField('title', e.target.value)}
                         className="w-full p-2 border rounded"
                     />
+                </div>
+                <div className="hidden md:block">
+                    <AutoFillButton onDataReady={handleAutoFill} />
+                </div>
+                <div className="block md:hidden fixed bottom-5 right-5">
+                    <AutoFillButton onDataReady={handleAutoFill} />
                 </div>
             </div>
             <div className="w-full">
@@ -447,6 +460,7 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
                     Submit
                 </button>
             </div>
+            <div className="block md:hidden h-7" />
         </div>
     );
 };

@@ -4,13 +4,6 @@
 
 import React, { useState, useEffect } from 'react';
 
-// Minimal metadata interface
-interface SongMeta {
-    title: string;
-    link?: string;
-    number: number;
-}
-
 interface ViewAllProps {
     metas: SongMeta[];
     onEdit: (song: SongData) => void;
