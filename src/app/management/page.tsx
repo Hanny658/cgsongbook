@@ -102,17 +102,17 @@ const ManagementPage: React.FC = () => {
             {!isAuthenticated ? (
                 // --- Login Form ---
                 <div className="max-w-sm mx-auto mt-20 p-6 bg-white rounded shadow">
-                    <h2 className="text-2xl font-semibold mb-4">Please Log In</h2>
+                    <h2 className="text-2xl text-black font-semibold mb-4">Please Log In</h2>
                     {error && <div className="text-red-600 mb-2">{error}</div>}
                     <input
-                        className="w-full mb-3 p-2 border rounded"
+                        className="w-full mb-3 p-2 border rounded text-black placeholder-gray-500"
                         type="text"
                         placeholder="Username"
                         value={username}
                         onChange={e => setUsername(e.target.value)}
                     />
                     <input
-                        className="w-full mb-4 p-2 border rounded"
+                        className="w-full mb-4 p-2 border rounded text-black placeholder-gray-500"
                         type="password"
                         placeholder="Password"
                         value={password}
@@ -129,7 +129,7 @@ const ManagementPage: React.FC = () => {
                 // --- Management UI ---
                 <div>
                     <header className="flex items-center justify-between p-2 bg-white shadow">
-                        <h1 className="text-xl font-bold">Songbook Management</h1>
+                        <h1 className="text-xl text-black font-bold">Songbook Management</h1>
                         <div className="space-x-2">
                             <button
                                 className="px-4 mr-4 py-2 bg-green-600/80 text-white rounded hover:bg-green-700"

@@ -46,7 +46,7 @@ const ViewAll: React.FC<ViewAllProps> = ({ metas, onEdit }) => {
                 placeholder="Search by number or title"
                 value={search}
                 onChange={e => setSearch(e.target.value)}
-                className="w-full p-2 border rounded"
+                className="w-full p-2 border rounded text-black placeholder-gray-500"
             />
 
             {/* Song list */}
@@ -55,7 +55,7 @@ const ViewAll: React.FC<ViewAllProps> = ({ metas, onEdit }) => {
                     <li key={song.number}>
                         <button
                             onClick={() => handleClick(song.number)}
-                            className="w-full text-left p-3 bg-gray-200/80 border rounded hover:bg-gray-300 transition"
+                            className="w-full text-left p-3 text-black bg-gray-200/80 border rounded hover:bg-gray-300 transition"
                         >
                             <span className="font-semibold">{song.number}.</span>{' '}
                             <span>{song.title}</span>

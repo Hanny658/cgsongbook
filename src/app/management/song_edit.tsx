@@ -286,7 +286,7 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
     };
 
     return (
-        <div className="space-y-6 relative">
+        <div className="space-y-6 relative text-black">
             {/* Title, Link, Number */}
             <div className="flex flex-warp gap-4">
                 <div className="flex-1/5 md:flex-2/12">
@@ -296,7 +296,7 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
                         value={number==0 ? '': number}
                         min={0}
                         onChange={e => setNumber(parseInt(e.target.value, 10) || 0)}
-                        className={`w-full p-2 border rounded ${dupError ? 'border-red-500' : ''
+                        className={`w-full p-2 border placeholder-gray-500 rounded ${dupError ? 'border-red-500' : ''
                             }`}
                     />
                     {dupError && (
@@ -309,7 +309,7 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
                         type="text"
                         value={form.title}
                         onChange={e => updateField('title', e.target.value)}
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border rounded placeholder-gray-500"
                     />
                 </div>
                 <div className="hidden md:block">
@@ -320,12 +320,12 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
                 </div>
             </div>
             <div className="w-full">
-                <label className="block font-medium">Link (optional)</label>
+                <label className="block font-medium text-black">Link (optional)</label>
                 <input
                     type="text"
                     value={form.link}
                     onChange={e => updateField('link', e.target.value)}
-                    className="w-full p-2 border rounded"
+                    className="w-full p-2 border rounded text-black placeholder-gray-500"
                 />
             </div>
 
@@ -358,7 +358,7 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
                                                 <select
                                                     value={item.secId}
                                                     onChange={(e) => setSongItem(idx, e.target.value)}
-                                                    className="flex-3/4 p-2 border bg-white rounded shadow-2xs shadow-black/30"
+                                                    className="flex-3/4 p-2 border bg-white rounded shadow-2xs shadow-black/30 placeholder-gray-500"
                                                 >
                                                     <option value="">-- select section --</option>
                                                     {form.lyrics.map((sec) => (
@@ -408,7 +408,7 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
                             type="text"
                             value={sec.label}
                             onChange={e => setSectionLabel(si, e.target.value)}
-                            className="w-full p-2 border rounded mb-3"
+                            className="w-full p-2 border rounded mb-3 placeholder-gray-500"
                         />
 
                         {/* Lines */}
@@ -420,14 +420,14 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
                                         placeholder="Chords"
                                         value={ln.chords}
                                         onChange={e => setLine(si, li, 'chords', e.target.value)}
-                                        className="w-full p-1 border rounded font-chords"
+                                        className="w-full p-1 border rounded font-chords placeholder-gray-500"
                                     />
                                     <input
                                         type="text"
                                         placeholder="Lyrics"
                                         value={ln.lyrics}
                                         onChange={e => setLine(si, li, 'lyrics', e.target.value)}
-                                        className="w-full p-1 border rounded font-chords"
+                                        className="w-full p-1 border rounded font-chords placeholder-gray-500"
                                     />
                                 </div>
                                 <button onClick={() => delLine(si, li)} className='flex-1/12'>
