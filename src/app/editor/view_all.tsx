@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// app/management/view_all.tsx
+// app/editor/view_all.tsx
 'use client';
 
 import React, { useState, useEffect } from 'react';

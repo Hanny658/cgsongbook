@@ -1,4 +1,4 @@
-// app/management/page.tsx
+// app/editor/page.tsx
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -129,7 +129,7 @@ const ManagementPage: React.FC = () => {
                 // --- Management UI ---
                 <div>
                     <header className="flex items-center justify-between p-2 bg-white shadow">
-                        <h1 className="text-xl text-black font-bold">Songbook Management</h1>
+                        <span className="text-xl min-w-[50vw] text-black font-bold">Song Editor</span>
                         <div className="space-x-2">
                             <button
                                 className="px-4 mr-4 py-2 bg-green-600/80 text-white rounded hover:bg-green-700"

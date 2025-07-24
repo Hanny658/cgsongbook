@@ -1,4 +1,4 @@
-// app/management/song_edit.tsx
+// app/editor/song_edit.tsx
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -58,6 +58,7 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
             setDupError(`Number ${number} already exists.`);
         } else {
             setDupError('');
+            updateField('number', number);
         }
     }, [number, existingNumbers, songdata]);
 
@@ -324,8 +325,9 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
                 <input
                     type="text"
                     value={form.link}
+                    placeholder='example: https://www.youtube.com/watch?v=TheYtbLink'
                     onChange={e => updateField('link', e.target.value)}
-                    className="w-full p-2 border rounded text-black placeholder-gray-500"
+                    className="w-full p-2 border rounded text-black placeholder-gray-300"
                 />
             </div>
 

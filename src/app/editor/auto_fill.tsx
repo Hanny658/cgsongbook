@@ -1,4 +1,4 @@
-// app/management/auto_fill.tsx
+// app/editor/auto_fill.tsx
 'use client';
 
 import React, { useState } from 'react';
@@ -90,7 +90,8 @@ const AutoFillButton: React.FC<AutoFillButtonProps> = ({ onDataReady }) => {
                         />
 
                         <p className="mt-2 text-xs text-gray-500">
-                            Submitting may replace all current data in the editor, and auto-filling is never perfect (especially for the chords-lyrics sync), please check through the editor after auto-filled.
+                            Submitting may replace all current data in the editor, and auto-filling is never perfect (especially for the chords-lyrics sync).
+                            Also the number and section order shall be manually defined, please check through the editor after auto-filled, thank you for contribution!
                         </p>
 
                         {/* Error message */}

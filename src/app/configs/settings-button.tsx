@@ -64,7 +64,7 @@ export default function SettingsButton() {
                 `}>
                     {/* close icon */}
                     <div className="flex justify-between">
-                        <button onClick={() => router.push('/management')} 
+                        <button onClick={() => router.push('/editor')} 
                         title='Song Editor (requires account to access, if you wish to be a contributor, please contact me at zyh@ik.me)'
                         className="text-white self-start text-2xl">
                             <i className="bi bi-pencil-square"></i>
