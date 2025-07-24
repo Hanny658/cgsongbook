@@ -1,6 +1,6 @@
 'use client'
 
-// app/[number]/SongLyricsClient.tsx, as Client side component
+// app/[number]/SongLyricsClient.tsx  | ViewMode = Classic
 
 import { useState, useRef, useEffect, Key } from 'react'
 import Link from "next/link"

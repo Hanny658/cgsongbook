@@ -1,5 +1,6 @@
-// app/components/PresenterView.tsx
 'use client';
+
+// app/components/PresenterView.tsx | ViewMode = GACC Slides
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { bgImages } from './SongLyricsClient';
@@ -114,8 +115,8 @@ export default function PresenterView({ number }: PresenterViewProps) {
                 {/* Slide 1: Title + BG image */}
                 <div className="w-full flex-shrink-0 flex flex-col h-full">
                     <div className="h-2/3 flex items-center justify-center">
-                        <h1 className="text-4xl font-bold text-black">
-                            {songData.number} | {songData.title}
+                        <h1 className="text-4xl font-bold text-black underline decoration-3 decoration-black underline-offset-5">
+                            {songData.number} - {songData.title}
                         </h1>
                     </div>
                     <div className="h-1/3 overflow-hidden">
@@ -141,16 +142,16 @@ export default function PresenterView({ number }: PresenterViewProps) {
                     >
                         {/* Left (or top on mobile) */}
                         <div className="md:w-2/3 w-full flex flex-col p-6">
-                            <div>
-                                <h2 className="text-2xl font-semibold text-black">
+                            <div className='text-center mt-7'>
+                                <h2 className="text-3xl text-black underline decoration-2 decoration-black underline-offset-5">
                                     {songData.number} – {songData.title}
                                 </h2>
                             </div>
-                            <div className="flex-1 flex flex-col items-center justify-center text-center px-4">
-                                <h3 className="text-xl font-medium mb-4">{section.label}</h3>
+                            <div className="flex-1 flex flex-col items-center justify-center text-center px-4 mt-2 font-lyrics">
+                                <h3 className="text-xl font-medium mb-4 italic text-gray-700">{section.label}</h3>
                                 <div className="space-y-2">
                                     {section.lines.map((ln, li) => (
-                                        <p key={li} className="text-lg text-black">
+                                        <p key={li} className="text-2xl text-black">
                                             {ln.lyrics}
                                         </p>
                                     ))}

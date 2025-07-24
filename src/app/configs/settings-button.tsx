@@ -144,19 +144,19 @@ export default function SettingsButton() {
 
                         {/* View Mode change */}
                         <div className="flex items-center justify-between space-x-2">
-                            <span>View Mode:</span>
+                            <span>Theme:</span>
                             <button
                                 onClick={() => setViewMode(prevMode)}
                                 className="px-2 py-1 bg-transparent"
                             >
-                                <i className="bi bi-dash-square"></i>
+                                <i className="bi bi-chevron-left"></i>
                             </button>
                             <span className="min-w-[6rem] text-center">{viewMode}</span>
                             <button
                                 onClick={() => setViewMode(nextMode)}
                                 className="px-2 py-1 bg-transparent"
                             >
-                                <i className="bi bi-plus-square"></i>
+                                <i className="bi bi-chevron-right"></i>
                             </button>
                         </div>
                     </div>
