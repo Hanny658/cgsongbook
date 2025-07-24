@@ -9,20 +9,26 @@ import React, {
     ReactNode,
 } from 'react';
 
-// 1) Define your types & defaults
+// 1) Define setting types & defaults
 export type FontSize = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
+export type ViewMode = 'Classic' | 'GACC-Slides';
+
+export const FONT_SIZES: FontSize[] = ['extra-small', 'small', 'medium', 'large', 'extra-large'];
+export const VIEW_MODES: ViewMode[] = ['Classic', 'GACC-Slides'];
 
 interface ConfigContextType {
     fontSize: FontSize;
     videoDisplay: boolean;
     showChords: boolean;
     transposeChords: number;
+    viewMode: ViewMode;
 
     setFontSize: (size: FontSize) => void;
     toggleVideoDisplay: () => void;
     toggleShowChords: () => void;
     incrementTranspose: () => void;
     decrementTranspose: () => void;
+    setViewMode: (mode: ViewMode) => void;
 }
 
 const DEFAULTS = {
@@ -30,6 +36,7 @@ const DEFAULTS = {
     videoDisplay: true,
     showChords: true,
     transposeChords: 0,
+    viewMode: 'Classic' as ViewMode,
 };
 const COOKIE_AGE_DAYS = 365;
 
@@ -58,6 +65,7 @@ const ConfigContext = createContext<ConfigContextType>({
     toggleShowChords: () => { },
     incrementTranspose: () => { },
     decrementTranspose: () => { },
+    setViewMode: () => { },
 });
 
 // 4) Provider component
@@ -73,12 +81,18 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
     const [transposeChords, _setTransposeChords] = useState<number>(
         DEFAULTS.transposeChords
     );
+    const [viewMode, _setViewMode] = useState<ViewMode>(DEFAULTS.viewMode);
 
     // on mount, read cookies (if present)
     useEffect(() => {
         const fs = getCookie('fontSize') as FontSize;
-        if (['extra-small', 'small', 'medium', 'large', 'extra-large'].includes(fs)) {
+        if (FONT_SIZES.includes(fs)) {
             _setFontSize(fs);
+        }
+
+        const vm = getCookie('viewMode') as ViewMode;
+        if (VIEW_MODES.includes(vm)) {
+            _setViewMode(vm);
         }
 
         const vd = getCookie('videoDisplay');
@@ -116,6 +130,10 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         _setFontSize(size);
         setCookie('fontSize', size);
     };
+    const setViewMode = (mode: ViewMode) => {
+        _setViewMode(mode);
+        setCookie('viewMode', mode);
+    };
     const toggleVideoDisplay = () => {
         _setVideoDisplay((prev) => {
             const next = !prev;
@@ -149,6 +167,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         <ConfigContext.Provider
             value={{
                 fontSize,
+                viewMode,
                 videoDisplay,
                 showChords,
                 transposeChords,
@@ -157,6 +176,7 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
                 toggleShowChords,
                 incrementTranspose,
                 decrementTranspose,
+                setViewMode,
             }
             }
         >

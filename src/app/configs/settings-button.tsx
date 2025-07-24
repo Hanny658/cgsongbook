@@ -3,9 +3,8 @@
 // app/configs/settings-button.tsx
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useConfig, FontSize } from './settings'
+import { useConfig, FONT_SIZES, VIEW_MODES } from './settings'
 
-const FONT_SIZES: FontSize[] = ['extra-small', 'small', 'medium', 'large', 'extra-large']
 const fontsizeDisplay = {'extra-small': "Extra Small",'small': "Small", 'medium': "Medium", 'large': "Large", 'extra-large': "Extra Large"}
 
 export default function SettingsButton() {
@@ -22,12 +21,19 @@ export default function SettingsButton() {
         transposeChords,
         incrementTranspose,
         decrementTranspose,
+        viewMode,
+        setViewMode,
     } = useConfig()
 
     // cycle font sizes
     const idx = FONT_SIZES.indexOf(fontSize)
     const prevFont = FONT_SIZES[(idx + FONT_SIZES.length - 1) % FONT_SIZES.length]
     const nextFont = FONT_SIZES[(idx + 1) % FONT_SIZES.length]
+
+    // cycle view modes
+    const idv = VIEW_MODES.indexOf(viewMode)
+    const prevMode = VIEW_MODES[(idv + VIEW_MODES.length - 1) % VIEW_MODES.length]
+    const nextMode = VIEW_MODES[(idv + 1) %  VIEW_MODES.length]
 
     // simple C→X transposer
     const transposeChord = (base: string, semi: number) => {
@@ -134,6 +140,24 @@ export default function SettingsButton() {
                                 <i className="bi bi-plus-square"></i>
                             </button>
                             {/* <p>{transposeChords}</p> */}
+                        </div>
+
+                        {/* View Mode change */}
+                        <div className="flex items-center justify-between space-x-2">
+                            <span>View Mode:</span>
+                            <button
+                                onClick={() => setViewMode(prevMode)}
+                                className="px-2 py-1 bg-transparent"
+                            >
+                                <i className="bi bi-dash-square"></i>
+                            </button>
+                            <span className="min-w-[6rem] text-center">{viewMode}</span>
+                            <button
+                                onClick={() => setViewMode(nextMode)}
+                                className="px-2 py-1 bg-transparent"
+                            >
+                                <i className="bi bi-plus-square"></i>
+                            </button>
                         </div>
                     </div>
                 </div>

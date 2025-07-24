@@ -1,7 +1,18 @@
+'use client'
+import { useConfig } from '../configs/settings'
 import PresenterView from './PresenterMode'
-//import SongLyricsClient from './SongLyricsClient'
+import SongLyricsClient from './SongLyricsClient'
+import { useParams } from 'next/navigation';
 
-export default async function Page(context: { params: Promise<{ number: string }> }) {
-    const { number } = await context.params
-    return <PresenterView number={number} />
+export default function Page() {
+    const { number } = useParams() as { number: string | number };
+    const { viewMode } = useConfig()
+    
+    if (viewMode == 'Classic') {
+        return <SongLyricsClient number={number} />
+    } 
+    else if (viewMode == 'GACC-Slides') {
+        return <PresenterView number={number} />
+    }
+    return <SongLyricsClient number={number} />
 }
