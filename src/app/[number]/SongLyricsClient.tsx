@@ -12,7 +12,7 @@ import SettingsButton from '../configs/settings-button'
 import { useConfig } from '../configs/settings'
 import { transposeChordString } from '../configs/chord-transpose'
 
-export const bgImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg']
+export const bgImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.webp', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.webp', '15.jpg']
 
 export default function SongLyricsPage({ number }: { number: string | number }) {
   const [song, setSong] = useState<SongData | null>(null)
