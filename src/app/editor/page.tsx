@@ -53,6 +53,22 @@ const ManagementPage: React.FC = () => {
         })();
     }, [isAuthenticated]);
 
+    // Reload songs everytime back to view all
+    useEffect(() => {
+        if (!view || view=='edit') return; // not doing whenswitched to edit mode
+        (async () => {
+            try {
+                const res = await fetch('/api/songs');
+                if (!res.ok) throw new Error('Failed loading songs');
+                const list: SongMeta[] = await res.json();
+                const sorted = list.sort((a, b) => a.number - b.number)
+                setMetas(sorted);
+            } catch (e) {
+                console.error(e);
+            }
+        })();
+    }, [view]);
+
     // Attempt login against Next.js API route.
     // That API route should internally forward to `${process.env.DB_URL}/user/verify`.
     const handleLogin = async () => {
