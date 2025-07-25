@@ -52,8 +52,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
     </div>
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const sectionMap = Object.fromEntries(song.lyrics.map((sec: any) => [sec.id, sec]))
+  const sectionMap = Object.fromEntries(song.lyrics.map((sec: SongSection) => [sec.id, sec]))
   const videoId = song.link?.split('v=')[1]?.split('&')[0] || song.link?.split('youtu.be/')[1] || ''
 
   // Flatten all lyrics for fuzzy search (excluding chords)
