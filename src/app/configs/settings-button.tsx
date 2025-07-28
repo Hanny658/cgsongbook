@@ -72,10 +72,12 @@ export default function SettingsButton() {
                     <div className="flex justify-between">
                         <button onClick={() => router.push('/editor')} 
                         title='Song Editor (requires account to access, if you wish to be a contributor, please contact me at zyh@ik.me)'
-                        className="text-white self-start text-2xl">
+                        className="text-white self-start text-2xl hover:text-blue-400">
                             <i className="bi bi-pencil-square"></i>
                         </button>
-                        <button onClick={closePanel} className="text-white self-end text-2xl">
+                        <h4 className='font-bold text-sm text-blue-300/80'>Settings</h4>
+                        <button onClick={closePanel} 
+                                className="text-white self-end text-2xl hover:text-red-400">
                             <i className="bi bi-x-lg"></i>
                         </button>
                     </div>
@@ -86,14 +88,14 @@ export default function SettingsButton() {
                             <span>Font Size:</span>
                             <button
                                 onClick={() => setFontSize(prevFont)}
-                                className="px-2 py-1 bg-transparent"
+                                className="px-2 py-1 bg-transparent text-white hover:text-indigo-200"
                             >
                                 <i className="bi bi-dash-square"></i>
                             </button>
                             <span className="min-w-[6rem] text-center">{fontsizeDisplay[fontSize]}</span>
                             <button
                                 onClick={() => setFontSize(nextFont)}
-                                className="px-2 py-1 bg-transparent"
+                                className="px-2 py-1 bg-transparent text-white hover:text-orange-200"
                             >
                                 <i className="bi bi-plus-square"></i>
                             </button>
@@ -104,7 +106,8 @@ export default function SettingsButton() {
                             <span>Video Display:</span>
                             <button
                                 onClick={toggleVideoDisplay}
-                                className={`px-3 py-1 border rounded min-w-[3rem] ${videoDisplay ? 'border-orange-500' : 'border-gray-600'}`}
+                                className={`px-3 py-1 border rounded min-w-[3rem] text-white hover:text-orange-200 
+                                    ${videoDisplay ? 'border-orange-500' : 'border-gray-600'}`}
                             >
                                 {videoDisplay ? 'On' : 'Off'}
                             </button>
@@ -115,7 +118,8 @@ export default function SettingsButton() {
                             <span>Show Chords:</span>
                             <button
                                 onClick={toggleShowChords}
-                                className={`px-3 py-1 border rounded min-w-[3rem] ${showChords ? 'border-orange-500' : 'border-gray-600'}`}
+                                className={`px-3 py-1 border rounded min-w-[3rem]  text-white hover:text-orange-200 
+                                    ${showChords ? 'border-orange-500' : 'border-gray-600'}`}
                             >
                                 {showChords ? 'On' : 'Off'}
                             </button>
@@ -126,7 +130,7 @@ export default function SettingsButton() {
                             <span>Transpose: </span>
                             <button
                                 onClick={decrementTranspose}
-                                className="px-2 py-1 bg-transparent"
+                                className="px-2 py-1 bg-transparent text-white hover:text-indigo-200"
                             >
                                 <i className="bi bi-dash-square"></i>
                             </button>
@@ -135,7 +139,7 @@ export default function SettingsButton() {
                             </span>
                             <button
                                 onClick={incrementTranspose}
-                                className="px-2 py-1 bg-transparent"
+                                className="px-2 py-1 bg-transparent text-white hover:text-orange-200"
                             >
                                 <i className="bi bi-plus-square"></i>
                             </button>
@@ -147,14 +151,14 @@ export default function SettingsButton() {
                             <span>Theme:</span>
                             <button
                                 onClick={() => setViewMode(prevMode)}
-                                className="px-2 py-1 bg-transparent"
+                                className="px-2 py-1 bg-transparent text-white hover:text-orange-200"
                             >
                                 <i className="bi bi-chevron-left"></i>
                             </button>
                             <span className="min-w-[6rem] text-center">{viewMode}</span>
                             <button
                                 onClick={() => setViewMode(nextMode)}
-                                className="px-2 py-1 bg-transparent"
+                                className="px-2 py-1 bg-transparent text-white hover:text-orange-200"
                             >
                                 <i className="bi bi-chevron-right"></i>
                             </button>
