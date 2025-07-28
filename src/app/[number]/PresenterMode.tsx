@@ -3,9 +3,12 @@
 // app/components/PresenterView.tsx | ViewMode = GACC Slides
 
 import React, { useState, useEffect, useCallback, Key } from 'react';
-import { bgImages } from './SongLyricsClient';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+
+const bgImages = ['1.jpg', '2.jpg', '4.jpg', '5.jpg', '7.jpg', '9.webp', '10.jpg', 
+    '11.jpg', '12.jpg', '13.jpg', '18.jpg', '19.jpg', '20.jpg', '21.jpg', '25.webp',
+    '22.jpg', '23.jpg', '24.jpg', '26.jpg']
 
 interface PresenterViewProps {
     number: string | number;
@@ -17,12 +20,19 @@ export default function PresenterView({ number }: PresenterViewProps) {
     const [error, setError] = useState<string>();
     const [current, setCurrent] = useState(0);
 
-    const [bgUrl, setBgUrl] = useState('')
+    const [bgUrls, setBgUrls] = useState<string[]>([]);
 
     useEffect(() => {
-        const random = Math.floor(Math.random() * bgImages.length)
-        setBgUrl(`/sbg/${bgImages[random]}`)
-    }, [])
+        if (songData) {
+            const slidesCount = songData.lyrics.length + 1;
+            const urls = Array.from({ length: slidesCount }, () => {
+                const random = Math.floor(Math.random() * bgImages.length);
+                return `/sbg/${bgImages[random]}`;
+            });
+            setBgUrls(urls);
+        }
+    }, [songData]);
+
 
     const router = useRouter();
 
@@ -75,7 +85,7 @@ export default function PresenterView({ number }: PresenterViewProps) {
         else if (x > w * 0.8) next();
     };
 
-    if (loading) {
+    if (loading || !bgUrls[0]) {
         return (
             <div className="w-screen h-screen flex items-center justify-center bg-white">
                 <p className="text-lg">Loading…</p>
@@ -125,7 +135,7 @@ export default function PresenterView({ number }: PresenterViewProps) {
                             {songData.link && (
                                 <div className="relative w-full h-full">
                                     <Image
-                                        src={bgUrl}
+                                        src={bgUrls[0]}
                                         alt="Background"
                                         fill
                                         sizes="100vw"
@@ -173,7 +183,7 @@ export default function PresenterView({ number }: PresenterViewProps) {
                                     {songData.link && (
                                         <div className="relative w-full h-full">
                                             <Image
-                                                src={bgUrl}
+                                                src={bgUrls[parseInt(sectionIndex.toString())+1] || ''}
                                                 alt="Background"
                                                 fill
                                                 sizes="100vw"
