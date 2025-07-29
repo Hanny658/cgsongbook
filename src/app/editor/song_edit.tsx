@@ -48,6 +48,9 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
             : blank
     );
 
+    // Controlls Submission loading state
+    const [submitting, setSubmitting] = useState<boolean>(false);
+
     // Tracks duplicated IDs
     const [number, setNumber] = useState(songdata?.number || 0);
     const [dupError, setDupError] = useState('');
@@ -256,6 +259,7 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
             alert('All entries in the "song" list must be non-empty.');
             return;
         }
+        setSubmitting(true);
 
         // Clean out empty SongLine entries
         const cleaned: SongData = {
@@ -283,6 +287,8 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
             onCancel();
         } catch {
             alert('Network error. Please try again.');
+        } finally {
+            setSubmitting(false);
         }
     };
 
@@ -455,12 +461,20 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
                 >
                     Cancel
                 </button>
+                {submitting ?
+                <button
+                    className="px-4 py-2 flex-1/2 bg-blue-800 text-white rounded"
+                >
+                    Submitting...
+                </button>
+                :
                 <button
                     className="px-4 py-2 flex-1/2 bg-blue-600 text-white rounded hover:bg-blue-700"
                     onClick={handleSubmit}
                 >
                     Submit
                 </button>
+                }
             </div>
             <div className="block md:hidden h-7" />
         </div>
