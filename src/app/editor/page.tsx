@@ -8,6 +8,7 @@ import { useRouter } from 'next/navigation';
 // Client components for viewing/editing songs
 import ViewAll from './view_all';
 import SongEdit from './song_edit';
+import UserSettingBtn from './user_setting_btn';
 
 
 // --- Component ---
@@ -31,7 +32,7 @@ const ManagementPage: React.FC = () => {
     const router = useRouter();
 
     useEffect(() => {
-        const user = Cookies.get('user');
+        const user = Cookies.get('cgsb-editor');
         if (user) {
             setIsAuthenticated(true);
             console.log("Welcome Back");
@@ -82,7 +83,7 @@ const ManagementPage: React.FC = () => {
             const payload = await res.json();
             if (res.ok) {
                 setIsAuthenticated(true);
-                Cookies.set('user', username, { expires: 7 });
+                Cookies.set('cgsb-editor', username, { expires: 7 });
                 setView('all');
             } else {
                 setError(payload.error || 'Authentication failed');
@@ -107,7 +108,7 @@ const ManagementPage: React.FC = () => {
 
     // Delete all cookie and reset auth state
     const handleLogout = () => {
-        Cookies.remove('user');
+        Cookies.remove('cgsb-editor');
         setIsAuthenticated(false);
         setUsername('');
         setPassword('');
@@ -165,13 +166,7 @@ const ManagementPage: React.FC = () => {
                             >
                                 <i className="text-2xl pt-1 bi bi-house text-gray-900"></i>
                             </button>
-                            <button
-                                className="px-2 py-2 bg-transparent border-0 rounded-2xl hover:bg-gray-100"
-                                title="Logout current account (you'll need to enter you password again)"
-                                onClick={handleLogout}
-                            >
-                                <i className="text-2xl bi bi-box-arrow-left pr-1 text-red-500"></i>
-                            </button>
+                            <UserSettingBtn onLogout={handleLogout} />
                         </div>
                     </header>
 
