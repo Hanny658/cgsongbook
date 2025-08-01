@@ -74,14 +74,14 @@ const UserSettingBtn: React.FC<UserDropdownProps> = ({ onLogout }) => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password: newPwd }),
             });
-            const updateData = await updateRes.json();
-            if (updateData.success) {
+            if (updateRes.ok) {
                 alert('Password updated successfully');
                 setShowModal(false);
                 setOldPwd('');
                 setNewPwd('');
                 setConfirmPwd('');
             } else {
+                const updateData = await updateRes.json();
                 setErr(updateData.message || 'Password update failed');
             }
         }
