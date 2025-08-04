@@ -1,11 +1,13 @@
 'use client'
 
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import Head from 'next/head'
 import SettingsButton from '../configs/settings-button'
 import { useConfig } from '../configs/settings'
 import { transposeChordString } from '../configs/chord-transpose'
+import * as SpeechSDK from 'microsoft-cognitiveservices-speech-sdk'
+import Fuse from 'fuse.js'
 
 type SongLine = { chords: string; lyrics: string }
 type SongSection = { id: string; label: string; lines: SongLine[] }
@@ -17,43 +19,56 @@ type SongData = {
     song: string[]
 }
 
-const bgImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', 
-    '7.jpg', '8.jpg', '9.webp', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.webp', 
-    '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg', '21.jpg', '22.jpg', 
+const bgImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg',
+    '7.jpg', '8.jpg', '9.webp', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.webp',
+    '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg', '21.jpg', '22.jpg',
     '23.jpg', '25.webp', '24.jpg', '26.jpg']
 
 export default function SongLyricsPage({ number }: { number: string | number }) {
     const [song, setSong] = useState<SongData | null>(null)
     const { videoDisplay, showChords, transposeChords } = useConfig()
 
-    const recognitionRef = useRef<SpeechRecognition | null>(null)
+    // —— TRACING STATE & REFS ——
+    // recognizer instance
+    const recognizerRef = useRef<SpeechSDK.SpeechRecognizer | null>(null)
+    // pointers into flatLyrics
     const currentIndexRef = useRef<number>(-1)
-    
     const maxIndexRef = useRef<number>(0)
     const [tracking, setTracking] = useState(false)
     const [activeLine, setActiveLine] = useState<string | null>(null)
 
-    // flatten lyrics into array for easy indexing
-    const flatLyrics: { id: string; text: string }[] = []
-    if (song) {
-        const sectionMap = Object.fromEntries(
-            song.lyrics.map(sec => [sec.id, sec])
-        )
+    // —— FLATTEN LYRICS WITH UNIQUE IDS ——
+    const flatLyrics = useMemo(() => {
+        if (!song) return []
+        const entries: { id: string; text: string }[] = []
+        const sectionMap = Object.fromEntries(song.lyrics.map(sec => [sec.id, sec]))
         song.song.forEach((secId, secOrder) => {
             const sec = sectionMap[secId]
             sec.lines.forEach((line, lineIdx) => {
                 const txt = line.lyrics.trim()
-                if (txt) {
-                    flatLyrics.push({
-                        id: `${secId}-${secOrder}-${lineIdx}`,
-                        text: txt,
-                    })
-                }
+                if (txt) entries.push({ id: `${secId}-${secOrder}-${lineIdx}`, text: txt })
             })
         })
-    }
+        return entries
+    }, [song])
 
-    // fetch song data
+    // —— SETUP FUSE.JS —— We re-create the Fuse index whenever flatLyrics changes
+    const fuseRef = useRef<Fuse<{ id: string; text: string }> | null>(null)
+    useEffect(() => {
+        if (flatLyrics.length > 0) {
+            fuseRef.current = new Fuse(flatLyrics, {
+                keys: ['text'],
+                threshold: 0.3,         // 0.0 = exact, 1.0 = very fuzzy
+                includeScore: true,
+            })
+        }
+    }, [flatLyrics])
+
+    useEffect(() => {
+        if (activeLine) scrollToLine(activeLine);
+    }, [activeLine]);
+
+    // —— FETCH SONG DATA ——
     useEffect(() => {
         fetch(`/api/songs/${number}`)
             .then(r => r.json())
@@ -61,12 +76,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
             .catch(() => console.error('Failed to load song'))
     }, [number])
 
-    const trackingRef = useRef(tracking)
-    useEffect(() => {
-        trackingRef.current = tracking
-    }, [tracking])
-
-    // helper: scroll highlighted line into center
+    // —— SCROLL HELPER ——
     const scrollToLine = (lineId: string) => {
         const el = document.getElementById(lineId)
         if (el) {
@@ -74,94 +84,107 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
         }
     }
 
-    // start Web Speech recognition
+    // —— START AZURE RECOGNITION ——
     const startRecognition = () => {
-        const SR =
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
-        if (!SR) {
-            alert('Speech recognition not supported in this browser.')
+        if (!flatLyrics.length) {
+            alert('Please wait for lyrics to load before starting trace.')
             return
         }
 
-        const recog = new SR()
-        recog.continuous = true
-        recog.interimResults = false
-        recog.lang = 'en-US'
+        const key = process.env.NEXT_PUBLIC_STT_KEY!
+        const region = process.env.NEXT_PUBLIC_STT_REGION!
+        if (!key || !region) {
+            alert('Azure Speech key/region not configured.')
+            return
+        }
 
-        // reset trace pointers
+        const speechConfig = SpeechSDK.SpeechConfig.fromSubscription(key, region)
+        speechConfig.speechRecognitionLanguage = 'en-US'
+        const audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput()
+        const recognizer = new SpeechSDK.SpeechRecognizer(speechConfig, audioConfig)
+
         currentIndexRef.current = -1
         maxIndexRef.current = 0
 
-        recog.onresult = (event: SpeechRecognitionEvent) => {
-            const transcript = event.results[event.resultIndex][0].transcript.trim()
+        recognizer.recognized = (_s, e) => {
+            const transcript = e.result.text.trim()
             if (!transcript) return
+            console.log('Transcript:', transcript)
 
-            // FIRST match: scan all lyrics
+            // FIRST match: full‐song Fuse search, then highlight the *next* line instead of the matched one
             if (currentIndexRef.current < 0) {
-                const idx = flatLyrics.findIndex(f =>
-                    f.text.toLowerCase().includes(transcript.toLowerCase())
-                )
-                if (idx >= 0) {
-                    currentIndexRef.current = idx
-                    // allow tracing up to 3 lines beyond this
-                    maxIndexRef.current = Math.min(idx + 3, flatLyrics.length - 1)
-                    setActiveLine(flatLyrics[idx].id)
-                    scrollToLine(flatLyrics[idx].id)
-                }
+                const fuse = fuseRef.current!
+                const results = fuse.search(transcript)
+                if (results.length === 0) return
+
+                const matchedId = results[0].item.id
+                const matchedIdx = flatLyrics.findIndex(f => f.id === matchedId)
+                if (matchedIdx < 0) return
+
+                // advance to the line after the one matched
+                const nextIdx = Math.min(matchedIdx + 1, flatLyrics.length - 1)
+                currentIndexRef.current = nextIdx
+                setActiveLine(flatLyrics[nextIdx].id)
+                console.log('Initial match advanced to', nextIdx, flatLyrics[nextIdx].id)
                 return
             }
 
-            // SUBSEQUENT matches: advance one line at a time
-            if (currentIndexRef.current < maxIndexRef.current) {
-                currentIndexRef.current += 1
-                const next = flatLyrics[currentIndexRef.current]
-                setActiveLine(next.id)
-                scrollToLine(next.id)
-            } else {
-                // reached the 3-line limit → stop
-                stopRecognition()
-                setTracking(false)
-            }
-        }
+            // Otherwise only look in the next 3 lines
+            const start = currentIndexRef.current;
+            const end = Math.min(start + 3, flatLyrics.length - 1);
+            const candidates = flatLyrics.slice(start, end + 1);
 
-        recog.onerror = (ev: SpeechRecognitionErrorEvent) => {
-            console.error('recognition error', ev.error, ev.message)
-            if (ev.error === 'network' && trackingRef.current) {
-                // retry after a short delay if network err
-                setTimeout(() => recog.start(), 200)
+            if (candidates.length === 0) {
+                console.warn('No more lines to trace.')
                 return
             }
-            stopRecognition()
-            setTracking(false)
+
+            // build a tiny Fuse over those three
+            const smallFuse = new Fuse(candidates, {
+                keys: ['text'],
+                threshold: 0.3,
+            })
+            const smallResults = smallFuse.search(transcript)
+            if (smallResults.length === 0) return
+
+            // whichever line matched, highlight the *next* one
+            const matchedId = smallResults[0].item.id
+            const matchedIdx = flatLyrics.findIndex(f => f.id === matchedId)
+            const nextIdx = Math.min(matchedIdx + 1, flatLyrics.length - 1)
+
+            currentIndexRef.current = nextIdx
+            setActiveLine(flatLyrics[nextIdx].id)
+            console.log('Advanced to', nextIdx, flatLyrics[nextIdx].id)
         }
 
-        recog.onend = () => {
-            if (trackingRef.current) {
-                // user hasn’t clicked “stop” — restart listening
-                recog.start()
-            }
-            // otherwise do nothing; stopRecognition() will clear recognitionRef
+        recognizer.canceled = () => { stopRecognition(); setTracking(false) }
+        recognizer.sessionStopped = () => {
+            recognizer.stopContinuousRecognitionAsync()
+            recognizerRef.current = null
         }
 
-        recognitionRef.current = recog
-        recog.start()
+        recognizerRef.current = recognizer
+        recognizer.startContinuousRecognitionAsync()
     }
 
-    // stop recognition and clear refs
+    // —— STOP AZURE RECOGNITION ——
     const stopRecognition = () => {
-        if (recognitionRef.current) {
-            recognitionRef.current.onend = null  // extra guard, prevent onEnd restarts
-            recognitionRef.current.stop()
-            recognitionRef.current = null
+        if (recognizerRef.current) {
+            recognizerRef.current.stopContinuousRecognitionAsync()
+            recognizerRef.current = null
         }
         currentIndexRef.current = -1
         maxIndexRef.current = 0
     }
 
-    // toggle button handler
+    // —— TOGGLE BUTTON ——
     const toggleTracking = () => {
         if (!tracking) {
+            if (flatLyrics.length > 0) {
+                // keep -1 so the first STT result still does a full search
+                currentIndexRef.current = -1;
+                setActiveLine(flatLyrics[0].id);
+            }
             startRecognition()
         } else {
             stopRecognition()
@@ -170,7 +193,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
         setTracking(x => !x)
     }
 
-    // choose a random background once
+    // —— RANDOM BACKGROUND ONCE ——
     const [bgUrl, setBgUrl] = useState('')
     useEffect(() => {
         const idx = Math.floor(Math.random() * bgImages.length)
@@ -178,12 +201,11 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
     }, [])
 
     if (!song) {
-        return <div>Loading…</div>
+        return <div role="status">Loading…</div>
     }
 
-    const sectionMap = Object.fromEntries(
-        song.lyrics.map(sec => [sec.id, sec])
-    )
+    // prepare section map & video ID
+    const sectionMap = Object.fromEntries(song.lyrics.map(sec => [sec.id, sec]))
     const videoId =
         song.link?.split('v=')[1]?.split('&')[0] ||
         song.link?.split('youtu.be/')[1] ||
@@ -210,12 +232,14 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
                     <div className="flex items-center space-x-4">
                         <button
                             onClick={toggleTracking}
-                            className={`text-xs rounded-md border px-3 py-1 ${tracking
-                                    ? 'bg-orange-500 border-orange-600 text-white'
-                                    : 'bg-gray-100 border-gray-300 text-black'
+                            className={`text-xs rounded-md border px-2 py-1 min-w-24 
+                                ${tracking
+                                ? 'bg-orange-500 border-orange-600 text-white'
+                                : 'bg-blue-200 border-gray-300 text-black'
                                 }`}
                         >
-                            [Beta] Lyric-Trace
+                            {tracking ? <i className="bi bi-disc-fill"> Trace Off</i> 
+                                    : <i className="bi bi-disc"> Lyric-Trace</i>}
                         </button>
                         <Link href="/">
                             <i className="bi bi-house-door-fill text-3xl text-white hover:text-amber-100" />
@@ -260,7 +284,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
                                             <div
                                                 key={lineIdx}
                                                 id={lineId}
-                                                className={`overflow-x-auto ${isActive ? 'bg-amber-100/30 p-2 rounded-md' : ''
+                                                className={`overflow-x-auto ${isActive ? 'bg-amber-100/20 pl-1 rounded-md' : 'pl-1'
                                                     }`}
                                             >
                                                 {showChords && (

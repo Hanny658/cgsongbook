@@ -92,7 +92,7 @@ const UserSettingBtn: React.FC<UserDropdownProps> = ({ onLogout }) => {
     };
 
     return (
-        <div className="relative inline-block text- black text-left">
+        <div className="relative inline-block text-black text-left">
             {/* Toggle button */}
             <button
                 onClick={toggleDropdown}
