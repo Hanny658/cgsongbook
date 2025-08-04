@@ -2,9 +2,9 @@
 
 // app/[number]/SongLyricsClient.tsx  | ViewMode = Classic
 
-import { useState, useRef, useEffect, Key } from 'react'
+import { useState, useEffect, Key } from 'react'
 import Link from "next/link"
-import Fuse from 'fuse.js'
+// import Fuse from 'fuse.js'
 import "../../app/globals.css"
 import "bootstrap-icons/font/bootstrap-icons.css"
 import Head from 'next/head'
@@ -42,9 +42,6 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
     setBgUrl(`/sbg/${bgImages[random]}`)
   }, [])
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const recognitionRef = useRef<any | null>(null)
-
   if (!song) {
     return <div role="status">
       <svg aria-hidden="true" className="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-purple-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,57 +57,28 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
 
   // Flatten all lyrics for fuzzy search (excluding chords)
   const flatLyrics: { id: string; text: string }[] = []
-  song.song.forEach((sectionId: string | number) => {
+
+  song.song.forEach((sectionId, sectionOrder) => {
     const section = sectionMap[sectionId]
-    section.lines.forEach((line: { lyrics: string }, i: number) => {
+    section.lines.forEach((line, lineIndex) => {
+      // now `${sectionOrder}` disambiguates repeated sections
+      const uniqueId = `${sectionId}-${sectionOrder}-${lineIndex}`
+
       if (line.lyrics.trim()) {
         flatLyrics.push({
-          id: `${sectionId}-${i}`,
+          id: uniqueId,
           text: line.lyrics,
         })
       }
     })
   })
 
-  // Set up Fuse.js for fuzzy matching
-  const fuse = new Fuse(flatLyrics, {
-    keys: ['text'],
-    threshold: 0.5,
-    includeScore: true,
-  })
-
   const startRecognition = () => {
-    const SpeechRecognition =
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      typeof window !== 'undefined' && (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition
-    if (!SpeechRecognition) {
-      alert('Web Speech API not supported in this browser.')
-      return
-    }
-
-    const recognition = new SpeechRecognition()
-    recognition.continuous = true
-    recognition.lang = 'en-US'
-    recognition.interimResults = false
-
-    recognition.onresult = (event: SpeechRecognitionEvent) => {
-      const transcript = event.results[event.resultIndex][0].transcript.trim()
-      const match = fuse.search(transcript)[0]
-      // eslint-disable-next-line @typescript-eslint/no-non-null-asserted-optional-chain
-      if (match?.score! < 0.5) {
-        setActiveLine(match.item.id)
-      }
-    }
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    recognition.onerror = (e: any) => console.warn('Speech error:', e)
-    recognitionRef.current = recognition
-    recognition.start()
+    // Start Recognition with recording and comparing
   }
 
   const stopRecognition = () => {
-    recognitionRef.current?.stop()
-    recognitionRef.current = null
+    // Stop singing recognition, and stop recording
   }
 
   const toggleTracking = () => {
