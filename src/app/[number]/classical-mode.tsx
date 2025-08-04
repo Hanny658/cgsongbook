@@ -19,6 +19,8 @@ type SongData = {
     song: string[]
 }
 
+const DEBUG_MODE = false;
+
 const bgImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg',
     '7.jpg', '8.jpg', '9.webp', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.webp',
     '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg', '21.jpg', '22.jpg',
@@ -109,7 +111,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
         recognizer.recognized = (_s, e) => {
             const transcript = e.result.text.trim()
             if (!transcript) return
-            console.log('Transcript:', transcript)
+            if (DEBUG_MODE) console.log('Transcript:', transcript)
 
             // FIRST match: full‐song Fuse search, then highlight the *next* line instead of the matched one
             if (currentIndexRef.current < 0) {
@@ -125,7 +127,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
                 const nextIdx = Math.min(matchedIdx + 1, flatLyrics.length - 1)
                 currentIndexRef.current = nextIdx
                 setActiveLine(flatLyrics[nextIdx].id)
-                console.log('Initial match advanced to', nextIdx, flatLyrics[nextIdx].id)
+                if (DEBUG_MODE) console.log('Initial match advanced to', nextIdx, flatLyrics[nextIdx].id)
                 return
             }
 
@@ -154,7 +156,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
 
             currentIndexRef.current = nextIdx
             setActiveLine(flatLyrics[nextIdx].id)
-            console.log('Advanced to', nextIdx, flatLyrics[nextIdx].id)
+            if (DEBUG_MODE) console.log('Advanced to', nextIdx, flatLyrics[nextIdx].id)
         }
 
         recognizer.canceled = () => { stopRecognition(); setTracking(false) }
