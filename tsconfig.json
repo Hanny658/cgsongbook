@@ -14,9 +14,6 @@
     "jsx": "preserve",
     "incremental": true,
     "typeRoots": ["./types", "./node_modules/@types"],
-    "types": [
-      "dom-speech-recognition"
-    ],
     "plugins": [
       {
         "name": "next"

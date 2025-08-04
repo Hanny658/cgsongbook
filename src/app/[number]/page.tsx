@@ -1,6 +1,6 @@
 'use client'
 import { useConfig } from '../configs/settings'
-import SongLyricsPage from './beta-mode';
+import SongLyricsPage from './classical-mode';
 import PresenterView from './presenter-mode'
 // import SongLyricsPage from './classic-mode'
 import { useParams } from 'next/navigation';

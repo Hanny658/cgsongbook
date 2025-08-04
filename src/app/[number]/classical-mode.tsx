@@ -52,13 +52,13 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
         return entries
     }, [song])
 
-    // —— SETUP FUSE.JS —— We re-create the Fuse index whenever flatLyrics changes
+    // —— SETUP FUSE.JS ——  re-create the Fuse index whenever flatLyrics changes
     const fuseRef = useRef<Fuse<{ id: string; text: string }> | null>(null)
     useEffect(() => {
         if (flatLyrics.length > 0) {
             fuseRef.current = new Fuse(flatLyrics, {
                 keys: ['text'],
-                threshold: 0.3,         // 0.0 = exact, 1.0 = very fuzzy
+                threshold: 0.3,         // 0.0 = exact, 1.0 = very fuzzyyyyyyyy
                 includeScore: true,
             })
         }
@@ -193,7 +193,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
         setTracking(x => !x)
     }
 
-    // —— RANDOM BACKGROUND ONCE ——
+    // —— RANDOM BACKGROUND ——
     const [bgUrl, setBgUrl] = useState('')
     useEffect(() => {
         const idx = Math.floor(Math.random() * bgImages.length)
@@ -234,11 +234,11 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
                             onClick={toggleTracking}
                             className={`text-xs rounded-md border px-2 py-1 min-w-24 
                                 ${tracking
-                                ? 'bg-orange-500 border-orange-600 text-white'
-                                : 'bg-blue-200 border-gray-300 text-black'
+                                ? 'bg-orange-500/70 md:bg-orange-500 border-orange-600 text-white fixed bottom-8 right-4 md:bottom-auto md:top-6 md:right-14'
+                                : 'bg-blue-200/70 md:bg-blue-200 border-gray-300 text-black fixed bottom-8 right-4 md:static md:block'
                                 }`}
                         >
-                            {tracking ? <i className="bi bi-disc-fill"> Trace Off</i> 
+                            {tracking ? <i className="bi bi-disc-fill"> Trace Stop</i> 
                                     : <i className="bi bi-disc"> Lyric-Trace</i>}
                         </button>
                         <Link href="/">
