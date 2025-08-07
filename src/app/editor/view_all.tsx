@@ -63,7 +63,11 @@ const ViewAll: React.FC<ViewAllProps> = ({ metas, onEdit }) => {
                     </li>
                 ))}
                 {filtered.length === 0 && (
-                    <li className="text-center text-gray-500">Still Loading.. / No songs found.</li>
+                    <li className="text-center text-gray-500 mt-4">
+                        <p className='text-lg'>No songs are found.</p>
+                        <p className='text-xs'>If you wish to add a new song, click [New Song] button on the top-right.</p>
+                        <p className='text-xs'>Thank you for your contributions!</p>
+                    </li>
                 )}
             </ul>
         </div>

@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation';
 import ViewAll from './view_all';
 import SongEdit from './song_edit';
 import UserSettingBtn from './user_setting_btn';
+import LoadingIndicator from '../utils/loading-indicator';
 
 
 // --- Component ---
@@ -171,6 +172,8 @@ const ManagementPage: React.FC = () => {
                     </header>
 
                     <main className="px-6 py-4 md:px-12">
+                        {metas ? 
+                        <>
                         {view === 'all' && (
                             // Pass down a callback so ViewAll can invoke editing
                             <ViewAll metas={metas}  onEdit={handleEditSong} />
@@ -183,6 +186,12 @@ const ManagementPage: React.FC = () => {
                                 onCancel={() => setView('all')} 
                             />
                         )}
+                        </>
+                        :
+                        <div className="w-full min-h-[60vh] flex flex-col justify-center items-center text-center">
+                            <LoadingIndicator color='black' />
+                        </div> 
+                        }
                     </main>
                 </div>
             )}

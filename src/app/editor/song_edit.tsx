@@ -9,6 +9,7 @@ import {
     DropResult,
 } from '@hello-pangea/dnd';
 import AutoFillButton from './auto_fill';
+import LoadingIndicator from '../utils/loading-indicator';
 
 
 interface SongEditProps {
@@ -291,6 +292,14 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
             setSubmitting(false);
         }
     };
+
+    // When not yet received song data
+    if (!songdata) {
+        return <div className="w-screen h-screen bg-amber-50 flex flex-col justify-center items-center text-center">
+            <LoadingIndicator color='black' />
+            <p>Loading Song Details ...</p>
+        </div>
+    }
 
     return (
         <div className="space-y-6 relative text-black">

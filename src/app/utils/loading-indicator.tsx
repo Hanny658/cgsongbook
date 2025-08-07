@@ -41,14 +41,14 @@ const LoadingIndicator: React.FC<LoadingIndicatorProps> = ({ color = 'white' }) 
             <style jsx>{`
         .wave-icon {
           /* Initial state */
-            opacity: 0.8;
+            opacity: 0.6;
             transform: scale(1);
-            animation: wave 0.5s infinite ease-in-out;
+            animation: wave 0.7s infinite ease-in-out;
         }
 
         @keyframes wave {
             0%, 100% {
-            opacity: 0.8;
+            opacity: 0.6;
             transform: scale(1);
             }
         50% {
