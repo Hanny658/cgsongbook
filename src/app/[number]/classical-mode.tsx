@@ -20,7 +20,7 @@ type SongData = {
     song: string[]
 }
 
-const DEBUG_MODE = false;
+const DEBUG_MODE = false
 
 const bgImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg',
     '7.jpg', '8.jpg', '9.webp', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.webp',
@@ -31,12 +31,12 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
     const [song, setSong] = useState<SongData | null>(null)
     const { videoDisplay, showChords, transposeChords } = useConfig()
 
-    // —— TRACING STATE & REFS ——
     // recognizer instance
     const recognizerRef = useRef<SpeechSDK.SpeechRecognizer | null>(null)
     // pointers into flatLyrics
     const currentIndexRef = useRef<number>(-1)
     const maxIndexRef = useRef<number>(0)
+    const interimMatchedRef = useRef(false)
     const [tracking, setTracking] = useState(false)
     const [activeLine, setActiveLine] = useState<string | null>(null)
 
@@ -109,7 +109,30 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
         currentIndexRef.current = -1
         maxIndexRef.current = 0
 
+        // STREAM MODE: match exactly the *next* line to advance immediately
+        recognizer.recognizing = (_s, e) => {
+            const partial = e.result.text.trim()
+            if (!partial) return
+            if (DEBUG_MODE) console.log('partial: ', partial)
+            const nextIdx = currentIndexRef.current + 1
+            if (nextIdx >= flatLyrics.length) return
+            const nextText = flatLyrics[nextIdx].text
+            const fuse = new Fuse([{ text: nextText }], { keys: ['text'], threshold: 0.3 })
+            if (fuse.search(partial).length) {
+                interimMatchedRef.current = true
+                currentIndexRef.current = nextIdx
+                setActiveLine(flatLyrics[nextIdx].id)
+            }
+        }
+
+        // deprecated method becomes fallback, if missed out with stream mode this will be helpful
+        // (Or I just want to keep my 3-line window method that took me time to design)
         recognizer.recognized = (_s, e) => {
+            // if interim already matched, skip this final result
+            if (interimMatchedRef.current) {
+                interimMatchedRef.current = false
+                return
+            }
             const transcript = e.result.text.trim()
             if (!transcript) return
             if (DEBUG_MODE) console.log('Transcript:', transcript)
