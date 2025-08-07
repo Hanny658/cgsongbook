@@ -8,6 +8,7 @@ import { useConfig } from '../configs/settings'
 import { transposeChordString } from '../configs/chord-transpose'
 import * as SpeechSDK from 'microsoft-cognitiveservices-speech-sdk'
 import Fuse from 'fuse.js'
+import LoadingIndicator from '../utils/loading-indicator'
 
 type SongLine = { chords: string; lyrics: string }
 type SongSection = { id: string; label: string; lines: SongLine[] }
@@ -203,7 +204,13 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
     }, [])
 
     if (!song) {
-        return <div role="status">Loading…</div>
+        return <div
+                role="status"
+                className="flex flex-col items-center justify-center h-screen bg-black/80"
+                >
+                    <LoadingIndicator />
+                    <p className="mt-2 text-white">Loading Lyrics…</p>
+                </div>
     }
 
     // prepare section map & video ID
