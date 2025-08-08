@@ -23,6 +23,8 @@ export default function SettingsButton() {
         decrementTranspose,
         viewMode,
         setViewMode,
+        showTracedLine,
+        toggleShowTracedLine,
     } = useConfig()
 
     // cycle font sizes
@@ -161,6 +163,18 @@ export default function SettingsButton() {
                                 className="px-2 py-1 bg-transparent text-white hover:text-orange-200"
                             >
                                 <i className="bi bi-chevron-right"></i>
+                            </button>
+                        </div>
+
+                        {/* Show The Exact line in Lyrics-Trace toggle */}
+                        <div className="flex items-center justify-between space-x-2">
+                            <span>Traced Lyric Line:</span>
+                            <button
+                                onClick={toggleShowTracedLine}
+                                className={`px-3 py-1 border rounded min-w-[5rem]  text-white hover:text-orange-200 
+                                    ${showTracedLine ? 'border-orange-500' : 'border-gray-600'}`}
+                            >
+                                {showTracedLine ? 'Shown' : 'Hided'}
                             </button>
                         </div>
                     </div>

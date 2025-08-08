@@ -22,6 +22,7 @@ interface ConfigContextType {
     showChords: boolean;
     transposeChords: number;
     viewMode: ViewMode;
+    showTracedLine: boolean;
 
     setFontSize: (size: FontSize) => void;
     toggleVideoDisplay: () => void;
@@ -29,6 +30,7 @@ interface ConfigContextType {
     incrementTranspose: () => void;
     decrementTranspose: () => void;
     setViewMode: (mode: ViewMode) => void;
+    toggleShowTracedLine: () => void;
 }
 
 const DEFAULTS = {
@@ -37,6 +39,7 @@ const DEFAULTS = {
     showChords: true,
     transposeChords: 0,
     viewMode: 'Classic' as ViewMode,
+    showTracedLine: false,
 };
 const COOKIE_AGE_DAYS = 365;
 
@@ -66,6 +69,7 @@ const ConfigContext = createContext<ConfigContextType>({
     incrementTranspose: () => { },
     decrementTranspose: () => { },
     setViewMode: () => { },
+    toggleShowTracedLine: () => { },
 });
 
 // 4) Provider component
@@ -82,6 +86,9 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         DEFAULTS.transposeChords
     );
     const [viewMode, _setViewMode] = useState<ViewMode>(DEFAULTS.viewMode);
+    const [showTracedLine, _setShowTracedLine] = useState<boolean>(
+        DEFAULTS.showChords
+    );
 
     // on mount, read cookies (if present)
     useEffect(() => {
@@ -103,6 +110,11 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         const sc = getCookie('showChords');
         if (sc !== null) {
             _setShowChords(sc === 'true');
+        }
+
+        const tl = getCookie('showTracedLine');
+        if (tl !== null) {
+            _setShowTracedLine(tl === 'true');
         }
 
         const tc = getCookie('transposeChords');
@@ -148,6 +160,13 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
             return next;
         });
     };
+    const toggleShowTracedLine = () => {
+        _setShowTracedLine((prev) => {
+            const next = !prev;
+            setCookie('showTracedLine', String(next));
+            return next;
+        });
+    };
     const incrementTranspose = () => {
         _setTransposeChords((prev) => {
             const next = (prev + 1) % 12;
@@ -171,12 +190,14 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
                 videoDisplay,
                 showChords,
                 transposeChords,
+                showTracedLine,
                 setFontSize,
                 toggleVideoDisplay,
                 toggleShowChords,
                 incrementTranspose,
                 decrementTranspose,
                 setViewMode,
+                toggleShowTracedLine,
             }
             }
         >

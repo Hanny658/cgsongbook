@@ -29,7 +29,7 @@ const bgImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg',
 
 export default function SongLyricsPage({ number }: { number: string | number }) {
     const [song, setSong] = useState<SongData | null>(null)
-    const { videoDisplay, showChords, transposeChords } = useConfig()
+    const { videoDisplay, showChords, transposeChords, showTracedLine } = useConfig()
 
     // recognizer instance
     const recognizerRef = useRef<SpeechSDK.SpeechRecognizer | null>(null)
@@ -102,7 +102,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
         }
 
         const speechConfig = SpeechSDK.SpeechConfig.fromSubscription(key, region)
-        speechConfig.speechRecognitionLanguage = 'en-US'
+        speechConfig.speechRecognitionLanguage = 'en-AU'
         const audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput()
         const recognizer = new SpeechSDK.SpeechRecognizer(speechConfig, audioConfig)
 
@@ -316,7 +316,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
                                             <div
                                                 key={lineIdx}
                                                 id={lineId}
-                                                className={`overflow-x-auto ${isActive ? 'bg-amber-100/20 pl-1 rounded-md' : 'pl-1'
+                                                className={`overflow-x-auto ${isActive&&showTracedLine ? 'bg-amber-100/20 pl-1 rounded-md' : 'pl-1'
                                                     }`}
                                             >
                                                 {showChords && (
@@ -337,6 +337,7 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
                             </div>
                         )
                     })}
+                    <div className='h-7 md:h-2' />
                 </main>
             </div>
         </div>
