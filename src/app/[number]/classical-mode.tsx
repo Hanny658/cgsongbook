@@ -337,7 +337,8 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
                             </div>
                         )
                     })}
-                    <div className='h-7 md:h-2' />
+                    <div className='text-2xl font-bold text-white text-center'>* * *</div>
+                    <div className='h-4 md:h-2' />
                 </main>
             </div>
         </div>
