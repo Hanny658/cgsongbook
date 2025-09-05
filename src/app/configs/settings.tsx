@@ -12,9 +12,11 @@ import React, {
 // 1) Define setting types & defaults
 export type FontSize = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
 export type ViewMode = 'Classic' | 'GACC-Slides';
+export type TrackMode = 'Highlight' | 'Scroll' | 'Manual';
 
 export const FONT_SIZES: FontSize[] = ['extra-small', 'small', 'medium', 'large', 'extra-large'];
 export const VIEW_MODES: ViewMode[] = ['Classic', 'GACC-Slides'];
+export const TRACK_MODES: TrackMode[] = ['Highlight', 'Scroll', 'Manual'];
 
 interface ConfigContextType {
     fontSize: FontSize;
@@ -22,7 +24,7 @@ interface ConfigContextType {
     showChords: boolean;
     transposeChords: number;
     viewMode: ViewMode;
-    showTracedLine: boolean;
+    trackMode: TrackMode;
 
     setFontSize: (size: FontSize) => void;
     toggleVideoDisplay: () => void;
@@ -30,7 +32,7 @@ interface ConfigContextType {
     incrementTranspose: () => void;
     decrementTranspose: () => void;
     setViewMode: (mode: ViewMode) => void;
-    toggleShowTracedLine: () => void;
+    setTrackMode: (mode: TrackMode) => void;
 }
 
 const DEFAULTS = {
@@ -39,7 +41,7 @@ const DEFAULTS = {
     showChords: true,
     transposeChords: 0,
     viewMode: 'Classic' as ViewMode,
-    showTracedLine: false,
+    trackMode: 'Highlight' as TrackMode,
 };
 const COOKIE_AGE_DAYS = 365;
 
@@ -69,7 +71,7 @@ const ConfigContext = createContext<ConfigContextType>({
     incrementTranspose: () => { },
     decrementTranspose: () => { },
     setViewMode: () => { },
-    toggleShowTracedLine: () => { },
+    setTrackMode: () => { },
 });
 
 // 4) Provider component
@@ -86,8 +88,8 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         DEFAULTS.transposeChords
     );
     const [viewMode, _setViewMode] = useState<ViewMode>(DEFAULTS.viewMode);
-    const [showTracedLine, _setShowTracedLine] = useState<boolean>(
-        DEFAULTS.showChords
+    const [trackMode, _setTrackMode] = useState<TrackMode>(
+        DEFAULTS.trackMode
     );
 
     // on mount, read cookies (if present)
@@ -112,9 +114,9 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
             _setShowChords(sc === 'true');
         }
 
-        const tl = getCookie('showTracedLine');
+        const tl = getCookie('trackMode') as TrackMode;
         if (tl !== null) {
-            _setShowTracedLine(tl === 'true');
+            _setTrackMode(tl);
         }
 
         const tc = getCookie('transposeChords');
@@ -160,12 +162,9 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
             return next;
         });
     };
-    const toggleShowTracedLine = () => {
-        _setShowTracedLine((prev) => {
-            const next = !prev;
-            setCookie('showTracedLine', String(next));
-            return next;
-        });
+    const setTrackMode = (mode: TrackMode) => {
+        _setTrackMode(mode);
+        setCookie('trackMode', mode)
     };
     const incrementTranspose = () => {
         _setTransposeChords((prev) => {
@@ -190,14 +189,14 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
                 videoDisplay,
                 showChords,
                 transposeChords,
-                showTracedLine,
+                trackMode,
                 setFontSize,
                 toggleVideoDisplay,
                 toggleShowChords,
                 incrementTranspose,
                 decrementTranspose,
                 setViewMode,
-                toggleShowTracedLine,
+                setTrackMode,
             }
             }
         >

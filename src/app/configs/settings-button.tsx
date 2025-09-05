@@ -3,7 +3,7 @@
 // app/configs/settings-button.tsx
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { useConfig, FONT_SIZES, VIEW_MODES } from './settings'
+import { useConfig, FONT_SIZES, VIEW_MODES, TRACK_MODES } from './settings'
 
 const fontsizeDisplay = {'extra-small': "Extra Small",'small': "Small", 'medium': "Medium", 'large': "Large", 'extra-large': "Extra Large"}
 
@@ -23,8 +23,8 @@ export default function SettingsButton() {
         decrementTranspose,
         viewMode,
         setViewMode,
-        showTracedLine,
-        toggleShowTracedLine,
+        trackMode,
+        setTrackMode,
     } = useConfig()
 
     // cycle font sizes
@@ -36,6 +36,11 @@ export default function SettingsButton() {
     const idv = VIEW_MODES.indexOf(viewMode)
     const prevMode = VIEW_MODES[(idv + VIEW_MODES.length - 1) % VIEW_MODES.length]
     const nextMode = VIEW_MODES[(idv + 1) %  VIEW_MODES.length]
+
+    // cycle trace modes
+    const idt = TRACK_MODES.indexOf(trackMode)
+    const prevTrackMode = TRACK_MODES[(idt + TRACK_MODES.length - 1) % TRACK_MODES.length]
+    const nextTrackMode = TRACK_MODES[(idt + 1) %  TRACK_MODES.length]
 
     // simple C→X transposer
     const transposeChord = (base: string, semi: number) => {
@@ -166,15 +171,21 @@ export default function SettingsButton() {
                             </button>
                         </div>
 
-                        {/* Show The Exact line in Lyrics-Trace toggle */}
+                        {/* Change Lyric-tracing mode */}
                         <div className="flex items-center justify-between space-x-2">
-                            <span>Traced Lyric Line:</span>
+                            <span>Lyrics Tracing Mode:</span>
                             <button
-                                onClick={toggleShowTracedLine}
-                                className={`px-3 py-1 border rounded min-w-[5rem]  text-white hover:text-orange-200 
-                                    ${showTracedLine ? 'border-orange-500' : 'border-gray-600'}`}
+                                onClick={() => setTrackMode(prevTrackMode)}
+                                className="px-2 py-1 bg-transparent text-white hover:text-orange-200"
                             >
-                                {showTracedLine ? 'Shown' : 'Hided'}
+                                <i className="bi bi-chevron-left"></i>
+                            </button>
+                            <span className="min-w-[6rem] text-center">{trackMode}</span>
+                            <button
+                                onClick={() => setTrackMode(nextTrackMode)}
+                                className="px-2 py-1 bg-transparent text-white hover:text-orange-200"
+                            >
+                                <i className="bi bi-chevron-right"></i>
                             </button>
                         </div>
                     </div>
