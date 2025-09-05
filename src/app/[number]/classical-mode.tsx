@@ -29,7 +29,7 @@ const bgImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg',
 
 export default function SongLyricsPage({ number }: { number: string | number }) {
     const [song, setSong] = useState<SongData | null>(null)
-    const { videoDisplay, showChords, transposeChords, showTracedLine } = useConfig()
+    const { videoDisplay, showChords, transposeChords, trackMode } = useConfig()
 
     // recognizer instance
     const recognizerRef = useRef<SpeechSDK.SpeechRecognizer | null>(null)
@@ -68,8 +68,8 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
     }, [flatLyrics])
 
     useEffect(() => {
-        if (activeLine) scrollToLine(activeLine);
-    }, [activeLine]);
+        if (activeLine) scrollToLine(activeLine)
+    }, [activeLine])
 
     // —— FETCH SONG DATA ——
     useEffect(() => {
@@ -87,8 +87,26 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
         }
     }
 
+    // —— Change highlight to next n line (n can be negative) ——
+    const HighlightNextLine = (nLines: number) => {
+        // Skip when not tracking lyrics / Not on manual / 0 lines
+        if (!tracking || trackMode !== 'Manual' || nLines === 0 || flatLyrics.length === 0) return;
+
+        // start from current index, if not started yet, treat as before first line
+        const startIdx = currentIndexRef.current < 0 ? -1 : currentIndexRef.current;
+        let nextIdx = startIdx + nLines;
+
+        // clamp within bounds
+        if (nextIdx < 0) nextIdx = 0;
+        if (nextIdx >= flatLyrics.length) nextIdx = flatLyrics.length - 1;
+
+        currentIndexRef.current = nextIdx;
+        setActiveLine(flatLyrics[nextIdx].id);
+    };
+
     // —— START AZURE RECOGNITION ——
     const startRecognition = () => {
+        if (trackMode == 'Manual') return // guard
         if (!flatLyrics.length) {
             alert('Please wait for lyrics to load before starting trace.')
             return
@@ -207,11 +225,11 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
     const toggleTracking = () => {
         if (!tracking) {
             if (flatLyrics.length > 0) {
-                // keep -1 so the first STT result still does a full search
-                currentIndexRef.current = -1;
+                // keep -1 for auto-tracing so the first STT result still does a full search
+                currentIndexRef.current = (trackMode == 'Manual') ? 0 : -1;
                 setActiveLine(flatLyrics[0].id);
             }
-            startRecognition()
+            if (trackMode !== 'Manual') startRecognition()
         } else {
             stopRecognition()
             setActiveLine(null)
@@ -316,8 +334,8 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
                                             <div
                                                 key={lineIdx}
                                                 id={lineId}
-                                                className={`overflow-x-auto ${isActive&&showTracedLine ? 'bg-amber-100/20 pl-1 rounded-md' : 'pl-1'
-                                                    }`}
+                                                className={`overflow-x-auto ${isActive && (trackMode !== 'Scroll') 
+                                                    ? 'bg-amber-100/20 pl-1 rounded-md' : 'pl-1'}`}
                                             >
                                                 {showChords && (
                                                     <p className="whitespace-pre text-shadow-2xs text-base font-chords md:text-xl lg:text-2xl text-blue-400 text-shadow-blue-100/40">
@@ -341,6 +359,22 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
                     <div className='h-4 md:h-2' />
                 </main>
             </div>
+            {(tracking && (trackMode == 'Manual')) &&
+                <div className="fixed left-7 bottom-7 flex flex-col gap-y-0.5">
+                    <button
+                        className="rounded-t-2xl bg-amber-500/30 text-white px-3 py-0"
+                        onClick={() => HighlightNextLine(-1)}
+                    >
+                        <i className="bi bi-chevron-compact-up text-2xl"></i>
+                    </button>
+                    <button
+                        className="rounded-b-2xl bg-amber-500/30 text-white px-3 py-0"
+                        onClick={() => HighlightNextLine(1)}
+                    >
+                        <i className="bi bi-chevron-compact-down text-2xl"></i>
+                    </button>
+                </div>
+            }
         </div>
     )
 }
