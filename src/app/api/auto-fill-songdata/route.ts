@@ -61,11 +61,12 @@ interface SongData {
   lyrics: { id: string; label: string; lines: { chords: string; lyrics: string }[] }[];
   song: string[];
 }
-Each item in lyrics{} is called a song section, the line{} in sections are lines with chords and lyrics.
+Each item in lyrics{} represent a song section, the line{} in sections contains the chords and lyrics for the line (be caution of lines with no chords or no lyrics).
 Please preserve white spaces each line in front of chords or lyrics.
-Sections cannot have the same id. For exact same sections, just keep one but put it multiple times in song string with its id.
-Where song: string[]; records order of song sections with their id from lyrics array, can hold duplicates and in the order of displaying. 
+Sections cannot have the same id. For exact same sections, just keep one but put it multiple times in song string[] with its id.
+Where the song: string[]; records order of song sections with their id from lyrics array, can hold duplicates and in the order of displaying. 
 If no link is detected, give link an empty string.
+
 ${lastError && lastError}
 
 — Output only the raw JSON (no markdown, no code fences, no commentary):
