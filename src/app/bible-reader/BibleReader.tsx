@@ -159,6 +159,12 @@ export default function BibleReader() {
         if (suggestions.length === 1) {
             setQuery(suggestions[0] + " ");
             setSuggestions([]);
+            return;
+        }
+        if (!query) {
+            setQuery("John 3: 16-18");
+            setSuggestions([]);
+            return;
         }
     }
 
@@ -173,8 +179,11 @@ export default function BibleReader() {
                     <i className="text-2xl bi bi-x-lg"></i>
                 </button>
 
+                {/* Title */}
+                <p className="font-bible text-sky-500 text-center">Scripture Finder</p>
+
                 {/* First row */}
-                <div className="flex gap-2 mt-7">
+                <div className="flex gap-2 mt-2">
                     <select
                         className="border rounded px-2"
                         value={translation}
@@ -190,7 +199,7 @@ export default function BibleReader() {
                         <input
                             type="text"
                             className="w-full border rounded px-3 py-2"
-                            placeholder="e.g. Genesis 3:1-5"
+                            placeholder="e.g. John 3: 16-18"
                             value={query}
                             onChange={e => setQuery(e.target.value)}
                             onKeyDown={e => {
@@ -234,7 +243,7 @@ export default function BibleReader() {
                 {/* full width - find text btn for mobile view */}
                 <div className="mt-3 md:hidden">
                     <button
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded"
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-1 rounded"
                         onClick={handleFind}
                     >
                         {loading ? "Loading..." : "Find Verse"}
