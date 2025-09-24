@@ -162,7 +162,7 @@ export default function BibleReader() {
             return;
         }
         if (!query) {
-            setQuery("John 3: 16-18");
+            setQuery("John 3: 16-21");
             setSuggestions([]);
             return;
         }
@@ -199,7 +199,7 @@ export default function BibleReader() {
                         <input
                             type="text"
                             className="w-full border rounded px-3 py-2"
-                            placeholder="e.g. John 3: 16-18"
+                            placeholder="e.g. John 3: 16-21"
                             value={query}
                             onChange={e => setQuery(e.target.value)}
                             onKeyDown={e => {
@@ -254,7 +254,7 @@ export default function BibleReader() {
                 {result ? (
                     <div className="mt-4 space-y-2">
                         {Object.entries(result).map(([num, text]) => (
-                            <p key={num} className="text-gray-900 font-bible text-xl">
+                            <p key={num} className="text-gray-900 font-bible text-xl mt-1 md:px-4">
                                 <sup className="text-2xs align-super mr-1 !text-gray-500">{num}</sup>
                                 {text}
                             </p>
