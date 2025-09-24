@@ -62,6 +62,28 @@ export default function BibleReader() {
         }
     }, [query]);
 
+    // Bg content lock to prevent unwanted scrollin'
+    useEffect(() => {
+        if (open) {
+            // prevent scrolling/dragging
+            document.body.style.overflow = "hidden";
+            document.body.style.position = "fixed";
+            document.body.style.width = "100%";
+        } else {
+            // restore
+            document.body.style.overflow = "";
+            document.body.style.position = "";
+            document.body.style.width = "";
+        }
+
+        // clean up in case component unmounts while still open
+        return () => {
+            document.body.style.overflow = "";
+            document.body.style.position = "";
+            document.body.style.width = "";
+        };
+    }, [open]);
+
     async function handleFind() {
         try {
             setLoading(true);
