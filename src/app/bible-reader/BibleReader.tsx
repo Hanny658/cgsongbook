@@ -181,7 +181,7 @@ export default function BibleReader() {
                         onChange={e => setTranslation(e.target.value)}
                     >
                         {TRANSLATIONS.map(t => (
-                            <option key={t} value={t}>
+                            <option key={t} value={t} >
                                 {t}
                             </option>
                         ))}
@@ -245,7 +245,7 @@ export default function BibleReader() {
                 {result ? (
                     <div className="mt-4 space-y-2">
                         {Object.entries(result).map(([num, text]) => (
-                            <p key={num} className="text-gray-900">
+                            <p key={num} className="text-gray-900 font-bible text-xl">
                                 <sup className="text-2xs align-super mr-1 !text-gray-500">{num}</sup>
                                 {text}
                             </p>
