@@ -154,19 +154,27 @@ export default function BibleReader() {
         }
     }
 
+    // Quick fill from sugestions (only if there's only one available)
+    const autoFillBookName = () => {
+        if (suggestions.length === 1) {
+            setQuery(suggestions[0] + " ");
+            setSuggestions([]);
+        }
+    }
+
     const windowEl = (
         <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/40">
-            <div className="bg-white shadow-xl rounded-lg mt-12 w-full max-w-7xl p-4 relative max-h-[90vh] overflow-auto">
+            <div className="bg-white shadow-xl rounded-lg mt-12 pb-7 w-full max-w-7xl p-4 relative min-h-1/4 max-h-[90vh] overflow-auto">
                 {/* Close */}
                 <button
                     onClick={() => setOpen(false)}
                     className="absolute top-2 right-2 text-black hover:text-red-900"
                 >
-                    <i className="bi bi-x-lg"></i>
+                    <i className="text-2xl bi bi-x-lg"></i>
                 </button>
 
                 {/* First row */}
-                <div className="flex gap-2 mt-4">
+                <div className="flex gap-2 mt-7">
                     <select
                         className="border rounded px-2"
                         value={translation}
@@ -189,6 +197,9 @@ export default function BibleReader() {
                                 if (e.key === "Enter") {
                                     e.preventDefault();
                                     handleFind();
+                                }else if (e.key === "Tab") {
+                                    e.preventDefault();
+                                    autoFillBookName();
                                 }
                             }}
                         />
@@ -231,8 +242,8 @@ export default function BibleReader() {
                 </div>
 
                 {/* Result */}
-                {result && (
-                    <div className="mt-4 space-y-2 pb-4">
+                {result ? (
+                    <div className="mt-4 space-y-2">
                         {Object.entries(result).map(([num, text]) => (
                             <p key={num} className="text-gray-900">
                                 <sup className="text-2xs align-super mr-1 !text-gray-500">{num}</sup>
@@ -240,7 +251,9 @@ export default function BibleReader() {
                             </p>
                         ))}
                     </div>
-                )}
+                ) :
+                <h5 className="text-center mt-7 md:mt-16 text-gray-600">Start by type the Bible verse for today.</h5>
+                }
             </div>
         </div>
     );
