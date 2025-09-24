@@ -8,11 +8,14 @@ import Head from 'next/head'
 import SettingsButton from './configs/settings-button'
 import RandomPicker from './utils/random-picker'
 import LoadingIndicator from './utils/loading-indicator'
+import BibleReader from './bible-reader/BibleReader'
 
 const bgImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', 
   '7.jpg', '8.jpg', '9.webp', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.webp', 
   '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg', '21.jpg', '22.jpg', 
   '23.jpg', '25.webp', '24.jpg', '26.jpg']
+
+const BIBLE_READER_ENABLED : boolean = !!(process.env.NEXT_PUBLIC_DB_URL);
 
 const SongbookPage = () => {
   const [songs, setSongs] = useState<SongMeta[]>([])
@@ -89,7 +92,7 @@ const SongbookPage = () => {
         </Head>
 
         {/* Top Bar */}
-        <header className="w-full !bg-black bg-opacity-70 !text-white py-2 px-6 flex justify-between items-center">
+        <header className="w-full !bg-black bg-opacity-70 !text-white py-2 px-4 md:px-6 flex justify-between items-center">
           <div className="flex items-center justify-between">
             <SettingsButton />
             <h1 className="text-xl font-semibold">CG Songbook</h1>
@@ -166,6 +169,12 @@ const SongbookPage = () => {
                 <i className="bi bi-arrow-bar-up text-xl"></i>
               </button>
             )}
+
+            {BIBLE_READER_ENABLED &&
+              <div className="fixed bottom-8 left-8" >
+                <BibleReader />
+              </div>
+            }
           </div>
         </main>
 

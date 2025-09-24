@@ -24,6 +24,7 @@ const ROMAN_MAP: Record<string, string> = {
 };
 
 const TRANSLATIONS = ["KJV", "NKJV", "NIV"];
+const BIBLE_API_ENDPOINT = process.env.NEXT_PUBLIC_DB_URL;
 
 export default function BibleReader() {
     const [open, setOpen] = useState(false);
@@ -133,7 +134,7 @@ export default function BibleReader() {
             const verse_start = rawStart || "";
             const verse_end = rawEnd || rawStart || "";
 
-            const url = `${process.env.NEXT_PUBLIC_DB_URL}/bible-verse?translation=${translation}&book=${encodeURIComponent(
+            const url = `${BIBLE_API_ENDPOINT}/bible-verse?translation=${translation}&book=${encodeURIComponent(
                 book
             )}&chapter=${chapter}${verse_start ? `&verse_start=${verse_start}` : ""
                 }${verse_end ? `&verse_end=${verse_end}` : ""}`;
@@ -248,7 +249,7 @@ export default function BibleReader() {
         <>
             <button
                 onClick={() => setOpen(true)}
-                className="fixed bottom-5 right-5 bg-blue-600 text-white p-3 rounded-full shadow hover:bg-blue-700"
+                className="bg-blue-600/50 text-white p-3 rounded-full shadow hover:bg-blue-700/70"
             >
                 <i className="bi bi-book"></i>
             </button>
