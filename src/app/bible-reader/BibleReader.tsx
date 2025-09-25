@@ -20,7 +20,10 @@ const BOOKS = [
 const ROMAN_MAP: Record<string, string> = {
     I: "1",
     II: "2",
-    III: "3"
+    III: "3",
+    i: "1",
+    ii: "2",
+    iii: "3"
 };
 
 const TRANSLATIONS = ["KJV", "NKJV", "NIV"];
@@ -54,7 +57,7 @@ export default function BibleReader() {
         let firstWord: string;
 
         // If query starts with a digit prefix (1/2/3) or roman numeral (I/II/III)
-        if (["1", "2", "3", "I", "II", "III"].includes(parts[0])) {
+        if (["1", "2", "3", "I", "II", "III", "i", "ii", "iii"].includes(parts[0])) {
             if (parts.length > 1) {
                 // Normalize roman to digit if needed
                 const numPrefix = ROMAN_MAP[parts[0]] ?? parts[0];
@@ -126,11 +129,11 @@ export default function BibleReader() {
             // eslint-disable-next-line prefer-const
             let [, rawBook, rawChapter, rawStart, rawEnd] = match;
 
-            // Normalize book name (handle Roman numerals like "I John")
-            rawBook = rawBook.trim();
-            const parts = rawBook.split(" ");
-            if (ROMAN_MAP[parts[0]?.toUpperCase()]) {
-                parts[0] = ROMAN_MAP[parts[0].toUpperCase()];
+            // Split and normalize Roman prefix to numeric
+            const parts = rawBook.trim().split(/\s+/);
+            const roman = ROMAN_MAP[parts[0].toUpperCase()];
+            if (roman) {
+                parts[0] = roman;
                 rawBook = parts.join(" ");
             }
 
@@ -202,7 +205,7 @@ export default function BibleReader() {
                 </button>
 
                 {/* Title */}
-                <p className="font-bible text-sky-500 text-center">Scripture Finder</p>
+                <p className="font-bible text-sky-500 text-center">Scripture</p>
 
                 {/* First row */}
                 <div className="flex gap-2 mt-2 text-black">
