@@ -43,19 +43,41 @@ export default function BibleReader() {
 
     // Suggest books from prefix
     useEffect(() => {
-        const inputBook = query.split(" ")[0]?.trim();
-        if (!inputBook) {
+        if (!query.trim()) {
             setSuggestions([]);
             return;
         }
 
-        const normalized = inputBook.replace(/\./g, "").toLowerCase();
+        // Tokenize query by whitespace
+        const parts = query.trim().split(/\s+/);
+
+        let firstWord: string;
+
+        // If query starts with a digit prefix (1/2/3) or roman numeral (I/II/III)
+        if (["1", "2", "3", "I", "II", "III"].includes(parts[0])) {
+            if (parts.length > 1) {
+                // Normalize roman to digit if needed
+                const numPrefix = ROMAN_MAP[parts[0]] ?? parts[0];
+                // Join prefix + next token (e.g. "2 John")
+                firstWord = `${numPrefix} ${parts[1]}`;
+            } else {
+                // Only prefix typed (no next token yet)
+                firstWord = ROMAN_MAP[parts[0]] ?? parts[0];
+            }
+        } else {
+            firstWord = parts[0];
+        }
+
+        // Normalize: remove dots, lowercase
+        const normalized = firstWord.replace(/\./g, "").toLowerCase();
+
         const matches = BOOKS.filter(b =>
             b.toLowerCase().startsWith(normalized)
         );
+
         if (
             matches.length === 1 &&
-            matches[0].toLowerCase() === normalized.toLowerCase()
+            matches[0].toLowerCase() === normalized
         ) {
             setSuggestions([]); // already exact
         } else {
@@ -183,7 +205,7 @@ export default function BibleReader() {
                 <p className="font-bible text-sky-500 text-center">Scripture Finder</p>
 
                 {/* First row */}
-                <div className="flex gap-2 mt-2">
+                <div className="flex gap-2 mt-2 text-black">
                     <select
                         className="border rounded px-2"
                         value={translation}
@@ -232,7 +254,7 @@ export default function BibleReader() {
                     {/* inline - find text btn for tablet/desktop view */}
                     <div className="w-1/4 md:block hidden">
                         <button
-                            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded"
+                            className="w-full bg-blue-600 hover:bg-blue-700 !text-white py-2 rounded"
                             onClick={handleFind}
                         >
                             {loading ? "Loading..." : "Find Verse"}
@@ -243,7 +265,7 @@ export default function BibleReader() {
                 {/* full width - find text btn for mobile view */}
                 <div className="mt-3 md:hidden">
                     <button
-                        className="w-full bg-blue-600 hover:bg-blue-700 text-white py-1 rounded"
+                        className="w-full bg-blue-600 hover:bg-blue-700 !text-white py-1 rounded"
                         onClick={handleFind}
                     >
                         {loading ? "Loading..." : "Find Verse"}
