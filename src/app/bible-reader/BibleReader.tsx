@@ -194,9 +194,15 @@ export default function BibleReader() {
     }
 
     const windowEl = (
-        <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/40">
-            <div className="bg-white shadow-xl rounded-lg mt-12 pb-7 w-full max-w-7xl p-4 relative min-h-1/4 max-h-[90vh] overflow-auto">
-                {/* Close */}
+        <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/50">
+            <div className="bg-white shadow-xl rounded-lg mt-5 pb-7 w-full max-w-7xl p-4 relative min-h-1/3 md:min-h-1/4 max-h-[95vh] overflow-auto">
+                {/* Close for both left& right */}
+                <button
+                    onClick={() => setOpen(false)}
+                    className="absolute top-2 left-2 text-black hover:text-red-900"
+                >
+                    <i className="text-2xl bi bi-chevron-left"></i>
+                </button>
                 <button
                     onClick={() => setOpen(false)}
                     className="absolute top-2 right-2 text-black hover:text-red-900"
@@ -206,6 +212,22 @@ export default function BibleReader() {
 
                 {/* Title */}
                 <p className="font-bible text-sky-500 text-center">Scripture</p>
+
+                {/* Result for mobile */}
+                <div className="md:hidden">
+                {result ? (
+                    <div className="mt-4 space-y-2">
+                        {Object.entries(result).map(([num, text]) => (
+                            <p key={num} className="text-gray-900 font-bible text-xl mt-1 md:px-4">
+                                <sup className="text-2xs align-super mr-1 !text-gray-500">{num}</sup>
+                                {text}
+                            </p>
+                        ))}
+                    </div>
+                ) :
+                <h5 className="text-center mt-14 mb-14 md:mt-16 text-gray-600">Start by type the Bible verse for today.</h5>
+                }
+                </div>
 
                 {/* First row */}
                 <div className="flex gap-2 mt-2 text-black">
@@ -274,8 +296,8 @@ export default function BibleReader() {
                         {loading ? "Loading..." : "Find Verse"}
                     </button>
                 </div>
-
-                {/* Result */}
+                {/* Result for Tablet and PC */}
+                <div className="md:block hidden">
                 {result ? (
                     <div className="mt-4 space-y-2">
                         {Object.entries(result).map(([num, text]) => (
@@ -288,6 +310,7 @@ export default function BibleReader() {
                 ) :
                 <h5 className="text-center mt-7 md:mt-16 text-gray-600">Start by type the Bible verse for today.</h5>
                 }
+                </div>
             </div>
         </div>
     );
