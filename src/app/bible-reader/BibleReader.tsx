@@ -118,11 +118,11 @@ export default function BibleReader() {
             // clear suggestions
             setSuggestions([]);
 
-            // Parse "Genesis 3:1-5"
-            const regex = /^([\w\s]+)\s+(\d+):?\s*([\divx]*)-?([\divx]*)$/i;
+            // Parse Bible Verse text
+            const regex = /^([\w\s]+)\s+(\d+)(?:\s*:\s*([\divx]+)(?:\s*-\s*([\divx]+))?)?$/i;
             const match = query.match(regex);
             if (!match) {
-                alert("Invalid format. Example: Genesis 3:1-5");
+                alert("Invalid format. Example: Genesis 1:2-5");
                 return;
             }
 
@@ -136,7 +136,7 @@ export default function BibleReader() {
                 parts[0] = roman;
                 rawBook = parts.join(" ");
             }
-            if (rawBook = "Psalms") rawBook = "Psalm"; // For plural refs for psalms
+            if (rawBook === "Psalms") rawBook = "Psalm"; // For plural refs for Psalms
 
             // ---- Book name prefix matching ----
             const normalized = rawBook.toLowerCase();
@@ -167,7 +167,8 @@ export default function BibleReader() {
 
             const res = await fetch(url);
             if (!res.ok) {
-                alert("API Error: " + res.status);
+                const errorRes = await res.json();
+                alert("API Error: " + errorRes.error);
                 return;
             }
             const data = await res.json();
