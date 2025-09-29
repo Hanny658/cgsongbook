@@ -57,7 +57,7 @@ const ManagementPage: React.FC = () => {
 
     // Reload songs everytime back to view all
     useEffect(() => {
-        if (!view || view=='edit') return; // not doing whenswitched to edit mode
+        if (!view || view == 'edit') return; // not doing whenswitched to edit mode
         (async () => {
             try {
                 const res = await fetch('/api/songs');
@@ -119,33 +119,43 @@ const ManagementPage: React.FC = () => {
         <div className="min-h-screen bg-gray-50">
             {!isAuthenticated ? (
                 // --- Login Form ---
-                <div className="max-w-sm mx-auto mt-20 p-6 bg-white rounded shadow">
-                    <h2 className="text-2xl text-black font-semibold mb-4">Please Log In</h2>
-                    {error && <div className="text-red-600 mb-2">{error}</div>}
-                    <input
-                        className="w-full mb-3 p-2 border rounded text-black placeholder-gray-500"
-                        type="text"
-                        placeholder="Username"
-                        value={username}
-                        onChange={e => setUsername(e.target.value)}
-                    />
-                    <input
-                        className="w-full mb-4 p-2 border rounded text-black placeholder-gray-500"
-                        type="password"
-                        placeholder="Password"
-                        value={password}
-                        onChange={e => setPassword(e.target.value)}
-                    />
-                    <button
-                        className="w-full py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-                        onClick={handleLogin}
-                    >
-                        Submit
-                    </button>
+                <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-white to-blue-200">
+                    <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl">
+                        <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">
+                            CG Songbook - Online Editor
+                        </h2>
+                        {error && (
+                            <div className="text-red-600 text-sm text-center mb-4">{error}</div>
+                        )}
+
+                        {/* Use a form so Enter works */}
+                        <form onSubmit={handleLogin}>
+                            <input
+                                className="w-full mb-4 p-3 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                type="text"
+                                placeholder="Username"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+                            <input
+                                className="w-full mb-6 p-3 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                type="password"
+                                placeholder="Password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                            <button
+                                type="submit"
+                                className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200"
+                            >
+                                Login
+                            </button>
+                        </form>
+                    </div>
                 </div>
             ) : (
                 // --- Management UI ---
-                <div>
+                <div className='from-blue-200 via-white to-blue-300'>
                     <header className="flex items-center justify-between p-2 bg-white shadow">
                         <span className="text-xl min-w-[50vw] text-black font-bold">Song Editor</span>
                         <div className="space-x-2">
@@ -172,25 +182,25 @@ const ManagementPage: React.FC = () => {
                     </header>
 
                     <main className="px-6 py-4 md:px-12">
-                        {metas ? 
-                        <>
-                        {view === 'all' && (
-                            // Pass down a callback so ViewAll can invoke editing
-                            <ViewAll metas={metas}  onEdit={handleEditSong} />
-                        )}
-                        {view === 'edit' && (
-                            // Provide the currentSong (blank or loaded) to your editor
-                            <SongEdit 
-                                songdata={currentSong} 
-                                existingNumbers={metas.map(m => m.number)} 
-                                onCancel={() => setView('all')} 
-                            />
-                        )}
-                        </>
-                        :
-                        <div className="w-full min-h-[60vh] flex flex-col justify-center items-center text-center">
-                            <LoadingIndicator color='black' />
-                        </div> 
+                        {metas ?
+                            <>
+                                {view === 'all' && (
+                                    // Pass down a callback so ViewAll can invoke editing
+                                    <ViewAll metas={metas} onEdit={handleEditSong} />
+                                )}
+                                {view === 'edit' && (
+                                    // Provide the currentSong (blank or loaded) to your editor
+                                    <SongEdit
+                                        songdata={currentSong}
+                                        existingNumbers={metas.map(m => m.number)}
+                                        onCancel={() => setView('all')}
+                                    />
+                                )}
+                            </>
+                            :
+                            <div className="w-full min-h-[60vh] flex flex-col justify-center items-center text-center">
+                                <LoadingIndicator color='black' />
+                            </div>
                         }
                     </main>
                 </div>
