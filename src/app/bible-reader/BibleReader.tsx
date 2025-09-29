@@ -6,7 +6,7 @@ import { createPortal } from "react-dom";
 const BOOKS = [
     "Genesis", "Exodus", "Leviticus", "Numbers", "Deuteronomy",
     "Joshua", "Judges", "Ruth", "1 Samuel", "2 Samuel", "1 Kings", "2 Kings",
-    "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther", "Job", "Psalms",
+    "1 Chronicles", "2 Chronicles", "Ezra", "Nehemiah", "Esther", "Job", "Psalm",
     "Proverbs", "Ecclesiastes", "Song of Solomon", "Isaiah", "Jeremiah", "Lamentations",
     "Ezekiel", "Daniel", "Hosea", "Joel", "Amos", "Obadiah", "Jonah", "Micah", "Nahum",
     "Habakkuk", "Zephaniah", "Haggai", "Zechariah", "Malachi",
@@ -136,6 +136,7 @@ export default function BibleReader() {
                 parts[0] = roman;
                 rawBook = parts.join(" ");
             }
+            if (rawBook = "Psalms") rawBook = "Psalm"; // For plural refs for psalms
 
             // ---- Book name prefix matching ----
             const normalized = rawBook.toLowerCase();
