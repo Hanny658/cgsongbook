@@ -136,7 +136,7 @@ export default function BibleReader() {
                 parts[0] = roman;
                 rawBook = parts.join(" ");
             }
-            if (rawBook === "Psalms") rawBook = "Psalm"; // For plural refs for Psalms
+            if (rawBook === "Psalm") rawBook = "Psalms"; 
 
             // ---- Book name prefix matching ----
             const normalized = rawBook.toLowerCase();
@@ -154,7 +154,9 @@ export default function BibleReader() {
                 return;
             }
 
-            const book = candidates[0];
+            let book = candidates[0];
+            // For plural refs for Psalms (data source is singular)
+            if (book === "Psalms") book = "Psalm";
 
             const chapter = rawChapter;
             const verse_start = rawStart || "";
