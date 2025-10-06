@@ -206,7 +206,7 @@ export default function BibleReader() {
 
     const windowEl = (
         <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/50">
-            <div className="bg-white shadow-xl rounded-lg mt-5 pb-7 w-full max-w-7xl p-4 relative min-h-1/3 md:min-h-1/4 max-h-[95vh] overflow-auto">
+            <div className="bg-white shadow-xl rounded-lg mt-5 pb-7 w-full max-w-7xl p-4 relative min-h-1/3 md:min-h-1/4 max-h-[90vh] overflow-auto">
                 {/* Close for both left& right */}
                 <button
                     onClick={() => setOpen(false)}
