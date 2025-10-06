@@ -25,7 +25,7 @@ const ROMAN_MAP: Record<string, string> = {
     ii: "2",
     iii: "3"
 };
-type TranslationKey = "KJV" | "NET" | "NKJV" | "NIV";
+type TranslationKey = "KJV" | "NET" /*| "NKJV" | "NIV"*/;
 const TRANSLATIONS_CPRIGHT = {
     KJV: "Rights in the Authorized (King James) Version in the United Kingdom are vested in the Crown. Published by permission of the Crown's patentee, Cambridge University Press.", 
     NET: "Scripture quoted by permission. Quotations designated are from the NET Bible® copyright ©1996 by Biblical Studies Press, L.L.C. https://netbible.com All rights reserved", 
