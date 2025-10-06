@@ -25,8 +25,13 @@ const ROMAN_MAP: Record<string, string> = {
     ii: "2",
     iii: "3"
 };
-
-const TRANSLATIONS = ["KJV", "NKJV", "NIV"];
+type TranslationKey = "KJV" | "NET" | "NKJV" | "NIV";
+const TRANSLATIONS_CPRIGHT = {
+    KJV: "Rights in the Authorized (King James) Version in the United Kingdom are vested in the Crown. Published by permission of the Crown's patentee, Cambridge University Press.", 
+    NET: "Scripture quoted by permission. Quotations designated are from the NET Bible® copyright ©1996 by Biblical Studies Press, L.L.C. https://netbible.com All rights reserved", 
+    NKJV: "The Holy Bible, New King James Version, Copyright 1982 Thomas Nelson. All rights reserved.", 
+    NIV: "The Holy Bible, New International Version® NIV® Copyright 2011 by Biblica, Inc. Used by Permission of Biblica, Inc.® All rights reserved worldwide."
+};
 const BIBLE_API_ENDPOINT = process.env.NEXT_PUBLIC_DB_URL;
 
 export default function BibleReader() {
@@ -34,10 +39,11 @@ export default function BibleReader() {
     const [mounted, setMounted] = useState(false);
 
     const [query, setQuery] = useState("");
-    const [translation, setTranslation] = useState("NKJV");
+    const [translation, setTranslation] = useState<TranslationKey>("KJV");
     const [suggestions, setSuggestions] = useState<string[]>([]);
     const [result, setResult] = useState<Record<string, string> | null>(null);
     const [loading, setLoading] = useState(false);
+    const [copyrightText, setCopyrightText] = useState("");
 
     // mount portal
     useEffect(() => {
@@ -173,6 +179,7 @@ export default function BibleReader() {
                 alert("API Error: " + errorRes.error);
                 return;
             }
+            setCopyrightText(TRANSLATIONS_CPRIGHT[translation]);
             const data = await res.json();
             setResult(data);
         } catch (err) {
@@ -227,6 +234,7 @@ export default function BibleReader() {
                                 {text}
                             </p>
                         ))}
+                        <p className="text-xs text-gray-400/80 text-center px-2 mt-4">{copyrightText}</p>
                     </div>
                 ) :
                 <h5 className="text-center mt-14 mb-14 md:mt-16 text-gray-600">Start by type the Bible verse for today.</h5>
@@ -238,9 +246,9 @@ export default function BibleReader() {
                     <select
                         className="border rounded px-2"
                         value={translation}
-                        onChange={e => setTranslation(e.target.value)}
+                        onChange={e => setTranslation(e.target.value as TranslationKey)}
                     >
-                        {TRANSLATIONS.map(t => (
+                        {Object.keys(TRANSLATIONS_CPRIGHT).map(t => (
                             <option key={t} value={t} >
                                 {t}
                             </option>
@@ -310,6 +318,7 @@ export default function BibleReader() {
                                 {text}
                             </p>
                         ))}
+                        <p className="text-xs text-gray-400/80 text-center px-2 mt-4">{copyrightText}</p>
                     </div>
                 ) :
                 <h5 className="text-center mt-7 md:mt-16 text-gray-600">Start by type the Bible verse for today.</h5>
