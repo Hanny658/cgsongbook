@@ -29,8 +29,8 @@ type TranslationKey = "KJV" | "NET" | "NKJV" | "NIV";
 const TRANSLATIONS_CPRIGHT = {
     KJV: "Rights in the Authorized (King James) Version in the United Kingdom are vested in the Crown. Published by permission of the Crown's patentee, Cambridge University Press.", 
     NET: "Scripture quoted by permission. Quotations designated are from the NET Bible® copyright ©1996 by Biblical Studies Press, L.L.C. https://netbible.com All rights reserved", 
-    NKJV: "The Holy Bible, New King James Version, Copyright 1982 Thomas Nelson. All rights reserved.", 
-    NIV: "The Holy Bible, New International Version® NIV® Copyright 2011 by Biblica, Inc. Used by Permission of Biblica, Inc.® All rights reserved worldwide."
+    // NKJV: "The Holy Bible, New King James Version, Copyright 1982 Thomas Nelson. All rights reserved.", 
+    // NIV: "The Holy Bible, New International Version® NIV® Copyright 2011 by Biblica, Inc. Used by Permission of Biblica, Inc.® All rights reserved worldwide."
 };
 const BIBLE_API_ENDPOINT = process.env.NEXT_PUBLIC_DB_URL;
 
