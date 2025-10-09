@@ -206,7 +206,7 @@ export default function BibleReader() {
 
     const windowEl = (
         <div className="fixed inset-0 z-50 flex items-start justify-center bg-black/50">
-            <div className="bg-white shadow-xl rounded-lg mt-5 pb-7 w-full max-w-7xl p-4 relative min-h-1/3 md:min-h-1/4 max-h-[90vh] overflow-auto">
+            <div className="bg-white shadow-xl rounded-lg mt-5 md:mt-0 pb-7 w-full max-w-7xl p-4 relative min-h-1/3 md:min-h-1/4 max-h-[90vh] lg:max-h-screen overflow-auto">
                 {/* Close for both left& right */}
                 <button
                     onClick={() => setOpen(false)}
@@ -222,7 +222,7 @@ export default function BibleReader() {
                 </button>
 
                 {/* Title */}
-                <p className="font-bible text-sky-500 text-center">Scripture</p>
+                <p className="font-bible text-sky-500 text-center">The Scripture</p>
 
                 {/* Result for mobile */}
                 <div className="md:hidden">
