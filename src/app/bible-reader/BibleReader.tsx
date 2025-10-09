@@ -16,6 +16,11 @@ const BOOKS = [
     "1 John", "2 John", "3 John", "Jude", "Revelation"
 ];
 
+const RECOM_VERSES: string[] = [
+    "John 3: 16-21", "John 3: 16", "Jeremiah 29: 11-12", "Proverbs 3: 5-6", "Philippians 4: 10-13",
+    "Isaiah 41: 10", "Matthew 28: 19-20", "John 14: 13-21", "Romans 8: 28", "1 Peter 5: 6-7"
+]
+
 // Roman numeral mapping
 const ROMAN_MAP: Record<string, string> = {
     I: "1",
@@ -37,6 +42,7 @@ const BIBLE_API_ENDPOINT = process.env.NEXT_PUBLIC_DB_URL;
 export default function BibleReader() {
     const [open, setOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
+    const [recVerse, setRecVerse] = useState("");
 
     const [query, setQuery] = useState("");
     const [translation, setTranslation] = useState<TranslationKey>("KJV");
@@ -45,9 +51,11 @@ export default function BibleReader() {
     const [loading, setLoading] = useState(false);
     const [copyrightText, setCopyrightText] = useState("");
 
-    // mount portal
+    // mount portal and load recommended verse
     useEffect(() => {
         setMounted(true);
+        const randomIndex = Math.floor(Math.random() * RECOM_VERSES.length);
+        setRecVerse(RECOM_VERSES[randomIndex]);
     }, []);
 
     // Suggest books from prefix
@@ -198,7 +206,7 @@ export default function BibleReader() {
             return;
         }
         if (!query) {
-            setQuery("John 3: 16-21");
+            setQuery(recVerse);
             setSuggestions([]);
             return;
         }
@@ -258,7 +266,7 @@ export default function BibleReader() {
                         <input
                             type="text"
                             className="w-full border rounded px-3 py-2"
-                            placeholder="e.g. John 3: 16-21"
+                            placeholder={`e.g. ${recVerse}`}
                             value={query}
                             onChange={e => setQuery(e.target.value)}
                             onKeyDown={e => {
