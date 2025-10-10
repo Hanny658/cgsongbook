@@ -56,16 +56,18 @@ Convert the following plain text of a Christian song into a JSON object matching
 
 interface SongData {
   title: string;
-  link?: string;
   number: number;
   lyrics: { id: string; label: string; lines: { chords: string; lyrics: string }[] }[];
   song: string[];
+  link?: string;
+  verse?: string;
 }
 Each item in lyrics{} represent a song section, the line{} in sections contains the chords and lyrics for the line (be caution of lines with no chords or no lyrics).
 Please preserve white spaces each line in front of chords or lyrics.
 Sections cannot have the same id. For exact same sections, just keep one but put it multiple times in song string[] with its id.
 Where the song: string[]; records order of song sections with their id from lyrics array, can hold duplicates and in the order of displaying. 
 If no link is detected, give link an empty string.
+Finally, if you know the exact Bible Verse associated to the song given, provide it inthe format of <book name> <chapter>:<verse(s)>. If unsure, just skip it.
 
 ${lastError && lastError}
 
