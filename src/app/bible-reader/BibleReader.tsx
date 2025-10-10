@@ -156,7 +156,7 @@ export default function BibleReader({ startVerse }: { startVerse?: string }) {
             setSuggestions([]);
 
             // Parse Bible Verse text
-            const regex = /^([\w\s]+)\s+(\d+)(?:\s*:\s*([\divx]+)(?:\s*-\s*([\divx]+))?)?$/i;
+            const regex = /^([\w\s]+)\s+(\d+)(?:\s*:\s*([\divx]+)(?:\s*[-–]\s*([\divx]+))?)?$/i;
             const match = prefilled ? prefilled.match(regex) : query.match(regex);
             if (!match) {
                 alert("Invalid format. Example: Genesis 1:2-5");
