@@ -15,6 +15,7 @@ interface SongSection {
 interface SongData {
     title: string
     link?: string
+    verse?: string
     number: number
     lyrics: SongSection[]
     song: string[]
@@ -24,5 +25,6 @@ interface SongData {
 interface SongMeta {
     title: string
     link?: string
+    verse?: string
     number: number
 }

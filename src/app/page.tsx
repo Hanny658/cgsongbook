@@ -23,7 +23,7 @@ const SongbookPage = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [showScrollTop, setShowScrollTop] = useState(false)
   const [bgUrl, setBgUrl] = useState('')
-
+  const [hymnVerse, setHymnVerse] = useState('')
   const [picked, setPicked] = useState<number | null>(null);
   const songRefs = useRef<Record<number, HTMLAnchorElement | null>>({});
 
@@ -39,6 +39,10 @@ const SongbookPage = () => {
       console.warn(`No song found with number ${num}`);
     }
   }, []);
+
+  useEffect(() => {
+    console.log(hymnVerse)
+  }, [hymnVerse]) // TODO: Del
 
   useEffect(() => {
     const random = Math.floor(Math.random() * bgImages.length)
@@ -131,6 +135,18 @@ const SongbookPage = () => {
                             {song.number}. {song.title}
                           </span>
 
+                          {/* Verse viewing if hymn-verse exists */}
+                          {song.verse?.trim() && (
+                              <i className="bi bi-bookmark-star text-white/50 text-sm absolute left-4 top-1/2 transform -translate-y-1/2 p-1 hover:bg-amber-50/20 rounded-2xl"
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  e.stopPropagation();
+                                  setHymnVerse(song.verse?.trim() || "");
+                                }}> 
+                                &nbsp;{song.verse?.trim()}
+                              </i>
+                          )}
+
                           {/* YouTube Icon if link exists */}
                           {song.link?.trim() && (
                             <i className="bi bi-youtube text-red-200/50 text-2xl absolute right-4 top-1/2 transform -translate-y-1/2" />
@@ -172,7 +188,7 @@ const SongbookPage = () => {
 
             {BIBLE_READER_ENABLED &&
               <div className="fixed bottom-8 left-8" >
-                <BibleReader />
+                <BibleReader startVerse={hymnVerse}/>
               </div>
             }
           </div>
