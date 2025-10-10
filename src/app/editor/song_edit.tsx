@@ -23,6 +23,7 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
     const blank: SongData = {
         title: '',
         link: '',
+        verse: '',
         number: 0,
         lyrics: [
             {
@@ -335,15 +336,29 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
                     <AutoFillButton onDataReady={handleAutoFill} />
                 </div>
             </div>
-            <div className="w-full">
-                <label className="block font-medium text-black">Link (optional)</label>
-                <input
-                    type="text"
-                    value={form.link}
-                    placeholder='example: https://www.youtube.com/watch?v=TheYtbLink'
-                    onChange={e => updateField('link', e.target.value)}
-                    className="w-full p-2 border rounded text-black placeholder-gray-300"
-                />
+            
+            <div className="flex flex-col md:flex-row gap-4">
+                <div className="w-full md:w-2/3">
+                    <label className="block font-medium text-black">Link (optional)</label>
+                    <input
+                        type="text"
+                        value={form.link}
+                        placeholder="example: https://www.youtube.com/watch?v=TheYtbLink"
+                        onChange={(e) => updateField("link", e.target.value)}
+                        className="w-full p-2 border rounded text-black placeholder-gray-300"
+                    />
+                </div>
+
+                <div className="w-full md:w-1/3">
+                    <label className="block font-medium text-black">Associated Bible Verse(s) (optional)</label>
+                    <input
+                        type="text"
+                        value={form.verse}
+                        placeholder="example: John 3:16-17"
+                        onChange={(e) => updateField("verse", e.target.value)}
+                        className="w-full p-2 border rounded text-black placeholder-gray-300"
+                    />
+                </div>
             </div>
 
             {/* Song: simple list of strings */}
