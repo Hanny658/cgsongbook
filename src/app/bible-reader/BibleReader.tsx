@@ -39,13 +39,13 @@ const TRANSLATIONS_CPRIGHT = {
 };
 const BIBLE_API_ENDPOINT = process.env.NEXT_PUBLIC_DB_URL;
 
-export default function BibleReader() {
+export default function BibleReader({ startVerse }: { startVerse?: string }) {
     const [open, setOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
     const [recVerse, setRecVerse] = useState("");
     const [highlighted, setHighlighted] = useState<Set<string>>(new Set());
 
-    const [query, setQuery] = useState("");
+    const [query, setQuery] = useState(startVerse || "");
     const [translation, setTranslation] = useState<TranslationKey>("KJV");
     const [suggestions, setSuggestions] = useState<string[]>([]);
     const [result, setResult] = useState<Record<string, string> | null>(null);
@@ -98,6 +98,8 @@ export default function BibleReader() {
             matches[0].toLowerCase() === normalized
         ) {
             setSuggestions([]); // already exact
+        } else if (normalized === "psalm") {
+            setSuggestions([]); // also recognises Psalms in singular
         } else {
             setSuggestions(matches.slice(0, 5));
         }
@@ -125,6 +127,16 @@ export default function BibleReader() {
         };
     }, [open]);
 
+    // If starting verse presents, pull it to the reader
+    useEffect(() => {
+        if (startVerse) {
+            setQuery(startVerse);
+            setOpen(true);      // opens immediatly
+            handleFind(startVerse);       // auto trigger verse load
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [startVerse]);
+
     // Handles highlighting activation/clearing
     function toggleHighlight(verseNum: string) {
         setHighlighted(prev => {
@@ -135,7 +147,7 @@ export default function BibleReader() {
         });
     }
 
-    async function handleFind() {
+    async function handleFind(prefilled: string = "") {
         try {
             setLoading(true);
             setResult(null);
@@ -145,7 +157,7 @@ export default function BibleReader() {
 
             // Parse Bible Verse text
             const regex = /^([\w\s]+)\s+(\d+)(?:\s*:\s*([\divx]+)(?:\s*-\s*([\divx]+))?)?$/i;
-            const match = query.match(regex);
+            const match = prefilled ? prefilled.match(regex) : query.match(regex);
             if (!match) {
                 alert("Invalid format. Example: Genesis 1:2-5");
                 return;
@@ -317,7 +329,7 @@ export default function BibleReader() {
                     <div className="w-1/4 md:block hidden">
                         <button
                             className="w-full bg-blue-600 hover:bg-blue-700 !text-white py-2 rounded"
-                            onClick={handleFind}
+                            onClick={() => handleFind()}
                         >
                             {loading ? "Loading..." : "Find Verse"}
                         </button>
@@ -328,7 +340,7 @@ export default function BibleReader() {
                 <div className="mt-3 md:hidden">
                     <button
                         className="w-full bg-blue-600 hover:bg-blue-700 !text-white py-1 rounded"
-                        onClick={handleFind}
+                        onClick={() => handleFind()}
                     >
                         {loading ? "Loading..." : "Find Verse"}
                     </button>
