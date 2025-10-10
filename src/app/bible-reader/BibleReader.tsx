@@ -43,6 +43,7 @@ export default function BibleReader() {
     const [open, setOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
     const [recVerse, setRecVerse] = useState("");
+    const [highlighted, setHighlighted] = useState<Set<string>>(new Set());
 
     const [query, setQuery] = useState("");
     const [translation, setTranslation] = useState<TranslationKey>("KJV");
@@ -123,6 +124,16 @@ export default function BibleReader() {
             document.body.style.width = "";
         };
     }, [open]);
+
+    // Handles highlighting activation/clearing
+    function toggleHighlight(verseNum: string) {
+        setHighlighted(prev => {
+            const next = new Set(prev);
+            if (next.has(verseNum)) next.delete(verseNum);
+            else next.add(verseNum);
+            return next;
+        });
+    }
 
     async function handleFind() {
         try {
@@ -237,15 +248,21 @@ export default function BibleReader() {
                 {result ? (
                     <div className="mt-4 space-y-2">
                         {Object.entries(result).map(([num, text]) => (
-                            <p key={num} className="text-gray-900 font-bible text-xl mt-1 md:px-4">
-                                <sup className="text-2xs align-super mr-1 !text-gray-500">{num}</sup>
-                                {text}
+                            <p key={num} className="text-gray-900 font-bible text-xl mt-1 md:px-4 select-none">
+    <sup className="text-2xs align-super mr-1 !text-gray-500">{num}</sup>
+                                <span
+                                    onClick={() => toggleHighlight(num)}
+                                    className={`cursor-pointer transition-colors ${highlighted.has(num) ? "bg-yellow-200/35" : ""
+                                        }`}
+                                >
+                                    {text}
+                                </span>
                             </p>
                         ))}
                         <p className="text-xs text-gray-400/80 text-center px-2 mt-4">{copyrightText}</p>
                     </div>
                 ) :
-                <h5 className="text-center mt-14 mb-14 md:mt-16 text-gray-600">Start by type the Bible verse for today.</h5>
+                <h5 className="text-center mt-14 mb-14 md:mt-16 text-gray-600">Start by typing the Bible verse for today.</h5>
                 }
                 </div>
 
@@ -321,9 +338,15 @@ export default function BibleReader() {
                 {result ? (
                     <div className="mt-4 space-y-2">
                         {Object.entries(result).map(([num, text]) => (
-                            <p key={num} className="text-gray-900 font-bible text-xl mt-1 md:px-4">
+                            <p key={num} className="text-gray-900 font-bible text-xl mt-1 md:px-4 select-none">
                                 <sup className="text-2xs align-super mr-1 !text-gray-500">{num}</sup>
-                                {text}
+                                <span
+                                    onClick={() => toggleHighlight(num)}
+                                    className={`cursor-pointer transition-colors ${highlighted.has(num) ? "bg-yellow-200/40" : ""
+                                        }`}
+                                >
+                                    {text}
+                                </span>
                             </p>
                         ))}
                         <p className="text-xs text-gray-400/80 text-center px-2 mt-4">{copyrightText}</p>
