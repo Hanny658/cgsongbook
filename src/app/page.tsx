@@ -137,7 +137,7 @@ const SongbookPage = () => {
 
                           {/* Verse viewing if hymn-verse exists */}
                           {song.verse?.trim() && (
-                              <i className="bi bi-bookmark-star text-white/50 text-sm absolute left-4 top-1/2 transform -translate-y-1/2 p-1 hover:bg-amber-50/20 rounded-2xl"
+                              <i className="bi bi-bookmark-star text-white/50 text-sm absolute left-4 top-1/2 transform -translate-y-1/2 p-1 hover:bg-amber-50/20 rounded-2xl hidden md:block"
                                 onClick={(e) => {
                                   e.preventDefault();
                                   e.stopPropagation();
