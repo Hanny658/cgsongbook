@@ -258,21 +258,21 @@ export default function BibleReader({ startVerse }: { startVerse?: string }) {
                 {/* Result for mobile */}
                 <div className="md:hidden">
                 {result ? (
-                    <div className="mt-4 space-y-2">
-                        {Object.entries(result).map(([num, text]) => (
-                            <p key={num} className="text-gray-900 font-bible text-xl mt-1 md:px-4 select-none">
-    <sup className="text-2xs align-super mr-1 !text-gray-500">{num}</sup>
-                                <span
-                                    onClick={() => toggleHighlight(num)}
-                                    className={`cursor-pointer transition-colors ${highlighted.has(num) ? "bg-yellow-200/35" : ""
-                                        }`}
-                                >
-                                    {text}
-                                </span>
-                            </p>
-                        ))}
-                        <p className="text-xs text-gray-400/80 text-center px-2 mt-4">{copyrightText}</p>
-                    </div>
+                        <div className="mt-4 leading-relaxed text-gray-900 font-bible text-xl md:px-4 select-none">
+                            {Object.entries(result).map(([num, text]) => (
+                                <React.Fragment key={num}>
+                                    <sup className="text-2xs align-super mr-1 text-gray-500">{num}</sup>
+                                    <span
+                                        onClick={() => toggleHighlight(num)}
+                                        className={`cursor-pointer transition-colors ${highlighted.has(num) ? "bg-yellow-200/40" : ""
+                                            }`}
+                                    >
+                                        {text}
+                                    </span>{" "}
+                                </React.Fragment>
+                            ))}
+                            <p className="text-xs text-gray-400/80 text-center px-2 mt-4">{copyrightText}</p>
+                        </div>
                 ) :
                 <h5 className="text-center mt-14 mb-14 md:mt-16 text-gray-600">Start by typing the Bible verse for today.</h5>
                 }
@@ -348,21 +348,21 @@ export default function BibleReader({ startVerse }: { startVerse?: string }) {
                 {/* Result for Tablet and PC */}
                 <div className="md:block hidden">
                 {result ? (
-                    <div className="mt-4 space-y-2">
-                        {Object.entries(result).map(([num, text]) => (
-                            <p key={num} className="text-gray-900 font-bible text-xl mt-1 md:px-4 select-none">
-                                <sup className="text-2xs align-super mr-1 !text-gray-500">{num}</sup>
-                                <span
-                                    onClick={() => toggleHighlight(num)}
-                                    className={`cursor-pointer transition-colors ${highlighted.has(num) ? "bg-yellow-200/40" : ""
-                                        }`}
-                                >
-                                    {text}
-                                </span>
-                            </p>
-                        ))}
-                        <p className="text-xs text-gray-400/80 text-center px-2 mt-4">{copyrightText}</p>
-                    </div>
+                        <div className="mt-4 leading-relaxed text-gray-900 font-bible text-xl md:px-4 select-none">
+                            {Object.entries(result).map(([num, text]) => (
+                                <React.Fragment key={num}>
+                                    <sup className="text-2xs align-super mr-1 text-gray-500">{num}</sup>
+                                    <span
+                                        onClick={() => toggleHighlight(num)}
+                                        className={`cursor-pointer transition-colors ${highlighted.has(num) ? "bg-yellow-200/40" : ""
+                                            }`}
+                                    >
+                                        {text}
+                                    </span>{" "}
+                                </React.Fragment>
+                            ))}
+                            <p className="text-xs text-gray-400/80 text-center px-2 mt-4">{copyrightText}</p>
+                        </div>
                 ) :
                 <h5 className="text-center mt-7 md:mt-16 text-gray-600">Start by type the Bible verse for today.</h5>
                 }
