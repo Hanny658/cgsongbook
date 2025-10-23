@@ -17,6 +17,7 @@ const ManagementPage: React.FC = () => {
     // Login form state
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
     const [metas, setMetas] = useState<SongMeta[]>([]);
@@ -135,13 +136,26 @@ const ManagementPage: React.FC = () => {
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
                             />
-                            <input
-                                className="w-full mb-6 p-3 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-400"
-                                type="password"
-                                placeholder="Password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                            />
+                            <div className="relative mb-6">
+                                <input
+                                    className="w-full p-3 pr-10 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-400 
+                                                focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    type={showPassword ? 'text' : 'password'}
+                                    placeholder="Password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                />
+
+                                {/* Toggle button */}
+                                <button
+                                    type="button"
+                                    className="absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-gray-700"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    tabIndex={-1}  // prevents focus stealing
+                                >
+                                    <i className={`bi ${showPassword ? 'bi-eye-slash' : 'bi-eye'} text-xl`}></i>
+                                </button>
+                            </div>
                             
                             {error && (
                                 <div className="text-red-600 text-sm text-center mb-4">{error}</div>
