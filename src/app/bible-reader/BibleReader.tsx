@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { createPortal } from "react-dom";
 
 const BOOKS = [
@@ -48,9 +48,12 @@ export default function BibleReader({ startVerse }: { startVerse?: string }) {
     const [query, setQuery] = useState(startVerse || "");
     const [translation, setTranslation] = useState<TranslationKey>("KJV");
     const [suggestions, setSuggestions] = useState<string[]>([]);
+    const [verseHistory, setVerseHistory] = useState<string[]>([]);
     const [result, setResult] = useState<Record<string, string> | null>(null);
     const [loading, setLoading] = useState(false);
     const [copyrightText, setCopyrightText] = useState("");
+
+    const inputWrapperRef = useRef<HTMLDivElement | null>(null);
 
     // mount portal and load recommended verse
     useEffect(() => {
@@ -59,10 +62,21 @@ export default function BibleReader({ startVerse }: { startVerse?: string }) {
         setRecVerse(RECOM_VERSES[randomIndex]);
     }, []);
 
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (inputWrapperRef.current && !inputWrapperRef.current.contains(event.target as Node)) {
+                // Clicked outside the input/suggestion container
+                setSuggestions([]);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
     // Suggest books from prefix
     useEffect(() => {
         if (!query.trim()) {
-            setSuggestions([]);
+            setSuggestions(verseHistory);
             return;
         }
 
@@ -103,6 +117,7 @@ export default function BibleReader({ startVerse }: { startVerse?: string }) {
         } else {
             setSuggestions(matches.slice(0, 5));
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [query]);
 
     // Bg content lock to prevent unwanted scrollin'
@@ -147,6 +162,16 @@ export default function BibleReader({ startVerse }: { startVerse?: string }) {
         });
     }
 
+    // Maintain a recent-5 non-dup history
+    const addToHistory = (verse: string) => {
+        setVerseHistory(prev => {
+            const filtered = prev.filter(item => item !== verse);
+            const updated = [verse, ...filtered];
+            return updated.slice(0, 5);
+        });
+    };
+
+    // Find the verse
     async function handleFind(prefilled: string = "") {
         try {
             setLoading(true);
@@ -156,7 +181,7 @@ export default function BibleReader({ startVerse }: { startVerse?: string }) {
             setSuggestions([]);
 
             // Parse Bible Verse text
-            const regex = /^([\w\s]+)\s+(\d+)(?:\s*:\s*([\divx]+)(?:\s*[-–]\s*([\divx]+))?)?$/i;
+            const regex = /^([\w\s]+)\s+(\d+)(?:\s*:\s*([\divx]+)(?:\s*[-–]\s*([\divx]+))?)?\s*$/i;
             const match = prefilled ? prefilled.match(regex) : query.match(regex);
             if (!match) {
                 alert("Invalid format. Example: Genesis 1:2-5");
@@ -212,6 +237,7 @@ export default function BibleReader({ startVerse }: { startVerse?: string }) {
             }
             setCopyrightText(TRANSLATIONS_CPRIGHT[translation]);
             const data = await res.json();
+            addToHistory(`${book} ${chapter}${verse_start ? `:${verse_start}${verse_end&&verse_end!==verse_start ? `-${verse_end}`:""}`:""}`);
             setResult(data);
         } catch (err) {
             console.error(err);
@@ -291,7 +317,7 @@ export default function BibleReader({ startVerse }: { startVerse?: string }) {
                             </option>
                         ))}
                     </select>
-                    <div className="flex-1 relative">
+                    <div ref={inputWrapperRef} className="flex-1 relative">
                         <input
                             type="text"
                             className="w-full border rounded px-3 py-2"
@@ -307,6 +333,10 @@ export default function BibleReader({ startVerse }: { startVerse?: string }) {
                                     autoFillBookName();
                                 }
                             }}
+                            onFocus={() => {
+                                // Re-show history suggestions when focusing on empty field
+                                if (!query.trim() && verseHistory.length > 0) setSuggestions(verseHistory);
+                            }}
                         />
                         {suggestions.length > 0 && (
                             <div className="absolute left-0 right-0 bg-white border mt-1 rounded shadow opacity-90">
@@ -314,7 +344,7 @@ export default function BibleReader({ startVerse }: { startVerse?: string }) {
                                     <div
                                         key={s}
                                         onClick={() => {
-                                            setQuery(s + " ");
+                                            setQuery(s + (query ? " " : ''));
                                             setSuggestions([]);
                                         }}
                                         className="px-3 py-1 hover:bg-gray-100 cursor-pointer"
