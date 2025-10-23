@@ -52,7 +52,7 @@ const ViewAll: React.FC<ViewAllProps> = ({ metas, onEdit }) => {
             {/* Song list */}
             <ul className="space-y-2">
                 {filtered.map(song => (
-                    <li key={song.number}>
+                    <li key={song.number} className='relative'>
                         <button
                             onClick={() => handleClick(song.number)}
                             className="w-full text-left p-3 text-black bg-gray-200/80 border rounded hover:bg-gray-300 transition"
@@ -60,6 +60,12 @@ const ViewAll: React.FC<ViewAllProps> = ({ metas, onEdit }) => {
                             <span className="font-semibold">{song.number}.</span>{' '}
                             <span>{song.title}</span>
                         </button>
+                        {/* YouTube Icon if link exists */}
+                        {song.link?.trim() && (
+                            <a href={song.link?.trim()} target='_blank'>
+                                <i className="bi bi-youtube text-red-400/70 hover:text-red-600 text-2xl absolute right-4 top-1/2 transform -translate-y-1/2"/>
+                            </a>
+                        )}
                     </li>
                 ))}
                 {filtered.length === 0 && (
