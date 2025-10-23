@@ -73,7 +73,8 @@ const ManagementPage: React.FC = () => {
 
     // Attempt login against Next.js API route.
     // That API route should internally forward to `${process.env.DB_URL}/user/verify`.
-    const handleLogin = async () => {
+    const handleLogin = async (e?: React.FormEvent) => {
+        if (e) e.preventDefault();
         setError(null);
         try {
             const res = await fetch('/api/user-verify', {
@@ -90,7 +91,7 @@ const ManagementPage: React.FC = () => {
                 setError(payload.error || 'Authentication failed');
             }
         } catch (e) {
-            console.log(e);
+            console.error(e);
             setError('Network error – please try again');
         }
     };
@@ -124,9 +125,6 @@ const ManagementPage: React.FC = () => {
                         <h2 className="text-3xl font-bold text-gray-800 text-center mb-6">
                             CG Songbook - Online Editor
                         </h2>
-                        {error && (
-                            <div className="text-red-600 text-sm text-center mb-4">{error}</div>
-                        )}
 
                         {/* Use a form so Enter works */}
                         <form onSubmit={handleLogin}>
@@ -144,6 +142,11 @@ const ManagementPage: React.FC = () => {
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
+                            
+                            {error && (
+                                <div className="text-red-600 text-sm text-center mb-4">{error}</div>
+                            )}
+
                             <button
                                 type="submit"
                                 className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors duration-200"
