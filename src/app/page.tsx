@@ -15,7 +15,9 @@ const bgImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg',
   '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg', '21.jpg', '22.jpg', 
   '23.jpg', '25.webp', '24.jpg', '26.jpg']
 
-const BIBLE_READER_ENABLED : boolean = !!(process.env.NEXT_PUBLIC_DB_URL);
+// Bible verses are fetched via /api/bible-verse (proxied to DB_URL on the server);
+// set NEXT_PUBLIC_ENABLE_BIBLE_READER at build time to show the reader.
+const BIBLE_READER_ENABLED : boolean = !!(process.env.NEXT_PUBLIC_ENABLE_BIBLE_READER);
 
 const SongbookPage = () => {
   const [songs, setSongs] = useState<SongMeta[]>([])

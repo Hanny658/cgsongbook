@@ -37,8 +37,6 @@ const TRANSLATIONS_CPRIGHT = {
     // NKJV: "The Holy Bible, New King James Version, Copyright 1982 Thomas Nelson. All rights reserved.", 
     // NIV: "The Holy Bible, New International Version® NIV® Copyright 2011 by Biblica, Inc. Used by Permission of Biblica, Inc.® All rights reserved worldwide."
 };
-const BIBLE_API_ENDPOINT = process.env.NEXT_PUBLIC_DB_URL;
-
 export default function BibleReader({ startVerse }: { startVerse?: string }) {
     const [open, setOpen] = useState(false);
     const [mounted, setMounted] = useState(false);
@@ -224,7 +222,7 @@ export default function BibleReader({ startVerse }: { startVerse?: string }) {
             const verse_start = rawStart || "";
             const verse_end = rawEnd || rawStart || "";
 
-            const url = `${BIBLE_API_ENDPOINT}/bible-verse?translation=${translation}&book=${encodeURIComponent(
+            const url = `/api/bible-verse?translation=${translation}&book=${encodeURIComponent(
                 book
             )}&chapter=${chapter}${verse_start ? `&verse_start=${verse_start}` : ""
                 }${verse_end ? `&verse_end=${verse_end}` : ""}`;
