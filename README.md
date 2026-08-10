@@ -1,10 +1,10 @@
 # cgsongbook
 The online Care Group Songbook based on Sky's 2025 CG Songbook (Received from Anchor Point CG) + Hanny's Favorite Songs.
 
-Hosted on [CG Songbook Website](cgsongbook.org) >
+Hosted on [CG Songbook Website](https://cgsongbook.org) >
 
 My database for songs are open-sourced and open-data. > [Songbook DB](https://github.com/Hanny658/songbook-db) <\
-If you wish to host a Christian song site for your ministry, feel free to use the song data json that I designed and stored in the DB repository. 
+If you wish to host a Christian song site for your ministry, feel free to use the song data json that I designed and stored in the DB repository, or migrate to a real Relational Database.
 
 JSON Structure: 
 ```
@@ -28,3 +28,5 @@ songdata/[number].json\
 ```
 
 For Typescript interfaces, see [Inbuilt Interfaces](/types/songdata.d.ts).
+
+Licenced by GPL as I wish to spread the spirit of open-source community, let's share your amazing work with the world!
