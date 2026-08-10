@@ -2,7 +2,14 @@
 
 // app/components/PresenterView.tsx | ViewMode = GACC Slides
 
-import React, { useState, useEffect, useCallback, Key } from 'react';
+import React, {
+    useState,
+    useEffect,
+    useLayoutEffect,
+    useCallback,
+    useMemo,
+    useRef,
+} from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
@@ -14,6 +21,112 @@ interface PresenterViewProps {
     number: string | number;
 }
 
+const MIN_LYRIC_FONT_SIZE = 14;
+const MAX_LYRIC_FONT_SIZE = 24;
+const FIT_TOLERANCE = 0.25;
+
+function AutoFitLyrics({ section }: { section: SongSection }) {
+    const frameRef = useRef<HTMLDivElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
+    const [fontSize, setFontSize] = useState(MAX_LYRIC_FONT_SIZE);
+    const [needsScroll, setNeedsScroll] = useState(false);
+
+    const fitLyrics = useCallback(() => {
+        const frame = frameRef.current;
+        const content = contentRef.current;
+
+        if (!frame || !content || frame.clientHeight === 0 || frame.clientWidth === 0) {
+            return;
+        }
+
+        const fitsAt = (size: number) => {
+            content.style.fontSize = `${size}px`;
+            return (
+                content.scrollHeight <= frame.clientHeight + 1
+                && content.scrollWidth <= frame.clientWidth + 1
+            );
+        };
+
+        let fittedSize = MIN_LYRIC_FONT_SIZE;
+
+        if (fitsAt(MAX_LYRIC_FONT_SIZE)) {
+            fittedSize = MAX_LYRIC_FONT_SIZE;
+        } else {
+            let lower = MIN_LYRIC_FONT_SIZE;
+            let upper = MAX_LYRIC_FONT_SIZE;
+
+            while (upper - lower > FIT_TOLERANCE) {
+                const candidate = (lower + upper) / 2;
+                if (fitsAt(candidate)) {
+                    fittedSize = candidate;
+                    lower = candidate;
+                } else {
+                    upper = candidate;
+                }
+            }
+        }
+
+        // Round down so sub-pixel layout cannot push an otherwise fitting line out.
+        fittedSize = Math.floor(fittedSize * 4) / 4;
+        const stillOverflows = !fitsAt(fittedSize);
+
+        if (!stillOverflows) frame.scrollTop = 0;
+        setFontSize(currentSize => currentSize === fittedSize ? currentSize : fittedSize);
+        setNeedsScroll(currentValue => currentValue === stillOverflows ? currentValue : stillOverflows);
+    }, []);
+
+    useLayoutEffect(() => {
+        const frame = frameRef.current;
+        if (!frame) return;
+
+        // A newly loaded section should always start at its first lyric line.
+        frame.scrollTop = 0;
+        const animationFrame = window.requestAnimationFrame(fitLyrics);
+        const resizeObserver = new ResizeObserver(fitLyrics);
+        resizeObserver.observe(frame);
+
+        let cancelled = false;
+        void document.fonts.ready.then(() => {
+            if (!cancelled) fitLyrics();
+        });
+
+        return () => {
+            cancelled = true;
+            window.cancelAnimationFrame(animationFrame);
+            resizeObserver.disconnect();
+        };
+    }, [fitLyrics, section]);
+
+    return (
+        <div
+            ref={frameRef}
+            data-lyrics-frame
+            className={`h-full w-full overscroll-contain ${needsScroll ? 'overflow-y-auto' : 'overflow-hidden'}`}
+        >
+            <div
+                ref={contentRef}
+                data-lyrics-content
+                className="flex min-h-full w-full flex-col justify-center text-center"
+                style={{ fontSize }}
+            >
+                <h3
+                    className="shrink-0 font-medium italic leading-tight text-gray-700"
+                    style={{ fontSize: '0.833em', marginBottom: '0.8em' }}
+                >
+                    {section.label}
+                </h3>
+                <div className="flex flex-col gap-[0.35em]">
+                    {section.lines.map((line, lineIndex) => (
+                        <p key={lineIndex} className="break-words leading-[1.25] text-black">
+                            {line.lyrics}
+                        </p>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+}
+
 export default function PresenterView({ number }: PresenterViewProps) {
     const [songData, setSongData] = useState<SongData | null>(null);
     const [loading, setLoading] = useState(true);
@@ -22,26 +135,36 @@ export default function PresenterView({ number }: PresenterViewProps) {
 
     const [bgUrls, setBgUrls] = useState<string[]>([]);
 
+    const sectionSlides = useMemo(() => {
+        if (!songData) return [];
+
+        const sectionMap = new Map(songData.lyrics.map(section => [section.id, section]));
+        return songData.song
+            .map(sectionId => sectionMap.get(sectionId))
+            .filter((section): section is SongSection => Boolean(section));
+    }, [songData]);
+
+    // total slides = 1 title slide + one per entry in the configured song order
+    const totalSlides = songData ? sectionSlides.length + 1 : 0;
+
     useEffect(() => {
         if (songData) {
-            const slidesCount = songData.lyrics.length + 1;
+            const slidesCount = totalSlides;
             const urls = Array.from({ length: slidesCount }, () => {
                 const random = Math.floor(Math.random() * bgImages.length);
                 return `/sbg/${bgImages[random]}`;
             });
             setBgUrls(urls);
         }
-    }, [songData]);
+    }, [songData, totalSlides]);
 
 
     const router = useRouter();
 
-    // total slides = 1 (title) + one per section
-    const totalSlides = songData ? songData.lyrics.length + 1 : 0;
-
     // fetch on mount / when number changes
     useEffect(() => {
         setLoading(true);
+        setError(undefined);
         fetch(`/api/songs/${number}`)
             .then(async res => {
                 if (!res.ok) throw new Error((await res.json()).error || 'Fetch error');
@@ -85,26 +208,32 @@ export default function PresenterView({ number }: PresenterViewProps) {
         else if (x > w * 0.8) next();
     };
 
-    if (loading || !bgUrls[0]) {
+    if (loading) {
         return (
-            <div className="w-screen h-screen flex items-center justify-center bg-white">
+            <div className="flex h-dvh w-full items-center justify-center bg-white">
                 <p className="text-lg">Loading…</p>
             </div>
         );
     }
     if (error || !songData) {
         return (
-            <div className="w-screen h-screen flex items-center justify-center bg-white">
+            <div className="flex h-dvh w-full items-center justify-center bg-white">
                 <p className="text-lg text-red-600">{error || 'Unknown error'}</p>
             </div>
         );
     }
-    // Read all song sections
-    const sectionMap = Object.fromEntries(songData.lyrics.map((sec: SongSection) => [sec.id, sec]))
-
+    if (!bgUrls[0]) {
+        return (
+            <div className="flex h-dvh w-full items-center justify-center bg-white">
+                <p className="text-lg">Loading…</p>
+            </div>
+        );
+    }
     return (
-        <div className='relative'>
+        <div className="relative h-dvh">
             <button
+                type="button"
+                aria-label="Back to song list"
                 onClick={() => router.push('/')}
                 className="
         fixed top-7 right-0 z-50 
@@ -116,12 +245,12 @@ export default function PresenterView({ number }: PresenterViewProps) {
                 <i className="bi bi-house-door text-2xl" />
             </button>
             <div
-                className="relative w-full h-screen bg-white overflow-hidden select-none"
+                className="relative h-full w-full select-none overflow-hidden bg-white"
                 onClick={onClickZone}
             >
                 {/* Slide deck */}
                 <div
-                    className="flex h-full transition-transform duration-500 ease-in-out"
+                    className="flex h-full min-h-0 transition-transform duration-500 ease-in-out"
                     style={{ transform: `translateX(-${current * 100}%)` }}
                 >
                     {/* Slide 1: Title + BG image */}
@@ -147,55 +276,43 @@ export default function PresenterView({ number }: PresenterViewProps) {
                     </div>
 
                     {/* Section slides */}
-                    {songData.song.map((sectionId: string | number, sectionIndex: Key) => {
-                        const section = sectionMap[sectionId]
-                        if (!section) return null
-
-                        return (
-                            <div
-                                key={sectionIndex}
-                                className="w-full flex-shrink-0 flex md:flex-row flex-col h-full"
-                            >
-                                {/* Left (or top on mobile) */}
-                                <div className="md:w-2/3 w-full flex flex-col p-6">
-                                    <div className='text-center mt-7'>
-                                        <h2 className="text-3xl text-black underline decoration-2 decoration-black underline-offset-5">
-                                            {songData.number} – {songData.title}
-                                        </h2>
-                                    </div>
-                                    <div className="flex-1 flex flex-col items-center justify-center text-center px-4 mt-2 font-lyrics">
-                                        <h3 className="text-xl font-medium mb-4 italic text-gray-700">{section.label}</h3>
-                                        <div className="space-y-2">
-                                            {section.lines.map((ln, li) => (
-                                                <p key={li} className="text-2xl text-black">
-                                                    {ln.lyrics}
-                                                </p>
-                                            ))}
-                                        </div>
-                                    </div>
-                                    <div className="text-center text-sm text-gray-700 mt-4">
-                                        – {parseInt(sectionIndex.toString()) + 1} / {totalSlides - 1} –
-                                    </div>
+                    {sectionSlides.map((section, sectionIndex) => (
+                        <div
+                            key={`${section.id}-${sectionIndex}`}
+                            className="flex h-full min-h-0 w-full flex-shrink-0 flex-col md:flex-row"
+                        >
+                            {/* Left (or top on mobile) */}
+                            <div className="flex h-2/3 min-h-0 w-full shrink-0 flex-col p-4 md:h-full md:w-2/3 md:p-6">
+                                <div className="mt-4 shrink-0 text-center md:mt-7">
+                                    <h2 className="text-2xl text-black underline decoration-2 decoration-black underline-offset-5 md:text-3xl">
+                                        {songData.number} – {songData.title}
+                                    </h2>
                                 </div>
-
-                                {/* Right (or bottom on mobile) */}
-                                <div className="md:w-1/3 w-full overflow-hidden">
-                                    {songData.link && (
-                                        <div className="relative w-full h-full">
-                                            <Image
-                                                src={bgUrls[parseInt(sectionIndex.toString())+1] || ''}
-                                                alt="Background"
-                                                fill
-                                                sizes="100vw"
-                                                style={{ objectFit: 'cover' }}
-                                                priority={true}
-                                            />
-                                        </div>
-                                    )}
+                                <div className="mt-2 min-h-0 flex-1 px-2 font-lyrics md:px-4">
+                                    <AutoFitLyrics section={section} />
+                                </div>
+                                <div className="mt-3 shrink-0 text-center text-sm text-gray-700 md:mt-4">
+                                    – {sectionIndex + 1} / {totalSlides - 1} –
                                 </div>
                             </div>
-                        )
-                    })}
+
+                            {/* Right (or bottom on mobile) */}
+                            <div className="h-1/3 w-full shrink-0 overflow-hidden md:h-full md:w-1/3">
+                                {songData.link && (
+                                    <div className="relative w-full h-full">
+                                        <Image
+                                            src={bgUrls[sectionIndex + 1] || ''}
+                                            alt="Background"
+                                            fill
+                                            sizes="100vw"
+                                            style={{ objectFit: 'cover' }}
+                                            priority={true}
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    ))}
                 </div>
 
                 {/* Optional slide indicator dots */}
