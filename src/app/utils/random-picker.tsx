@@ -3,13 +3,13 @@
 import React, { useState, useRef, useEffect } from "react";
 
 interface RandomPickerProps {
-    /** Highest number (inclusive) to pick from; must be ≥ 1 */
-    maxNum: number;
+    /** The song numbers to pick from (they do not need to be contiguous) */
+    numbers: number[];
     /** Called once the animation stops, with the selected number */
     onPick: (num: number) => void;
 }
 
-const RandomPicker: React.FC<RandomPickerProps> = ({ maxNum, onPick }) => {
+const RandomPicker: React.FC<RandomPickerProps> = ({ numbers, onPick }) => {
     // Whether the “rolling” animation is in progress
     const [isPicking, setIsPicking] = useState(false);
     // The number currently displayed in the centre box
@@ -27,25 +27,25 @@ const RandomPicker: React.FC<RandomPickerProps> = ({ maxNum, onPick }) => {
     }, []);
 
     const handlePick = () => {
-        if (maxNum < 1) return;
+        if (numbers.length < 1 || isPicking) return;
 
-        let current = Math.floor(Math.random() * maxNum) + 1;
-        setDisplayNum(current);
+        // Roll through the list by index, so the result is always an existing song
+        let current = Math.floor(Math.random() * numbers.length);
+        setDisplayNum(numbers[current]);
 
         setIsPicking(true);
         let delay = Math.floor(Math.random() * 20) + 5;
 
         const animate = () => {
-        current = current >= maxNum ? 1 : current + 1;
-        setDisplayNum(current);
-
-        if (delay < 320) {
-            delay += delay / 10;
-            timerRef.current = window.setTimeout(animate, delay);
-        } else {
-            setIsPicking(false);
-            onPick(current == 1 ? maxNum : current - 1);
-        }
+            if (delay < 320) {
+                current = (current + 1) % numbers.length;
+                setDisplayNum(numbers[current]);
+                delay += delay / 10;
+                timerRef.current = window.setTimeout(animate, delay);
+            } else {
+                setIsPicking(false);
+                onPick(numbers[current]);
+            }
         };
         animate();
     };
@@ -55,12 +55,10 @@ const RandomPicker: React.FC<RandomPickerProps> = ({ maxNum, onPick }) => {
             {/* The pick button */}
             <button
                 onClick={handlePick}
-                className="px-2 py-2 bg-transparen text-white hover:text-blue-200 rounded"
+                aria-label="Pick a random song"
+                className="px-2 py-2 bg-transparent text-white hover:text-blue-200 rounded"
             >
                 <i className="bi bi-stars text-xl" aria-hidden="true"></i>
-                {/* <span className="ml-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                    Pick Random
-                </span> */}
             </button>
 
             {/* Full-screen overlay during animation */}

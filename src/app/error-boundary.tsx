@@ -23,7 +23,7 @@ export class ErrorBoundary extends Component<Props, State> {
     static getDerivedStateFromError(error: Error): State {
         const message = error.message || ''
 
-        // 识别是否为 ChunkLoadError
+        // Detect a ChunkLoadError
         if (message.includes('ChunkLoadError') || /loading chunk \d+ failed/i.test(message)) {
             return {
                 hasError: true,
@@ -42,7 +42,7 @@ export class ErrorBoundary extends Component<Props, State> {
     componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
         console.error('ErrorBoundary caught:', error, errorInfo)
 
-        // Chunk load 的时候自动刷新一次（避免无限循环刷新）
+        // Reload once automatically on a chunk load failure (the flag avoids a reload loop)
         if (
             error?.message?.includes('ChunkLoadError') &&
             typeof window !== 'undefined' &&
@@ -60,14 +60,14 @@ export class ErrorBoundary extends Component<Props, State> {
 
     render() {
         if (this.state.hasError) {
-            // 显示错误页 UI
+            // Error page UI
             return (
                 <div className="flex flex-col items-center justify-center min-h-screen bg-red-50 px-6">
-                    <h1 className="text-4xl font-bold text-red-600 mb-4">发生错误</h1>
+                    <h1 className="text-4xl font-bold text-red-600 mb-4">Something went wrong</h1>
                     <p className="text-lg text-gray-700 mb-3">
                         {this.state.errorType === 'chunk'
-                            ? '部分页面资源加载失败，可能由于网络不稳定或系统更新。'
-                            : '页面渲染过程中发生了错误。'}
+                            ? 'Part of the page failed to load, possibly due to an unstable network or a site update.'
+                            : 'An error occurred while rendering the page.'}
                     </p>
 
                     {this.state.errorMessage && (
@@ -80,7 +80,7 @@ export class ErrorBoundary extends Component<Props, State> {
                         onClick={this.handleReload}
                         className="mt-6 px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
                     >
-                        重新加载页面
+                        Reload page
                     </button>
                 </div>
             )

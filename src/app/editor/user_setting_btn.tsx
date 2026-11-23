@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Cookie from 'js-cookie';
 
 /**
  * A dropdown menu component for user account actions:
@@ -10,10 +9,12 @@ import Cookie from 'js-cookie';
  * Includes opening/closing animations via TailwindCSS transition classes.
  */
 interface UserDropdownProps {
+    /** Name of the logged-in editor */
+    username: string;
     onLogout: () => void;
 }
 
-const UserSettingBtn: React.FC<UserDropdownProps> = ({ onLogout }) => {
+const UserSettingBtn: React.FC<UserDropdownProps> = ({ username, onLogout }) => {
     // Dropdown open/close state
     const [open, setOpen] = useState(false);
     // Modal for password update
@@ -25,8 +26,6 @@ const UserSettingBtn: React.FC<UserDropdownProps> = ({ onLogout }) => {
     // Track Submission states
     const [loading, setLoading] = useState(false);
     const [err, setErr] = useState('');
-    // Username from cookie
-    const username = Cookie.get('cgsb-editor') || '';
 
     /**
      * Toggle the dropdown visibility
@@ -49,30 +48,16 @@ const UserSettingBtn: React.FC<UserDropdownProps> = ({ onLogout }) => {
         setErr('');
         setLoading(true);
         try {
-            // Verify old password
-            const verifyRes = await fetch('/api/user-verify', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password: oldPwd }),
-            });
-            if (verifyRes.status === 401) {
-                setErr('Old password is incorrect');
-                return;
-            }
-            if (!verifyRes.ok) { // other error
-                const text = await verifyRes.text();
-                throw new Error(`Verification failed: ${verifyRes.status} ${text}`);
-            }
             // Check new passwords match
             if (newPwd !== confirmPwd) {
                 setErr('New passwords do not match');
                 return;
             }
-            // Call update password API
+            // Call update password API (the server verifies the old password)
             const updateRes = await fetch('/api/user-update-pwd', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password: newPwd }),
+                body: JSON.stringify({ oldPassword: oldPwd, password: newPwd }),
             });
             if (updateRes.ok) {
                 alert('Password updated successfully');
@@ -82,11 +67,12 @@ const UserSettingBtn: React.FC<UserDropdownProps> = ({ onLogout }) => {
                 setConfirmPwd('');
             } else {
                 const updateData = await updateRes.json();
-                setErr(updateData.message || 'Password update failed');
+                setErr(updateData.error || 'Password update failed');
             }
         }
         catch (e) {
-            console.log(e);
+            console.error(e);
+            setErr('Network error. Please try again.');
         }
         finally { setLoading(false) }
     };
@@ -193,7 +179,7 @@ const UserSettingBtn: React.FC<UserDropdownProps> = ({ onLogout }) => {
                                     required
                                 />
                             </div>
-                            {(err !== null || err !== '') && <p className='text-sm py-1 text-red-700'>{err}</p>}
+                            {err && <p className='text-sm py-1 text-red-700'>{err}</p>}
                             {/* Submit */}
                             <button
                                 type="button" onClick={() => setShowModal(false)}

@@ -33,9 +33,10 @@ body {
   font-display: swap;
 }
 
+/* Tinos (metric-compatible with Times New Roman), Latin subset – SIL OFL 1.1, see /fonts/Tinos-OFL.txt */
 @font-face {
   font-family: 'Lyrics';
-  src: url('/fonts/times.ttf') format('truetype');
+  src: url('/fonts/tinos-regular.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -50,7 +51,7 @@ body {
 }
 
 .font-lyrics {
-  font-family: 'Lyrics', sans-serif;
+  font-family: 'Lyrics', 'Times New Roman', Times, serif;
 }
 
 .font-chords {

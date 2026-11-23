@@ -1,7 +1,7 @@
 // app/editor/song_edit.tsx
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import {
     DragDropContext,
     Droppable,
@@ -83,18 +83,19 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
     const [dragItems, setDragItems] = useState<DragItem[]>(() => {
         // Only section IDs are reserved at first; no dragItems yet
         const reserved = new Set(form.lyrics.map((s) => s.id));
-        return form.song.map((secId) => ({
-            secId,
-            uid: generateUniqueId(reserved),
-        }));
+        return form.song.map((secId) => {
+            const uid = generateUniqueId(reserved);
+            reserved.add(uid); // two rows must never share a uid
+            return { secId, uid };
+        });
     });
 
-    // Track if user has modified anything
-    const [dirty, setDirty] = useState(false);
-    useEffect(() => {
-        if (form !== (songdata ?? blank)) setDirty(true);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [form, songdata]);
+    // Track if user has modified anything: compare with the form as it was first shown
+    const initialFormRef = useRef(JSON.stringify(form));
+    const dirty = useMemo(
+        () => JSON.stringify(form) !== initialFormRef.current,
+        [form]
+    );
 
     // Helpers to update state and mark dirty
     const updateField = <K extends keyof SongData>(key: K, value: SongData[K]) => {
@@ -103,8 +104,16 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
 
     // Handler to receive filled data
     const handleAutoFill = (newData: SongData) => {
-        setForm(newData);      // replace entire form
-        setDirty(true);        // mark as edited
+        setForm({ ...newData, number });      // replace entire form, keeping the number typed so far
+        // keep the draggable section order in sync with the new data
+        const reserved = new Set(newData.lyrics.map((s) => s.id));
+        setDragItems(
+            newData.song.map((secId) => {
+                const uid = generateUniqueId(reserved);
+                reserved.add(uid);
+                return { secId, uid };
+            })
+        );
     };
 
     // Reorder `form.song` when a drag ends
@@ -305,7 +314,7 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
     return (
         <div className="space-y-6 relative text-black">
             {/* Title, Link, Number */}
-            <div className="flex flex-warp gap-4">
+            <div className="flex gap-4">
                 <div className="flex-1/5 md:flex-2/12">
                     <label className="block font-medium">Number*</label>
                     <input

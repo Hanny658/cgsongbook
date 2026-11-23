@@ -2,33 +2,22 @@
 
 import { useState, useRef, useEffect, useMemo } from 'react'
 import Link from 'next/link'
-import Head from 'next/head'
 import SettingsButton from '../configs/settings-button'
 import { useConfig } from '../configs/settings'
 import { transposeChordString } from '../configs/chord-transpose'
 import * as SpeechSDK from 'microsoft-cognitiveservices-speech-sdk'
 import Fuse from 'fuse.js'
-import LoadingIndicator from '../utils/loading-indicator'
-
-type SongLine = { chords: string; lyrics: string }
-type SongSection = { id: string; label: string; lines: SongLine[] }
-type SongData = {
-    title: string
-    link?: string
-    number: number
-    lyrics: SongSection[]
-    song: string[]
-}
+import { BG_IMAGES, randomBg } from '../utils/backgrounds'
 
 const DEBUG_MODE = false
 
-const bgImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg',
-    '7.jpg', '8.jpg', '9.webp', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.webp',
-    '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg', '21.jpg', '22.jpg',
-    '23.jpg', '25.webp', '24.jpg', '26.jpg']
+// Extract the video ID from a YouTube link (watch?v=, youtu.be/, embed/, shorts/)
+function getYouTubeId(link?: string): string {
+    const match = link?.match(/(?:[?&]v=|youtu\.be\/|\/embed\/|\/shorts\/)([\w-]{6,})/)
+    return match ? match[1] : ''
+}
 
-export default function SongLyricsPage({ number }: { number: string | number }) {
-    const [song, setSong] = useState<SongData | null>(null)
+export default function SongLyricsPage({ song }: { song: SongData }) {
     const { videoDisplay, showChords, transposeChords, trackMode } = useConfig()
 
     // recognizer instance
@@ -42,11 +31,11 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
 
     // —— FLATTEN LYRICS WITH UNIQUE IDS ——
     const flatLyrics = useMemo(() => {
-        if (!song) return []
         const entries: { id: string; text: string }[] = []
         const sectionMap = Object.fromEntries(song.lyrics.map(sec => [sec.id, sec]))
         song.song.forEach((secId, secOrder) => {
             const sec = sectionMap[secId]
+            if (!sec) return // section order refers to a section that does not exist
             sec.lines.forEach((line, lineIdx) => {
                 const txt = line.lyrics.trim()
                 if (txt) entries.push({ id: `${secId}-${secOrder}-${lineIdx}`, text: txt })
@@ -70,14 +59,6 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
     useEffect(() => {
         if (activeLine) scrollToLine(activeLine)
     }, [activeLine])
-
-    // —— FETCH SONG DATA ——
-    useEffect(() => {
-        fetch(`/api/songs/${number}`)
-            .then(r => r.json())
-            .then(setSong)
-            .catch(() => console.error('Failed to load song'))
-    }, [number])
 
     // —— SCROLL HELPER ——
     const scrollToLine = (lineId: string) => {
@@ -240,38 +221,20 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
     // —— RANDOM BACKGROUND ——
     const [bgUrl, setBgUrl] = useState('')
     useEffect(() => {
-        const idx = Math.floor(Math.random() * bgImages.length)
-        setBgUrl(`/sbg/${bgImages[idx]}`)
+        setBgUrl(randomBg(BG_IMAGES))
     }, [])
-
-    if (!song) {
-        return <div
-                role="status"
-                className="flex flex-col items-center justify-center h-screen bg-black/80"
-                >
-                    <LoadingIndicator />
-                    <p className="mt-2 text-white">Loading Lyrics…</p>
-                </div>
-    }
 
     // prepare section map & video ID
     const sectionMap = Object.fromEntries(song.lyrics.map(sec => [sec.id, sec]))
-    const videoId =
-        song.link?.split('v=')[1]?.split('&')[0] ||
-        song.link?.split('youtu.be/')[1] ||
-        ''
+    const videoId = getYouTubeId(song.link)
 
     return (
         <div className="relative w-full overflow-hidden">
             <div
                 className="fixed inset-0 bg-cover bg-center -z-10"
-                style={{ backgroundImage: `url(${bgUrl})` }}
+                style={bgUrl ? { backgroundImage: `url(${bgUrl})` } : undefined}
             />
             <div className="flex flex-col min-h-screen bg-black/55 text-gray-900">
-                <Head>
-                    <title>Songbook – {song.title}</title>
-                </Head>
-
                 <header className="flex items-center justify-between bg-black/70 px-6 py-4 text-white">
                     <div className="flex items-center space-x-4">
                         <SettingsButton />
@@ -303,6 +266,8 @@ export default function SongLyricsPage({ number }: { number: string | number }) 
                             <div className="aspect-w-16 aspect-h-9">
                                 <iframe
                                     src={`https://www.youtube.com/embed/${videoId}`}
+                                    title={`${song.title} – video`}
+                                    loading="lazy"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowFullScreen
                                     className="h-64 w-full rounded-lg shadow-md"

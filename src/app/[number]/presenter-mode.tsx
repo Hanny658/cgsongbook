@@ -13,13 +13,14 @@ import React, {
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-const bgImages = ['1.jpg', '2.jpg', '4.jpg', '5.jpg', '7.jpg', '9.webp', '10.jpg', 
-    '11.jpg', '12.jpg', '13.jpg', '18.jpg', '19.jpg', '20.jpg', '21.jpg', '25.webp',
-    '22.jpg', '23.jpg', '24.jpg', '26.jpg']
+import { SLIDE_BG_IMAGES, randomBg } from '../utils/backgrounds';
 
 interface PresenterViewProps {
-    number: string | number;
+    song: SongData;
 }
+
+// Slide pictures take a third of the screen on desktop, the full width on mobile
+const SLIDE_IMAGE_SIZES = '(min-width: 768px) 34vw, 100vw';
 
 const MIN_LYRIC_FONT_SIZE = 14;
 const MAX_LYRIC_FONT_SIZE = 24;
@@ -127,17 +128,12 @@ function AutoFitLyrics({ section }: { section: SongSection }) {
     );
 }
 
-export default function PresenterView({ number }: PresenterViewProps) {
-    const [songData, setSongData] = useState<SongData | null>(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState<string>();
+export default function PresenterView({ song: songData }: PresenterViewProps) {
     const [current, setCurrent] = useState(0);
 
     const [bgUrls, setBgUrls] = useState<string[]>([]);
 
     const sectionSlides = useMemo(() => {
-        if (!songData) return [];
-
         const sectionMap = new Map(songData.lyrics.map(section => [section.id, section]));
         return songData.song
             .map(sectionId => sectionMap.get(sectionId))
@@ -145,45 +141,23 @@ export default function PresenterView({ number }: PresenterViewProps) {
     }, [songData]);
 
     // total slides = 1 title slide + one per entry in the configured song order
-    const totalSlides = songData ? sectionSlides.length + 1 : 0;
+    const totalSlides = sectionSlides.length + 1;
 
+    // Picked on the client only, so server and client markup stay identical
     useEffect(() => {
-        if (songData) {
-            const slidesCount = totalSlides;
-            const urls = Array.from({ length: slidesCount }, () => {
-                const random = Math.floor(Math.random() * bgImages.length);
-                return `/sbg/${bgImages[random]}`;
-            });
-            setBgUrls(urls);
-        }
+        setBgUrls(Array.from({ length: totalSlides }, () => randomBg(SLIDE_BG_IMAGES)));
+        setCurrent(0);
     }, [songData, totalSlides]);
 
 
     const router = useRouter();
 
-    // fetch on mount / when number changes
-    useEffect(() => {
-        setLoading(true);
-        setError(undefined);
-        fetch(`/api/songs/${number}`)
-            .then(async res => {
-                if (!res.ok) throw new Error((await res.json()).error || 'Fetch error');
-                return (await res.json()) as SongData;
-            })
-            .then(data => {
-                setSongData(data);
-                setCurrent(0);
-            })
-            .catch(err => setError(err.message))
-            .finally(() => setLoading(false));
-    }, [number]);
-
     const prev = useCallback(() => {
         setCurrent(c => Math.max(0, c - 1));
     }, []);
     const next = useCallback(() => {
-        if (songData) setCurrent(c => Math.min(totalSlides - 1, c + 1));
-    }, [totalSlides, songData]);
+        setCurrent(c => Math.min(totalSlides - 1, c + 1));
+    }, [totalSlides]);
 
     const onKeyDown = useCallback((e: KeyboardEvent) => {
         if (e.key === 'ArrowLeft') {
@@ -208,27 +182,6 @@ export default function PresenterView({ number }: PresenterViewProps) {
         else if (x > w * 0.8) next();
     };
 
-    if (loading) {
-        return (
-            <div className="flex h-dvh w-full items-center justify-center bg-white">
-                <p className="text-lg">Loading…</p>
-            </div>
-        );
-    }
-    if (error || !songData) {
-        return (
-            <div className="flex h-dvh w-full items-center justify-center bg-white">
-                <p className="text-lg text-red-600">{error || 'Unknown error'}</p>
-            </div>
-        );
-    }
-    if (!bgUrls[0]) {
-        return (
-            <div className="flex h-dvh w-full items-center justify-center bg-white">
-                <p className="text-lg">Loading…</p>
-            </div>
-        );
-    }
     return (
         <div className="relative h-dvh">
             <button
@@ -236,7 +189,7 @@ export default function PresenterView({ number }: PresenterViewProps) {
                 aria-label="Back to song list"
                 onClick={() => router.push('/')}
                 className="
-        fixed top-7 right-0 z-50 
+        fixed top-7 right-0 z-50
         transform -translate-y-1/2
         p-2 bg-white/70 text-black/90 rounded-l shadow-lg
         hover:bg-white
@@ -261,7 +214,7 @@ export default function PresenterView({ number }: PresenterViewProps) {
                             </h1>
                         </div>
                         <div className="h-1/3 overflow-hidden">
-                            {songData.link && (
+                            {songData.link && bgUrls[0] && (
                                 <div className="relative w-full h-full">
                                     <Image
                                         src={bgUrls[0]}
@@ -269,6 +222,7 @@ export default function PresenterView({ number }: PresenterViewProps) {
                                         fill
                                         sizes="100vw"
                                         style={{ objectFit: 'cover' }}
+                                        priority
                                     />
                                 </div>
                             )}
@@ -298,15 +252,16 @@ export default function PresenterView({ number }: PresenterViewProps) {
 
                             {/* Right (or bottom on mobile) */}
                             <div className="h-1/3 w-full shrink-0 overflow-hidden md:h-full md:w-1/3">
-                                {songData.link && (
+                                {songData.link && bgUrls[sectionIndex + 1] && (
                                     <div className="relative w-full h-full">
                                         <Image
-                                            src={bgUrls[sectionIndex + 1] || ''}
+                                            src={bgUrls[sectionIndex + 1]}
                                             alt="Background"
                                             fill
-                                            sizes="100vw"
+                                            sizes={SLIDE_IMAGE_SIZES}
                                             style={{ objectFit: 'cover' }}
-                                            priority={true}
+                                            // only the current & upcoming slides are fetched eagerly
+                                            loading={sectionIndex <= current + 1 ? 'eager' : 'lazy'}
                                         />
                                     </div>
                                 )}

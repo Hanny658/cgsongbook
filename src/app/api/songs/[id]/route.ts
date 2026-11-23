@@ -1,71 +1,71 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { revalidateTag } from 'next/cache'
+import { dbUrl, isSongNumber, SONGS_TAG, songTag } from '../../../lib/db'
+import { getSessionUser, unauthorized } from '../../../lib/session'
 
-export async function GET(
-    req: NextRequest,
-    context: { params: Promise<{ id: string }> }
-) {
+type RouteContext = { params: Promise<{ id: string }> }
+
+// GET /api/songs/[id] – always fresh (used by the editor)
+export async function GET(_req: NextRequest, context: RouteContext) {
     const { id } = await context.params
-    const dbUrl = process.env.DB_URL
-
-    if (!dbUrl) {
-        return NextResponse.json({ error: 'DB_URL is not configured' }, { status: 500 })
+    if (!isSongNumber(id)) {
+        return NextResponse.json({ error: 'Song not found' }, { status: 404 })
     }
 
-    const endpoint = `${dbUrl}/songs/${id}`
-
     try {
-        const res = await fetch(endpoint)
+        const res = await fetch(`${dbUrl()}/songs/${id}`, { cache: 'no-store' })
 
         if (!res.ok) {
             return NextResponse.json({ error: 'Song not found' }, { status: res.status })
         }
 
-        const song = await res.json()
-        return NextResponse.json(song)
+        return NextResponse.json(await res.json())
     } catch (error) {
         console.error('Fetch error:', error)
         return NextResponse.json({ error: 'Failed to fetch song' }, { status: 500 })
     }
 }
 
-export async function POST(
-    request: NextRequest,
-    context: { params: Promise<{ id: string }> }
-) {
+// POST /api/songs/[id] – create or update a song (editors only)
+export async function POST(request: NextRequest, context: RouteContext) {
     try {
-        // 1. Parse incoming SongData
-        const songData = await request.json();
-        const { id } = await context.params
+        // 1. Only logged-in editors may write
+        if (!(await getSessionUser())) return unauthorized()
 
-        // 2. Ensure DB_URL is configured
-        const DB_URL = process.env.DB_URL;
-        if (!DB_URL) {
-            throw new Error('Missing DB_URL environment variable');
+        const { id } = await context.params
+        if (!isSongNumber(id)) {
+            return NextResponse.json({ error: 'Invalid song number' }, { status: 400 })
+        }
+
+        // 2. Parse incoming SongData; the number in the body must match the URL
+        const songData = await request.json()
+        if (!songData || Number(songData.number) !== Number(id)) {
+            return NextResponse.json({ error: 'Song number does not match' }, { status: 400 })
         }
 
         // 3. Forward to actual backend endpoint
-        const upstream = await fetch(`${DB_URL}/songs/${id}`, {
+        const upstream = await fetch(`${dbUrl()}/songs/${id}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(songData),
-        });
+        })
 
-        // 4. Parse upstream response
-        const payload = await upstream.json();
-
-        // 5. On success, return 200 with a simple acknowledgment
-        if (upstream.ok) {
-            return NextResponse.json({ success: true });
+        // 4. On failure, forward the upstream error message & status
+        if (!upstream.ok) {
+            const payload = await upstream.json().catch(() => ({}))
+            return NextResponse.json(
+                { error: payload.error ?? 'Upstream error' },
+                { status: upstream.status }
+            )
         }
 
-        // 6. On failure, forward the upstream error message & status
-        return NextResponse.json(
-            { error: payload.error ?? 'Upstream error' },
-            { status: upstream.status }
-        );
+        // 5. On success, refresh the cached song list & song page
+        revalidateTag(SONGS_TAG)
+        revalidateTag(songTag(id))
+        return NextResponse.json({ success: true })
     } catch (err: unknown) {
-        // 7. Unexpected errors bubble up as 500
-        const message = err instanceof Error ? err.message : 'Internal server error';
-        return NextResponse.json({ error: message }, { status: 500 });
+        // 6. Unexpected errors bubble up as 500
+        console.error('Failed to save song:', err)
+        return NextResponse.json({ error: 'Internal server error' }, { status: 500 })
     }
 }

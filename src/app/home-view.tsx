@@ -1,27 +1,24 @@
 'use client'
 
-import React, { useEffect, useState, useRef, useCallback } from 'react'
-import "../app/globals.css"
+import React, { useEffect, useState, useRef, useCallback, useMemo } from 'react'
 import Link from 'next/link'
-import "bootstrap-icons/font/bootstrap-icons.css"
-import Head from 'next/head'
 import SettingsButton from './configs/settings-button'
 import RandomPicker from './utils/random-picker'
-import LoadingIndicator from './utils/loading-indicator'
 import BibleReader from './bible-reader/BibleReader'
-
-const bgImages = ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', 
-  '7.jpg', '8.jpg', '9.webp', '10.jpg', '11.jpg', '12.jpg', '13.jpg', '14.webp', 
-  '15.jpg', '16.jpg', '17.jpg', '18.jpg', '19.jpg', '20.jpg', '21.jpg', '22.jpg', 
-  '23.jpg', '25.webp', '24.jpg', '26.jpg']
+import { BG_IMAGES, randomBg } from './utils/backgrounds'
 
 // Bible verses are fetched via /api/bible-verse (proxied to DB_URL on the server);
 // set NEXT_PUBLIC_ENABLE_BIBLE_READER at build time to show the reader.
 const BIBLE_READER_ENABLED : boolean = !!(process.env.NEXT_PUBLIC_ENABLE_BIBLE_READER);
 
-const SongbookPage = () => {
-  const [songs, setSongs] = useState<SongMeta[]>([])
-  const [filteredSongs, setFilteredSongs] = useState<SongMeta[]>([])
+interface HomeViewProps {
+  /** All songs, sorted by number (fetched on the server) */
+  songs: SongMeta[]
+  /** True when the song list could not be loaded */
+  loadError?: boolean
+}
+
+const HomeView = ({ songs, loadError = false }: HomeViewProps) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [showScrollTop, setShowScrollTop] = useState(false)
   const [bgUrl, setBgUrl] = useState('')
@@ -42,31 +39,16 @@ const SongbookPage = () => {
     }
   }, []);
 
+  // Picked on the client only, so server and client markup stay identical
   useEffect(() => {
-    console.log(hymnVerse)
-  }, [hymnVerse]) // TODO: Del
-
-  useEffect(() => {
-    const random = Math.floor(Math.random() * bgImages.length)
-    setBgUrl(`/sbg/${bgImages[random]}`)
+    setBgUrl(randomBg(BG_IMAGES))
   }, [])
 
   useEffect(() => {
     scrollToSong(picked);
-    console.log("Picked a random song: No.", picked)
   }, [picked, scrollToSong])
 
   useEffect(() => {
-    const fetchSongs = async () => {
-      const response = await fetch('/api/songs')
-      const data: SongMeta[] = await response.json()
-      const sorted = data.sort((a, b) => a.number - b.number)
-      setSongs(sorted)
-      setFilteredSongs(sorted)
-    }
-
-    fetchSongs()
-
     const onScroll = () => {
       setShowScrollTop(window.scrollY > 100)
     }
@@ -75,16 +57,22 @@ const SongbookPage = () => {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value
-    setSearchQuery(value)
-
-    const filtered = songs.filter(song =>
-      song.title.toLowerCase().includes(value.toLowerCase()) ||
-      song.number.toString().includes(value)
+  const filteredSongs = useMemo(() => {
+    const term = searchQuery.trim().toLowerCase()
+    if (!term) return songs
+    return songs.filter(song =>
+      song.title.toLowerCase().includes(term) ||
+      song.number.toString().includes(term)
     )
-    setFilteredSongs(filtered)
-  }
+  }, [songs, searchQuery])
+
+  const songNumbers = useMemo(() => songs.map(song => song.number), [songs])
+
+  // A random pick may be hidden by the current search, so clear it first
+  const handlePick = useCallback((num: number) => {
+    setSearchQuery('')
+    setPicked(num)
+  }, [])
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
@@ -92,11 +80,6 @@ const SongbookPage = () => {
     <div className={`relative w-full overflow-hidden`}>
       <div className="fixed top-0 left-0 w-full h-full bg-cover bg-center -z-10" style={{ backgroundImage: `url(${bgUrl})` }} />
       <div className="relative flex flex-col min-h-screen text-gray-900 overflow-y-auto">
-        <Head>
-          <title>CG Songbook</title>
-          <meta name="description" content="This contains the song from Sky's CG songbook PDF plus songs loved by Hanny" />
-        </Head>
-
         {/* Top Bar */}
         <header className="w-full !bg-black bg-opacity-70 !text-white py-2 px-4 md:px-6 flex justify-between items-center">
           <div className="flex items-center justify-between">
@@ -106,11 +89,11 @@ const SongbookPage = () => {
         </header>
 
         <div className="fixed top-1.5 right-6 z-40 flex w-1/3">
-          <RandomPicker maxNum={songs.length} onPick={setPicked} />
+          <RandomPicker numbers={songNumbers} onPick={handlePick} />
           <input
             type="text"
             value={searchQuery}
-            onChange={handleSearch}
+            onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search title or number..."
             className="text-black bg-white/80 rounded w-full px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
@@ -167,11 +150,12 @@ const SongbookPage = () => {
                   </> 
                   : 
                   <>
-                    <div role="status">
-                      <LoadingIndicator />
-                      <span className="sr-only">Loading...</span>
-                    </div>
-                    <h2 className="text-2xl text-blue-800 text-shadow-2xs text-shadow-cyan-50/60">Your songs are coming right-up...</h2>
+                    <h2 className="text-2xl text-blue-800 text-shadow-2xs text-shadow-cyan-50/60">
+                      {loadError ? "The songs could not be loaded..." : "No songs here yet..."}
+                    </h2>
+                    {loadError &&
+                      <p className="text-lg text-blue-900 text-shadow-2xs text-shadow-cyan-50/60">Please refresh the page in a moment.</p>
+                    }
                   </>
                   }
                 </div>
@@ -206,4 +190,4 @@ const SongbookPage = () => {
   )
 }
 
-export default SongbookPage
+export default HomeView

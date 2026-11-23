@@ -8,24 +8,20 @@ import React, {
     useEffect,
     ReactNode,
 } from 'react';
+import {
+    DEFAULTS,
+    FONT_SCALE,
+    type ConfigValues,
+    type FontSize,
+    type ViewMode,
+    type TrackMode,
+} from './settings-shared';
 
-// 1) Define setting types & defaults
-export type FontSize = 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large';
-export type ViewMode = 'Classic' | 'GACC-Slides';
-export type TrackMode = 'Highlight' | 'Scroll' | 'Manual';
+// 1) Setting types & defaults live in settings-shared.ts (also used by the server layout)
+export { FONT_SIZES, VIEW_MODES, TRACK_MODES } from './settings-shared';
+export type { FontSize, ViewMode, TrackMode } from './settings-shared';
 
-export const FONT_SIZES: FontSize[] = ['extra-small', 'small', 'medium', 'large', 'extra-large'];
-export const VIEW_MODES: ViewMode[] = ['Classic', 'GACC-Slides'];
-export const TRACK_MODES: TrackMode[] = ['Highlight', 'Scroll', 'Manual'];
-
-interface ConfigContextType {
-    fontSize: FontSize;
-    videoDisplay: boolean;
-    showChords: boolean;
-    transposeChords: number;
-    viewMode: ViewMode;
-    trackMode: TrackMode;
-
+interface ConfigContextType extends ConfigValues {
     setFontSize: (size: FontSize) => void;
     toggleVideoDisplay: () => void;
     toggleShowChords: () => void;
@@ -35,24 +31,9 @@ interface ConfigContextType {
     setTrackMode: (mode: TrackMode) => void;
 }
 
-const DEFAULTS = {
-    fontSize: 'medium' as FontSize,
-    videoDisplay: true,
-    showChords: true,
-    transposeChords: 0,
-    viewMode: 'Classic' as ViewMode,
-    trackMode: 'Highlight' as TrackMode,
-};
 const COOKIE_AGE_DAYS = 365;
 
-// 2) Cookie helpers (browser-only)
-function getCookie(name: string): string | null {
-    if (typeof document === 'undefined') return null;
-    const match = document.cookie.match(
-        new RegExp('(^| )' + name + '=([^;]+)')
-    );
-    return match ? decodeURIComponent(match[2]) : null;
-}
+// 2) Cookie helper (browser-only); reading happens on the server, in layout.tsx
 function setCookie(name: string, value: string) {
     if (typeof document === 'undefined') return;
     const expires = new Date();
@@ -75,68 +56,26 @@ const ConfigContext = createContext<ConfigContextType>({
 });
 
 // 4) Provider component
-export function ConfigProvider({ children }: { children: ReactNode }) {
+//    `initial` is parsed from the request cookies by the server layout, so the
+//    first render already uses the visitor's settings (no flash of defaults).
+export function ConfigProvider({
+    children,
+    initial = DEFAULTS,
+}: {
+    children: ReactNode;
+    initial?: ConfigValues;
+}) {
     // state hooks
-    const [fontSize, _setFontSize] = useState<FontSize>(DEFAULTS.fontSize);
-    const [videoDisplay, _setVideoDisplay] = useState<boolean>(
-        DEFAULTS.videoDisplay
-    );
-    const [showChords, _setShowChords] = useState<boolean>(
-        DEFAULTS.showChords
-    );
-    const [transposeChords, _setTransposeChords] = useState<number>(
-        DEFAULTS.transposeChords
-    );
-    const [viewMode, _setViewMode] = useState<ViewMode>(DEFAULTS.viewMode);
-    const [trackMode, _setTrackMode] = useState<TrackMode>(
-        DEFAULTS.trackMode
-    );
-
-    // on mount, read cookies (if present)
-    useEffect(() => {
-        const fs = getCookie('fontSize') as FontSize;
-        if (FONT_SIZES.includes(fs)) {
-            _setFontSize(fs);
-        }
-
-        const vm = getCookie('viewMode') as ViewMode;
-        if (VIEW_MODES.includes(vm)) {
-            _setViewMode(vm);
-        }
-
-        const vd = getCookie('videoDisplay');
-        if (vd !== null) {
-            _setVideoDisplay(vd === 'true');
-        }
-
-        const sc = getCookie('showChords');
-        if (sc !== null) {
-            _setShowChords(sc === 'true');
-        }
-
-        const tl = getCookie('trackMode') as TrackMode;
-        if (tl !== null) {
-            _setTrackMode(tl);
-        }
-
-        const tc = getCookie('transposeChords');
-        const n = tc !== null ? parseInt(tc, 10) : DEFAULTS.transposeChords;
-        if (!isNaN(n) && n >= 0 && n <= 11) {
-            _setTransposeChords(n);
-        }
-    }, []);
+    const [fontSize, _setFontSize] = useState<FontSize>(initial.fontSize);
+    const [videoDisplay, _setVideoDisplay] = useState<boolean>(initial.videoDisplay);
+    const [showChords, _setShowChords] = useState<boolean>(initial.showChords);
+    const [transposeChords, _setTransposeChords] = useState<number>(initial.transposeChords);
+    const [viewMode, _setViewMode] = useState<ViewMode>(initial.viewMode);
+    const [trackMode, _setTrackMode] = useState<TrackMode>(initial.trackMode);
 
     // Change root em based on font size
     useEffect(() => {
-        const scaleMap: Record<FontSize, string> = {
-            'extra-small': '14px',
-            small: '17px',
-            medium: '20px',
-            large: '23px',
-            'extra-large': '26px',
-        }
-        // apply the new root font-size
-        document.documentElement.style.fontSize = scaleMap[fontSize]
+        document.documentElement.style.fontSize = FONT_SCALE[fontSize]
     }, [fontSize])
 
     // setters that also update cookies
@@ -149,36 +88,28 @@ export function ConfigProvider({ children }: { children: ReactNode }) {
         setCookie('viewMode', mode);
     };
     const toggleVideoDisplay = () => {
-        _setVideoDisplay((prev) => {
-            const next = !prev;
-            setCookie('videoDisplay', String(next));
-            return next;
-        });
+        const next = !videoDisplay;
+        _setVideoDisplay(next);
+        setCookie('videoDisplay', String(next));
     };
     const toggleShowChords = () => {
-        _setShowChords((prev) => {
-            const next = !prev;
-            setCookie('showChords', String(next));
-            return next;
-        });
+        const next = !showChords;
+        _setShowChords(next);
+        setCookie('showChords', String(next));
     };
     const setTrackMode = (mode: TrackMode) => {
         _setTrackMode(mode);
         setCookie('trackMode', mode)
     };
     const incrementTranspose = () => {
-        _setTransposeChords((prev) => {
-            const next = (prev + 1) % 12;
-            setCookie('transposeChords', String(next));
-            return next;
-        });
+        const next = (transposeChords + 1) % 12;
+        _setTransposeChords(next);
+        setCookie('transposeChords', String(next));
     };
     const decrementTranspose = () => {
-        _setTransposeChords((prev) => {
-            const next = (prev + 11) % 12; // wrap underflow
-            setCookie('transposeChords', String(next));
-            return next;
-        });
+        const next = (transposeChords + 11) % 12; // wrap underflow
+        _setTransposeChords(next);
+        setCookie('transposeChords', String(next));
     };
 
     return (

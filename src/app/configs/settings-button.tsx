@@ -4,6 +4,7 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { useConfig, FONT_SIZES, VIEW_MODES, TRACK_MODES } from './settings'
+import { shiftNote } from './chord-transpose'
 
 const fontsizeDisplay = {'extra-small': "Extra Small",'small': "Small", 'medium': "Medium", 'large': "Large", 'extra-large': "Extra Large"}
 
@@ -42,14 +43,6 @@ export default function SettingsButton() {
     const prevTrackMode = TRACK_MODES[(idt + TRACK_MODES.length - 1) % TRACK_MODES.length]
     const nextTrackMode = TRACK_MODES[(idt + 1) %  TRACK_MODES.length]
 
-    // simple C→X transposer
-    const transposeChord = (base: string, semi: number) => {
-        const NOTES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B']
-        const i = NOTES.indexOf(base.toUpperCase())
-        if (i === -1) return base
-        return NOTES[(i + semi + 12) % 12]
-    }
-
     const openPanel = () => setIsOpen(true)
     const closePanel = () => setIsOpen(false)
 
@@ -58,14 +51,14 @@ export default function SettingsButton() {
             {/* inline button */}
             <button
                 onClick={isOpen ? closePanel : openPanel}
+                aria-label="Settings"
                 className="inline-flex items-center pr-3 py-1 bg-transparent text-white hover:text-blue-300"
             >
                 <i className="bi bi-gear-fill text-2xl mr-2"></i>
             </button>
 
             {/* slide‐up panel */}
-            {true && (
-                <div
+            <div
                 className={`
                     fixed bottom-0 left-0
                     w-full h-1/3
@@ -142,7 +135,7 @@ export default function SettingsButton() {
                                 <i className="bi bi-dash-square"></i>
                             </button>
                             <span className="min-w-[5rem] text-center">
-                                C <i className="bi bi-arrow-right-short"></i> <b className={transposeChords == 0 ? '' : 'text-blue-400'}>{transposeChord('C', transposeChords)}</b>
+                                C <i className="bi bi-arrow-right-short"></i> <b className={transposeChords == 0 ? '' : 'text-blue-400'}>{shiftNote('C', transposeChords)}</b>
                             </span>
                             <button
                                 onClick={incrementTranspose}
@@ -189,8 +182,7 @@ export default function SettingsButton() {
                             </button>
                         </div>
                     </div>
-                </div>
-            )}
+            </div>
         </>
     )
 }

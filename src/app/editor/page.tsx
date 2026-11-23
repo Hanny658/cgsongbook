@@ -2,7 +2,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 
 // Client components for viewing/editing songs
@@ -20,29 +19,45 @@ const ManagementPage: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
-    const [metas, setMetas] = useState<SongMeta[]>([]);
+    // null = not loaded yet
+    const [metas, setMetas] = useState<SongMeta[] | null>(null);
 
-    // Authentication & view state
+    // Authentication & view state (the session itself is an httpOnly cookie checked by the server)
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [checkingSession, setCheckingSession] = useState(true);
+    const [currentUser, setCurrentUser] = useState('');
     type View = 'all' | 'edit';
     const [view, setView] = useState<View>('all');
 
     // Which song is being edited (or blank for a new one)
     const blankSong: SongData = { title: '', number: 0, lyrics: [], song: [] };
     const [currentSong, setCurrentSong] = useState<SongData>(blankSong);
+    // Bumped every time the editor is opened, so the form always starts fresh
+    const [editKey, setEditKey] = useState(0);
 
     const router = useRouter();
 
+    // Ask the server whether we are already logged in
     useEffect(() => {
-        const user = Cookies.get('cgsb-editor');
-        if (user) {
-            setIsAuthenticated(true);
-            console.log("Welcome Back");
-        }
+        (async () => {
+            try {
+                const res = await fetch('/api/session');
+                if (res.ok) {
+                    const { username } = await res.json();
+                    setCurrentUser(username);
+                    setIsAuthenticated(true);
+                }
+            } catch (e) {
+                console.error(e);
+            } finally {
+                setCheckingSession(false);
+            }
+        })();
     }, []);
 
+    // (Re)load songs after login and every time we are back to view all
     useEffect(() => {
-        if (!isAuthenticated) return;
+        if (!isAuthenticated || view == 'edit') return; // not doing when switched to edit mode
         (async () => {
             try {
                 const res = await fetch('/api/songs');
@@ -52,25 +67,10 @@ const ManagementPage: React.FC = () => {
                 setMetas(sorted);
             } catch (e) {
                 console.error(e);
+                setMetas(current => current ?? []);
             }
         })();
-    }, [isAuthenticated]);
-
-    // Reload songs everytime back to view all
-    useEffect(() => {
-        if (!view || view == 'edit') return; // not doing whenswitched to edit mode
-        (async () => {
-            try {
-                const res = await fetch('/api/songs');
-                if (!res.ok) throw new Error('Failed loading songs');
-                const list: SongMeta[] = await res.json();
-                const sorted = list.sort((a, b) => a.number - b.number)
-                setMetas(sorted);
-            } catch (e) {
-                console.error(e);
-            }
-        })();
-    }, [view]);
+    }, [isAuthenticated, view]);
 
     // Attempt login against Next.js API route.
     // That API route should internally forward to `${process.env.DB_URL}/user/verify`.
@@ -85,8 +85,8 @@ const ManagementPage: React.FC = () => {
             });
             const payload = await res.json();
             if (res.ok) {
+                setCurrentUser(payload.username ?? username);
                 setIsAuthenticated(true);
-                Cookies.set('cgsb-editor', username, { expires: 7 });
                 setView('all');
             } else {
                 setError(payload.error || 'Authentication failed');
@@ -100,26 +100,38 @@ const ManagementPage: React.FC = () => {
     // Switch into “new song” mode
     const handleNewSong = () => {
         setCurrentSong(blankSong);
+        setEditKey(k => k + 1);
         setView('edit');
     };
 
     // When an existing song is chosen for editing:
     const handleEditSong = (song: SongData) => {
         setCurrentSong(song);
+        setEditKey(k => k + 1);
         setView('edit');
     };
 
-    // Delete all cookie and reset auth state
-    const handleLogout = () => {
-        Cookies.remove('cgsb-editor');
+    // End the server session and reset auth state
+    const handleLogout = async () => {
+        try {
+            await fetch('/api/session', { method: 'DELETE' });
+        } catch (e) {
+            console.error(e);
+        }
         setIsAuthenticated(false);
+        setCurrentUser('');
+        setMetas(null);
         setUsername('');
         setPassword('');
     };
 
     return (
         <div className="min-h-screen bg-gray-50">
-            {!isAuthenticated ? (
+            {checkingSession ? (
+                <div className="min-h-screen flex items-center justify-center">
+                    <LoadingIndicator color='black' />
+                </div>
+            ) : !isAuthenticated ? (
                 // --- Login Form ---
                 <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 via-white to-blue-200">
                     <div className="w-full max-w-md p-8 bg-white rounded-2xl shadow-xl">
@@ -194,7 +206,7 @@ const ManagementPage: React.FC = () => {
                             >
                                 <i className="text-2xl pt-1 bi bi-house text-gray-900"></i>
                             </button>
-                            <UserSettingBtn onLogout={handleLogout} />
+                            <UserSettingBtn username={currentUser} onLogout={handleLogout} />
                         </div>
                     </header>
 
@@ -208,6 +220,7 @@ const ManagementPage: React.FC = () => {
                                 {view === 'edit' && (
                                     // Provide the currentSong (blank or loaded) to your editor
                                     <SongEdit
+                                        key={editKey}
                                         songdata={currentSong}
                                         existingNumbers={metas.map(m => m.number)}
                                         onCancel={() => setView('all')}
