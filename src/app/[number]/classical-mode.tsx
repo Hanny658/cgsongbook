@@ -1,15 +1,12 @@
 'use client'
 
-import { useState, useRef, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import SettingsButton from '../configs/settings-button'
 import { useConfig } from '../configs/settings'
 import { transposeChordString } from '../configs/chord-transpose'
-import * as SpeechSDK from 'microsoft-cognitiveservices-speech-sdk'
-import Fuse from 'fuse.js'
 import { BG_IMAGES, randomBg } from '../utils/backgrounds'
-
-const DEBUG_MODE = false
+import { useLyricTracing } from '../tracing/use-lyric-tracing'
 
 // Extract the video ID from a YouTube link (watch?v=, youtu.be/, embed/, shorts/)
 function getYouTubeId(link?: string): string {
@@ -19,15 +16,6 @@ function getYouTubeId(link?: string): string {
 
 export default function SongLyricsPage({ song }: { song: SongData }) {
     const { videoDisplay, showChords, transposeChords, trackMode } = useConfig()
-
-    // recognizer instance
-    const recognizerRef = useRef<SpeechSDK.SpeechRecognizer | null>(null)
-    // pointers into flatLyrics
-    const currentIndexRef = useRef<number>(-1)
-    const maxIndexRef = useRef<number>(0)
-    const interimMatchedRef = useRef(false)
-    const [tracking, setTracking] = useState(false)
-    const [activeLine, setActiveLine] = useState<string | null>(null)
 
     // —— FLATTEN LYRICS WITH UNIQUE IDS ——
     const flatLyrics = useMemo(() => {
@@ -44,179 +32,38 @@ export default function SongLyricsPage({ song }: { song: SongData }) {
         return entries
     }, [song])
 
-    // —— SETUP FUSE.JS ——  re-create the Fuse index whenever flatLyrics changes
-    const fuseRef = useRef<Fuse<{ id: string; text: string }> | null>(null)
-    useEffect(() => {
-        if (flatLyrics.length > 0) {
-            fuseRef.current = new Fuse(flatLyrics, {
-                keys: ['text'],
-                threshold: 0.3,         // 0.0 = exact, 1.0 = very fuzzyyyyyyyy
-                includeScore: true,
-            })
-        }
-    }, [flatLyrics])
+    // —— LYRIC TRACING —— (microphone + speech recognition, or manual stepping; see app/tracing)
+    const { tracking, starting, activeLine, error, toggle, step, jumpTo, dismissError } =
+        useLyricTracing(flatLyrics, trackMode)
 
+    // keep the active line in the middle of the screen
     useEffect(() => {
-        if (activeLine) scrollToLine(activeLine)
+        if (!activeLine) return
+        document.getElementById(activeLine)?.scrollIntoView({ block: 'center', behavior: 'smooth' })
     }, [activeLine])
 
-    // —— SCROLL HELPER ——
-    const scrollToLine = (lineId: string) => {
-        const el = document.getElementById(lineId)
-        if (el) {
-            el.scrollIntoView({ block: 'center', behavior: 'smooth' })
-        }
-    }
+    // Manual mode: arrow keys / PageUp / PageDown / Space step through the lines
+    // (Bluetooth page-turner pedals send exactly these keys)
+    useEffect(() => {
+        if (!tracking || trackMode !== 'Manual') return
 
-    // —— Change highlight to next n line (n can be negative) ——
-    const HighlightNextLine = (nLines: number) => {
-        // Skip when not tracking lyrics / Not on manual / 0 lines
-        if (!tracking || trackMode !== 'Manual' || nLines === 0 || flatLyrics.length === 0) return;
+        const onKeyDown = (e: KeyboardEvent) => {
+            const target = e.target as HTMLElement | null
+            if (target && /^(INPUT|TEXTAREA|SELECT)$/.test(target.tagName)) return
+            // Space on a focused button / link keeps its normal meaning
+            if (e.key === ' ' && target && /^(BUTTON|A)$/.test(target.tagName)) return
 
-        // start from current index, if not started yet, treat as before first line
-        const startIdx = currentIndexRef.current < 0 ? -1 : currentIndexRef.current;
-        let nextIdx = startIdx + nLines;
-
-        // clamp within bounds
-        if (nextIdx < 0) nextIdx = 0;
-        if (nextIdx >= flatLyrics.length) nextIdx = flatLyrics.length - 1;
-
-        currentIndexRef.current = nextIdx;
-        setActiveLine(flatLyrics[nextIdx].id);
-    };
-
-    // —— START AZURE RECOGNITION ——
-    const startRecognition = () => {
-        if (trackMode == 'Manual') return // guard
-        if (!flatLyrics.length) {
-            alert('Please wait for lyrics to load before starting trace.')
-            return
-        }
-
-        const key = process.env.NEXT_PUBLIC_STT_KEY!
-        const region = process.env.NEXT_PUBLIC_STT_REGION!
-        if (!key || !region) {
-            alert('Azure Speech key/region not configured.')
-            return
-        }
-
-        const speechConfig = SpeechSDK.SpeechConfig.fromSubscription(key, region)
-        speechConfig.speechRecognitionLanguage = 'en-AU'
-        const audioConfig = SpeechSDK.AudioConfig.fromDefaultMicrophoneInput()
-        const recognizer = new SpeechSDK.SpeechRecognizer(speechConfig, audioConfig)
-
-        currentIndexRef.current = -1
-        maxIndexRef.current = 0
-
-        // STREAM MODE: match exactly the *next* line to advance immediately
-        recognizer.recognizing = (_s, e) => {
-            const partial = e.result.text.trim()
-            if (!partial) return
-            if (DEBUG_MODE) console.log('partial: ', partial)
-            const nextIdx = currentIndexRef.current + 1
-            if (nextIdx >= flatLyrics.length) return
-            const nextText = flatLyrics[nextIdx].text
-            const fuse = new Fuse([{ text: nextText }], { keys: ['text'], threshold: 0.3 })
-            if (fuse.search(partial).length) {
-                interimMatchedRef.current = true
-                currentIndexRef.current = nextIdx
-                setActiveLine(flatLyrics[nextIdx].id)
+            if (['ArrowDown', 'ArrowRight', 'PageDown', ' '].includes(e.key)) {
+                e.preventDefault()
+                step(1)
+            } else if (['ArrowUp', 'ArrowLeft', 'PageUp'].includes(e.key)) {
+                e.preventDefault()
+                step(-1)
             }
         }
-
-        // deprecated method becomes fallback, if missed out with stream mode this will be helpful
-        // (Or I just want to keep my 3-line window method that took me time to design)
-        recognizer.recognized = (_s, e) => {
-            // if interim already matched, skip this final result
-            if (interimMatchedRef.current) {
-                interimMatchedRef.current = false
-                return
-            }
-            const transcript = e.result.text.trim()
-            if (!transcript) return
-            if (DEBUG_MODE) console.log('Transcript:', transcript)
-
-            // FIRST match: full‐song Fuse search, then highlight the *next* line instead of the matched one
-            if (currentIndexRef.current < 0) {
-                const fuse = fuseRef.current!
-                const results = fuse.search(transcript)
-                if (results.length === 0) return
-
-                const matchedId = results[0].item.id
-                const matchedIdx = flatLyrics.findIndex(f => f.id === matchedId)
-                if (matchedIdx < 0) return
-
-                // advance to the line after the one matched
-                const nextIdx = Math.min(matchedIdx + 1, flatLyrics.length - 1)
-                currentIndexRef.current = nextIdx
-                setActiveLine(flatLyrics[nextIdx].id)
-                if (DEBUG_MODE) console.log('Initial match advanced to', nextIdx, flatLyrics[nextIdx].id)
-                return
-            }
-
-            // Otherwise only look in the next 3 lines
-            const start = currentIndexRef.current;
-            const end = Math.min(start + 3, flatLyrics.length - 1);
-            const candidates = flatLyrics.slice(start, end + 1);
-
-            if (candidates.length === 0) {
-                console.warn('No more lines to trace.')
-                return
-            }
-
-            // build a tiny Fuse over those three
-            const smallFuse = new Fuse(candidates, {
-                keys: ['text'],
-                threshold: 0.3,
-            })
-            const smallResults = smallFuse.search(transcript)
-            if (smallResults.length === 0) return
-
-            // whichever line matched, highlight the *next* one
-            const matchedId = smallResults[0].item.id
-            const matchedIdx = flatLyrics.findIndex(f => f.id === matchedId)
-            const nextIdx = Math.min(matchedIdx + 1, flatLyrics.length - 1)
-
-            currentIndexRef.current = nextIdx
-            setActiveLine(flatLyrics[nextIdx].id)
-            if (DEBUG_MODE) console.log('Advanced to', nextIdx, flatLyrics[nextIdx].id)
-        }
-
-        recognizer.canceled = () => { stopRecognition(); setTracking(false) }
-        recognizer.sessionStopped = () => {
-            recognizer.stopContinuousRecognitionAsync()
-            recognizerRef.current = null
-        }
-
-        recognizerRef.current = recognizer
-        recognizer.startContinuousRecognitionAsync()
-    }
-
-    // —— STOP AZURE RECOGNITION ——
-    const stopRecognition = () => {
-        if (recognizerRef.current) {
-            recognizerRef.current.stopContinuousRecognitionAsync()
-            recognizerRef.current = null
-        }
-        currentIndexRef.current = -1
-        maxIndexRef.current = 0
-    }
-
-    // —— TOGGLE BUTTON ——
-    const toggleTracking = () => {
-        if (!tracking) {
-            if (flatLyrics.length > 0) {
-                // keep -1 for auto-tracing so the first STT result still does a full search
-                currentIndexRef.current = (trackMode == 'Manual') ? 0 : -1;
-                setActiveLine(flatLyrics[0].id);
-            }
-            if (trackMode !== 'Manual') startRecognition()
-        } else {
-            stopRecognition()
-            setActiveLine(null)
-        }
-        setTracking(x => !x)
-    }
+        window.addEventListener('keydown', onKeyDown)
+        return () => window.removeEventListener('keydown', onKeyDown)
+    }, [tracking, trackMode, step])
 
     // —— RANDOM BACKGROUND ——
     const [bgUrl, setBgUrl] = useState('')
@@ -244,14 +91,15 @@ export default function SongLyricsPage({ song }: { song: SongData }) {
                     </div>
                     <div className="flex items-center space-x-4">
                         <button
-                            onClick={toggleTracking}
+                            onClick={toggle}
                             className={`text-xs rounded-md border px-2 py-1 min-w-24 
                                 ${tracking
                                 ? 'bg-orange-500/70 md:bg-orange-500 border-orange-600 text-white fixed bottom-8 right-4 md:bottom-auto md:top-6 md:right-14'
                                 : 'bg-blue-200/70 md:bg-blue-200 border-gray-300 text-black fixed bottom-8 right-4 md:static md:block'
                                 }`}
                         >
-                            {tracking ? <i className="bi bi-disc-fill"> Trace Stop</i> 
+                            {starting ? <i className="bi bi-disc"> Starting…</i>
+                                : tracking ? <i className="bi bi-disc-fill"> Trace Stop</i>
                                     : <i className="bi bi-disc"> Lyric-Trace</i>}
                         </button>
                         <Link href="/">
@@ -299,7 +147,9 @@ export default function SongLyricsPage({ song }: { song: SongData }) {
                                             <div
                                                 key={lineIdx}
                                                 id={lineId}
-                                                className={`overflow-x-auto ${isActive && (trackMode !== 'Scroll') 
+                                                // while tracing, tap a line to sync to it
+                                                onClick={tracking ? () => jumpTo(lineId) : undefined}
+                                                className={`overflow-x-auto ${tracking ? 'cursor-pointer' : ''} ${isActive && (trackMode !== 'Scroll')
                                                     ? 'bg-amber-100/20 pl-1 rounded-md' : 'pl-1'}`}
                                             >
                                                 {showChords && (
@@ -328,17 +178,28 @@ export default function SongLyricsPage({ song }: { song: SongData }) {
                 <div className="fixed left-7 bottom-7 flex flex-col gap-y-0.5">
                     <button
                         className="rounded-t-2xl bg-amber-500/30 text-white px-3 py-0"
-                        onClick={() => HighlightNextLine(-1)}
+                        aria-label="Previous line"
+                        onClick={() => step(-1)}
                     >
                         <i className="bi bi-chevron-compact-up text-2xl"></i>
                     </button>
                     <button
                         className="rounded-b-2xl bg-amber-500/30 text-white px-3 py-0"
-                        onClick={() => HighlightNextLine(1)}
+                        aria-label="Next line"
+                        onClick={() => step(1)}
                     >
                         <i className="bi bi-chevron-compact-down text-2xl"></i>
                     </button>
                 </div>
+            }
+            {error &&
+                <button
+                    role="alert"
+                    onClick={dismissError}
+                    className="fixed bottom-20 left-1/2 -translate-x-1/2 max-w-[90vw] rounded-md bg-red-900/90 px-3 py-2 text-sm text-white shadow-lg"
+                >
+                    <i className="bi bi-mic-mute-fill" /> {error}
+                </button>
             }
         </div>
     )
