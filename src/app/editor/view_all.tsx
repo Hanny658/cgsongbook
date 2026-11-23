@@ -2,7 +2,7 @@
 // app/editor/view_all.tsx
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 
 interface ViewAllProps {
     metas: SongMeta[];
@@ -10,19 +10,16 @@ interface ViewAllProps {
 }
 
 const ViewAll: React.FC<ViewAllProps> = ({ metas, onEdit }) => {
-    const [filtered, setFiltered] = useState<SongMeta[]>([]);
     const [search, setSearch] = useState('');
 
     // Filter whenever search or songs change
-    useEffect(() => {
+    const filtered = useMemo(() => {
         const term = search.trim().toLowerCase();
-        if (!term) return setFiltered(metas);
+        if (!term) return metas;
 
-        setFiltered(
-            metas.filter(s =>
-                s.title.toLowerCase().includes(term)
-                || String(s.number).includes(term)
-            )
+        return metas.filter(s =>
+            s.title.toLowerCase().includes(term)
+            || String(s.number).includes(term)
         );
     }, [search, metas]);
 

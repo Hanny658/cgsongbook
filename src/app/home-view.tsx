@@ -5,7 +5,6 @@ import Link from 'next/link'
 import SettingsButton from './configs/settings-button'
 import RandomPicker from './utils/random-picker'
 import BibleReader from './bible-reader/BibleReader'
-import { BG_IMAGES, randomBg } from './utils/backgrounds'
 
 // Bible verses are fetched via /api/bible-verse (proxied to DB_URL on the server);
 // set NEXT_PUBLIC_ENABLE_BIBLE_READER at build time to show the reader.
@@ -16,12 +15,13 @@ interface HomeViewProps {
   songs: SongMeta[]
   /** True when the song list could not be loaded */
   loadError?: boolean
+  /** Background picture, picked at random on the server */
+  bgUrl: string
 }
 
-const HomeView = ({ songs, loadError = false }: HomeViewProps) => {
+const HomeView = ({ songs, loadError = false, bgUrl }: HomeViewProps) => {
   const [searchQuery, setSearchQuery] = useState('')
   const [showScrollTop, setShowScrollTop] = useState(false)
-  const [bgUrl, setBgUrl] = useState('')
   const [hymnVerse, setHymnVerse] = useState('')
   const [picked, setPicked] = useState<number | null>(null);
   const songRefs = useRef<Record<number, HTMLAnchorElement | null>>({});
@@ -38,11 +38,6 @@ const HomeView = ({ songs, loadError = false }: HomeViewProps) => {
       console.warn(`No song found with number ${num}`);
     }
   }, []);
-
-  // Picked on the client only, so server and client markup stay identical
-  useEffect(() => {
-    setBgUrl(randomBg(BG_IMAGES))
-  }, [])
 
   useEffect(() => {
     scrollToSong(picked);

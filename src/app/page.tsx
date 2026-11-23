@@ -1,5 +1,6 @@
 import HomeView from './home-view'
 import { getSongList } from './lib/db'
+import { BG_IMAGES, randomBg } from './utils/backgrounds'
 
 // The song list is fetched on the server (cached, see lib/db.ts) and handed to the client view.
 export default async function SongbookPage() {
@@ -13,5 +14,5 @@ export default async function SongbookPage() {
     loadError = true
   }
 
-  return <HomeView songs={songs} loadError={loadError} />
+  return <HomeView songs={songs} loadError={loadError} bgUrl={randomBg(BG_IMAGES)} />
 }

@@ -13,10 +13,10 @@ import React, {
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import { SLIDE_BG_IMAGES, randomBg } from '../utils/backgrounds';
-
 interface PresenterViewProps {
     song: SongData;
+    /** One picture per slide (title slide first), picked on the server */
+    bgUrls: string[];
 }
 
 // Slide pictures take a third of the screen on desktop, the full width on mobile
@@ -128,10 +128,8 @@ function AutoFitLyrics({ section }: { section: SongSection }) {
     );
 }
 
-export default function PresenterView({ song: songData }: PresenterViewProps) {
+export default function PresenterView({ song: songData, bgUrls }: PresenterViewProps) {
     const [current, setCurrent] = useState(0);
-
-    const [bgUrls, setBgUrls] = useState<string[]>([]);
 
     const sectionSlides = useMemo(() => {
         const sectionMap = new Map(songData.lyrics.map(section => [section.id, section]));
@@ -142,12 +140,6 @@ export default function PresenterView({ song: songData }: PresenterViewProps) {
 
     // total slides = 1 title slide + one per entry in the configured song order
     const totalSlides = sectionSlides.length + 1;
-
-    // Picked on the client only, so server and client markup stay identical
-    useEffect(() => {
-        setBgUrls(Array.from({ length: totalSlides }, () => randomBg(SLIDE_BG_IMAGES)));
-        setCurrent(0);
-    }, [songData, totalSlides]);
 
 
     const router = useRouter();

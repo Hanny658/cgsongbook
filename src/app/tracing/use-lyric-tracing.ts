@@ -230,6 +230,8 @@ export function useLyricTracing(lines: TrackLine[], trackMode: TrackMode): Lyric
     }, [releaseRecognizer])
 
     useEffect(() => {
+        // Releasing the microphone and resetting the tracing state belong together here
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         stop()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [lines, trackMode])

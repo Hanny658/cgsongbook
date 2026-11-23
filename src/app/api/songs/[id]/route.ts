@@ -59,9 +59,10 @@ export async function POST(request: NextRequest, context: RouteContext) {
             )
         }
 
-        // 5. On success, refresh the cached song list & song page
-        revalidateTag(SONGS_TAG)
-        revalidateTag(songTag(id))
+        // 5. On success, expire the cached song list & song page right away
+        //    ({ expire: 0 }: the next visitor gets the saved version, never the stale one)
+        revalidateTag(SONGS_TAG, { expire: 0 })
+        revalidateTag(songTag(id), { expire: 0 })
         return NextResponse.json({ success: true })
     } catch (err: unknown) {
         // 6. Unexpected errors bubble up as 500

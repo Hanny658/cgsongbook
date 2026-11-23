@@ -11,7 +11,7 @@ export const SLIDE_BG_IMAGES: string[] = [
     1, 2, 4, 5, 7, 9, 10, 11, 12, 13, 18, 19, 20, 21, 22, 23, 24, 25, 26,
 ].map(toUrl)
 
-/** Pick a random background URL. Call on the client (in an effect) to avoid hydration mismatches. */
+/** Pick a random background URL. Call it on the server (page.tsx) and pass the result down as a prop. */
 export function randomBg(images: string[] = BG_IMAGES): string {
     return images[Math.floor(Math.random() * images.length)]
 }

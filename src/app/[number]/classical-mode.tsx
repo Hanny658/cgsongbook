@@ -1,11 +1,10 @@
 'use client'
 
-import { useState, useEffect, useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import SettingsButton from '../configs/settings-button'
 import { useConfig } from '../configs/settings'
 import { transposeChordString } from '../configs/chord-transpose'
-import { BG_IMAGES, randomBg } from '../utils/backgrounds'
 import { useLyricTracing } from '../tracing/use-lyric-tracing'
 
 // Extract the video ID from a YouTube link (watch?v=, youtu.be/, embed/, shorts/)
@@ -14,7 +13,7 @@ function getYouTubeId(link?: string): string {
     return match ? match[1] : ''
 }
 
-export default function SongLyricsPage({ song }: { song: SongData }) {
+export default function SongLyricsPage({ song, bgUrl }: { song: SongData; bgUrl: string }) {
     const { videoDisplay, showChords, transposeChords, trackMode } = useConfig()
 
     // —— FLATTEN LYRICS WITH UNIQUE IDS ——
@@ -65,12 +64,6 @@ export default function SongLyricsPage({ song }: { song: SongData }) {
         return () => window.removeEventListener('keydown', onKeyDown)
     }, [tracking, trackMode, step])
 
-    // —— RANDOM BACKGROUND ——
-    const [bgUrl, setBgUrl] = useState('')
-    useEffect(() => {
-        setBgUrl(randomBg(BG_IMAGES))
-    }, [])
-
     // prepare section map & video ID
     const sectionMap = Object.fromEntries(song.lyrics.map(sec => [sec.id, sec]))
     const videoId = getYouTubeId(song.link)
@@ -79,7 +72,7 @@ export default function SongLyricsPage({ song }: { song: SongData }) {
         <div className="relative w-full overflow-hidden">
             <div
                 className="fixed inset-0 bg-cover bg-center -z-10"
-                style={bgUrl ? { backgroundImage: `url(${bgUrl})` } : undefined}
+                style={{ backgroundImage: `url(${bgUrl})` }}
             />
             <div className="flex flex-col min-h-screen bg-black/55 text-gray-900">
                 <header className="flex items-center justify-between bg-black/70 px-6 py-4 text-white">

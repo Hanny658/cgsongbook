@@ -1,7 +1,7 @@
 // app/editor/song_edit.tsx
 'use client';
 
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
     DragDropContext,
     Droppable,
@@ -53,18 +53,14 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
     // Controlls Submission loading state
     const [submitting, setSubmitting] = useState<boolean>(false);
 
-    // Tracks duplicated IDs
+    // The song number is kept on its own (it is merged into the form when submitting)
     const [number, setNumber] = useState(songdata?.number || 0);
-    const [dupError, setDupError] = useState('');
-    // Whenever number changes, validate it
-    useEffect(() => {
+    // Tracks duplicated numbers
+    const dupError = useMemo(() => {
         const isSameAsOld = songdata?.number === number;
-        if (!isSameAsOld && existingNumbers.includes(number)) {
-            setDupError(`Number ${number} already exists.`);
-        } else {
-            setDupError('');
-            updateField('number', number);
-        }
+        return !isSameAsOld && existingNumbers.includes(number)
+            ? `Number ${number} already exists.`
+            : '';
     }, [number, existingNumbers, songdata]);
 
     // Generates a ID that is not any from the reserved set
@@ -91,10 +87,10 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
     });
 
     // Track if user has modified anything: compare with the form as it was first shown
-    const initialFormRef = useRef(JSON.stringify(form));
+    const [initialSnapshot] = useState(() => JSON.stringify({ ...form, number }));
     const dirty = useMemo(
-        () => JSON.stringify(form) !== initialFormRef.current,
-        [form]
+        () => JSON.stringify({ ...form, number }) !== initialSnapshot,
+        [form, number, initialSnapshot]
     );
 
     // Helpers to update state and mark dirty
@@ -252,7 +248,7 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
             alert('Title is required.');
             return;
         }
-        if (!form.number || form.number <= 0) {
+        if (!number || number <= 0) {
             alert('Number must be a positive integer.');
             return;
         }
@@ -275,6 +271,7 @@ const SongEdit: React.FC<SongEditProps> = ({ songdata, existingNumbers, onCancel
         // Clean out empty SongLine entries
         const cleaned: SongData = {
             ...form,
+            number,
             lyrics: form.lyrics.map(sec => ({
                 ...sec,
                 lines: sec.lines.filter(
