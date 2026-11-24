@@ -1,0 +1,31 @@
+# /etc/systemd/system/cgsongbook.service
+#
+# Runs the release that GitHub Actions uploaded (see .github/workflows/deploy.yml and deploy/release.sh).
+# Nothing is built on the server.
+#
+#   sudo cp deploy/cgsongbook.service /etc/systemd/system/cgsongbook.service
+#   sudo systemctl daemon-reload && sudo systemctl restart cgsongbook
+
+[Unit]
+Description=Next.js app (cgsongbook)
+After=network.target
+
+[Service]
+Type=simple
+User=ecs-user
+Group=ecs-user
+
+# `current` is a symlink to the active release; a restart picks up the new one
+WorkingDirectory=/home/ecs-user/cgsongbook-app/current
+
+# Runtime settings: DB_URL, SESSION_SECRET, STT_KEY, AUTOMATION_KEY, ...
+EnvironmentFile=/home/ecs-user/cgsongbook-app/.env
+Environment=NODE_ENV=production
+Environment=PORT=3001
+
+ExecStart=/usr/bin/node server.js
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

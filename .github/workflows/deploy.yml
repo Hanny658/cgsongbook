@@ -1,0 +1,88 @@
+# Build on GitHub, run on the server.
+#
+# The server is too small to build Next.js, so the build happens here. The self-contained
+# result (.next/standalone) is uploaded over SSH and activated by deploy/release.sh.
+#
+# Repository settings needed (Settings → Secrets and variables → Actions):
+#   Secrets
+#     DEPLOY_SSH_KEY      private key of a key pair used only for deployments
+#     DEPLOY_HOST         server address
+#     DEPLOY_USER         SSH user (ecs-user)
+#     DEPLOY_KNOWN_HOSTS  the server's host key line(s), from `ssh-keyscan <host>`
+#   Variables
+#     NEXT_PUBLIC_ENABLE_BIBLE_READER   set to 1 to show the Bible reader (baked in at build time)
+#
+# Everything else (DB_URL, SESSION_SECRET, STT_KEY, AUTOMATION_KEY, ...) is read at runtime
+# from the .env file on the server and never leaves it.
+
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# one deployment at a time; a newer push waits for the running one
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest   # x64, like the server (sharp ships a native binary)
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20   # same major version as the server
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run lint
+
+      - name: Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_ENABLE_BIBLE_READER: ${{ vars.NEXT_PUBLIC_ENABLE_BIBLE_READER }}
+
+      - name: Package the standalone build
+        run: |
+          # the standalone server does not include static files; they go next to it
+          cp -r public .next/standalone/public
+          cp -r .next/static .next/standalone/.next/static
+          tar -czf release.tgz -C .next/standalone .
+          ls -lh release.tgz
+
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          printf '%s\n' "$DEPLOY_KNOWN_HOSTS" > ~/.ssh/known_hosts
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+
+      - name: Upload and activate
+        run: |
+          RELEASE="$(date -u +%Y%m%d-%H%M%S)-${GITHUB_SHA::7}"
+          SSH_OPTS="-i $HOME/.ssh/deploy_key -o BatchMode=yes -o StrictHostKeyChecking=yes"
+          TARGET="$DEPLOY_USER@$DEPLOY_HOST"
+
+          scp $SSH_OPTS release.tgz "$TARGET:/tmp/cgsongbook-$RELEASE.tgz"
+          scp $SSH_OPTS deploy/release.sh "$TARGET:/tmp/cgsongbook-release.sh"
+          ssh $SSH_OPTS "$TARGET" "bash /tmp/cgsongbook-release.sh /tmp/cgsongbook-$RELEASE.tgz $RELEASE"
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+
+      - name: Remove the deployment key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key

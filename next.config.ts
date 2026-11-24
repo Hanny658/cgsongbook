@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Self-contained build in .next/standalone: the server only needs Node to run it
+  // (built and shipped by .github/workflows/deploy.yml, no build on the server).
+  output: "standalone",
 };
 
 export default nextConfig;
