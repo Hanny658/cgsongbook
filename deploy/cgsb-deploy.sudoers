@@ -1,0 +1,4 @@
+# /etc/sudoers.d/cgsb-deploy   (mode 440, check with: visudo -cf <file>)
+#
+# The deployment user may restart the app's service and nothing else.
+cgsb-deploy ALL=(root) NOPASSWD: /usr/bin/systemctl restart cgsongbook

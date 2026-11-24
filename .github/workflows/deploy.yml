@@ -7,13 +7,13 @@
 #   Secrets
 #     DEPLOY_SSH_KEY      private key of a key pair used only for deployments
 #     DEPLOY_HOST         server address
-#     DEPLOY_USER         SSH user (ecs-user)
+#     DEPLOY_USER         SSH user: the unprivileged deployment user (cgsb-deploy)
 #     DEPLOY_KNOWN_HOSTS  the server's host key line(s), from `ssh-keyscan <host>`
 #   Variables
 #     NEXT_PUBLIC_ENABLE_BIBLE_READER   set to 1 to show the Bible reader (baked in at build time)
 #
 # Everything else (DB_URL, SESSION_SECRET, STT_KEY, AUTOMATION_KEY, ...) is read at runtime
-# from the .env file on the server and never leaves it.
+# from /etc/cgsongbook.env on the server (root only) and never leaves it.
 
 name: Deploy
 
@@ -77,8 +77,8 @@ jobs:
           TARGET="$DEPLOY_USER@$DEPLOY_HOST"
 
           scp $SSH_OPTS release.tgz "$TARGET:/tmp/cgsongbook-$RELEASE.tgz"
-          scp $SSH_OPTS deploy/release.sh "$TARGET:/tmp/cgsongbook-release.sh"
-          ssh $SSH_OPTS "$TARGET" "bash /tmp/cgsongbook-release.sh /tmp/cgsongbook-$RELEASE.tgz $RELEASE"
+          scp $SSH_OPTS deploy/release.sh "$TARGET:/tmp/cgsongbook-$RELEASE.sh"
+          ssh $SSH_OPTS "$TARGET" "bash /tmp/cgsongbook-$RELEASE.sh /tmp/cgsongbook-$RELEASE.tgz $RELEASE; status=\$?; rm -f /tmp/cgsongbook-$RELEASE.sh; exit \$status"
         env:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}

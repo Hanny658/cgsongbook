@@ -7,8 +7,10 @@
 #
 #   usage: release.sh <archive.tgz> <release-name>
 #
-# Layout under $APP_DIR (default ~/cgsongbook-app):
-#   .env                  runtime settings (DB_URL, SESSION_SECRET, STT_KEY, ...), never deployed
+# Runs as the unprivileged deployment user (cgsb-deploy); the only thing it may do through
+# sudo is restart the service. Runtime settings live in /etc/cgsongbook.env (root only).
+#
+# Layout under $APP_DIR (default /srv/cgsongbook):
 #   releases/<name>/      one directory per release (server.js, .next, public, node_modules)
 #   current -> releases/<name>
 set -euo pipefail
@@ -16,7 +18,7 @@ set -euo pipefail
 ARCHIVE="$1"
 RELEASE="$2"
 
-APP_DIR="${APP_DIR:-$HOME/cgsongbook-app}"
+APP_DIR="${APP_DIR:-/srv/cgsongbook}"
 SERVICE="${SERVICE:-cgsongbook}"
 PORT="${PORT:-3001}"
 KEEP_RELEASES="${KEEP_RELEASES:-3}"
@@ -47,7 +49,7 @@ rm -f "$ARCHIVE"
 
 echo "Switching to $RELEASE ..."
 ln -sfn "$RELEASE_DIR" "$APP_DIR/current"
-sudo systemctl restart "$SERVICE"
+sudo /usr/bin/systemctl restart "$SERVICE"
 
 if is_healthy; then
     echo "Release $RELEASE is live."
@@ -56,7 +58,7 @@ else
     if [ -n "$PREVIOUS" ] && [ -d "$PREVIOUS" ] && [ "$PREVIOUS" != "$RELEASE_DIR" ]; then
         echo "Rolling back to $(basename "$PREVIOUS") ..." >&2
         ln -sfn "$PREVIOUS" "$APP_DIR/current"
-        sudo systemctl restart "$SERVICE"
+        sudo /usr/bin/systemctl restart "$SERVICE"
     fi
     exit 1
 fi

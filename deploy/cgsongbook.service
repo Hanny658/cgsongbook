@@ -3,6 +3,10 @@
 # Runs the release that GitHub Actions uploaded (see .github/workflows/deploy.yml and deploy/release.sh).
 # Nothing is built on the server.
 #
+# The app runs as the dedicated, unprivileged user `cgsb-deploy`. That user owns /srv/cgsongbook,
+# is the only one GitHub Actions can log in as, and may run exactly one command through sudo:
+#   systemctl restart cgsongbook        (see deploy/cgsb-deploy.sudoers)
+#
 #   sudo cp deploy/cgsongbook.service /etc/systemd/system/cgsongbook.service
 #   sudo systemctl daemon-reload && sudo systemctl restart cgsongbook
 
@@ -12,20 +16,27 @@ After=network.target
 
 [Service]
 Type=simple
-User=ecs-user
-Group=ecs-user
+User=cgsb-deploy
+Group=cgsb-deploy
 
 # `current` is a symlink to the active release; a restart picks up the new one
-WorkingDirectory=/home/ecs-user/cgsongbook-app/current
+WorkingDirectory=/srv/cgsongbook/current
 
 # Runtime settings: DB_URL, SESSION_SECRET, STT_KEY, AUTOMATION_KEY, ...
-EnvironmentFile=/home/ecs-user/cgsongbook-app/.env
+# Owned by root (mode 600): systemd reads it, the deploy user cannot open or replace it.
+EnvironmentFile=/etc/cgsongbook.env
 Environment=NODE_ENV=production
 Environment=PORT=3001
 
 ExecStart=/usr/bin/node server.js
 Restart=on-failure
 RestartSec=3
+
+# The app needs nothing outside its own directory
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=full
 
 [Install]
 WantedBy=multi-user.target
