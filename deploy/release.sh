@@ -22,7 +22,11 @@ PORT="${PORT:-3001}"
 KEEP_RELEASES="${KEEP_RELEASES:-3}"
 
 RELEASE_DIR="$APP_DIR/releases/$RELEASE"
-PREVIOUS="$(readlink -f "$APP_DIR/current" 2>/dev/null || true)"
+# The release that is live right now (empty on the very first deployment)
+PREVIOUS=""
+if [ -L "$APP_DIR/current" ] && [ -e "$APP_DIR/current" ]; then
+    PREVIOUS="$(readlink -f "$APP_DIR/current")"
+fi
 
 is_healthy() {
     # the login page of the editor needs neither the database nor a session
